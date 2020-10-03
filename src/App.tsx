@@ -1,24 +1,28 @@
 import React from 'react';
 import './App.css';
+import { Route, Switch } from 'react-router-dom';
+import OrdersPage from './pages/Orders/OrdersPage';
+import UsersPage from './pages/Users/UsersPage';
+import ProductsPage from './pages/Products/ProductsPage';
+import ProvidersPage from './pages/Providers/ProvidersPage';
+import AuthPage from "./pages/Auth/AuthPage";
+import CategoriesPage from "./pages/Categories/CategoriesPage";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+  return(
+      <>
+        <Switch>
+        <Route path={'/orders'} exact component={OrdersPage} />
+        <Route path={'/users'}  component={UsersPage} />
+        <Route path={'/products'} exact component={ProductsPage} />
+        <Route path={'/categories'} exact component={CategoriesPage} />
+        <Route path={'/providers'}  component={ProvidersPage} />
+        <Route path={'/'} exact component={AuthPage}/>
+        </Switch>
+      </>
+
+  )
 }
 
 export default App;
