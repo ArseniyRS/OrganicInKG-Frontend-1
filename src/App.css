@@ -3,12 +3,43 @@
   padding: 0;
 }
 body{
-  background: #F7F5FC;
-  font-family: 'Open Sans', sans-serif;
+  background: #E5E5E5;
+  font-family: 'Open Sans', sans-serif!important;
   font-size: 16px;
 }
 
 li{
   list-style: none;
 }
+.page{
+  padding: 60px 60px 60px 185px;
+  width: 100%;
+  height: 100%;
 
+}
+.container{
+  width: 1140px;
+  position: relative;
+  margin: 0 auto;
+  display: flex;
+}
+.page-content{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  width: 100%;
+  margin-left: 280px;
+  margin-top:100px;
+  height: 100%;
+}
+.page-content__title{
+  text-align: center;
+  font-size: 27px;
+}
+
+.page-functional{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

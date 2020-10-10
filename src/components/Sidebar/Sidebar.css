@@ -2,28 +2,34 @@
     position: fixed;
     height: 100%;
     z-index: 5;
-    background: #ffffff;
-    width: 125px;
+    width: 200px;
+    margin-top: 140px;
 }
 .sidebar{
     width: 100%;
 }
 .sidebar__item{
-    height: 90px;
-    border-bottom: 2px solid rgba(107, 122, 144, 0.1);
 
     display: flex;
-    flex-direction: column;
-    justify-content: center;
     align-items: center;
+    justify-content: flex-start;
+
 }
 .sidebar__item img{
-    width: 25px;
-    opacity: 0.7;
+    width: 26px;
+    height: 26px;
+    box-shadow: 0px 1px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 6px;
+    padding: 7px;
 }
 .sidebar__item a{
+
+    color: #8E8E8E;
     text-decoration: none;
-    color:#464547;
-    padding: 10px;
-    font-size: .9em;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 27px;
+    letter-spacing: -0.02em;
+    margin: 25px 0 25px 20px;
 }

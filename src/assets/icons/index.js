@@ -4,5 +4,8 @@ import providerSVG from './delivery.svg'
 import orderSVG from './package.svg'
 import productSVG from './radish.svg'
 import questionSVG from './information.svg'
-
-export {categorySVG,userSVG,productSVG,orderSVG,providerSVG,questionSVG}
+import searchSVG from './search.svg'
+import badStatusSVG from './badStatus.svg'
+import goodStatusSVG from './goodStatus.svg'
+import deleteSVG from './delete.svg'
+export {categorySVG,userSVG,productSVG,orderSVG,providerSVG,questionSVG,searchSVG,badStatusSVG,goodStatusSVG,deleteSVG}

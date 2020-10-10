@@ -7,12 +7,14 @@ import ProductsPage from './pages/Products/ProductsPage';
 import ProvidersPage from './pages/Providers/ProvidersPage';
 import AuthPage from "./pages/Auth/AuthPage";
 import CategoriesPage from "./pages/Categories/CategoriesPage";
+import MainPage from "./pages/Main/MainPage";
 
 function App() {
 
   return(
       <>
         <Switch>
+            <Route path={'/main'} exact component={MainPage} />
         <Route path={'/orders'} exact component={OrdersPage} />
         <Route path={'/users'}  component={UsersPage} />
         <Route path={'/products'} exact component={ProductsPage} />
