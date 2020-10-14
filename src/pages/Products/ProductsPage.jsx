@@ -6,7 +6,9 @@ import SearchPanel from "../../components/Search-panel/SearchPanel";
 import AddBtn from "../../components/Btns/AddBtn";
 import DeleteBtn from "../../components/Btns/DeleteBtn";
 import Table from "../../components/Table/Table";
-import {ProductColumns, ProviderColumns} from "../../components/Table/columns";
+import {ProductColumns, ProviderColumns, UsersColumns} from "../../components/Table/columns";
+import CreateOrEditUsersContainer from "../../components/Users/CreateOrEditUserContainer";
+import CreateOrEditProductContainer from "../../components/Products/CreateOrEditProductContainer";
 
 
 
@@ -39,9 +41,19 @@ const ProductsPage = (props)=>{
             <div className="container">
                 <Sidebar />
                 <div className="page-content">
-                    <h2 className='page-content__title'>Товары</h2>
-                    <div className='page-functional'><SearchPanel /><AddBtn/><DeleteBtn/></div>
-                    <Table data={data} columns={ProductColumns}/>
+                    <Switch>
+                    <Route exact path={'/products'}>
+                        <h2 className='page-content__title'>Товары</h2>
+                        <div className='page-functional'><SearchPanel /><AddBtn/><DeleteBtn/></div>
+                        <Table data={data} columns={ProductColumns}/>
+                    </Route>
+                    <Route exact path={'/products/create-product'}>
+                        <CreateOrEditProductContainer loadData={false}/>
+                    </Route>
+                    <Route exact path={'/products/update-product'}>
+                        <CreateOrEditProductContainer loadData={true}/>
+                    </Route>
+                    </Switch>
                 </div>
             </div>
 

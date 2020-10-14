@@ -15,10 +15,10 @@ function App() {
       <>
         <Switch>
             <Route path={'/main'} exact component={MainPage} />
-        <Route path={'/orders'} exact component={OrdersPage} />
+        <Route path={'/orders'}  component={OrdersPage} />
         <Route path={'/users'}  component={UsersPage} />
-        <Route path={'/products'} exact component={ProductsPage} />
-        <Route path={'/categories'} exact component={CategoriesPage} />
+        <Route path={'/products'}  component={ProductsPage} />
+        <Route path={'/categories'}  component={CategoriesPage} />
         <Route path={'/providers'}  component={ProvidersPage} />
         <Route path={'/'} exact component={AuthPage}/>
         </Switch>

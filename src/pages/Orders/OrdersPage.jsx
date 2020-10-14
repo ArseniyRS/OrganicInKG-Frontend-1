@@ -1,12 +1,15 @@
 import React, {useEffect} from 'react'
-import { Route } from 'react-router-dom'
+import {Route, Switch} from 'react-router-dom'
 import Sidebar from "../../components/Sidebar/Sidebar";
 import Header from "../../components/Header/Header";
 import SearchPanel from "../../components/Search-panel/SearchPanel";
 import AddBtn from "../../components/Btns/AddBtn";
 import DeleteBtn from "../../components/Btns/DeleteBtn";
 import Table from "../../components/Table/Table";
-import {OrdersColumns, ProviderColumns} from "../../components/Table/columns";
+import {OrdersColumns, ProductColumns, ProviderColumns, UsersColumns} from "../../components/Table/columns";
+import CreateOrEditProductContainer from "../../components/Products/CreateOrEditProductContainer";
+import CreateOrEditOrdersContainer from "../../components/Orders/CreateOrEditOrdersContainer";
+import CreateOrEditUserContainer from "../../components/Users/CreateOrEditUserContainer";
 
 const OrdersPage = ()=>{
 
@@ -39,9 +42,19 @@ const OrdersPage = ()=>{
             <div className="container">
                 <Sidebar />
                 <div className="page-content">
-                    <h2 className='page-content__title'>Заказы</h2>
-                    <div className='page-functional'><SearchPanel /><AddBtn/><DeleteBtn/></div>
-                    <Table data={data} columns={OrdersColumns}/>
+                    <Switch>
+                        <Route exact path={'/orders'}>
+                            <h2 className='page-content__title'>Заказы</h2>
+                            <div className='page-functional'><SearchPanel /><AddBtn/><DeleteBtn/></div>
+                            <Table data={data} columns={OrdersColumns}/>
+                        </Route>
+                        <Route exact  path={'/orders/create-order'}>
+                            <CreateOrEditOrdersContainer loadData={false}/>
+                        </Route>
+                        <Route exact path={'/orders/update-order'}>
+                            <CreateOrEditOrdersContainer loadData={true}/>
+                        </Route>
+                    </Switch>
                 </div>
             </div>
 

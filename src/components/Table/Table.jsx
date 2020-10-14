@@ -3,13 +3,12 @@ import TableItem from "./Table-item";
 import './Table.css'
 
 
-const Table = ({data=[],columns=[]})=>{
-
+const Table = ({data=[],columns=[],handlerClick})=>{
 
     const elements = data.map(item=>{
         return (
             <div key={item.id}>
-            <TableItem columns={columns} data={item}/>
+            <TableItem columns={columns} data={item} handlerClick = {handlerClick}/>
             </div>
         )
     })

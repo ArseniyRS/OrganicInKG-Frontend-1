@@ -4,7 +4,7 @@ import TableItemColumn from "./TableItemColumn";
 
 
 
-const TableItem= ({columns,data})=>{
+const TableItem= ({columns,data,handlerClick})=>{
     const [check,setCheck] = useState(false);
     const tableItemColumn = columns.map(item=>{
         for(let key in data){
@@ -25,9 +25,9 @@ const TableItem= ({columns,data})=>{
         }
     }
     console.log(tableItemColumn)
-
+    console.log(data)
     return(
-        <div className={'tableItem-container'}>
+        <div className={'tableItem-container'} onClick={()=>handlerClick(data.id)}>
             <label className="tableItem-checkbox-label">
                 <input className="tableItem-checkbox__default" type="checkbox" onClick={()=>setCheck(!check)} />
                     <span className="tableItem-checkbox__new"></span>

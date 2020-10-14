@@ -43,3 +43,54 @@ li{
   justify-content: space-between;
   align-items: center;
 }
+
+.createOrEditContainer{
+  display: flex;
+ flex-direction: column;
+  max-width: 700px;
+}
+.createOrEditContainer h2{
+  margin-bottom: 60px;
+}
+.createOrEditField{
+
+  margin: 15px 0;
+}
+.createOrEditField label{
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 30px;
+
+  color: #000000;
+}
+.createOrEditField input{
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  padding: 10px;
+  border: 2px solid #DDDDDD;
+  border-radius: 9px;
+  font-size: 20px;
+  line-height: 27px;
+  margin: 15px 0;
+}
+.createOrEditBtn-submit,.createOrEditBtn-cancel{
+  padding: 10px 25px;
+  border-radius: 9px 6px 6px 9px;
+
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 27px;
+  text-align: center;
+
+  color: #F2F2F2;
+
+  margin: 25px 5px;
+  align-self: center;
+}
+.createOrEditBtn-cancel{
+  background: #FF0303;
+}
+.createOrEditBtn-submit{
+  background: #009B00;
+}
