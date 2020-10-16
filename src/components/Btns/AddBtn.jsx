@@ -1,10 +1,11 @@
 import React from 'react'
 import './Btns.css'
+import {Link} from "react-router-dom";
 
 
-const AddBtn = ()=>{
+const AddBtn = ({urlToCreate})=>{
     return(
-        <button className='addBtn'>Добавить</button>
+        <Link to={urlToCreate} className='addBtn'>Добавить</Link>
     )
 }
 export default AddBtn

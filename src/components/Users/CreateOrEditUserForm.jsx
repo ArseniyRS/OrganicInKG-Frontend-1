@@ -1,6 +1,8 @@
 import React from 'react'
 import {ErrorMessage, Field, Form, Formik} from "formik";
 import * as Yup from "yup";
+import {backSVG} from "../../assets/icons";
+import {Link} from "react-router-dom";
 
 
 
@@ -20,7 +22,7 @@ const CreateOrEditUsersForm = (props)=>{
 
     return(
         <div className='createOrEditContainer'>
-            <h2>{props.loadData? "Редактирование пользователя": "Создание пользователя"}</h2>
+           <div className={'createOrEditContainer__title'}><Link to={props.urlToTable}><img src={backSVG} alt=""/></Link> <h2>{props.loadData? "Редактирование пользователя": "Создание пользователя"}</h2></div>
 
             <Formik
                 initialValues={initialVals}

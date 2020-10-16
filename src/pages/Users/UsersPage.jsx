@@ -9,10 +9,12 @@ import Table from "../../components/Table/Table";
 import {ProductColumns, ProviderColumns, UsersColumns} from "../../components/Table/columns";
 import CreateOrEditUserContainer from "../../components/Users/CreateOrEditUserContainer";
 import CreateOrEditProductContainer from "../../components/Products/CreateOrEditProductContainer";
-import RecordViewer from "../../components/RecordViewer/RecordWiewer";
+import RecordViewer from "../../components/RecordViewer/RecordViewer";
+import {connect} from "react-redux";
+import {writeRecordId} from "../../redux/reducers/tableReducer";
 
 
-const UsersPage = ({history})=>{
+const UsersPage = ({history,recordViewId,writeRecordId})=>{
 
 
     const data =[{
@@ -36,10 +38,12 @@ const UsersPage = ({history})=>{
             middle_name: 'Викторовна',
             email: 'fsdfsds',
         }]
+
     const clickOnRecord=(id)=>{
-        console.log(id)
-        history.push('/users/view/'+id);
+        writeRecordId(id)
+        history.push('/users/view/'+id)
     }
+    const recordViewValue =  data.find(item=>item.id===recordViewId);
     return(
         <>
             <Header />
@@ -49,19 +53,21 @@ const UsersPage = ({history})=>{
                     <Switch>
                         <Route exact path={'/users'}>
                             <h2 className='page-content__title'>Пользователи</h2>
-                            <div className='page-functional'><SearchPanel /><AddBtn/><DeleteBtn/></div>
-                            <Table data={data} columns={UsersColumns} handlerClick={clickOnRecord}/>
+                            <div className='page-functional'><SearchPanel /><AddBtn urlToCreate={'/users/create-user'}/><DeleteBtn/></div>
+                            <Table data={data} columns={UsersColumns} handlerClick={clickOnRecord} />
                         </Route>
                         <Route exact  path={'/users/create-user'}>
-                            <CreateOrEditUserContainer loadData={false}/>
+                            <CreateOrEditUserContainer  urlToTable={'/users'} loadData={false}/>
                         </Route>
                         <Route exact path={'/users/update-user'}>
-                            <CreateOrEditUserContainer loadData={true}/>
+                            <CreateOrEditUserContainer  urlToTable={'/users'} loadData={true}/>
                         </Route>
                         <Route  path={'/users/view/:id'}>
                             <RecordViewer
                             titles={['Имя',"Фамилия","Отчество","E-mail"]}
-                            values={[...data]}
+                            values={recordViewValue}
+                            urlToUpd={'/users/update-user'}
+                            urlToTable={'/users'}
                             />
                         </Route>
                     </Switch>
@@ -74,5 +80,9 @@ const UsersPage = ({history})=>{
         </>
     )
 }
-
-export  default  withRouter(UsersPage)
+const mapStateToProps = state=>{
+    return{
+        recordViewId: state.table.recordViewId
+    }
+}
+export  default  connect(mapStateToProps,{writeRecordId})(withRouter(UsersPage))

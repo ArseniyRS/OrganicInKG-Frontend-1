@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react'
-import {Route, Switch} from 'react-router-dom'
+import {Route, Switch, withRouter} from 'react-router-dom'
 import Sidebar from "../../components/Sidebar/Sidebar";
 import Header from "../../components/Header/Header";
 import SearchPanel from "../../components/Search-panel/SearchPanel";
@@ -10,8 +10,11 @@ import {OrdersColumns, ProductColumns, ProviderColumns, UsersColumns} from "../.
 import CreateOrEditProductContainer from "../../components/Products/CreateOrEditProductContainer";
 import CreateOrEditOrdersContainer from "../../components/Orders/CreateOrEditOrdersContainer";
 import CreateOrEditUserContainer from "../../components/Users/CreateOrEditUserContainer";
+import {connect} from "react-redux";
+import {writeRecordId} from "../../redux/reducers/tableReducer";
+import RecordViewer from "../../components/RecordViewer/RecordViewer";
 
-const OrdersPage = ()=>{
+const OrdersPage = ({history,recordViewId,writeRecordId})=>{
 
 
     const data =[{
@@ -35,7 +38,11 @@ const OrdersPage = ()=>{
             total: 3500,
             delivery_address: '123321',
         },]
-
+    const clickOnRecord=(id)=>{
+        writeRecordId(id)
+        history.push('/orders/view/'+id)
+    }
+    const recordViewValue =  data.find(item=>item.id===recordViewId);
     return(
         <>
             <Header />
@@ -45,14 +52,22 @@ const OrdersPage = ()=>{
                     <Switch>
                         <Route exact path={'/orders'}>
                             <h2 className='page-content__title'>Заказы</h2>
-                            <div className='page-functional'><SearchPanel /><AddBtn/><DeleteBtn/></div>
-                            <Table data={data} columns={OrdersColumns}/>
+                            <div className='page-functional'><SearchPanel /><AddBtn urlToCreate={'/orders/create-order'}/><DeleteBtn/></div>
+                            <Table data={data} columns={OrdersColumns} handlerClick={clickOnRecord}/>
                         </Route>
                         <Route exact  path={'/orders/create-order'}>
-                            <CreateOrEditOrdersContainer loadData={false}/>
+                            <CreateOrEditOrdersContainer urlToTable={'/orders'} loadData={false}/>
                         </Route>
                         <Route exact path={'/orders/update-order'}>
-                            <CreateOrEditOrdersContainer loadData={true}/>
+                            <CreateOrEditOrdersContainer urlToTable={'/orders'} loadData={true}/>
+                        </Route>
+                        <Route  path={'/orders/view/:id'}>
+                            <RecordViewer
+                                titles={['Товары',"Количество","Цена","Адрес"]}
+                                values={recordViewValue}
+                                urlToUpd={'/orders/update-order'}
+                                urlToTable={'/orders'}
+                            />
                         </Route>
                     </Switch>
                 </div>
@@ -65,4 +80,9 @@ const OrdersPage = ()=>{
     )
 }
 
-export  default  OrdersPage
+const mapStateToProps = state=>{
+    return{
+        recordViewId: state.table.recordViewId
+    }
+}
+export  default  connect(mapStateToProps,{writeRecordId})(withRouter(OrdersPage))

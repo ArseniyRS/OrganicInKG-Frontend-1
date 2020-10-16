@@ -4,7 +4,12 @@ import './Table.css'
 
 
 const Table = ({data=[],columns=[],handlerClick})=>{
-
+    useEffect(()=>{
+        return ()=>{
+            data=[]
+            columns=[]
+        }
+    })
     const elements = data.map(item=>{
         return (
             <div key={item.id}>

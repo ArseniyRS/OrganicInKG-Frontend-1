@@ -1,1 +1,1 @@
-export const TOGGLE_CARD = 'TOGGLE_CARD'
+export const WRITE_RECORD_ID = 'WRITE_RECORD_ID'

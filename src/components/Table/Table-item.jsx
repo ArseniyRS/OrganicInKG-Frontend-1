@@ -1,4 +1,4 @@
-import React, {useRef, useState} from 'react'
+import React, {useEffect, useRef, useState} from 'react'
 import TableItemColumn from "./TableItemColumn";
 
 
@@ -19,20 +19,25 @@ const TableItem= ({columns,data,handlerClick})=>{
         }}
     })
     let style={}
-    if(check){
-        style= {
-            boxShadow: '0px 1px 8px rgba(0,155,0,.4)'
+    useEffect(()=>{
+        if(check){
+            style= {
+                boxShadow: '0px 1px 8px rgba(0,155,0,.4)'
+            }
         }
-    }
+
+    },[])
+
     console.log(tableItemColumn)
     console.log(data)
     return(
-        <div className={'tableItem-container'} onClick={()=>handlerClick(data.id)}>
+        <div className={'tableItem-container'}
+        >
             <label className="tableItem-checkbox-label">
                 <input className="tableItem-checkbox__default" type="checkbox" onClick={()=>setCheck(!check)} />
                     <span className="tableItem-checkbox__new"></span>
             </label>
-        <div  className='tableItem' style={style} >
+        <div  className='tableItem' style={style}  onClick={()=>handlerClick(data.id)}>
 
            {tableItemColumn}
            

@@ -8,4 +8,5 @@ import searchSVG from './search.svg'
 import badStatusSVG from './badStatus.svg'
 import goodStatusSVG from './goodStatus.svg'
 import deleteSVG from './delete.svg'
-export {categorySVG,userSVG,productSVG,orderSVG,providerSVG,questionSVG,searchSVG,badStatusSVG,goodStatusSVG,deleteSVG}
+import backSVG from './back.svg'
+export {backSVG,categorySVG,userSVG,productSVG,orderSVG,providerSVG,questionSVG,searchSVG,badStatusSVG,goodStatusSVG,deleteSVG}

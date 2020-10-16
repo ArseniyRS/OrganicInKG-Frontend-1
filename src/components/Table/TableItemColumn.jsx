@@ -1,8 +1,9 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 
 
 
 const TableItemColumn = ({item,column})=>{
+
     return(
         <div className='tableItemColumn'>
             <span className='tableItemColumn__title'>

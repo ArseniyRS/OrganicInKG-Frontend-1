@@ -100,7 +100,7 @@ export const ProductColumns  =[
 export const UsersColumns  =[
     {
         title: "ID",
-        dataIndex: 'user_id',
+        dataIndex: 'id',
     },
     {
         title: "Имя",

@@ -1,17 +1,17 @@
-import { TOGGLE_CARD} from './types'
+import { WRITE_RECORD_ID} from './types'
 
 const initialState={
-    card: {isOpen: false,row_id:''},
+   recordViewId:''
 }
 
 
 export const tableReducer = (state=initialState,action)=>{
     switch (action.type) {
 
-        case TOGGLE_CARD:
+        case WRITE_RECORD_ID:
             return{
                 ...state,
-                card: action.payload
+                recordViewId: action.payload
             }
         default:{
             return{
@@ -22,10 +22,10 @@ export const tableReducer = (state=initialState,action)=>{
 }
 
 
-export const toggleCard = obj=>{
+export const writeRecordId = value=>{
     return{
-        type:  TOGGLE_CARD,
-        payload: obj
+        type:  WRITE_RECORD_ID,
+        payload: value
     }
 }
 

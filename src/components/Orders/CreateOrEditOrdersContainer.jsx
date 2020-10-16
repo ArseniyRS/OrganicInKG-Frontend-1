@@ -6,7 +6,7 @@ import CreateOrEditOrdersForm from "./CreateOrEditOrdersForm";
 const CreateOrEditOrdersContainer = (props)=>{
 
     return(
-        <CreateOrEditOrdersForm/>
+        <CreateOrEditOrdersForm {...props}/>
     )
 }
 
