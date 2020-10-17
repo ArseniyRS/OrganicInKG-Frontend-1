@@ -11,7 +11,7 @@ export const modalReducer = (state=initialState,action)=>{
         case TOGGLE_MODAL:
             return{
                 ...state,
-                recordViewId: action.payload
+                isOpenModal: action.payload
             }
         default:{
             return{

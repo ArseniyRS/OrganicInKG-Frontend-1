@@ -13,6 +13,7 @@ import CreateOrEditUserContainer from "../../components/Users/CreateOrEditUserCo
 import {connect} from "react-redux";
 import {writeRecordId} from "../../redux/reducers/tableReducer";
 import RecordViewer from "../../components/RecordViewer/RecordViewer";
+import Modal from "../../components/Modals/Modal";
 
 const OrdersPage = ({history,recordViewId,writeRecordId})=>{
 
@@ -75,14 +76,13 @@ const OrdersPage = ({history,recordViewId,writeRecordId})=>{
 
 
 
-
         </>
     )
 }
 
 const mapStateToProps = state=>{
     return{
-        recordViewId: state.table.recordViewId
+        recordViewId: state.table.recordViewId,
     }
 }
 export  default  connect(mapStateToProps,{writeRecordId})(withRouter(OrdersPage))

@@ -3,6 +3,8 @@ import {ErrorMessage, Field, Form, Formik} from "formik";
 import * as Yup from "yup";
 import {Link} from "react-router-dom";
 import {backSVG} from "../../assets/icons";
+import EditBtn from "../Btns/EditBtn";
+import CancelBtn from "../Btns/CancelBtn";
 
 
 
@@ -56,8 +58,10 @@ const CreateOrEditProviderForm = (props)=>{
                         <span  className='authError'><ErrorMessage name="status"/></span>
                     </div>
 
-                    <button className='createOrEditBtn-submit' type='submit'>Сохранить</button>
-                    <button className='createOrEditBtn-cancel'>Отмена</button>
+                    {/*<button className='createOrEditBtn-submit' type='submit'>Сохранить</button>*/}
+                    {/*<button className='createOrEditBtn-cancel'>Отмена</button>*/}
+                    <EditBtn />
+                    <CancelBtn />
 
                 </Form>
             </Formik>

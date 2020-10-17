@@ -3,6 +3,8 @@ import {ErrorMessage, Field, Form, Formik} from "formik";
 import * as Yup from "yup";
 import {backSVG} from "../../assets/icons";
 import {Link} from "react-router-dom";
+import EditBtn from "../Btns/EditBtn";
+import CancelBtn from "../Btns/CancelBtn";
 
 
 
@@ -65,8 +67,10 @@ const CreateOrEditUsersForm = (props)=>{
                     </div>
 
 
-                    <button className='createOrEditBtn-submit' type='submit'>Сохранить</button>
-                    <button className='createOrEditBtn-cancel'>Отмена</button>
+                    {/*<button className='createOrEditBtn-submit' type='submit'>Сохранить</button>*/}
+                    {/*<button className='createOrEditBtn-cancel'>Отмена</button>*/}
+                    <EditBtn />
+                    <CancelBtn />
 
                 </Form>
             </Formik>

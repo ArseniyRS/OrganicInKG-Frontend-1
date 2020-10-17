@@ -9,9 +9,10 @@ import AuthPage from "./pages/Auth/AuthPage";
 import CategoriesPage from "./pages/Categories/CategoriesPage";
 import MainPage from "./pages/Main/MainPage";
 import Modal from "./components/Modals/Modal";
+import {connect} from "react-redux";
 
-function App() {
-
+function App(props) {
+console.log('app')
   return(
       <>
           <Modal />
@@ -28,5 +29,9 @@ function App() {
 
   )
 }
-
-export default App;
+const mapStateToProps = state=>{
+    return{
+        visible : state.modal.isOpenModal.isOpen
+    }
+}
+export default connect(mapStateToProps)(App);

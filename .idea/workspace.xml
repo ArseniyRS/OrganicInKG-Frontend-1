@@ -20,18 +20,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="869952c6-d07a-44c8-9dad-429924c3fe46" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/Btns/CancelBtn.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Btns/EditBtn.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Modals/Modal.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Modals/Modal.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/redux/reducers/modalReducer.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/debug.log" beforeDir="false" afterPath="$PROJECT_DIR$/debug.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Btns/DeleteBtn.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Btns/DeleteBtn.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Categories/CreateOrEditCategoryContainer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Categories/CreateOrEditCategoryContainer.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Categories/CreateOrEditCategoryForm.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Categories/CreateOrEditCategoryForm.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Modals/Modal.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Modals/Modal.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Orders/CreateOrEditOrdersContainer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Orders/CreateOrEditOrdersContainer.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Orders/CreateOrEditOrdersForm.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Orders/CreateOrEditOrdersForm.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Main/MainPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Main/MainPage.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/reducers/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/index.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/reducers/types.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/types.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/store.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/store.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Products/CreateOrEditProductForm.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Products/CreateOrEditProductForm.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Providers/CreateOrEditProviderForm.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Providers/CreateOrEditProviderForm.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Users/CreateOrEditUserForm.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Users/CreateOrEditUserForm.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Categories/CategoriesPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Categories/CategoriesPage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Orders/OrdersPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Orders/OrdersPage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/reducers/modalReducer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/modalReducer.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,6 +86,7 @@
       <workItem from="1602748512672" duration="10206000" />
       <workItem from="1602859522397" duration="2655000" />
       <workItem from="1602915723564" duration="1573000" />
+      <workItem from="1602918057645" duration="5106000" />
     </task>
     <servers />
   </component>
