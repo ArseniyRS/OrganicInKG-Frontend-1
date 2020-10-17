@@ -8,11 +8,13 @@ import ProvidersPage from './pages/Providers/ProvidersPage';
 import AuthPage from "./pages/Auth/AuthPage";
 import CategoriesPage from "./pages/Categories/CategoriesPage";
 import MainPage from "./pages/Main/MainPage";
+import Modal from "./components/Modals/Modal";
 
 function App() {
 
   return(
       <>
+          <Modal />
         <Switch>
             <Route path={'/main'} exact component={MainPage} />
         <Route path={'/orders'}  component={OrdersPage} />

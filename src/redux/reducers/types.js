@@ -1,1 +1,2 @@
 export const WRITE_RECORD_ID = 'WRITE_RECORD_ID'
+export const TOGGLE_MODAL = 'TOGGLE_MODAL'

@@ -20,29 +20,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="869952c6-d07a-44c8-9dad-429924c3fe46" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/RecordViewer/RecordView.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Btns/CancelBtn.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Btns/EditBtn.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Modals/Modal.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Modals/Modal.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/redux/reducers/modalReducer.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/icons/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/icons/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Btns/Btns.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Btns/Btns.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Orders/CreateOrEditOrdersContainer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Orders/CreateOrEditOrdersContainer.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Orders/CreateOrEditOrdersForm.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Orders/CreateOrEditOrdersForm.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Products/CreateOrEditProductForm.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Products/CreateOrEditProductForm.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Providers/CreateOrEditProviderForm.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Providers/CreateOrEditProviderForm.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/RecordViewer/RecordWiewer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RecordViewer/RecordViewer.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Sidebar/Sidebar.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Sidebar/Sidebar.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Table/Table-item.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Table/Table-item.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Table/Table.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Table/Table.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Table/Table.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Table/Table.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Table/TableItemColumn.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Table/TableItemColumn.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Table/columns.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Table/columns.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Users/CreateOrEditUserForm.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Users/CreateOrEditUserForm.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Orders/OrdersPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Orders/OrdersPage.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Products/ProductsPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Products/ProductsPage.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Providers/ProvidersPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Providers/ProvidersPage.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Users/UsersPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Users/UsersPage.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/reducers/tableReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/tableReducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Main/MainPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Main/MainPage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/reducers/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/index.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/redux/reducers/types.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/types.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/store.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/store.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,8 +41,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JavaScript File" />
         <option value="CSS File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -92,6 +81,8 @@
       <workItem from="1602331015750" duration="5628000" />
       <workItem from="1602665631766" duration="10373000" />
       <workItem from="1602748512672" duration="10206000" />
+      <workItem from="1602859522397" duration="2655000" />
+      <workItem from="1602915723564" duration="1573000" />
     </task>
     <servers />
   </component>
