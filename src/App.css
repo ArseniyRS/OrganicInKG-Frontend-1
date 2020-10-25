@@ -13,6 +13,9 @@ a{
 li{
   list-style: none;
 }
+input,button{
+  border: none;
+}
 .page{
   padding: 60px 60px 60px 185px;
   width: 100%;
@@ -75,13 +78,16 @@ li{
 .createOrEditField input{
   width: 100%;
   height: 100%;
-  background: transparent;
+  background: #DDDDDD;
   padding: 10px;
   border: 2px solid #DDDDDD;
   border-radius: 9px;
   font-size: 20px;
   line-height: 27px;
   margin: 15px 0;
+}
+.createOrEditField input:hover{
+  background: transparent;
 }
 .createOrEditBtn-submit,.createOrEditBtn-cancel{
   padding: 10px 25px;
@@ -98,8 +104,15 @@ li{
   align-self: center;
 }
 .createOrEditBtn-cancel{
-  background: #FF0303;
+  background: #FF6800;
 }
 .createOrEditBtn-submit{
   background: #009B00;
 }
+.createOrEditBtn-submit:hover{
+  background: #007600;
+}
+.createOrEditBtn-cancel:hover{
+  background: #CF0000;
+}
+

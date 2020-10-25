@@ -1,41 +1,39 @@
 import React, {InputHTMLAttributes, useEffect, useRef} from 'react'
-import { Route } from 'react-router-dom'
-import Sidebar from "../../components/Sidebar/Sidebar";
 import './AuthPage.css'
+import {Field, Form, Formik} from "formik";
+import * as Yup from "yup";
 const AuthPage = ()=>{
 
 
     return(
-            <div className="limiter">
-                <div className="container-login100">
-                    <div className="wrap-login100">
-                        <form className="login100-form validate-form">
-					<span className="login100-form-title ">
-						Вход
-					</span>
+        <div className='auth__container'>
+           <div className="auth__block">
+               <div className="auth__title">Авторизация</div>
+               <Formik
+                   initialValues={{
+                       login:'',
+                       password: ''
+                   }}
+                   validationSchema={Yup.object({
+                       login: Yup.string().required(),
 
 
-                            <div className="wrap-input100 validate-input" data-validate="Введите логин">
-                                <input className="input100" type="text" name="username"  autoComplete="off"/>
-                                    <span className="focus-input100" data-placeholder="Логин"></span>
-                            </div>
-
-                            <div className="wrap-input100 validate-input " data-validate="Введите пароль">
-                                <input className="input100" type="password" name="pass" autoComplete="off"/>
-                                    <span className="focus-input100" data-placeholder="Пароль"></span>
-                            </div>
-
-                            <div className="container-login100-form-btn">
-                                <button className="login100-form-btn">
-                                   Войти
-                                </button>
-                            </div>
+                       password: Yup.string().required(),
 
 
-                        </form>
-                    </div>
-                </div>
-            </div>
+
+                   })}
+                   onSubmit={(values)=>{
+                   }}
+               >
+                   <Form>
+                       <Field name="login" placeholder="Логин"/>
+                       <Field name="password" type={'password'} placeholder="Пароль"/>
+                        <button className={"auth__btn"} type={'submit'}>Войти</button>
+                   </Form>
+               </Formik>
+           </div>
+        </div>
 
     )
 }

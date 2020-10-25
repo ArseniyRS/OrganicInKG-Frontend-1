@@ -7,13 +7,19 @@
 }
 .sidebar{
     width: 100%;
+    border-right: 2px solid #DDDDDD;
+    padding-right: 25px;
+    margin-top: 5px;
 }
-.sidebar__item{
+.sidebar__item {
 
     display: flex;
     align-items: center;
     justify-content: flex-start;
 
+}
+.sidebar__item a:hover{
+    color: #FF6800;
 }
 .sidebar__item img{
     width: 26px;
