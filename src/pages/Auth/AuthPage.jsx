@@ -2,6 +2,7 @@ import React, {InputHTMLAttributes, useEffect, useRef} from 'react'
 import './AuthPage.css'
 import {Field, Form, Formik} from "formik";
 import * as Yup from "yup";
+import PasswordInput from "../../components/PasswordInput/PasswordInput";
 const AuthPage = ()=>{
 
 
@@ -28,7 +29,10 @@ const AuthPage = ()=>{
                >
                    <Form>
                        <Field name="login" placeholder="Логин"/>
-                       <Field name="password" type={'password'} placeholder="Пароль"/>
+                       <Field name="password" >
+                           {({field:{name},form: { setFieldValue}})=> <PasswordInput setFieldValue={setFieldValue} name={name} placeholder="Пароль"/>}
+
+                       </Field>
                         <button className={"auth__btn"} type={'submit'}>Войти</button>
                    </Form>
                </Formik>

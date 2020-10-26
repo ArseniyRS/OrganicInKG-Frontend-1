@@ -9,4 +9,5 @@ import badStatusSVG from './badStatus.svg'
 import goodStatusSVG from './goodStatus.svg'
 import deleteSVG from './delete.svg'
 import backSVG from './back.svg'
-export {backSVG,categorySVG,userSVG,productSVG,orderSVG,providerSVG,questionSVG,searchSVG,badStatusSVG,goodStatusSVG,deleteSVG}
+import checkPasSVG from './checkPassword.svg'
+export {checkPasSVG,backSVG,categorySVG,userSVG,productSVG,orderSVG,providerSVG,questionSVG,searchSVG,badStatusSVG,goodStatusSVG,deleteSVG}

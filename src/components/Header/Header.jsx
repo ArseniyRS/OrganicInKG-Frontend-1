@@ -1,5 +1,6 @@
 import React from 'react'
 import './Header.css'
+import {Link} from "react-router-dom";
 
 
 const Header = ()=>{
@@ -10,7 +11,7 @@ const Header = ()=>{
             <h3>Admin panel of Organic in KG</h3>
             <div className="header-profile">
                 <span className='header-profile__name'>Бермет</span>
-                <span className='header-profile__password'>Сменить пароль</span>
+                <Link to={"/profile"}><span className='header-profile__password'>Сменить пароль</span></Link>
                 <span>/</span>
                 <span className='header-profile__exit'>Выйти</span>
             </div>

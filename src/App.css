@@ -116,3 +116,31 @@ input,button{
   background: #CF0000;
 }
 
+.passwordInput {
+  position: relative;
+  margin: 12px 0;
+
+  background: #DDDDDD;
+  border-radius: 6px;
+  border: none;
+
+
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 27px;
+
+  color: #8E8E8E;
+  display: flex;
+}
+.passwordInput img{
+  position: absolute;
+  cursor: pointer;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.passwordInput input{
+
+  margin: 0!important;
+  width: 100%;
+}

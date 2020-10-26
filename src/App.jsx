@@ -10,6 +10,7 @@ import CategoriesPage from "./pages/Categories/CategoriesPage";
 import MainPage from "./pages/Main/MainPage";
 import Modal from "./components/Modals/Modal";
 import {connect} from "react-redux";
+import ProfilePage from "./pages/Profile/ProfilePage";
 
 function App(props) {
 console.log('app')
@@ -24,6 +25,7 @@ console.log('app')
         <Route path={'/categories'}  component={CategoriesPage} />
         <Route path={'/providers'}  component={ProvidersPage} />
         <Route path={'/'} exact component={AuthPage}/>
+            <Route path={'/profile'} exact component={ProfilePage} />
         </Switch>
       </>
 
