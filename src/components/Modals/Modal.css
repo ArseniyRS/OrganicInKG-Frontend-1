@@ -60,7 +60,13 @@
     background: #009B00;
     margin-right: 5px;
 }
+.modal__btns-confirm:hover{
+    background: #007600;
+}
+.modal__btns-cancel:hover{
+    background: #CD5200;
+}
 .modal__btns-cancel{
-    background: #FF0303;
+    background: #FF6800;
     margin-left: 5px;
 }

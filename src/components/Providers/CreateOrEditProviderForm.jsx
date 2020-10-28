@@ -5,6 +5,8 @@ import {Link} from "react-router-dom";
 import {backSVG} from "../../assets/icons";
 import EditBtn from "../Btns/EditBtn";
 import CancelBtn from "../Btns/CancelBtn";
+import PasswordInput from "../PasswordInput/PasswordInput";
+import SelectorInput from "../SelectorInput/SelectorInput";
 
 
 
@@ -15,8 +17,12 @@ const CreateOrEditProviderForm = (props)=>{
     let initialVals ={
         full_name: '',
         phone: '',
-        status: '',
-
+        email: '',
+        address: '',
+        product: '',
+        passport_photo: '',
+        sertif_photo: '',
+        bank_number: ''
     }
 
     return(
@@ -53,11 +59,44 @@ const CreateOrEditProviderForm = (props)=>{
                         <span  className='authError'><ErrorMessage name="phone"/></span>
                     </div>
                     <div className="createOrEditField">
-                        <label htmlFor="status">Статус</label>
-                        <Field name="status" />
-                        <span  className='authError'><ErrorMessage name="status"/></span>
+                        <label htmlFor="email">E-mail</label>
+                        <Field name="email" placeholder="example@gmail.com"/>
+                        <span  className='authError'><ErrorMessage name="email"/></span>
                     </div>
+                    <div className="createOrEditField">
+                        <label htmlFor="address">Адрес</label>
+                        <Field name="address" placeholder="">
+                            {({field:{name,value},form: { setFieldValue}})=>{
+                               return( <SelectorInput
+                                    setFieldValue={setFieldValue}
+                                    value={value}
+                                    name={name}
+                                    placeholder="Пароль"/>
+                               )}}
 
+                        </Field>
+                        <span  className='authError'><ErrorMessage name="address"/></span>
+                    </div>
+                    <div className="createOrEditField">
+                        <label htmlFor="product">Товары</label>
+                        <Field name="product" placeholder="Картошка,..."/>
+                        <span  className='authError'><ErrorMessage name="product"/></span>
+                    </div>
+                    <div className="createOrEditField">
+                        <label htmlFor="passport_photo">Фото пасспорта</label>
+                        <Field name="passport_photo" placeholder="+(999) 00-00-00"/>
+                        <span  className='authError'><ErrorMessage name="passport_photo"/></span>
+                    </div>
+                    <div className="createOrEditField">
+                        <label htmlFor="sertif_photo">Фото сертификата</label>
+                        <Field name="sertif_photo" />
+                        <span  className='authError'><ErrorMessage name="sertif_photo"/></span>
+                    </div>
+                    <div className="createOrEditField">
+                        <label htmlFor="bank_number">Банковский счет</label>
+                        <Field name="bank_number" />
+                        <span  className='authError'><ErrorMessage name="bank_number"/></span>
+                    </div>
                     {/*<button className='createOrEditBtn-submit' type='submit'>Сохранить</button>*/}
                     {/*<button className='createOrEditBtn-cancel'>Отмена</button>*/}
                     <EditBtn />

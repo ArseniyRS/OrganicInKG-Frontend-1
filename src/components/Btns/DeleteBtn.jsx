@@ -7,7 +7,7 @@ import {toggleModal} from "../../redux/reducers/modalReducer";
 
 const DeleteBtn = ({toggleModal})=>{
     return(
-        <img src={deleteSVG} alt=""  onClick={()=>toggleModal({isOpen:true,title:'Вы действительно хотите удалить запись?'})}/>
+        <img className={'deleteBtn'} src={deleteSVG} alt=""  onClick={()=>toggleModal({isOpen:true,title:'Вы действительно хотите удалить запись?'})}/>
     )
 }
 export default connect(null,{toggleModal})(DeleteBtn)

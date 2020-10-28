@@ -8,7 +8,7 @@ const Header = ()=>{
         <div className='header'>
         <div className='container'>
         <div className="header__container">
-            <h3>Admin panel of Organic in KG</h3>
+            <Link to={"/main"}><h3>Admin panel of Organic in KG</h3></Link>
             <div className="header-profile">
                 <span className='header-profile__name'>Бермет</span>
                 <Link to={"/profile"}><span className='header-profile__password'>Сменить пароль</span></Link>

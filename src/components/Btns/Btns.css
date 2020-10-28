@@ -9,3 +9,6 @@
 .addBtn:hover{
     background: #007600;
 }
+.deleteBtn{
+    cursor: pointer;
+}

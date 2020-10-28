@@ -19,25 +19,38 @@ const ProvidersPage = ({writeRecordId,recordViewId,history})=>{
         id: '1',
         full_name: 'Анисимова Виктория Викторовна',
         phone: '+996 777 77-77-77',
-        dir: '123321',
         email: 'fsdfsds',
+        address: 'Alamedin',
+        product: 'Картошка',
+        passport_photo: 'фото',
+        sertif_photo: 'фото',
+        bank_number: '123321',
+
         status: true
     },
         {
             id: '2',
             full_name: 'Анисимова Виктория Викторовна',
             phone: '+996 777 77-77-77',
-            dir: '123321',
             email: 'fsdfsds',
+            address: 'Alamedin',
+            product: 'Картошка',
+            passport_photo: 'фото',
+            sertif_photo: 'фото',
+            bank_number: '123321',
             status: false
         },
         {
             id: '3',
             full_name: 'Анисимова Виктория Викторовна',
             phone: '+996 777 77-77-77',
-            dir: '123321',
             email: 'fsdfsds',
-            status: false
+            address: 'Alamedin',
+            product: 'Картошка',
+            passport_photo: 'фото',
+            sertif_photo: 'фото',
+            bank_number: '123321',
+            status: true
         }]
     const clickOnRecord=(id)=>{
         writeRecordId(id)
@@ -64,7 +77,7 @@ const ProvidersPage = ({writeRecordId,recordViewId,history})=>{
                         </Route>
                         <Route exact path={'/providers/view/:id'}>
                             <RecordViewer
-                                titles={['ФИО',"Телефон","E-mail","Статус"]}
+                                titles={['ФИО',"Телефон","E-mail","Адрес","Товары","Пасспортные данные","Сертификат", "Номер счета"]}
                                 values={recordViewValue}
                                 urlToUpd={'/providers/update-provider'}
                                 urlToTable={'/providers'}
