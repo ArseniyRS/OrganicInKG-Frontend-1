@@ -90,8 +90,11 @@ input,button{
 .createOrEditField input:hover{
   background: transparent;
 }
+.createOrEditContainer__btns{
+  display: flex;
+}
 .createOrEditBtn-submit,.createOrEditBtn-cancel{
-  padding: 10px 25px;
+  padding: 10px 0;
   border-radius: 9px 6px 6px 9px;
 
   font-weight: 600;
@@ -102,7 +105,8 @@ input,button{
   color: #F2F2F2;
 
   margin: 25px 5px;
-  align-self: center;
+  width: 160px;
+  cursor: pointer;
 }
 .createOrEditBtn-cancel{
   background: #FF6800;

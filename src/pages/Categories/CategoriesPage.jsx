@@ -13,12 +13,17 @@ import {connect} from "react-redux";
 import {writeRecordId} from "../../redux/reducers/tableReducer";
 import CreateOrEditCategoryForm from "../../components/Categories/CreateOrEditCategoryForm";
 import CreateOrEditCategoryContainer from "../../components/Categories/CreateOrEditCategoryContainer";
+import {createCategory, getCategory, updateCategory} from "../../redux/reducers/categoryReducer";
+import FormContainer from "../../components/FormGenerator/FormContainer";
+import {categoryInputConfig} from "../../components/Categories/inputConfig";
 
 
 
 
-const CategoriesPage = ({history,recordViewId,writeRecordId})=>{
-
+const CategoriesPage = ({history,recordViewId,writeRecordId,getCategory,createCategory,updateCategory})=>{
+    useEffect(()=>{
+        getCategory()
+    },[])
     const data =[{
         id: '1',
         title: 'Овощи',
@@ -55,19 +60,44 @@ const CategoriesPage = ({history,recordViewId,writeRecordId})=>{
                         <Table data={data} columns={CategoryColumns} handlerClick={clickOnRecord} />
                     </Route>
                     <Route exact  path={'/categories/create-category'}>
-                        <CreateOrEditCategoryContainer  urlToTable={'/categories'} loadData={false}/>
+                        <FormContainer
+                            urlToTable={'/categories'}
+                            loadData={false}
+                            createReq = {createCategory}
+                            updReq ={updateCategory}
+                            initialVals={{
+                                title: '',
+                                parent: '',
+                                description: '',
+                            }}
+                            formTitle = {"Создание категории"}
+                            inputConfig ={categoryInputConfig}
+                        />
                     </Route>
-                    <Route exact path={'/categories/update-category'}>
-                        <CreateOrEditCategoryContainer urlToTable={'/categories'} loadData={true}/>
+                    <Route exact  path={'/categories/update-category/:id'}>
+                        <FormContainer
+                            urlToTable={'/categories'}
+                            loadData={true}
+                            createReq = {createCategory}
+                            updReq ={updateCategory}
+                            initialVals={{
+                                title: '',
+                                parent: '',
+                                description: '',
+                            }}
+                            formTitle = {"Редактирование категории"}
+                            inputConfig ={categoryInputConfig}
+                        />
                     </Route>
                     <Route  path={'/categories/view/:id'}>
                         <RecordViewer
-                            titles={['Имя',"Фамилия","Отчество","E-mail"]}
+                            titles={['Название',"Вложен в","Описание"]}
                             values={recordViewValue}
                             urlToUpd={'/categories/update-category'}
                             urlToTable={'/categories'}
                         />
                     </Route>
+
                 </Switch>
             </div>
             </div>
@@ -84,4 +114,4 @@ const mapStateToProps = state=>{
     }
 }
 
-export  default  connect(mapStateToProps,{writeRecordId})(withRouter(CategoriesPage))
+export  default  connect(mapStateToProps,{writeRecordId,getCategory,createCategory,updateCategory})(withRouter(CategoriesPage))

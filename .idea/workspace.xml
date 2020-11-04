@@ -20,20 +20,37 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="869952c6-d07a-44c8-9dad-429924c3fe46" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/SelectorInput/Selector.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/SelectorInput/SelectorInput.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/SelectorInput/SelectorItem.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/SelectorInput/SelectorList.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Categories/inputConfig.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/FormGenerator/FormContainer.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/FormGenerator/FormInput.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/FormGenerator/Former.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/FormGenerator/validationGenerator.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/HOC/withLoader.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/ImgUploader/ImgUploader.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/redux/reducers/categoryReducer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/redux/reducers/mainReducer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utils/api/Request.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utils/templates/createOrChangeTemplate.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utils/templates/deleteTemplate.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utils/templates/getTemplate.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/debug.log" beforeDir="false" afterPath="$PROJECT_DIR$/debug.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/icons/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/icons/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Btns/Btns.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Btns/Btns.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Btns/DeleteBtn.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Btns/DeleteBtn.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Header/Header.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header/Header.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Btns/CancelBtn.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Btns/CancelBtn.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Btns/EditBtn.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Btns/EditBtn.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Categories/CreateOrEditCategoryContainer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Categories/CreateOrEditCategoryContainer.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Modals/Modal.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Modals/Modal.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Modals/Modal.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Modals/Modal.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Providers/CreateOrEditProviderForm.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Providers/CreateOrEditProviderForm.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/RecordViewer/RecordViewer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RecordViewer/RecordViewer.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Categories/CategoriesPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Categories/CategoriesPage.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/Providers/ProvidersPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Providers/ProvidersPage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/reducers/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/index.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/reducers/modalReducer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/modalReducer.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/reducers/types.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/types.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,12 +78,18 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/utils/templates" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\WebStorm 2020.1\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Admin\Desktop\organicinkg-frontend\src\utils\templates" />
+    </key>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -91,7 +114,10 @@
       <workItem from="1603703486992" duration="4196000" />
       <workItem from="1603718162034" duration="3291000" />
       <workItem from="1603783569802" duration="26038000" />
-      <workItem from="1603869871598" duration="12382000" />
+      <workItem from="1603869871598" duration="13626000" />
+      <workItem from="1604297419333" duration="19122000" />
+      <workItem from="1604414848532" duration="2178000" />
+      <workItem from="1604491620249" duration="5648000" />
     </task>
     <servers />
   </component>
@@ -109,5 +135,11 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="414" y="235" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1604307702275">
+      <screen x="0" y="0" width="1920" height="1160" />
+    </state>
+    <state x="414" y="235" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1160@0.0.1920.1160" timestamp="1604307702275" />
   </component>
 </project>

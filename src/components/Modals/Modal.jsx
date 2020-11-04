@@ -16,7 +16,11 @@ const Modal = ({modal,toggleModal})=>{
             <div className='modal__container'>
             <h2>{modal.title}</h2>
             <div className='modal__btns'>
-                <div className='modal__btns-confirm' onClick={()=>toggleModal({isOpen:false,title:''})}>Да</div>
+                <div className='modal__btns-confirm' onClick={()=>{
+                    modal.confirmFunc()
+                    toggleModal({isOpen:false,title:''})
+
+                }}>Да</div>
                 <div className='modal__btns-cancel' onClick={()=>toggleModal({isOpen:false,title:''})}>Нет</div>
 
             </div>

@@ -1,7 +1,11 @@
 import { TOGGLE_MODAL} from './types'
 
 const initialState={
-    isOpenModal: {isOpen:false,title:''}
+    isOpenModal: {
+        isOpen:false,
+        title:'',
+        confirmFunc: undefined,
+    }
 }
 
 

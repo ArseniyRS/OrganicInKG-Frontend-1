@@ -13,7 +13,6 @@ import {connect} from "react-redux";
 import ProfilePage from "./pages/Profile/ProfilePage";
 
 function App(props) {
-console.log('app')
   return(
       <>
           <Modal />

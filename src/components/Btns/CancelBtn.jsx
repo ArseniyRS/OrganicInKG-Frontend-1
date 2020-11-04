@@ -7,10 +7,13 @@ import {toggleModal} from "../../redux/reducers/modalReducer";
 
 const CancelBtn = ({toggleModal})=>{
     return(
-        <button className='createOrEditBtn-cancel'
-                onClick={()=>toggleModal({isOpen:true,title:'Вы действительно хотите\n' +
+        <div className='createOrEditBtn-cancel'
+                onClick={()=>toggleModal({
+                    isOpen:true,
+                    title:'Вы действительно хотите\n' +
                         'отменить изменения?'})}>
-        Отмена</button>
+        Отмена
+        </div>
 
     )
 }

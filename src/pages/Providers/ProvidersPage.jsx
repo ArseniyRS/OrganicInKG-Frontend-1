@@ -12,6 +12,7 @@ import CreateOrEditOrdersContainer from "../../components/Orders/CreateOrEditOrd
 import RecordViewer from "../../components/RecordViewer/RecordViewer";
 import {connect} from "react-redux";
 import {writeRecordId} from "../../redux/reducers/tableReducer";
+import ImgUploader from "../../components/ImgUploader/ImgUploader";
 
 
 const ProvidersPage = ({writeRecordId,recordViewId,history})=>{
@@ -84,6 +85,7 @@ const ProvidersPage = ({writeRecordId,recordViewId,history})=>{
                             />
                         </Route>
                     </Switch>
+
                 </div>
             </div>
 

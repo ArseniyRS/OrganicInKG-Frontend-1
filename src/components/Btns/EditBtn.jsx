@@ -4,11 +4,16 @@ import {connect} from "react-redux";
 
 
 
-const EditBtn = ({toggleModal})=>{
+const EditBtn = ({toggleModal,confirmFunc})=>{
     return(
-        <button className='createOrEditBtn-submit' type='submit'
-                onClick={()=>toggleModal({isOpen:true,title:'Вы действительно хотите сохранить изменения?'})}>
-            Сохранить</button>
+        <div className='createOrEditBtn-submit'
+                onClick={()=>toggleModal(
+                    {   isOpen:true,
+                        title:'Вы действительно хотите сохранить изменения?',
+                        confirmFunc: confirmFunc,
+                    },
+                    )}>
+            Сохранить</div>
                 )
 }
 

@@ -7,6 +7,7 @@ import EditBtn from "../Btns/EditBtn";
 import CancelBtn from "../Btns/CancelBtn";
 import PasswordInput from "../PasswordInput/PasswordInput";
 import SelectorInput from "../SelectorInput/SelectorInput";
+import ImgUploader from "../ImgUploader/ImgUploader";
 
 
 
@@ -20,7 +21,7 @@ const CreateOrEditProviderForm = (props)=>{
         email: '',
         address: '',
         product: '',
-        passport_photo: '',
+        passport_photo: [],
         sertif_photo: '',
         bank_number: ''
     }
@@ -82,6 +83,15 @@ const CreateOrEditProviderForm = (props)=>{
                         <Field name="product" placeholder="Картошка,..."/>
                         <span  className='authError'><ErrorMessage name="product"/></span>
                     </div>
+                    {/*<div className="createOrEditField">*/}
+                    {/*    <label htmlFor="passport_photo">Фото пасспорта</label>*/}
+                    {/*    <Field name="passport_photo" />*/}
+                    {/*        /!*{({field:{name,value},form: { setFieldValue}}) =><ImgUploader setFieldValue={setFieldValue}*!/*/}
+                    {/*        /!*                                                              value={value}*!/*/}
+                    {/*        /!*                                                              name={name}/>}*!/*/}
+                    {/*    /!*</Field>*!/*/}
+                    {/*    <span  className='authError'><ErrorMessage name="product"/></span>*/}
+                    {/*</div>*/}
                     <div className="createOrEditField">
                         <label htmlFor="passport_photo">Фото пасспорта</label>
                         <Field name="passport_photo" placeholder="+(999) 00-00-00"/>
@@ -104,6 +114,7 @@ const CreateOrEditProviderForm = (props)=>{
 
                 </Form>
             </Formik>
+
         </div>
     )
 }

@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@ant-design/icons": "^4.2.2",
+    "antd": "^4.8.0",
+    "axios": "^0.21.0",
     "cra-template": "1.0.3",
     "formik": "^2.2.0",
     "react": "^16.13.1",

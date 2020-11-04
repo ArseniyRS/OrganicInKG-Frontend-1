@@ -56,9 +56,11 @@
 
 
 }
+.modal__btns-confirm ,.modal__btns-cancel{
+    margin-right: 5px;
+}
 .modal__btns-confirm{
     background: #009B00;
-    margin-right: 5px;
 }
 .modal__btns-confirm:hover{
     background: #007600;
@@ -68,5 +70,5 @@
 }
 .modal__btns-cancel{
     background: #FF6800;
-    margin-left: 5px;
+
 }
