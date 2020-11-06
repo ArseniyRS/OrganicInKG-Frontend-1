@@ -14,6 +14,9 @@ import {connect} from "react-redux";
 import {writeRecordId} from "../../redux/reducers/tableReducer";
 import RecordViewer from "../../components/RecordViewer/RecordViewer";
 import Modal from "../../components/Modals/Modal";
+import FormContainer from "../../components/FormGenerator/FormContainer";
+import {productInputConfig} from "../../components/Products/inputConfig";
+import {orderInputConfig} from "../../components/Orders/inputConfig";
 
 const OrdersPage = ({history,recordViewId,writeRecordId})=>{
 
@@ -57,10 +60,33 @@ const OrdersPage = ({history,recordViewId,writeRecordId})=>{
                             <Table data={data} columns={OrdersColumns} handlerClick={clickOnRecord}/>
                         </Route>
                         <Route exact  path={'/orders/create-order'}>
-                            <CreateOrEditOrdersContainer urlToTable={'/orders'} loadData={false}/>
+                            <FormContainer
+                                urlToTable={'/orders'}
+                                loadData={false}
+                                initialVals={{
+                                    product: '',
+                                    amount: '',
+                                    total: '',
+                                    delivery_address: ''
+                                }}
+                                formTitle = {"Создание заказа"}
+                                inputConfig ={orderInputConfig}
+                            />
                         </Route>
-                        <Route exact path={'/orders/update-order'}>
-                            <CreateOrEditOrdersContainer urlToTable={'/orders'} loadData={true}/>
+
+                        <Route exact path={'/orders/update-order/:id'}>
+                            <FormContainer
+                                urlToTable={'/orders'}
+                                loadData={true}
+                                initialVals={{
+                                    product: '',
+                                    amount: '',
+                                    total: '',
+                                    delivery_address: ''
+                                }}
+                                formTitle = {"Редактирование заказа"}
+                                inputConfig ={orderInputConfig}
+                            />
                         </Route>
                         <Route  path={'/orders/view/:id'}>
                             <RecordViewer

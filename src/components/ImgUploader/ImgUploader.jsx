@@ -1,7 +1,7 @@
 import { Upload, Modal } from 'antd';
 import { PlusOutlined } from '@ant-design/icons';
 import React,{useState} from "react";
-//import 'antd/dist/antd.css';
+import './ImgUploader.css';
 
 function getBase64(file) {
     return new Promise((resolve, reject) => {
@@ -72,6 +72,7 @@ const ImgUploader = ({setFieldValue,name,value})=>{
     };
 
     const handleChange = ({ fileList }) => {
+        console.log(fileList)
         setImges({ fileList });
         //const files = imges.map(item=>item.fileList.map(item=>item.url))
         //console.log(files)

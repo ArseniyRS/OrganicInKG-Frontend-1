@@ -13,6 +13,9 @@ import RecordViewer from "../../components/RecordViewer/RecordViewer";
 import {connect} from "react-redux";
 import {writeRecordId} from "../../redux/reducers/tableReducer";
 import ImgUploader from "../../components/ImgUploader/ImgUploader";
+import FormContainer from "../../components/FormGenerator/FormContainer";
+import {categoryInputConfig} from "../../components/Categories/inputConfig";
+import {providerInputConfig} from "../../components/Providers/inputConfig";
 
 
 const ProvidersPage = ({writeRecordId,recordViewId,history})=>{
@@ -71,10 +74,41 @@ const ProvidersPage = ({writeRecordId,recordViewId,history})=>{
                             <Table data={data} columns={ProviderColumns} handlerClick={clickOnRecord}/>
                         </Route>
                         <Route exact  path={'/providers/create-provider'}>
-                            <CreateOrEditProviderContainer urlToTable={'/providers'} loadData={false}/>
+                        <FormContainer
+                            urlToTable={'/providers'}
+                            loadData={false}
+                            initialVals={{
+                                full_name: '',
+                                phone: '',
+                                email: '',
+                                address: '',
+                                product: '',
+                                passport_photo: [],
+                                sertif_photo: [],
+                                bank_number: ''
+                            }}
+                            formTitle = {"Создание поставщика"}
+                            inputConfig ={providerInputConfig}
+                        />
                         </Route>
-                        <Route exact path={'/providers/update-provider'}>
-                            <CreateOrEditProviderContainer urlToTable={'/providers'} loadData={true}/>
+
+                        <Route exact path={'/providers/update-provider/:id'}>
+                            <FormContainer
+                                urlToTable={'/providers'}
+                                loadData={true}
+                                initialVals={{
+                                    full_name: '',
+                                    phone: '',
+                                    email: '',
+                                    address: '',
+                                    product: '',
+                                    passport_photo: [],
+                                    sertif_photo: [],
+                                    bank_number: ''
+                                }}
+                                formTitle = {"Редактирование поставщика"}
+                                inputConfig ={providerInputConfig}
+                            />
                         </Route>
                         <Route exact path={'/providers/view/:id'}>
                             <RecordViewer

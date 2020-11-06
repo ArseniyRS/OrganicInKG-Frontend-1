@@ -12,6 +12,9 @@ import CreateOrEditProductContainer from "../../components/Products/CreateOrEdit
 import {connect} from "react-redux";
 import {writeRecordId} from "../../redux/reducers/tableReducer";
 import RecordViewer from "../../components/RecordViewer/RecordViewer";
+import FormContainer from "../../components/FormGenerator/FormContainer";
+import {userInputConfig} from "../../components/Users/inputConfig";
+import {productInputConfig} from "../../components/Products/inputConfig";
 
 
 
@@ -54,15 +57,51 @@ const ProductsPage = ({history,recordViewId,writeRecordId})=>{
                         <div className='page-functional'><SearchPanel /><AddBtn urlToCreate={'/products/create-product'}/><DeleteBtn/></div>
                         <Table data={data} columns={ProductColumns} handlerClick={clickOnRecord}/>
                     </Route>
-                    <Route exact path={'/products/create-product'}>
-                        <CreateOrEditProductContainer urlToTable={'/products'} loadData={false}/>
-                    </Route>
-                    <Route exact path={'/products/update-product'}>
-                        <CreateOrEditProductContainer urlToTable={'/products'} loadData={true}/>
-                    </Route>
+                        <Route exact  path={'/products/create-product'}>
+                            <FormContainer
+                                urlToTable={'/products'}
+                                loadData={false}
+                                initialVals={{
+                                    title: '',
+                                    category: '',
+                                    image: '',
+                                    description: '',
+                                    price: '',
+                                    rate: '',
+                                    sales_amount: '',
+                                }}
+                                formTitle = {"Создание товара"}
+                                inputConfig ={productInputConfig}
+                            />
+                        </Route>
+
+                        <Route exact path={'/products/update-product/:id'}>
+                            <FormContainer
+                                urlToTable={'/products'}
+                                loadData={true}
+                                initialVals={{
+                                    title: '',
+                                    category: '',
+                                    image: '',
+                                    description: '',
+                                    price: '',
+                                    rate: '',
+                                    sales_amount: '',
+                                }}
+                                formTitle = {"Редактирование товара"}
+                                inputConfig ={productInputConfig}
+                            />
+                        </Route>
                         <Route  path={'/products/view/:id'}>
                             <RecordViewer
-                                titles={['Название',"Категория","Цена","Рейтинг"]}
+                                titles={['Название товара',
+                                    "Категория",
+                                    "Фото товара",
+                                    "Описание",
+                                    "Цена",
+                                    "Рейтинг",
+                                    "Количество продаж"
+                                ]}
                                 values={recordViewValue}
                                 urlToUpd={'/products/update-product'}
                                 urlToTable={'/products'}

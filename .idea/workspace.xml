@@ -20,37 +20,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="869952c6-d07a-44c8-9dad-429924c3fe46" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/Categories/inputConfig.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/FormGenerator/FormContainer.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/FormGenerator/FormInput.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/FormGenerator/Former.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/FormGenerator/validationGenerator.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/HOC/withLoader.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/ImgUploader/ImgUploader.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/redux/reducers/categoryReducer.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/redux/reducers/mainReducer.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/api/Request.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/templates/createOrChangeTemplate.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/templates/deleteTemplate.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/templates/getTemplate.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/ImgUploader/ImgUploader.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Orders/inputConfig.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Products/inputConfig.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Providers/inputConfig.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Users/inputConfig.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/debug.log" beforeDir="false" afterPath="$PROJECT_DIR$/debug.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Btns/CancelBtn.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Btns/CancelBtn.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Btns/EditBtn.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Btns/EditBtn.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Categories/CreateOrEditCategoryContainer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Categories/CreateOrEditCategoryContainer.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Modals/Modal.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Modals/Modal.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Modals/Modal.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Modals/Modal.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Providers/CreateOrEditProviderForm.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Providers/CreateOrEditProviderForm.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/RecordViewer/RecordViewer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RecordViewer/RecordViewer.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Categories/CategoriesPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Categories/CategoriesPage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Categories/inputConfig.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Categories/inputConfig.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ImgUploader/ImgUploader.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ImgUploader/ImgUploader.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Orders/OrdersPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Orders/OrdersPage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Products/ProductsPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Products/ProductsPage.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/Providers/ProvidersPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Providers/ProvidersPage.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/reducers/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/index.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/reducers/modalReducer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/modalReducer.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/reducers/types.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/types.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Users/UsersPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Users/UsersPage.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,8 +41,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="CSS File" />
         <option value="JavaScript File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -117,7 +98,8 @@
       <workItem from="1603869871598" duration="13626000" />
       <workItem from="1604297419333" duration="19122000" />
       <workItem from="1604414848532" duration="2178000" />
-      <workItem from="1604491620249" duration="5648000" />
+      <workItem from="1604491620249" duration="7263000" />
+      <workItem from="1604645756084" duration="7158000" />
     </task>
     <servers />
   </component>
