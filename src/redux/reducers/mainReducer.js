@@ -1,25 +1,26 @@
 import {
-    //TOGGLE_AUTH,
+    TOGGLE_AUTH,
     TOGGLE_FETCH_LOADER,
     //TOGGLE_PAGE_LOADER
 } from './types'
+import {authReq} from "../../utils/api/Request";
 //import {signIn} from "../../utils/api/Request";
 
 
 const initialState={
    // pageLoader: true,
     isFetchLoader: false,
-    //isAuthorized: {isAuth:false,role:''} //{isAuth: false, role: 'Employee'}
+    isAuthorized: false
 }
 
 
 export const mainReducer = (state=initialState,action)=>{
     switch (action.type) {
-        // case TOGGLE_AUTH:
-        //     return {
-        //         ...state,
-        //         isAuthorized: action.payload
-        //     }
+        case TOGGLE_AUTH:
+            return {
+                ...state,
+                isAuthorized: action.payload
+            }
         case TOGGLE_FETCH_LOADER:
             return{
                 ...state,
@@ -37,12 +38,12 @@ export const mainReducer = (state=initialState,action)=>{
         }
     }
 }
-// export const toggleAuth = value =>{
-//     return{
-//         type: 'TOGGLE_AUTH',
-//         payload: value
-//     }
-// }
+export const toggleAuth = value =>{
+    return{
+        type: 'TOGGLE_AUTH',
+        payload: value
+    }
+}
 export const toggleLoader = bool=>{
     return{
         type: 'TOGGLE_FETCH_LOADER',
@@ -56,16 +57,16 @@ export const toggleLoader = bool=>{
 //     }
 // }
 
-// export const signInAction = data =>{
-//     return async dispatch =>{
-//         dispatch(toggleLoader(true))
-//         await signIn(data).then(response=>{
-//             localStorage.setItem("id",response.data.id)
-//             localStorage.setItem("token",response.data.token)
-//             dispatch(toggleAuth({isAuth: true,role: roleChecker()}))
-//             dispatch(toggleLoader(false))
-//         }).catch(err=> dispatch(toggleLoader(false)))
-//     }
-// }
+export const signIn = data =>{
+    return async dispatch =>{
+        dispatch(toggleLoader(true))
+        await authReq(data).then(response=>{
+            localStorage.setItem("token",response.result.body.accessToken)
+            localStorage.setItem("token",response.result.body.tokenExpirationTime)
+            localStorage.setItem("token",response.result.body.refreshExpirationTime)
+            dispatch(toggleLoader(false))
+        }).catch(err=> dispatch(toggleLoader(false)))
+    }
+}
 
 

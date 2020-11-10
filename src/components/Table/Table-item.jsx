@@ -7,16 +7,23 @@ import TableItemColumn from "./TableItemColumn";
 const TableItem= ({columns,data,handlerClick})=>{
     const [check,setCheck] = useState(false);
     const tableItemColumn = columns.map(item=>{
+        let columnId=0;
         for(let key in data){
-            if(key===item.dataIndex){
+            columnId++;
+            if( key===item.dataIndex){
+                const value = ()=>{
+                    if(data[key] !== null && typeof data[key] === 'object') {
+                        return data[key].name
+                    }
+                    return data[key]
+                }
                 return (
-                    <div key={data.id+'TableItemColumn'}>
-                        <TableItemColumn column={item} item={{ title:item.title, value:data[key],}} />
+                    <div key={"table-item-"+data.id+"-"+ columnId}>
+                        <TableItemColumn column={item} item={{ title:item.title, value:value()}}/>
                     </div>
+                )}
 
-                )
-
-        }}
+        }
     })
     let style={}
     useEffect(()=>{
@@ -27,9 +34,6 @@ const TableItem= ({columns,data,handlerClick})=>{
         }
 
     },[])
-
-    console.log(tableItemColumn)
-    console.log(data)
     return(
         <div className={'tableItem-container'}
         >

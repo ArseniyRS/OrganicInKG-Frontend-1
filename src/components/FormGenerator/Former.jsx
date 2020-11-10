@@ -17,9 +17,10 @@ const Former = (props)=>{
             <FormInput
                 key={item}
                 name={item}
-                placeholder={props.inputConfig[index].placeholder}
-                label={props.inputConfig[index].label}
+                placeholder={props.inputConfig[index]?.placeholder}
+                label={props.inputConfig[index]?.label}
                 type={props.inputConfig[index]?.type}
+                options={props.optionsForSelector}
             />
         )
     })

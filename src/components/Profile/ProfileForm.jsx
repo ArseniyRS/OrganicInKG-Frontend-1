@@ -5,7 +5,7 @@ import {ErrorMessage, Field, Form, Formik} from "formik";
 import * as Yup from "yup";
 import EditBtn from "../Btns/EditBtn";
 import CancelBtn from "../Btns/CancelBtn";
-import PasswordInput from "../PasswordInput/PasswordInput";
+import PasswordInput from "../Inputs/PasswordInput/PasswordInput";
 
 
 

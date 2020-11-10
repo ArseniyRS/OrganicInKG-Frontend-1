@@ -1,6 +1,6 @@
-import { WRITE_CATEGORIES} from './types'
+import { WRITE_CATEGORIES,WRITE_CATEGORY_BY_ID} from './types'
 import {
-    categoryDelReq,
+    categoryDelReq, categoryGetByIdReq,
     categoryGetReq,
     categoryPostReq,
     categoryUpdReq,
@@ -11,7 +11,8 @@ import {deleteTemplate} from "../../utils/templates/deleteTemplate";
 import {toggleLoader} from "./mainReducer";
 
 const initialState={
-    categories: []
+    categories: [],
+    categoryById: {}
 }
 
 
@@ -21,6 +22,11 @@ export const categoryReducer = (state=initialState,action)=>{
             return{
                 ...state,
                 categories: action.payload
+            }
+        case WRITE_CATEGORY_BY_ID:
+            return{
+                ...state,
+                categoryById: action.payload
             }
         default:{
             return{
@@ -32,6 +38,9 @@ export const categoryReducer = (state=initialState,action)=>{
 
 export const getCategory = ()=> {
     return async dispatch => getTemplate(dispatch, categoryGetReq, WRITE_CATEGORIES, toggleLoader)
+}
+export const getCategoryById = (id)=> {
+    return async dispatch => getTemplate(dispatch, categoryGetByIdReq, WRITE_CATEGORY_BY_ID, toggleLoader,id)
 }
 export const createCategory = data=>{
     return async dispatch => createOrChangeTemplate(dispatch, categoryPostReq, data, toggleLoader).then(()=>getTemplate(dispatch, categoryGetReq, WRITE_CATEGORIES, toggleLoader))

@@ -33,11 +33,11 @@ import {badStatusSVG, goodStatusSVG} from "../../assets/icons";
 export const CategoryColumns  =[
     {
         title: "Название",
-        dataIndex: 'title',
+        dataIndex: 'name',
     },
     {
-        title: "Вложен в",
-        dataIndex: 'parent',
+        title: "Родительская категория",
+        dataIndex: 'parentCategory',
     },
     {
         title: "Описание",

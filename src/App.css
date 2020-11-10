@@ -75,7 +75,7 @@ input,button{
 
   color: #000000;
 }
-.createOrEditField input{
+.createOrEditField input, .createOrEditField select{
   height: 100%;
   width: 100%;
   background: #DDDDDD;
@@ -87,7 +87,8 @@ input,button{
   margin: 15px 0;
   box-sizing: border-box;
 }
-.createOrEditField input:hover{
+.createOrEditField input:hover,
+.createOrEditField select:hover{
   background: transparent;
 }
 .createOrEditContainer__btns{

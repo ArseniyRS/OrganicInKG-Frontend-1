@@ -4,7 +4,7 @@ import {useSelector} from "react-redux";
 
 
 
-const withLoader = Component =>
+export const withLoader = Component =>
 {
     return props=>
     {
@@ -16,4 +16,3 @@ const withLoader = Component =>
 }
 
 
-export default withLoader

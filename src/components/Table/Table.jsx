@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import TableItem from "./Table-item";
 import './Table.css'
+import withLoader from "../HOC/withLoader";
 
 
 const Table = ({data=[],columns=[],handlerClick})=>{

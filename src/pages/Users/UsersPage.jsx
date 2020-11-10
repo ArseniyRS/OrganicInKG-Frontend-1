@@ -7,13 +7,10 @@ import AddBtn from "../../components/Btns/AddBtn";
 import DeleteBtn from "../../components/Btns/DeleteBtn";
 import Table from "../../components/Table/Table";
 import {ProductColumns, ProviderColumns, UsersColumns} from "../../components/Table/columns";
-import CreateOrEditUserContainer from "../../components/Users/CreateOrEditUserContainer";
-import CreateOrEditProductContainer from "../../components/Products/CreateOrEditProductContainer";
 import RecordViewer from "../../components/RecordViewer/RecordViewer";
 import {connect} from "react-redux";
 import {writeRecordId} from "../../redux/reducers/tableReducer";
 import FormContainer from "../../components/FormGenerator/FormContainer";
-import {providerInputConfig} from "../../components/Providers/inputConfig";
 import {userInputConfig} from "../../components/Users/inputConfig";
 
 

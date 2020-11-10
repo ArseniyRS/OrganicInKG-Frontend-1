@@ -3,16 +3,14 @@ export const categoryInputConfig = [{
     placeholder: "Овощи",
     required: "Впишите название",
     min: 3,
-    max: 50,
 },
-    {
-        label: "Вложен в",
-        placeholder: "Органические",
-        type: 'string'
-    },
     {
         label: "Описание",
         placeholder: "...",
-        type: 'image'
-    }]
+    },
+    {
+        label: "Родительская категория",
+        placeholder: "Органические",
+        type: 'selector'
+    },]
 

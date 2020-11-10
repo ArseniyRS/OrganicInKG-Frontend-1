@@ -1,19 +1,21 @@
 import React from 'react'
 import {ErrorMessage, Field, Form} from "formik";
-import SelectorInput from "../SelectorInput/SelectorInput";
+import SelectorInput from "../Inputs/SelectorInput/SelectorInput";
 import ImgUploader from "../ImgUploader/ImgUploader";
+import PhoneInput from "../Inputs/PhoneInput/PhoneInput";
 
 
 const FormInput = ({
                 name,
                 label,
                 placeholder,
-                type=''
+                type='',
+                       options=[]
                    })=>{
     return(
         <div className="createOrEditField">
             <label htmlFor={name}>{label}</label>
-            {type === 'selector' ?
+            {type === 'selectInput' ?
                 <Field name={name} placeholder={placeholder}>
                     {({field: {name, value}, form: {setFieldValue}}) => {
                     return (
@@ -26,12 +28,28 @@ const FormInput = ({
                 }}
                 </Field>
                 : type==='image' ?
-                    <Field name="passport_photo" >
+                    <Field name={name} >
                     {({field:{name,value},form: { setFieldValue}}) =><ImgUploader setFieldValue={setFieldValue}
                                                                                   value={value}
                                                                                   name={name}/>}
                 </Field>
-            : <Field name={name} placeholder={placeholder}/>
+                : type==='phone' ?
+                    <Field name={name} >
+                     {({field:{name},form: { setFieldValue}})=>  <PhoneInput setFieldValue={setFieldValue} name={name} />}
+                    </Field>
+                : type==='selector' ?
+                            <Field name={name} as={'select'} placeholder={placeholder}>
+                                <option value={null} className="select__placeholder" hidden>
+                                    Выбор родительской категории
+                                </option>
+                                {options.map(item=> {
+                                    return (
+                                        <option key={item.id} value={item.id}>{item.name}</option>
+                                    )})
+                                }
+                            </Field>
+                            :
+                <Field name={name} placeholder={placeholder}/>
 
             }
 

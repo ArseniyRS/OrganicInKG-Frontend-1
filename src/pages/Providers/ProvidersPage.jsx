@@ -7,14 +7,11 @@ import {OrdersColumns, ProviderColumns, UsersColumns} from "../../components/Tab
 import SearchPanel from "../../components/Search-panel/SearchPanel";
 import AddBtn from "../../components/Btns/AddBtn";
 import DeleteBtn from "../../components/Btns/DeleteBtn";
-import CreateOrEditProviderContainer from "../../components/Providers/CreateOrEditProviderContainer";
-import CreateOrEditOrdersContainer from "../../components/Orders/CreateOrEditOrdersContainer";
 import RecordViewer from "../../components/RecordViewer/RecordViewer";
 import {connect} from "react-redux";
 import {writeRecordId} from "../../redux/reducers/tableReducer";
 import ImgUploader from "../../components/ImgUploader/ImgUploader";
 import FormContainer from "../../components/FormGenerator/FormContainer";
-import {categoryInputConfig} from "../../components/Categories/inputConfig";
 import {providerInputConfig} from "../../components/Providers/inputConfig";
 
 

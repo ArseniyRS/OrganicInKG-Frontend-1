@@ -1,6 +1,6 @@
 import React, {useEffect, useRef, useState} from 'react'
 import {Field, Form} from "formik";
-import {checkPasSVG, plusSVG} from "../../assets/icons";
+import {checkPasSVG, plusSVG} from "../../../assets/icons";
 import Selector from "./Selector";
 
 
@@ -29,7 +29,7 @@ const SelectorInput = ({name,value,setFieldValue,placeholder})=>{
                    value={inputText}
                    />
             <img className={'selectorInput__visible'} src={plusSVG} alt=""
-                 onClick={()=>setVisibleSelector(!visibleSelector)}/>
+                 onClick={(event)=>setVisibleSelector(!visibleSelector)}/>
             {visibleSelector && <Selector setVisibleSelector={setVisibleSelector} handleClick = {setSelected}/>}
         </div>
 

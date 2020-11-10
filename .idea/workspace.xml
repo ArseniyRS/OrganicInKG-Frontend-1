@@ -20,18 +20,46 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="869952c6-d07a-44c8-9dad-429924c3fe46" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/ImgUploader/ImgUploader.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Orders/inputConfig.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Products/inputConfig.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Providers/inputConfig.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Users/inputConfig.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Auth/AuthForm.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Auth/logout.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Categories/CategoryCreator.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Categories/CategoryUpdater.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Categories/recordViewConfig.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Inputs/PhoneInput/PhoneInput.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/containers/Auth/AuthContainer.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/containers/RecordViewerContainer.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utils/initialValuesGetter.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/debug.log" beforeDir="false" afterPath="$PROJECT_DIR$/debug.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Categories/inputConfig.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Categories/inputConfig.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ImgUploader/ImgUploader.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ImgUploader/ImgUploader.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/FormGenerator/FormContainer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/FormGenerator/FormContainer.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/FormGenerator/FormInput.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/FormGenerator/FormInput.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/FormGenerator/Former.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/FormGenerator/Former.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/HOC/withLoader.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/HOC/withLoader.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/PasswordInput/PasswordInput.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Inputs/PasswordInput/PasswordInput.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Profile/ProfileForm.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Profile/ProfileForm.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/RecordViewer/RecordViewer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RecordViewer/RecordViewer.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/SelectorInput/Selector.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Inputs/SelectorInput/Selector.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/SelectorInput/SelectorInput.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Inputs/SelectorInput/SelectorInput.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/SelectorInput/SelectorItem.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Inputs/SelectorInput/SelectorItem.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/SelectorInput/SelectorList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Inputs/SelectorInput/SelectorList.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Table/Table-item.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Table/Table-item.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Table/Table.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Table/Table.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Table/columns.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Table/columns.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Auth/AuthPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Auth/AuthPage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Categories/CategoriesPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Categories/CategoriesPage.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/Orders/OrdersPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Orders/OrdersPage.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/Products/ProductsPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Products/ProductsPage.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/Providers/ProvidersPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Providers/ProvidersPage.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/Users/UsersPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Users/UsersPage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/reducers/categoryReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/categoryReducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/reducers/mainReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/mainReducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/reducers/types.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/types.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/api/Request.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/api/Request.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/templates/getTemplate.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/templates/getTemplate.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,8 +69,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JavaScript File" />
         <option value="CSS File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -59,7 +87,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/utils/templates" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/components/Inputs" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -68,6 +96,9 @@
     <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\WebStorm 2020.1\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Admin\Desktop\organicinkg-frontend\src\components\Inputs" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Admin\Desktop\organicinkg-frontend\src\utils\templates" />
     </key>
@@ -100,6 +131,9 @@
       <workItem from="1604414848532" duration="2178000" />
       <workItem from="1604491620249" duration="7263000" />
       <workItem from="1604645756084" duration="7158000" />
+      <workItem from="1604758476514" duration="1041000" />
+      <workItem from="1604902844671" duration="5661000" />
+      <workItem from="1604927366765" duration="28914000" />
     </task>
     <servers />
   </component>
@@ -123,5 +157,9 @@
       <screen x="0" y="0" width="1920" height="1160" />
     </state>
     <state x="414" y="235" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1160@0.0.1920.1160" timestamp="1604307702275" />
+    <state x="740" y="321" key="FileChooserDialogImpl" timestamp="1604909651666">
+      <screen x="0" y="0" width="1920" height="1160" />
+    </state>
+    <state x="740" y="321" key="FileChooserDialogImpl/0.0.1920.1160@0.0.1920.1160" timestamp="1604909651666" />
   </component>
 </project>

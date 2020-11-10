@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import {openList} from "../../assets/icons";
+import {openList} from "../../../assets/icons";
 import SelectorList from "./SelectorList";
 
 

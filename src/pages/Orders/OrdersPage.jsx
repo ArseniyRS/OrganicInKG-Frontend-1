@@ -7,15 +7,11 @@ import AddBtn from "../../components/Btns/AddBtn";
 import DeleteBtn from "../../components/Btns/DeleteBtn";
 import Table from "../../components/Table/Table";
 import {OrdersColumns, ProductColumns, ProviderColumns, UsersColumns} from "../../components/Table/columns";
-import CreateOrEditProductContainer from "../../components/Products/CreateOrEditProductContainer";
-import CreateOrEditOrdersContainer from "../../components/Orders/CreateOrEditOrdersContainer";
-import CreateOrEditUserContainer from "../../components/Users/CreateOrEditUserContainer";
 import {connect} from "react-redux";
 import {writeRecordId} from "../../redux/reducers/tableReducer";
 import RecordViewer from "../../components/RecordViewer/RecordViewer";
 import Modal from "../../components/Modals/Modal";
 import FormContainer from "../../components/FormGenerator/FormContainer";
-import {productInputConfig} from "../../components/Products/inputConfig";
 import {orderInputConfig} from "../../components/Orders/inputConfig";
 
 const OrdersPage = ({history,recordViewId,writeRecordId})=>{
