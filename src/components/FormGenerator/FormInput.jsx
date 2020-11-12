@@ -40,7 +40,7 @@ const FormInput = ({
                 : type==='selector' ?
                             <Field name={name} as={'select'} placeholder={placeholder}>
                                 <option value={null} className="select__placeholder" hidden>
-                                    Выбор родительской категории
+                                    {placeholder}
                                 </option>
                                 {options.map(item=> {
                                     return (

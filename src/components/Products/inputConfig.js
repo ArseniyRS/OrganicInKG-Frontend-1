@@ -7,28 +7,24 @@ export const productInputConfig = [
         max: 50,
     },
     {
-        label: "Категория",
-        placeholder: "Органические",
+        label: "Категория товара",
+        placeholder: "Выберите категорию товара",
         type: 'selector'
     },
     {
-        label: "Фото товара",
+        label: "Изображение товара",
         type: 'image'
     },
     {
-        label: "Описание",
+        label: "Описание товара",
         placeholder: "Самый вкусгый картофель",
     },
     {
-        label: "Цена",
+        label: "Цена товара",
         placeholder: "30 сом/кг",
     },
     {
-        label: "Рейтинг",
-        placeholder: "0-5",
-    },
-    {
-        label: "Количество продаж",
+        label: "Количество товара",
         placeholder: "100500",
     },
 ]

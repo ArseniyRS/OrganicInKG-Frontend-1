@@ -8,7 +8,7 @@ import DeleteBtn from "../../components/Btns/DeleteBtn";
 import Table from "../../components/Table/Table";
 import {CategoryColumns} from "../../components/Table/columns";
 import {connect} from "react-redux";
-import {getCategory} from "../../redux/reducers/categoryReducer";
+import {deleteCategory, getCategory} from "../../redux/reducers/categoryReducer";
 import {recordViewCategoryConfig} from "../../components/Categories/recordViewConfig";
 import RecordViewerContainer from "../../containers/RecordViewerContainer";
 import CategoryCreator from "../../components/Categories/CategoryCreator";
@@ -17,7 +17,7 @@ import CategoryUpdater from "../../components/Categories/CategoryUpdater";
 
 
 
-const CategoriesPage = ({history,categories,getCategory})=>{
+const CategoriesPage = ({history,categories,getCategory,deleteCategory})=>{
     useEffect(()=>{
         getCategory()
     },[])
@@ -34,7 +34,7 @@ const CategoriesPage = ({history,categories,getCategory})=>{
                         <div className='page-functional'><SearchPanel />
                         <AddBtn
                             urlToCreate={'/categories/create-category'}/>
-                            <DeleteBtn/></div>
+                            <DeleteBtn deleteFunc = {deleteCategory}/></div>
                         <Table
                             data={categories}
                             columns={CategoryColumns}
@@ -72,4 +72,4 @@ const mapStateToProps = state=>{
     }
 }
 
-export  default  connect(mapStateToProps,{getCategory})(withRouter(CategoriesPage))
+export  default  connect(mapStateToProps,{getCategory,deleteCategory})(withRouter(CategoriesPage))

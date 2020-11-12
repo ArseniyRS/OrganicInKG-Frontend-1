@@ -8,40 +8,21 @@ import DeleteBtn from "../../components/Btns/DeleteBtn";
 import Table from "../../components/Table/Table";
 import {ProductColumns, ProviderColumns, UsersColumns} from "../../components/Table/columns";
 import {connect} from "react-redux";
-import {writeRecordId} from "../../redux/reducers/tableReducer";
-import RecordViewer from "../../components/RecordViewer/RecordViewer";
-import FormContainer from "../../components/FormGenerator/FormContainer";
-import {productInputConfig} from "../../components/Products/inputConfig";
+import ProductCreator from "../../components/Products/ProductCreator";
+import ProductUpdater from "../../components/Products/ProductUpdater";
+import {deleteProduct, getProducts} from "../../redux/reducers/productReducer";
+import RecordViewerContainer from "../../containers/RecordViewerContainer";
+import {recordViewProductConfig} from "../../components/Products/recordViewConfig";
 
 
 
-const ProductsPage = ({history,recordViewId,writeRecordId})=>{
-    const data =[{
-        id: '1',
-        title: 'Баткенская морковка',
-        category: 'Овощи',
-        price: '25',
-        rate: '5',
-    },
-        {
-            id: '2',
-            title: 'Таласский картофель',
-            category: 'Овощи',
-            price: '30',
-            rate: '5',
-        },
-        {
-            id: '3',
-            title: 'Иссык-кульские яблоки',
-            category: 'Фрукты',
-            price: '15',
-            rate: '5',
-        }]
+const ProductsPage = ({history,products,getProducts,deleteProduct})=>{
+    useEffect(()=>{
+        getProducts()
+    },[])
     const clickOnRecord=(id)=>{
-        writeRecordId(id)
         history.push('/products/view/'+id)
     }
-    const recordViewValue =  data.find(item=>item.id===recordViewId);
     return(
         <>
             <Header />
@@ -51,55 +32,19 @@ const ProductsPage = ({history,recordViewId,writeRecordId})=>{
                     <Switch>
                     <Route exact path={'/products'}>
                         <h2 className='page-content__title'>Товары</h2>
-                        <div className='page-functional'><SearchPanel /><AddBtn urlToCreate={'/products/create-product'}/><DeleteBtn/></div>
-                        <Table data={data} columns={ProductColumns} handlerClick={clickOnRecord}/>
+                        <div className='page-functional'><SearchPanel /><AddBtn urlToCreate={'/products/create-product'}/><DeleteBtn deleteFunc = {deleteProduct}/></div>
+                        <Table data={products} columns={ProductColumns} handlerClick={clickOnRecord}/>
                     </Route>
                         <Route exact  path={'/products/create-product'}>
-                            <FormContainer
-                                urlToTable={'/products'}
-                                loadData={false}
-                                initialVals={{
-                                    title: '',
-                                    category: '',
-                                    image: '',
-                                    description: '',
-                                    price: '',
-                                    rate: '',
-                                    sales_amount: '',
-                                }}
-                                formTitle = {"Создание товара"}
-                                inputConfig ={productInputConfig}
-                            />
+                            <ProductCreator />
                         </Route>
 
                         <Route exact path={'/products/update-product/:id'}>
-                            <FormContainer
-                                urlToTable={'/products'}
-                                loadData={true}
-                                initialVals={{
-                                    title: '',
-                                    category: '',
-                                    image: '',
-                                    description: '',
-                                    price: '',
-                                    rate: '',
-                                    sales_amount: '',
-                                }}
-                                formTitle = {"Редактирование товара"}
-                                inputConfig ={productInputConfig}
-                            />
+                            <ProductUpdater />
                         </Route>
                         <Route  path={'/products/view/:id'}>
-                            <RecordViewer
-                                titles={['Название товара',
-                                    "Категория",
-                                    "Фото товара",
-                                    "Описание",
-                                    "Цена",
-                                    "Рейтинг",
-                                    "Количество продаж"
-                                ]}
-                                values={recordViewValue}
+                            <RecordViewerContainer
+                                titles={recordViewProductConfig}
                                 urlToUpd={'/products/update-product'}
                                 urlToTable={'/products'}
                             />
@@ -116,7 +61,7 @@ const ProductsPage = ({history,recordViewId,writeRecordId})=>{
 }
 const mapStateToProps = state=>{
     return{
-        recordViewId: state.table.recordViewId
+        products: state.product.products
     }
 }
-export  default  connect(mapStateToProps,{writeRecordId})(withRouter(ProductsPage))
+export  default  connect(mapStateToProps,{getProducts,deleteProduct})(withRouter(ProductsPage))

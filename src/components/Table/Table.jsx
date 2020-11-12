@@ -11,6 +11,7 @@ const Table = ({data=[],columns=[],handlerClick})=>{
             columns=[]
         }
     })
+
     const elements = data.map(item=>{
         return (
             <div key={item.id}>

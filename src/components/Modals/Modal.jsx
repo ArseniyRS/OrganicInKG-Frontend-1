@@ -5,10 +5,17 @@ import {toggleModal} from "../../redux/reducers/modalReducer";
 
 
 const Modal = ({modal,toggleModal})=>{
+    const [confirmed,setConfirmed] = useState(false)
+    const handleConfirm = ()=>{
+        modal.confirmFunc()
+        setConfirmed(true)
+    }
+    useEffect(()=>{
+            return ()=>setConfirmed(false)
 
-
+    },[])
     return(
-        modal.isOpen &&
+        modal.isOpen ?
         <>
 
         <div className='modal__wrapper' onClick={()=>toggleModal({isOpen:false,title:''})}>
@@ -16,16 +23,15 @@ const Modal = ({modal,toggleModal})=>{
             <div className='modal__container'>
             <h2>{modal.title}</h2>
             <div className='modal__btns'>
-                <div className='modal__btns-confirm' onClick={()=>{
-                    modal.confirmFunc()
-                    toggleModal({isOpen:false,title:''})
-
-                }}>Да</div>
+                {!confirmed &&
+                    <>
+                <div className='modal__btns-confirm' onClick={()=>handleConfirm()}>Да</div>
                 <div className='modal__btns-cancel' onClick={()=>toggleModal({isOpen:false,title:''})}>Нет</div>
-
+                </>
+                }
             </div>
         </div>
-        </>
+        </> : <></>
     )
 }
 const mapStateToProps = state=>{

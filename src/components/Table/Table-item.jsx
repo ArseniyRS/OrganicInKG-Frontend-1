@@ -1,11 +1,47 @@
 import React, {useEffect, useRef, useState} from 'react'
 import TableItemColumn from "./TableItemColumn";
+import {connect} from "react-redux";
+import {writeElementsToDelete} from "../../redux/reducers/tableReducer";
 
 
 
 
-const TableItem= ({columns,data,handlerClick})=>{
+const TableItem= ({columns,data,handlerClick,elementsToDelete,writeElementsToDelete})=>{
     const [check,setCheck] = useState(false);
+
+    useEffect(()=>{
+    let buff= [...elementsToDelete]
+
+            if(check){
+                buff.push(data.id)
+                writeElementsToDelete(buff)
+            }else {
+                const index = buff.indexOf(data.id)
+                if (index > -1) {
+                    buff.splice(index, 1);
+                    writeElementsToDelete(buff)
+                }
+            }
+        return ()=>{
+            writeElementsToDelete([])
+        }
+    },[check])
+    // const checkHandler =  ()=>{
+    //     console.log(check)
+    //     setCheck(!check)
+    //     console.log(check)
+    //     let buff= [...elementsToDelete]
+    //     if(!check){
+    //         buff.push(data.id)
+    //     }
+    //     const index = buff.indexOf(data.id)
+    //     if (index > -1) {
+    //         buff.splice(index, 1);
+    //
+    //     }
+    //     console.log(buff)
+    //     return writeElementsToDelete(buff)
+    // }
     const tableItemColumn = columns.map(item=>{
         let columnId=0;
         for(let key in data){
@@ -49,5 +85,9 @@ const TableItem= ({columns,data,handlerClick})=>{
         </div>
     )
 }
-
-export default TableItem
+const mapStateToProps = state=>{
+    return{
+        elementsToDelete : state.table.elementsToDelete
+    }
+}
+export default connect(mapStateToProps,{writeElementsToDelete})(TableItem)
