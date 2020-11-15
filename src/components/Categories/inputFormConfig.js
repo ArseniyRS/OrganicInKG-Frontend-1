@@ -10,7 +10,9 @@ export const categoryInputConfig = [{
     },
     {
         label: "Родительская категория",
-        placeholder: "Органические",
-        type: 'selector'
+        placeholder: "Выберите родительскую категорию",
+        type: 'selector',
+        dataType: 'number',
+        nullable: true
     },]
 

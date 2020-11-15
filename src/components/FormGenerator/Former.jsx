@@ -24,7 +24,6 @@ const Former = (props)=>{
             />
         )
     })
-
     const array= Object.keys(props.initialVals)
     const schema = validationGenerator(array,props.inputConfig)
     return(
@@ -45,6 +44,7 @@ const Former = (props)=>{
                         {inputs}
                         <div className={"createOrEditContainer__btns"}>
                         <EditBtn
+                            urlToTable={props.urlToTable}
                             confirmFunc = {submitFunc}
                         />
                         <CancelBtn />

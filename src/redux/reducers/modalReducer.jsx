@@ -5,6 +5,7 @@ const initialState={
         isOpen:false,
         title:'',
         confirmFunc: undefined,
+        urlToTable : ''
     }
 }
 

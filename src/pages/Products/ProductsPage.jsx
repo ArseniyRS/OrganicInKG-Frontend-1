@@ -11,7 +11,7 @@ import {connect} from "react-redux";
 import ProductCreator from "../../components/Products/ProductCreator";
 import ProductUpdater from "../../components/Products/ProductUpdater";
 import {deleteProduct, getProducts} from "../../redux/reducers/productReducer";
-import RecordViewerContainer from "../../containers/RecordViewerContainer";
+import RecordViewerContainer from "../../components/RecordViewer/RecordViewerContainer";
 import {recordViewProductConfig} from "../../components/Products/recordViewConfig";
 
 

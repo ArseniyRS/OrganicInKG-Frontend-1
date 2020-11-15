@@ -3,42 +3,36 @@ import {withRouter} from "react-router-dom";
 import Former from "./Former";
 import withLoader from "../HOC/withLoader";
 import {initialValuesGetter} from "../../utils/initialValuesGetter";
+import Preloader from "../Preloader/Preloader";
 const FormContainer = ({
                            createReq,
                            updReq,
-                           loadData,
                            match,
                             //data,
                            ...props})=>{
-    // const [initialVals,setInitialVals] = useState(undefined)
-    //
-    //    useEffect(()=>{
-    //        if(loadData){
-    //            setInitialVals(initialValuesGetter(data.find(item=>parseInt(match.params.id)===parseInt(item.id)),true))
-    //        }else{
-    //            setInitialVals(initialValuesGetter(data[0],false))
-    //        }
-    //        return ()=>{
-    //            setInitialVals(undefined)
-    //        }
-    //    },[])
+    useEffect(()=>{
+
+        props.loadSelectorData()
+        if(match.params?.id) {
+            props.getByIdFunc(match.params.id)
+        }
+    },[])
 
     const handleSubmit =values=>{
-
-        if(loadData){
+        if(match.params?.id){
             values.id = match.params.id
            return  updReq(match.params.id,values)
-
         }else{
-
             return  createReq(values)
         }
     }
 
     return(
-
+        (props.valueById && props.optionsForSelector && match.params?.id) ||
+        (!match.params?.id && props.optionsForSelector)
+            ?
             <Former handleSubmit={handleSubmit}  {...props}/>
-
+        : <Preloader />
 
     )
 }

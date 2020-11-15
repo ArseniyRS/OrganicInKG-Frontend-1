@@ -49,7 +49,7 @@ const TableItem= ({columns,data,handlerClick,elementsToDelete,writeElementsToDel
             if( key===item.dataIndex){
                 const value = ()=>{
                     if(data[key] !== null && typeof data[key] === 'object') {
-                        return data[key].name
+                        return data[key]?.name
                     }
                     return data[key]
                 }

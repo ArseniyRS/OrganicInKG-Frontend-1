@@ -2,13 +2,16 @@ import React, {useEffect, useState} from 'react'
 import './Modal.css'
 import {connect} from "react-redux";
 import {toggleModal} from "../../redux/reducers/modalReducer";
+import {withRouter} from "react-router-dom";
 
 
-const Modal = ({modal,toggleModal})=>{
+const Modal = ({modal,toggleModal,history})=>{
     const [confirmed,setConfirmed] = useState(false)
     const handleConfirm = ()=>{
         modal.confirmFunc()
         setConfirmed(true)
+        toggleModal({isOpen:false,title:''})
+        history.push(modal.urlToTable)
     }
     useEffect(()=>{
             return ()=>setConfirmed(false)
@@ -23,12 +26,12 @@ const Modal = ({modal,toggleModal})=>{
             <div className='modal__container'>
             <h2>{modal.title}</h2>
             <div className='modal__btns'>
-                {!confirmed &&
+
                     <>
                 <div className='modal__btns-confirm' onClick={()=>handleConfirm()}>Да</div>
                 <div className='modal__btns-cancel' onClick={()=>toggleModal({isOpen:false,title:''})}>Нет</div>
                 </>
-                }
+
             </div>
         </div>
         </> : <></>
@@ -39,4 +42,4 @@ const mapStateToProps = state=>{
         modal : state.modal.isOpenModal
     }
 }
-export default connect(mapStateToProps,{toggleModal})(Modal);
+export default connect(mapStateToProps,{toggleModal})(withRouter(Modal));

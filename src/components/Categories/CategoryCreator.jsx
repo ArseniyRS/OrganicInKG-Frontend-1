@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react'
 import FormContainer from "../FormGenerator/FormContainer";
-import {categoryInputConfig} from "./inputConfig";
+import {categoryInputConfig} from "./inputFormConfig";
 import {Route, withRouter} from "react-router-dom";
 import {connect} from "react-redux";
 import {writeRecordId} from "../../redux/reducers/tableReducer";
@@ -26,12 +26,17 @@ const CategoryCreator = (props)=>{
             initialVals={{
                 name: '',
                 description: '',
-                parentCategoryId: '',
+                parentCategoryId: null,
 
             }}
         />
     )
 }
 
+const mapStateToProps = state=>{
+    return{
+        categories: state.category.categories,
 
-export default connect(null,{getCategory,createCategory,updateCategory})(withRouter(CategoryCreator))
+    }
+}
+export default connect(mapStateToProps,{getCategory,createCategory,updateCategory})(withRouter(CategoryCreator))

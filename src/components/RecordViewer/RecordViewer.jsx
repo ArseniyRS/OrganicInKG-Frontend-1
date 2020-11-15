@@ -6,12 +6,11 @@ import {backSVG} from "../../assets/icons";
 const RecordViewer=({titles,values={},urlToUpd,urlToTable,match})=>{
     const valuesToArray = Object.values(values).slice(1,values.length)
     const valsKey = Object.keys(values).slice(1,values.length)
-
     const elements = titles.map((item,index)=>{
         if( valsKey[index]===item.dataIndex){
             const value = ()=> {
                 if (valuesToArray[index] !== null && typeof valuesToArray[index] === 'object') {
-                    return valuesToArray[index].name
+                    return valuesToArray[index]?.name
                 }
                 return valuesToArray[index]
             }

@@ -11,8 +11,8 @@ import {deleteTemplate} from "../../utils/templates/deleteTemplate";
 import {toggleLoader} from "./mainReducer";
 
 const initialState={
-    products: [],
-    productById: {}
+    products: undefined,
+    productById: undefined
 }
 
 

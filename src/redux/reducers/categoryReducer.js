@@ -11,8 +11,8 @@ import {deleteTemplate} from "../../utils/templates/deleteTemplate";
 import {toggleLoader} from "./mainReducer";
 
 const initialState={
-    categories: [],
-    categoryById: {}
+    categories: undefined,
+    categoryById: undefined
 }
 
 
@@ -35,7 +35,12 @@ export const categoryReducer = (state=initialState,action)=>{
         }
     }
 }
-
+export const clearCategory = ()=>{
+    return{
+        type: WRITE_CATEGORY_BY_ID,
+        action: undefined
+    }
+}
 export const getCategory = ()=> {
     return async dispatch => getTemplate(dispatch, categoryGetReq, WRITE_CATEGORIES, toggleLoader)
 }

@@ -12,4 +12,5 @@ import backSVG from './back.svg'
 import checkPasSVG from './checkPassword.svg'
 import plusSVG from './plus.svg'
 import openList from './openList.svg'
-export {openList,plusSVG,checkPasSVG,backSVG,categorySVG,userSVG,productSVG,orderSVG,providerSVG,questionSVG,searchSVG,badStatusSVG,goodStatusSVG,deleteSVG}
+import preloaderSVG from './Rolling-0.6s-197px.svg'
+export {preloaderSVG,openList,plusSVG,checkPasSVG,backSVG,categorySVG,userSVG,productSVG,orderSVG,providerSVG,questionSVG,searchSVG,badStatusSVG,goodStatusSVG,deleteSVG}

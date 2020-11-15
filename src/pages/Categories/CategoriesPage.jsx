@@ -1,75 +1,69 @@
 import React, {useEffect} from 'react'
-import {Route, Switch, withRouter} from 'react-router-dom'
-import Sidebar from "../../components/Sidebar/Sidebar";
-import Header from "../../components/Header/Header";
-import SearchPanel from "../../components/Search-panel/SearchPanel";
-import AddBtn from "../../components/Btns/AddBtn";
-import DeleteBtn from "../../components/Btns/DeleteBtn";
-import Table from "../../components/Table/Table";
-import {CategoryColumns} from "../../components/Table/columns";
 import {connect} from "react-redux";
-import {deleteCategory, getCategory} from "../../redux/reducers/categoryReducer";
+import {
+    clearCategory,
+    createCategory,
+    deleteCategory,
+    getCategory,
+    getCategoryById, updateCategory
+} from "../../redux/reducers/categoryReducer";
 import {recordViewCategoryConfig} from "../../components/Categories/recordViewConfig";
-import RecordViewerContainer from "../../containers/RecordViewerContainer";
-import CategoryCreator from "../../components/Categories/CategoryCreator";
-import CategoryUpdater from "../../components/Categories/CategoryUpdater";
+import {CategoryColumns} from "../../components/Categories/tableColumnsConfig";
+import PageRenderer from "../../components/PageRenderer/PageRendererContainer";
+import {categoryInputConfig} from "../../components/Categories/inputFormConfig";
 
 
 
 
-const CategoriesPage = ({history,categories,getCategory,deleteCategory})=>{
-    useEffect(()=>{
-        getCategory()
-    },[])
-    const clickOnRecord=(id)=>history.push('/categories/view/'+id)
+const CategoriesPage = ({categories,categoryById,getCategory,getCategoryById,createCategory,updateCategory,deleteCategory,clearCategory})=>{
     return(
-        <>
-            <Header />
-            <div className="container">
-                <Sidebar />
-                <div className="page-content">
-                <Switch>
-                    <Route exact path={'/categories'}>
-                        <h2 className='page-content__title'>Категории</h2>
-                        <div className='page-functional'><SearchPanel />
-                        <AddBtn
-                            urlToCreate={'/categories/create-category'}/>
-                            <DeleteBtn deleteFunc = {deleteCategory}/></div>
-                        <Table
-                            data={categories}
-                            columns={CategoryColumns}
-                            handlerClick={clickOnRecord} />
+        <PageRenderer
+            pageUrl ={'categories'}
+            pageTitle ={'Категории'}
 
-                    </Route>
-                    <Route exact  path={'/categories/create-category'} >
-                        <CategoryCreator />
-                    </Route>
-                    <Route exact  path={'/categories/update-category/:id'}>
-                        <CategoryUpdater />
-                     </Route>
+            tableData={categories}
+            tableColumnsConfig={CategoryColumns}
 
-                    <Route  path={'/categories/view/:id'}>
-                        <RecordViewerContainer
-                            titles={recordViewCategoryConfig}
-                            urlToUpd={'/categories/update-category'}
-                            urlToTable={'/categories'}
-                        />
-                    </Route>
+            recordViewTitlesConfig={recordViewCategoryConfig}
 
-                </Switch>
-            </div>
-            </div>
+            creatorTitle={'Создание категории'}
+            updaterTitle={'Редактирование категории'}
+            formInputsConfig={categoryInputConfig}
+            optionsForSelectorData={categories}
+            creatorInitialFormValues={{
+                name: '',
+                description: '',
+                parentCategoryId: null}}
+            updaterInitialFormValues={{
+                name: categoryById?.name,
+                description: categoryById?.description,
+                parentCategoryId: categoryById?.parentCategory?.id,
+            }}
+            getDataFunc={getCategory}
+            valueById={categoryById}
+            getByIdFunc={getCategoryById}
+            createFunc={createCategory}
+            updateFunc={updateCategory}
+            clearFunc={clearCategory}
+            deleteFunc={deleteCategory}
 
-
-
-        </>
+        />
     )
-
 }
 const mapStateToProps = state=>{
     return{
-        categories: state.category.categories
+        categories: state.category.categories,
+        categoryById: state.category.categoryById
     }
 }
 
-export  default  connect(mapStateToProps,{getCategory,deleteCategory})(withRouter(CategoriesPage))
+export  default  connect(mapStateToProps,
+    {
+        getCategory,
+        getCategoryById,
+        createCategory,
+        updateCategory,
+        deleteCategory,
+        clearCategory
+    }
+    )(CategoriesPage)
