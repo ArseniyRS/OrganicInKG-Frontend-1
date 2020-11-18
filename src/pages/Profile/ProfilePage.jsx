@@ -1,7 +1,8 @@
 import React, {useEffect} from 'react'
 import Sidebar from "../../components/Sidebar/Sidebar";
 import Header from "../../components/Header/Header";
-import ProfileContainer from "../../containers/Profile/ProfileContainer";
+import ProfileContainer from "../../components/Profile/ProfileContainer";
+
 
 
 

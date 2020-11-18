@@ -1,6 +1,6 @@
 import React, {InputHTMLAttributes, useEffect, useRef} from 'react'
 import './AuthPage.css'
-import AuthContainer from "../../containers/Auth/AuthContainer";
+import AuthContainer from "../../components/Auth/AuthContainer";
 const AuthPage = ()=>{
 
 

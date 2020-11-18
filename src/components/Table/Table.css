@@ -39,6 +39,7 @@
 
 .tableItem-checkbox__default {
     display: none;
+    box-sizing: border-box;
 }
 
 .tableItem-checkbox__new {
@@ -50,7 +51,9 @@
     position: relative;
     display: block;
     flex-shrink: 0;
+    box-sizing:border-box;
 }
+
 
 .tableItem-checkbox__new::after {
     content: "";
@@ -77,6 +80,5 @@
 }
 .tableItem-checkbox__default:checked + .tableItem-checkbox__new {
     border: none;
-    margin-right: 5px;
 
 }

@@ -1,81 +1,45 @@
-import { Upload, Modal } from 'antd';
-import { PlusOutlined } from '@ant-design/icons';
-import React,{useState} from "react";
+import {Upload, Modal, Button,message} from 'antd';
+import React, {useEffect, useState} from "react";
 import './ImgUploader.css';
+import UploadOutlined from "@ant-design/icons/lib/icons/UploadOutlined";
 
-function getBase64(file) {
-    return new Promise((resolve, reject) => {
-        const reader = new FileReader();
-        reader.readAsDataURL(file);
-        reader.onload = () => resolve(reader.result);
-        reader.onerror = error => reject(error);
-    });
-}
+
 
 const ImgUploader = ({setFieldValue,name,value})=>{
-    const [imges,setImges] = useState({
-        previewVisible: false,
-        previewImage: '',
-        previewTitle: '',
-        fileList: [
-            {
-                uid: '-1',
-                name: 'image.png',
-                status: 'done',
-                url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
-            },
-        ],
-    })
+    const [file,setFile] = useState([])
 
-    const handleCancel = () => setImges(imges.previewVisible= false);
+    useEffect(()=>{
+        setFieldValue(name,file)
+    },[file])
 
-    const handlePreview = async file => {
-        if (!file.url && !file.preview) {
-            file.preview = await getBase64(file.originFileObj);
+    const onChange = (e) => setFile([...file,e.target.files[0]]);
+
+    function beforeUpload(file) {
+        const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/png';
+        if (!isJpgOrPng) {
+            message.error('You can only upload JPG/PNG file!');
         }
-
-        setImges({
-            previewImage: file.url || file.preview,
-            previewVisible: true,
-            previewTitle: file.name || file.url.substring(file.url.lastIndexOf('/') + 1),
-        });
-    };
-
-    const handleChange = ({ fileList }) => {
-        console.log(fileList)
-        setImges({ fileList });
-        //const files = imges.map(item=>item.fileList.map(item=>item.url))
-        //console.log(files)
-        //setFieldValue(name,files)
+        const isLt2M = file.size / 1024 / 1024 < 2;
+        if (!isLt2M) {
+            message.error('Image must smaller than 2MB!');
+        }
+        return isJpgOrPng && isLt2M;
     }
-
-        const { previewVisible, previewImage, fileList, previewTitle } = imges;
-        const uploadButton = (
-            <div>
-                <PlusOutlined />
-                <div style={{ marginTop: 8 }}>Upload</div>
-            </div>)
-
+   console.log(file)
         return (
-            <>
-                <Upload
-                    action="https://www.mocky.io/v2/5cc8019d300000980a055e76" //upload url
-                    listType="picture-card"
-                    fileList={fileList}
-                    onPreview={handlePreview}
-                    onChange={handleChange}
-                >
-                    {fileList.length >= 8 ? null : uploadButton}
-                </Upload>
-                <Modal
-                    visible={previewVisible}
-                    title={previewTitle}
-                    footer={null}
-                    onCancel={handleCancel}
-                >
-                    <img alt="example" style={{ width: '100%' }} src={previewImage} />
-                </Modal>
-            </>
+            <input type="file" multiple  onChange  = {onChange}/>
+            // <Upload
+            //     listType="picture"
+            //     className="picture-card"
+            //     onChange  = {onChange}
+            //     beforeUpload={beforeUpload}
+            //
+            // >
+            //     <div>
+            //         <UploadOutlined /> Click to Upload
+            //     </div>
+            // </Upload>
+
         )
 }
 

@@ -20,31 +20,56 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="869952c6-d07a-44c8-9dad-429924c3fe46" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/assets/icons/Rolling-0.6s-197px.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Categories/tableColumnsConfig.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/PageRenderer/PageRendererContainer.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Preloader/Preloader.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/RecordViewer/RecordViewerContainer.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Auth/AuthContainer.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Inputs/CheckInput/CheckInput.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Profile/ProfileContainer.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/configs/Products/inputFormConfig.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/configs/Products/recordViewConfig.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/configs/Products/tableColumnsConfig.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/configs/Providers/recordViewConfig.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/configs/Providers/tableColumnsConfig.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/redux/reducers/providerReducer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/icons/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/icons/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Btns/EditBtn.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Btns/EditBtn.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Categories/CategoryCreator.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Categories/CategoryCreator.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Categories/CategoryUpdater.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Categories/RecordUpdater.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Categories/inputConfig.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Categories/inputFormConfig.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Categories/CategoryCreator.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Categories/RecordUpdater.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Categories/inputFormConfig.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/configs/Categories/inputFormConfig.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Categories/recordViewConfig.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/configs/Categories/recordViewConfig.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Categories/tableColumnsConfig.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/configs/Categories/tableColumnsConfig.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/FormGenerator/FormContainer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/FormGenerator/FormContainer.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/FormGenerator/FormInput.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/FormGenerator/FormInput.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/FormGenerator/Former.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/FormGenerator/Former.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/FormGenerator/validationGenerator.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/FormGenerator/validationGenerator.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ImgUploader/ImgUploader.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ImgUploader/ImgUploader.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Modals/Modal.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Modals/Modal.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/PageRenderer/PageRendererContainer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/PageRenderer/PageRendererContainer.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Products/ProductCreator.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Products/ProductUpdater.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Products/inputConfig.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Products/recordViewConfig.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Providers/inputConfig.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/configs/Providers/inputFormConfig.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/RecordViewer/RecordViewer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RecordViewer/RecordViewer.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/RecordViewer/RecordViewerContainer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RecordViewer/RecordViewerContainer.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Table/Table-item.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Table/Table-item.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Table/Table.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Table/Table.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Table/Table.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Table/Table.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/RecordViewerContainer.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Table/columns.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Table/columns.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/Auth/AuthContainer.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/Categories/CategoriesContainer.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/Orders/OrdersContainer.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/Products/ProductsContainer.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/Profile/ProfileContainer.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/Providers/ProvidersPage.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/Users/UsersPage.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Auth/AuthPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Auth/AuthPage.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/Categories/CategoriesPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Categories/CategoriesPage.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/Products/ProductsPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Products/ProductsPage.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/reducers/categoryReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/categoryReducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/reducers/modalReducer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/modalReducer.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Profile/ProfilePage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Profile/ProfilePage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Providers/ProvidersPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Providers/ProvidersPage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/reducers/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/index.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/redux/reducers/productReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/productReducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/reducers/types.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/types.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/api/Request.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/api/Request.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/templates/createOrChangeTemplate.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/templates/createOrChangeTemplate.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/templates/getTemplate.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/templates/getTemplate.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,7 +97,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/assets/icons" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/configs/Products" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -82,11 +107,14 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Admin\Desktop\organicinkg-frontend\src\configs\Products" />
       <recent name="C:\Users\Admin\Desktop\organicinkg-frontend\src\assets\icons" />
       <recent name="C:\Users\Admin\Desktop\organicinkg-frontend\src\components\Products" />
       <recent name="C:\Users\Admin\Desktop\organicinkg-frontend\src\utils\templates" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Admin\Desktop\organicinkg-frontend\src\configs\Providers" />
+      <recent name="C:\Users\Admin\Desktop\organicinkg-frontend\src\configs\Categories" />
       <recent name="C:\Users\Admin\Desktop\organicinkg-frontend\src\components\RecordViewer" />
       <recent name="C:\Users\Admin\Desktop\organicinkg-frontend\src\containers\Categories" />
       <recent name="C:\Users\Admin\Desktop\organicinkg-frontend\src\components\Inputs" />
@@ -127,7 +155,8 @@
       <workItem from="1605176797575" duration="345000" />
       <workItem from="1605376545923" duration="9219000" />
       <workItem from="1605457616117" duration="2273000" />
-      <workItem from="1605463886768" duration="7306000" />
+      <workItem from="1605463886768" duration="45598000" />
+      <workItem from="1605679923843" duration="593000" />
     </task>
     <servers />
   </component>

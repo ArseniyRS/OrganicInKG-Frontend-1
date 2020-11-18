@@ -1,4 +1,4 @@
-import { WRITE_PRODUCTS,WRITE_PRODUCT_BY_ID} from './types'
+import {WRITE_PRODUCTS, WRITE_PRODUCT_BY_ID} from './types'
 import {
     productDelReq, productGetByIdReq,
     productsGetReq,
@@ -35,7 +35,12 @@ export const productReducer = (state=initialState,action)=>{
         }
     }
 }
-
+export const clearProduct = ()=>{
+    return{
+        type: WRITE_PRODUCT_BY_ID,
+        action: undefined
+    }
+}
 export const getProducts = ()=> {
     return async dispatch => getTemplate(dispatch, productsGetReq, WRITE_PRODUCTS, toggleLoader)
 }

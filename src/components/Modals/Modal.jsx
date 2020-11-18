@@ -5,13 +5,13 @@ import {toggleModal} from "../../redux/reducers/modalReducer";
 import {withRouter} from "react-router-dom";
 
 
-const Modal = ({modal,toggleModal,history})=>{
+const Modal = ({modal,toggleModal,history,isLoading})=>{
     const [confirmed,setConfirmed] = useState(false)
-    const handleConfirm = ()=>{
+    const handleConfirm =  ()=>{
         modal.confirmFunc()
         setConfirmed(true)
         toggleModal({isOpen:false,title:''})
-        history.push(modal.urlToTable)
+        //history.push(modal.urlToTable)
     }
     useEffect(()=>{
             return ()=>setConfirmed(false)
@@ -39,6 +39,7 @@ const Modal = ({modal,toggleModal,history})=>{
 }
 const mapStateToProps = state=>{
     return{
+        isLoading: state.main.isFetchLoader,
         modal : state.modal.isOpenModal
     }
 }

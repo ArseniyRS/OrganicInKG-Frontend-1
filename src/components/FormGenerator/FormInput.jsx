@@ -1,8 +1,9 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import {ErrorMessage, Field, Form} from "formik";
 import SelectorInput from "../Inputs/SelectorInput/SelectorInput";
 import ImgUploader from "../ImgUploader/ImgUploader";
 import PhoneInput from "../Inputs/PhoneInput/PhoneInput";
+import CheckInput from "../Inputs/CheckInput/CheckInput";
 
 
 const FormInput = ({
@@ -12,6 +13,7 @@ const FormInput = ({
                 type='',
                        options=[]
                    })=>{
+    console.log(options)
     return(
         <div className="createOrEditField">
             <label htmlFor={name}>{label}</label>
@@ -37,6 +39,10 @@ const FormInput = ({
                     <Field name={name} >
                      {({field:{name},form: { setFieldValue}})=>  <PhoneInput setFieldValue={setFieldValue} name={name} />}
                     </Field>
+                        : type==='check' ?
+                            <Field   name={name} >
+                                {({field:{name},form: { setFieldValue}})=><CheckInput setFieldValue={setFieldValue} name={name} />}
+                          </Field>
                 : type==='selector' ?
                             <Field name={name} as={'select'} placeholder={placeholder}>
                                 <option value={null} className="select__placeholder" hidden>

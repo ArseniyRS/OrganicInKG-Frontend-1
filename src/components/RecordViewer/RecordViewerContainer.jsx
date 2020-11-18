@@ -13,7 +13,9 @@ const RecordViewerContainer = (
         match,
         valueById,
         clearFunc,
-        getByIdFunc
+        getByIdFunc,
+
+        isLoading
     }
 )=>{
     useEffect(()=>{
@@ -21,7 +23,7 @@ const RecordViewerContainer = (
         return ()=>clearFunc()
     },[])
     return(
-        valueById ?
+        valueById && !isLoading ?
         <RecordViewer
             titles={titles}
             values={valueById}

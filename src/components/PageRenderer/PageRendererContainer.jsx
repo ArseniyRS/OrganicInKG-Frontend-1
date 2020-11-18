@@ -6,12 +6,9 @@ import SearchPanel from "../Search-panel/SearchPanel";
 import AddBtn from "../Btns/AddBtn";
 import DeleteBtn from "../Btns/DeleteBtn";
 import Table from "../Table/Table";
-import CategoryCreator from "../Categories/CategoryCreator";
-import CategoryUpdater from "../Categories/RecordUpdater";
 import RecordViewerContainer from "../RecordViewer/RecordViewerContainer";
-import {categoryInputConfig} from "../Categories/inputFormConfig";
 import FormContainer from "../FormGenerator/FormContainer";
-import RecordUpdater from "../Categories/RecordUpdater";
+import {connect} from "react-redux";
 
 
 
@@ -29,9 +26,11 @@ const PageRenderer = ({
     creatorTitle,
     updaterTitle,
     formInputsConfig,
+    loadSelectorData,
     optionsForSelectorData,
     creatorInitialFormValues,
     updaterInitialFormValues,
+    fileUploadKeys,
 
     getDataFunc,
     valueById,
@@ -40,6 +39,8 @@ const PageRenderer = ({
     updateFunc,
     clearFunc,
     deleteFunc,
+
+    isLoading
 
                       })=>{
     const clickOnRecord=(id)=>history.push(`/${pageUrl}/view/${id}`)
@@ -61,6 +62,7 @@ const PageRenderer = ({
                                     deleteFunc = {deleteFunc}
                                 /></div>
                             <Table
+                                isLoading={isLoading}
                                 getDataFunc={getDataFunc}
                                 data={tableData}
                                 columns={tableColumnsConfig}
@@ -68,18 +70,20 @@ const PageRenderer = ({
                         </Route>
                         <Route exact  path={`/${pageUrl}/${pageUrl}-creator`} >
                             <FormContainer
-                                loadSelectorData={getDataFunc}
+                                loadSelectorData={loadSelectorData}
                                 urlToTable={`/${pageUrl}`}
                                 createReq = {createFunc}
                                 formTitle = {creatorTitle}
                                 inputConfig ={formInputsConfig}
                                 optionsForSelector = {optionsForSelectorData}
                                 initialVals={creatorInitialFormValues}
+                                fileUploadKeys={fileUploadKeys}
+                                isLoading={isLoading}
                             />
                         </Route>
                         <Route exact  path={`/${pageUrl}/${pageUrl}-updater/:id`}>
                             <FormContainer
-                                loadSelectorData={getDataFunc}
+                                loadSelectorData={loadSelectorData}
                                 getByIdFunc={getByIdFunc}
                                 valueById={valueById}
                                 urlToTable={`/${pageUrl}`}
@@ -88,6 +92,7 @@ const PageRenderer = ({
                                 formTitle = {updaterTitle}
                                 inputConfig ={formInputsConfig}
                                 optionsForSelector = {optionsForSelectorData}
+                                isLoading={isLoading}
                             />
                         </Route>
 
@@ -100,6 +105,7 @@ const PageRenderer = ({
                                 valueById={valueById}
                                 getByIdFunc={getByIdFunc}
                                 clearFunc = {clearFunc}
+                                isLoading={isLoading}
                             />
                         </Route>
                     </Switch>
@@ -109,5 +115,9 @@ const PageRenderer = ({
     )
 }
 
-
-export default withRouter(PageRenderer)
+const mapStateToProps = state=>{
+    return{
+        isLoading : state.main.isFetchLoader
+    }
+}
+export default connect(mapStateToProps)(withRouter(PageRenderer))

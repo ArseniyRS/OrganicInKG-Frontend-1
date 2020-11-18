@@ -30,37 +30,8 @@ import {badStatusSVG, goodStatusSVG} from "../../assets/icons";
 // }
 
 
-export const CategoryColumns  =[
-    {
-        title: "Название",
-        dataIndex: 'name',
-    },
-    {
-        title: "Родительская категория",
-        dataIndex: 'parentCategory',
-    },
-    {
-        title: "Описание",
-        dataIndex: 'description',
 
-    },
-]
-export const ProviderColumns  =[
-    {
-        title: "ФИО",
-        dataIndex: 'full_name',
-    },
-    {
-        title: "Телефон",
-        dataIndex: 'phone',
 
-    },
-    {
-        title: "Статус",
-        dataIndex: 'status',
-        render: (value)=>value? <img src={goodStatusSVG} /> : <img src={badStatusSVG} alt=""/>
-    }
-]
 export const ProductColumns  =[
     {
         title: "Название",

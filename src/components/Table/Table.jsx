@@ -5,14 +5,14 @@ import withLoader from "../HOC/withLoader";
 import Preloader from "../Preloader/Preloader";
 
 
-const Table = ({getDataFunc,data=[],columns=[],handlerClick})=>{
+const Table = ({isLoading,getDataFunc,data=[],columns=[],handlerClick})=>{
     useEffect(()=>{
         getDataFunc()
         return ()=>{
             data=[]
             columns=[]
         }
-    })
+    },[])
 
     const elements = data.map(item=>{
         return (
@@ -22,7 +22,7 @@ const Table = ({getDataFunc,data=[],columns=[],handlerClick})=>{
         )
     })
     return(
-        data.length!==0 ?
+        !isLoading ?
         <div className='table-container'>
             {elements}
         </div> : <Preloader />

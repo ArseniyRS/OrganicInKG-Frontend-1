@@ -7,10 +7,10 @@ import {
     getCategory,
     getCategoryById, updateCategory
 } from "../../redux/reducers/categoryReducer";
-import {recordViewCategoryConfig} from "../../components/Categories/recordViewConfig";
-import {CategoryColumns} from "../../components/Categories/tableColumnsConfig";
+import {recordViewCategoryConfig} from "../../configs/Categories/recordViewConfig";
+import {CategoryColumns} from "../../configs/Categories/tableColumnsConfig";
 import PageRenderer from "../../components/PageRenderer/PageRendererContainer";
-import {categoryInputConfig} from "../../components/Categories/inputFormConfig";
+import {categoryInputConfig} from "../../configs/Categories/inputFormConfig";
 
 
 

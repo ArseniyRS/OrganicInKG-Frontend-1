@@ -18,3 +18,10 @@ export const productGetByIdReq = (id)=>instance.get(`products/${id}`).then(respo
 export const productPostReq = (data)=>instance.post('products',data)
 export const productDelReq = (id)=>instance.delete(`products/${id}`)
 export const productUpdReq = (data,id)=>instance.put(`products/${id}`,data)
+
+export const providersGetReq = ()=>instance.get('supplier').then(response=>response.data)
+export const providerGetByIdReq = (id)=>instance.get(`supplier/${id}`).then(response=>response.data)
+export const providerPostReq = (data)=>instance.post('supplier',data)
+export const providerFilePostReq = (data)=>instance.post('supplierFile',data)
+export const providerDelReq = (id)=>instance.delete(`supplier/${id}`)
+export const providerUpdReq = (data,id)=>instance.put(`supplier/${id}`,data)

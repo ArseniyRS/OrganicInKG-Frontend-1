@@ -1,35 +1,37 @@
 import React, {useEffect, useState} from 'react'
 import {withRouter} from "react-router-dom";
 import Former from "./Former";
-import withLoader from "../HOC/withLoader";
-import {initialValuesGetter} from "../../utils/initialValuesGetter";
 import Preloader from "../Preloader/Preloader";
 const FormContainer = ({
                            createReq,
                            updReq,
                            match,
-                            //data,
+                           isLoading,
+                           fileUploadKeys,
                            ...props})=>{
     useEffect(()=>{
-
-        props.loadSelectorData()
+        if(props.loadSelectorData) {
+            props.loadSelectorData()
+        }
         if(match.params?.id) {
             props.getByIdFunc(match.params.id)
         }
     },[])
 
-    const handleSubmit =values=>{
+    const handleSubmit =   values=>{
+
         if(match.params?.id){
             values.id = match.params.id
            return  updReq(match.params.id,values)
-        }else{
-            return  createReq(values)
+        }else {
+            return createReq(values,fileUploadKeys)
         }
     }
 
+
+
     return(
-        (props.valueById && props.optionsForSelector && match.params?.id) ||
-        (!match.params?.id && props.optionsForSelector)
+        !isLoading
             ?
             <Former handleSubmit={handleSubmit}  {...props}/>
         : <Preloader />

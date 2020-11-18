@@ -26,41 +26,31 @@ const TableItem= ({columns,data,handlerClick,elementsToDelete,writeElementsToDel
             writeElementsToDelete([])
         }
     },[check])
-    // const checkHandler =  ()=>{
-    //     console.log(check)
-    //     setCheck(!check)
-    //     console.log(check)
-    //     let buff= [...elementsToDelete]
-    //     if(!check){
-    //         buff.push(data.id)
-    //     }
-    //     const index = buff.indexOf(data.id)
-    //     if (index > -1) {
-    //         buff.splice(index, 1);
-    //
-    //     }
-    //     console.log(buff)
-    //     return writeElementsToDelete(buff)
-    // }
-    const tableItemColumn = columns.map(item=>{
-        let columnId=0;
-        for(let key in data){
-            columnId++;
-            if( key===item.dataIndex){
-                const value = ()=>{
-                    if(data[key] !== null && typeof data[key] === 'object') {
-                        return data[key]?.name
-                    }
-                    return data[key]
-                }
-                return (
-                    <div key={"table-item-"+data.id+"-"+ columnId}>
-                        <TableItemColumn column={item} item={{ title:item.title, value:value()}}/>
-                    </div>
-                )}
+    const tableItemColumn = ()=> {
+        let result = []
 
+        const valuesToArray = Object.values(data).slice(1,data.length)
+        const valsKey = Object.keys(data).slice(1, data.length)
+        for (let i = 0; i < columns.length; i++) {
+            for (let j = 0; j < valsKey.length; j++) {
+                if (valsKey[j] === columns[i].dataIndex) {
+                    const value = () => {
+                        if (valuesToArray[j] !== null && typeof valuesToArray[j] === 'object') {
+                            return valuesToArray[j]?.name
+                        }
+                        return valuesToArray[j]
+                    }
+                    result.push((
+                        <div key={"table-item-" + data.id + "-" + i}>
+                            <TableItemColumn column={columns[i]} item={{title: columns[i].title, value: value()}}/>
+                        </div>
+                    ))
+                    break;
+                }
+            }
         }
-    })
+        return result
+    }
     let style={}
     useEffect(()=>{
         if(check){
@@ -79,7 +69,7 @@ const TableItem= ({columns,data,handlerClick,elementsToDelete,writeElementsToDel
             </label>
         <div  className='tableItem' style={style}  onClick={()=>handlerClick(data.id)}>
 
-           {tableItemColumn}
+           {tableItemColumn()}
            
         </div>   
         </div>

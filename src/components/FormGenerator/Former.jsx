@@ -35,10 +35,19 @@ const Former = (props)=>{
             <Formik
                 initialValues={props.initialVals}
                 validationSchema={Yup.object(schema)}
-                onSubmit={(values)=>props.handleSubmit(values)}
+                onSubmit={(values,e)=>{
+                    console.log(values)
+                    props.handleSubmit(values)
+                }}
             >
-                {({handleSubmit}) =>{
-                    const submitFunc = ()=> handleSubmit()
+                {({handleSubmit,errors,values}) =>{
+            //console.log(values)
+
+                    const submitFunc = ()=> {
+                       // if(!errors) {
+                           return  handleSubmit()
+                       // }
+                    }
                     return (
                     <Form>
                         {inputs}

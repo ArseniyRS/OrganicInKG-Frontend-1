@@ -2,9 +2,6 @@ export const productInputConfig = [
     {
         label: "Название товара",
         placeholder: "Картошка",
-        required: "Впишите название товара",
-        min: 3,
-        max: 50,
     },
     {
         label: "Категория товара",
@@ -12,8 +9,9 @@ export const productInputConfig = [
         type: 'selector'
     },
     {
-        label: "Изображение товара",
-        type: 'image'
+        label: "Поставщик товара",
+        placeholder: "Выберите поставщика товара",
+        type: 'selector'
     },
     {
         label: "Описание товара",
@@ -27,4 +25,6 @@ export const productInputConfig = [
         label: "Количество товара",
         placeholder: "100500",
     },
-]
+
+    ]
+
