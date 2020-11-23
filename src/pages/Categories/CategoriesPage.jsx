@@ -29,7 +29,9 @@ const CategoriesPage = ({categories,categoryById,getCategory,getCategoryById,cre
             creatorTitle={'Создание категории'}
             updaterTitle={'Редактирование категории'}
             formInputsConfig={categoryInputConfig}
-            optionsForSelectorData={categories}
+            optionsForSelectorData={{
+                category: categories ? [...categories] : []
+            }}
             creatorInitialFormValues={{
                 name: '',
                 description: '',
@@ -37,7 +39,7 @@ const CategoriesPage = ({categories,categoryById,getCategory,getCategoryById,cre
             updaterInitialFormValues={{
                 name: categoryById?.name,
                 description: categoryById?.description,
-                parentCategoryId: categoryById?.parentCategory?.id,
+                parentCategoryId: categoryById?.parentCategory?.id ? categoryById.parentCategory.id :  null,
             }}
             getDataFunc={getCategory}
             valueById={categoryById}

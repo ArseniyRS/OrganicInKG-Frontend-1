@@ -4,17 +4,19 @@ import SelectorItem from "./SelectorItem";
 
 
 
-const SelectorList = ({data,handleClick})=>{
+const SelectorList = ({data,handleClick,thirdStyle})=>{
     const [isOpenList,setOpenList] = useState(false);
     return(
         <>
-            {data?.parent ?
+            {data?.children ?
                 <ul key={data.id} className={isOpenList ? 'selectorInput__list-clicked' :'selectorInput__list'}>
                 <SelectorItem
                     isOpenList={isOpenList}
                     setOpenList={setOpenList}
                     handleClick={handleClick}
-                    data={data} />
+                    data={data}
+                    thirdStyle={thirdStyle}
+                />
 
 
             </ul>
@@ -22,6 +24,7 @@ const SelectorList = ({data,handleClick})=>{
                 <SelectorItem
                     data={data}
                     handleClick={handleClick}
+                    thirdStyle={thirdStyle}
                 />
             }
 

@@ -12,7 +12,7 @@ export const categoryInputConfig = [{
         label: "Родительская категория",
         placeholder: "Выберите родительскую категорию",
         type: 'selector',
-        dataType: 'number',
+        selectorProperty: 'category',
         nullable: true
     },]
 

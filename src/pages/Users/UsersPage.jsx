@@ -1,111 +1,63 @@
 import React, {useEffect} from 'react'
-import {Route, Switch, withRouter} from 'react-router-dom'
-import Sidebar from "../../components/Sidebar/Sidebar";
-import Header from "../../components/Header/Header";
-import SearchPanel from "../../components/Search-panel/SearchPanel";
-import AddBtn from "../../components/Btns/AddBtn";
-import DeleteBtn from "../../components/Btns/DeleteBtn";
-import Table from "../../components/Table/Table";
-import {ProductColumns, ProviderColumns, UsersColumns} from "../../components/Table/columns";
-import RecordViewer from "../../components/RecordViewer/RecordViewer";
 import {connect} from "react-redux";
-import {writeRecordId} from "../../redux/reducers/tableReducer";
-import FormContainer from "../../components/FormGenerator/FormContainer";
-import {userInputConfig} from "../../components/Users/inputConfig";
+import {
+    clearCategory,
+    createCategory,
+    deleteCategory,
+    getCategory,
+    getCategoryById, updateCategory
+} from "../../redux/reducers/categoryReducer";
+import {recordViewCategoryConfig} from "../../configs/Categories/recordViewConfig";
+import {CategoryColumns} from "../../configs/Categories/tableColumnsConfig";
+import PageRenderer from "../../components/PageRenderer/PageRendererContainer";
+import {categoryInputConfig} from "../../configs/Categories/inputFormConfig";
+import {clearUser, deleteUser, getUserById, getUsers} from "../../redux/reducers/userReducer";
+import {UsersColumns} from "../../configs/Users/tableColumnsConfig";
+import {recordViewUserConfig} from "../../configs/Users/recordViewConfig";
 
 
-const UsersPage = ({history,recordViewId,writeRecordId})=>{
 
 
-    const data =[{
-        id: '1',
-        first_name: 'Виктория',
-        last_name: 'Анисимова ',
-        middle_name: 'Викторовна',
-        email: 'fsdfsds',
-    },
-        {
-            id: '2',
-            first_name: 'Виктория',
-            last_name: 'Анисимова ',
-            middle_name: 'Викторовна',
-            email: 'fsdfsds',
-        },
-        {
-            id: '3',
-            first_name: 'Виктория',
-            last_name: 'Анисимова ',
-            middle_name: 'Викторовна',
-            email: 'fsdfsds',
-        }]
-
-    const clickOnRecord=(id)=>{
-        writeRecordId(id)
-        history.push('/users/view/'+id)
-    }
-    const recordViewValue =  data.find(item=>item.id===recordViewId);
+const CategoriesPage = ({   users,
+                            userById,
+                            getUsers,
+                            getUserById,
+                            deleteUser,
+                            clearUser})=>{
     return(
-        <>
-            <Header />
-            <div className="container">
-                <Sidebar />
-                <div className="page-content">
-                    <Switch>
-                        <Route exact path={'/users'}>
-                            <h2 className='page-content__title'>Пользователи</h2>
-                            <div className='page-functional'><SearchPanel /><AddBtn urlToCreate={'/users/create-user'}/><DeleteBtn/></div>
-                            <Table data={data} columns={UsersColumns} handlerClick={clickOnRecord} />
-                        </Route>
-                        <Route exact  path={'/users/create-user'}>
-                            <FormContainer
-                                urlToTable={'/users'}
-                                loadData={false}
-                                initialVals={{
-                                    first_name: '',
-                                    last_name: '',
-                                    middle_name: '',
-                                    email: '',
-                                }}
-                                formTitle = {"Создание пользователя"}
-                                inputConfig ={userInputConfig}
-                            />
-                        </Route>
+        <PageRenderer
+            pageUrl ={'users'}
+            pageTitle ={'Пользователи'}
 
-                        <Route exact path={'/users/update-user/:id'}>
-                            <FormContainer
-                                urlToTable={'/users'}
-                                loadData={true}
-                                initialVals={{
-                                    first_name: '',
-                                    last_name: '',
-                                    middle_name: '',
-                                    email: '',
-                                }}
-                                formTitle = {"Редактирование пользователя"}
-                                inputConfig ={userInputConfig}
-                            />
-                        </Route>
-                        <Route  path={'/users/view/:id'}>
-                            <RecordViewer
-                            titles={['Имя',"Фамилия","Отчество","E-mail"]}
-                            values={recordViewValue}
-                            urlToUpd={'/users/update-user'}
-                            urlToTable={'/users'}
-                            />
-                        </Route>
-                    </Switch>
-                </div>
-            </div>
+            tableData={users}
+            tableColumnsConfig={UsersColumns}
+
+            recordViewTitlesConfig={recordViewUserConfig}
 
 
 
-
-        </>
+            getDataFunc={getUsers}
+            valueById={userById}
+            getByIdFunc={getUserById}
+            clearFunc={clearUser}
+            deleteFunc={deleteUser}
+            adding={false}
+            editing={false}
+        />
     )
 }
 const mapStateToProps = state=>{
     return{
-        recordViewId: state.table.recordViewId
+        users: state.user.users,
+        userById: state.user.userById
     }
 }
-export  default  connect(mapStateToProps,{writeRecordId})(withRouter(UsersPage))
+
+export  default  connect(mapStateToProps,
+    {
+        getUsers,
+        getUserById,
+        deleteUser,
+        clearUser
+    }
+)(CategoriesPage)

@@ -25,3 +25,6 @@
     margin: 0 5px;
     color: #F2F2F2;
 }
+.header-profile__exit{
+    cursor: pointer;
+}

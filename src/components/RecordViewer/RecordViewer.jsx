@@ -3,7 +3,7 @@ import {Link, withRouter} from "react-router-dom";
 import './RecordView.css'
 import {backSVG} from "../../assets/icons";
 
-const RecordViewer=({titles,values={},urlToUpd,urlToTable,match})=>{
+const RecordViewer=({titles,values={},urlToUpd,urlToTable,match,editing})=>{
     const valuesToArray = Object.values(values).slice(1,values.length)
     const valsKey = Object.keys(values).slice(1,values.length)
 
@@ -14,7 +14,7 @@ const RecordViewer=({titles,values={},urlToUpd,urlToTable,match})=>{
                 if( valsKey[j]===titles[i].dataIndex){
                     const value = ()=> {
                         if (valuesToArray[j] !== null && typeof valuesToArray[j] === 'object') {
-                            return valuesToArray[j]?.name
+                            return valuesToArray[j]?.name ? valuesToArray[j].name :  valuesToArray[j].fullName
                         }
                         return valuesToArray[j]
                     }
@@ -35,7 +35,9 @@ return results
         <div className='recordView__container'>
             <div className='recordView__container-title'><Link to={urlToTable}><img src={backSVG} alt=""/></Link><h2>{valuesToArray[0]}</h2></div>
             {elements()}
+            {editing &&
             <Link to={`${urlToUpd}/${match.params.id}`} className={'recordView__btn'}>Редактировать запись</Link>
+            }
         </div>
     )
 

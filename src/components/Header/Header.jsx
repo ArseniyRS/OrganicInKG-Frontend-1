@@ -1,19 +1,26 @@
 import React from 'react'
 import './Header.css'
-import {Link} from "react-router-dom";
+import {Link, Redirect, withRouter} from "react-router-dom";
+import {logout} from "../Auth/logout";
+import {toggleAuth} from "../../redux/reducers/mainReducer";
+import {connect} from "react-redux";
+import {logoSVG} from '../../assets/icons'
 
+const Header = (props)=>{
 
-const Header = ()=>{
     return(
         <div className='header'>
         <div className='container'>
         <div className="header__container">
-            <Link to={"/main"}><h3>Admin panel of Organic in KG</h3></Link>
+            <Link to={"/"}><img src={logoSVG} alt=""/></Link>
             <div className="header-profile">
                 <span className='header-profile__name'>Бермет</span>
                 <Link to={"/profile"}><span className='header-profile__password'>Сменить пароль</span></Link>
                 <span>/</span>
-                <span className='header-profile__exit'>Выйти</span>
+                <span className='header-profile__exit' onClick={()=> {
+                    logout()
+                    props.toggleAuth(false)
+                }}>Выйти</span>
             </div>
         </div>
         </div>
@@ -22,4 +29,4 @@ const Header = ()=>{
     )
 }
 
-export default Header
+export default connect(null,{toggleAuth})(Header)

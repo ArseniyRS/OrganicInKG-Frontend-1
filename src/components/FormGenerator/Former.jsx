@@ -20,7 +20,9 @@ const Former = (props)=>{
                 placeholder={props.inputConfig[index]?.placeholder}
                 label={props.inputConfig[index]?.label}
                 type={props.inputConfig[index]?.type}
+                selectInputData={props.inputConfig[index]?.selectInputData}
                 options={props.optionsForSelector}
+                selectorProperty={props.inputConfig[index]?.selectorProperty}
             />
         )
     })
@@ -35,15 +37,15 @@ const Former = (props)=>{
             <Formik
                 initialValues={props.initialVals}
                 validationSchema={Yup.object(schema)}
-                onSubmit={(values,e)=>{
+                onSubmit={async (values,e)=>{
                     console.log(values)
-                    props.handleSubmit(values)
+                   await props.handleSubmit(values)
                 }}
             >
                 {({handleSubmit,errors,values}) =>{
             //console.log(values)
 
-                    const submitFunc = ()=> {
+                    const submitFunc = async ()=> {
                        // if(!errors) {
                            return  handleSubmit()
                        // }

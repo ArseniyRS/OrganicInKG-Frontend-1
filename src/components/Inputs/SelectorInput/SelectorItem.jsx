@@ -1,32 +1,24 @@
 import React, {useState} from 'react'
 import {openList} from "../../../assets/icons";
 import SelectorList from "./SelectorList";
+import classNames from 'classnames'
 
 
 
-
-const SelectorItem = ({data,isOpenList,setOpenList,handleClick})=>{
+const SelectorItem = ({data,isOpenList,setOpenList,handleClick,thirdStyle=false})=>{
     const [checked, setChecked] = useState(true)
-    const styleFunc = ()=>{
-        if(data?.parent && !isOpenList)
-        {
-            return 'selectorInput__item'
-        }
-        else if(isOpenList)
-        {
-            return 'selectorInput__item-2'
-        }
-        else
-        {
-            return 'selectorInput__item-3'
-        }
-        }
+    const styles = classNames({
+        'selectorInput__item' : !isOpenList && !thirdStyle,
+        "selectorInput__item-2":  isOpenList,
+        'selectorInput__item-3' : thirdStyle
+    })
+
     return(
         <>
-            <li  className={styleFunc()} style={!checked? {color: "#009B00" } : {color: "#8E8E8E" }} onClick={()=> {
+            <li  className={styles}  onClick={()=> {
 
                 setChecked(!checked)
-                data?.parent && setOpenList(!isOpenList)
+                data?.children && setOpenList(!isOpenList)
                 if(checked) {
                  return handleClick(data.name)
                 }else{
@@ -34,9 +26,9 @@ const SelectorItem = ({data,isOpenList,setOpenList,handleClick})=>{
                 }
             }}>
               {data.name}
-                   {data?.parent && <img src={openList} alt=""/>}
+                   {data?.children && <img src={openList} alt=""/>}
             </li>
-            {isOpenList && data.parent.map(item=><SelectorList data={item} handleClick={handleClick}/>)}
+            {isOpenList && data.children.map(item=><SelectorList thirdStyle={true} data={item} handleClick={handleClick}/>)}
 
     </>
     )

@@ -34,17 +34,27 @@ const ProvidersPage = ({providers,providerById,getProviders,getProviderById,crea
             creatorInitialFormValues={{
                 fullName: '',
                 phone: '',
-                produces: '',
-                placeOfProduction: '',
                 email: '',
+                placeOfProduction: '',
+                produces: '',
                 walletNumber: '',
                // file_passport: [],
                // file_sertificate: [],
-                status: ''
+                isActive: false
 
             }}
            // fileUploadKeys = {['PASSPORT,SERTIFICATE']}
-            updaterInitialFormValues={{}}
+            updaterInitialFormValues={{
+                fullName: providerById?.fullName,
+                phone: providerById?.phone,
+                email:  providerById?.email,
+                placeOfProduction:  providerById?.placeOfProduction,
+                produces:  providerById?.produces,
+                walletNumber:  providerById?.ewalletNumber,
+                // file_passport: [],
+                // file_sertificate: [],
+                isActive:  providerById?.isActive
+            }}
             getDataFunc={getProviders}
             valueById={providerById}
             getByIdFunc={getProviderById}

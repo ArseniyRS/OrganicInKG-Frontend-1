@@ -11,27 +11,29 @@ const FormContainer = ({
                            ...props})=>{
     useEffect(()=>{
         if(props.loadSelectorData) {
-            props.loadSelectorData()
+            for(let i=0;i<props.loadSelectorData.length;i++){
+                props.loadSelectorData[i]()
+            }
         }
         if(match.params?.id) {
             props.getByIdFunc(match.params.id)
         }
     },[])
 
-    const handleSubmit =   values=>{
+    const handleSubmit =  async values=>{
 
         if(match.params?.id){
-            values.id = match.params.id
-           return  updReq(match.params.id,values)
+            console.log(values)
+           await updReq(match.params.id,values)
         }else {
-            return createReq(values,fileUploadKeys)
+            await createReq(values,fileUploadKeys)
         }
     }
 
 
 
     return(
-        !isLoading
+        (!isLoading && props.valueById ) || !match.params?.id
             ?
             <Former handleSubmit={handleSubmit}  {...props}/>
         : <Preloader />

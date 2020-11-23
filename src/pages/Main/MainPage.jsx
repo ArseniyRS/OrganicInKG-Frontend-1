@@ -1,23 +1,13 @@
 import React from 'react'
-import {Route,  Switch} from 'react-router-dom'
-import Sidebar from "../../components/Sidebar/Sidebar";
-import Header from "../../components/Header/Header"
-import Modal from "../../components/Modals/Modal";
+import mainImg from '../../assets/img/mainPage.png'
 
 
-const MainPage = (props)=>{
+const MainPage = ()=>{
 
     return(
         <>
 
-            <Header />
-            <div className="container">
-                <Sidebar />
-            </div>
-
-
-
-
+            <div className={'mainPage'}><img src={mainImg} alt=""/></div>
         </>
 
 

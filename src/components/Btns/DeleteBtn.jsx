@@ -3,21 +3,22 @@ import './Btns.css'
 import {deleteSVG} from "../../assets/icons";
 import {connect} from "react-redux";
 import {toggleModal} from "../../redux/reducers/modalReducer";
+import {writeTableMessage} from "../../redux/reducers/tableReducer";
 
 
-const DeleteBtn = ({toggleModal,deleteFunc,elementsToDelete})=>{
+const DeleteBtn = ({toggleModal,deleteFunc,elementsToDelete,writeTableMessage})=>{
 
     const confirmHandler = async ()=>{
-        if(elementsToDelete.length!==0) {
            await deleteFunc(elementsToDelete)
-            toggleModal({isOpen:true,title:'Записи успешно удалены.'})
-
-        }
-        return toggleModal({isOpen:true,title:'Вы не выбрали ни одной записи'})
     }
 
     return(
-        <img className={'deleteBtn'} src={deleteSVG} alt=""  onClick={()=>toggleModal({isOpen:true,title:'Вы действительно хотите удалить запись?',confirmFunc: confirmHandler})}/>
+        <img className={'deleteBtn'} src={deleteSVG} alt=""  onClick={()=>{
+            if(elementsToDelete.length===0){
+             return writeTableMessage('Вы не выбрали ни одной записи!')
+            }
+            return toggleModal({isOpen:true,title:'Вы действительно хотите удалить запись(и)?',confirmFunc: confirmHandler})
+        }}/>
     )
 }
 const mapStateToProps = state=>{
@@ -25,4 +26,4 @@ const mapStateToProps = state=>{
         elementsToDelete : state.table.elementsToDelete
     }
 }
-export default connect(mapStateToProps,{toggleModal})(DeleteBtn)
+export default connect(mapStateToProps,{toggleModal,writeTableMessage})(DeleteBtn)

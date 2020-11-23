@@ -4,7 +4,7 @@ import InputMask from 'react-input-mask';
 
 
 const PhoneInput = ({name,setFieldValue,placeholder})=>{
-    const onChange = (value)=>setFieldValue(name,value)
+    const onChange = (value)=>setFieldValue(name,value.replace(/[\ \(\)\-]/g, ""))
     return(
         <InputMask
             mask="\+\9\9\6\ (999) 99-99-99"

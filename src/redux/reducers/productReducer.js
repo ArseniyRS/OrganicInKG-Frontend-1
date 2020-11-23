@@ -1,9 +1,9 @@
-import {WRITE_PRODUCTS, WRITE_PRODUCT_BY_ID} from './types'
+import {WRITE_PRODUCTS, WRITE_PRODUCT_BY_ID, WRITE_CATEGORIES} from './types'
 import {
     productDelReq, productGetByIdReq,
     productsGetReq,
     productPostReq,
-    productUpdReq,
+    productUpdReq, categoryDelByIdReq, categoryGetReq, productDelByIdReq,
 } from "../../utils/api/Request";
 import {getTemplate} from "../../utils/templates/getTemplate";
 import {createOrChangeTemplate} from "../../utils/templates/createOrChangeTemplate";
@@ -51,7 +51,13 @@ export const createProduct = data=>{
     return async dispatch => createOrChangeTemplate(dispatch, productPostReq, data, toggleLoader).then(()=>getTemplate(dispatch, productsGetReq, WRITE_PRODUCTS, toggleLoader))
 }
 export const deleteProduct = id =>{
-    return async dispatch => deleteTemplate(dispatch,productDelReq,id,toggleLoader).then(()=>getTemplate(dispatch, productsGetReq, WRITE_PRODUCTS, toggleLoader))
+    return async dispatch => {
+        for(let i=0;i<id.length;i++){
+            await deleteTemplate(dispatch,productDelByIdReq,id[i],toggleLoader)
+        }
+        await getTemplate(dispatch, productsGetReq, WRITE_CATEGORIES, toggleLoader)
+        //deleteTemplate(dispatch,productDelReq,id,toggleLoader).then(()=>getTemplate(dispatch, productsGetReq, WRITE_PRODUCTS, toggleLoader))
+    }
 }
 export const updateProduct = (id,data) =>{
     return async dispatch => createOrChangeTemplate(dispatch,productUpdReq,data,toggleLoader,id).then(()=>getTemplate(dispatch, productsGetReq, WRITE_PRODUCTS, toggleLoader))

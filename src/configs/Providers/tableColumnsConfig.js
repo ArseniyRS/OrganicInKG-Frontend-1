@@ -13,7 +13,7 @@ export const ProviderColumns  =[
     },
     {
         title: "Статус",
-        dataIndex: 'status',
+        dataIndex: 'isActive',
         render: (value)=>value? <img src={goodStatusSVG} /> : <img src={badStatusSVG} alt=""/>
     }
 ]

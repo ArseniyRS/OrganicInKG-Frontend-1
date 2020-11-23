@@ -66,9 +66,20 @@
     background: #007600;
 }
 .modal__btns-cancel:hover{
-    background: #CD5200;
+    background: #CF0000;
 }
 .modal__btns-cancel{
-    background: #FF6800;
-
+    background: #FF0303;
+}
+.errorMessage{
+    display: flex;
+    align-items: center;
+    color: #FF0303;
+    font-size: 20px;
+    align-self: center;
+}
+.errorMessage img{
+    width: 28px;
+    height: 28px;
+    margin-right: 10px;
 }

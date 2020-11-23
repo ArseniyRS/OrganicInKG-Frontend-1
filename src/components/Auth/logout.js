@@ -3,4 +3,5 @@ export const logout = ()=>{
     localStorage.removeItem('tokenExpirationTime')
     localStorage.removeItem('refreshToken')
     localStorage.removeItem('refreshExpirationTime')
+    localStorage.removeItem('id')
 }

@@ -60,9 +60,10 @@ const ProfileForm = (props)=>{
 
 
 
-
+                    <div className={"createOrEditContainer__btns"}>
                     <EditBtn />
                     <CancelBtn />
+                    </div>
                 </Form>
             </Formik>
         </div>

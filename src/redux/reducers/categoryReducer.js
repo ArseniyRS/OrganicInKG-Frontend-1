@@ -1,5 +1,6 @@
 import { WRITE_CATEGORIES,WRITE_CATEGORY_BY_ID} from './types'
 import {
+    categoryDelByIdReq,
     categoryDelReq, categoryGetByIdReq,
     categoryGetReq,
     categoryPostReq,
@@ -51,7 +52,13 @@ export const createCategory = data=>{
     return async dispatch => createOrChangeTemplate(dispatch, categoryPostReq, data, toggleLoader).then(()=>getTemplate(dispatch, categoryGetReq, WRITE_CATEGORIES, toggleLoader))
 }
 export const deleteCategory = id =>{
-    return async dispatch => deleteTemplate(dispatch,categoryDelReq,id,toggleLoader).then(()=>getTemplate(dispatch, categoryGetReq, WRITE_CATEGORIES, toggleLoader))
+    return async dispatch => {
+        for(let i=0;i<id.length;i++){
+          await deleteTemplate(dispatch,categoryDelByIdReq,id[i],toggleLoader)
+        }
+        await getTemplate(dispatch, categoryGetReq, WRITE_CATEGORIES, toggleLoader)
+       // deleteTemplate(dispatch,categoryDelReq,id,toggleLoader).then(()=>getTemplate(dispatch, categoryGetReq, WRITE_CATEGORIES, toggleLoader))
+    }
 }
 export const updateCategory = (id,data) =>{
     return async dispatch => createOrChangeTemplate(dispatch,categoryUpdReq,data,toggleLoader,id).then(()=>getTemplate(dispatch, categoryGetReq, WRITE_CATEGORIES, toggleLoader))

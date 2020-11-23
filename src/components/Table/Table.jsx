@@ -3,32 +3,41 @@ import TableItem from "./Table-item";
 import './Table.css'
 import withLoader from "../HOC/withLoader";
 import Preloader from "../Preloader/Preloader";
+import {connect} from "react-redux";
+import {writeTableMessage} from "../../redux/reducers/tableReducer";
+import ErrorMsg from "../Modals/ErrorMessage";
 
 
-const Table = ({isLoading,getDataFunc,data=[],columns=[],handlerClick})=>{
+const Table = ({isLoading,getDataFunc,data=[],columns=[],handlerClick,deleting,tableMessage,writeTableMessage})=>{
     useEffect(()=>{
         getDataFunc()
         return ()=>{
             data=[]
             columns=[]
+            writeTableMessage('')
         }
     },[])
 
     const elements = data.map(item=>{
         return (
             <div key={item.id}>
-            <TableItem columns={columns} data={item} handlerClick = {handlerClick}/>
+            <TableItem columns={columns} data={item} handlerClick = {handlerClick} deleting={deleting}/>
             </div>
         )
     })
     return(
         !isLoading ?
         <div className='table-container'>
+            {tableMessage && <ErrorMsg text={tableMessage}/>}
             {elements}
         </div> : <Preloader />
     )
 }
-
-export default Table
+const mapStateToProps = state=>{
+    return{
+        tableMessage : state.table.tableMessage
+    }
+}
+export default connect(mapStateToProps,{writeTableMessage})(Table)
 
 

@@ -11,31 +11,37 @@
     padding-right: 25px;
     margin-top: 5px;
 }
-.sidebar__item {
+.sidebar__item,.sidebar__item_active {
 
     display: flex;
     align-items: center;
     justify-content: flex-start;
+    margin: 30px 0;
 
 }
 .sidebar__item a:hover{
     color: #FF6800;
 }
-.sidebar__item img{
+.sidebar__item_active a{
+    color: #FF6800!important;
+
+}
+.sidebar__item img,
+.sidebar__item_active img{
     width: 26px;
     height: 26px;
-    box-shadow: 0px 1px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 6px;
     padding: 7px;
 }
-.sidebar__item a{
+.sidebar__item a,
+.sidebar__item_active a{
 
     color: #8E8E8E;
     text-decoration: none;
     font-style: normal;
     font-weight: 600;
-    font-size: 18px;
+    font-size: 20px;
     line-height: 27px;
     letter-spacing: -0.02em;
-    margin: 25px 0 25px 20px;
+    margin-left: 20px;
+    margin-top: 2px;
 }

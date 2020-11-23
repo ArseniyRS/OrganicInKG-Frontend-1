@@ -1,8 +1,9 @@
-import { WRITE_RECORD_ID,WRITE_ELEMENTS_TO_DELETE} from './types'
+import { WRITE_RECORD_ID,WRITE_ELEMENTS_TO_DELETE,WRITE_TABLE_MESSAGE} from './types'
 
 const initialState={
    recordViewId:'',
-    elementsToDelete: []
+    elementsToDelete: [],
+    tableMessage: ''
 }
 
 
@@ -19,6 +20,11 @@ export const tableReducer = (state=initialState,action)=>{
                 ...state,
                 elementsToDelete: action.payload
             }
+        case WRITE_TABLE_MESSAGE:
+            return{
+                ...state,
+                tableMessage: action.payload
+            }
         default:{
             return{
                 ...state
@@ -26,7 +32,12 @@ export const tableReducer = (state=initialState,action)=>{
         }
     }
 }
-
+export const writeTableMessage = str=>{
+    return{
+        type: WRITE_TABLE_MESSAGE,
+        payload: str
+    }
+}
 export const writeElementsToDelete = values=>{
     return{
         type:  WRITE_ELEMENTS_TO_DELETE,

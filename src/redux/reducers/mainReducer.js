@@ -1,16 +1,17 @@
 import {
     TOGGLE_AUTH,
     TOGGLE_FETCH_LOADER,
-    //TOGGLE_PAGE_LOADER
+    TOGGLE_PAGE_LOADER,
+    WRITE_AUTH_MESSAGE
 } from './types'
-import {authReq} from "../../utils/api/Request";
-//import {signIn} from "../../utils/api/Request";
+import {authRefreshReq, authReq} from "../../utils/api/Request";
 
 
 const initialState={
-   // pageLoader: true,
     isFetchLoader: false,
-    isAuthorized: false
+    isAuthorized: undefined,
+    isPageLoader: false,
+    authErrorMessage: undefined
 }
 
 
@@ -26,16 +27,34 @@ export const mainReducer = (state=initialState,action)=>{
                 ...state,
                 isFetchLoader: action.payload
             }
-        // case TOGGLE_PAGE_LOADER:
-        //     return{
-        //         ...state,
-        //         pageLoader: action.payload
-        //     }
+        case TOGGLE_PAGE_LOADER:
+            return{
+                ...state,
+                isPageLoader: action.payload
+
+        }
+        case WRITE_AUTH_MESSAGE:
+            return {
+                ...state,
+                authErrorMessage: action.payload
+            }
         default:{
             return{
                 ...state
             }
         }
+    }
+}
+export const writeAuthMessage = str =>{
+    return{
+        type: 'WRITE_AUTH_MESSAGE',
+        payload: str
+    }
+}
+export const togglePageLoader = bool =>{
+    return{
+        type: 'TOGGLE_PAGE_LOADER',
+        payload: bool
     }
 }
 export const toggleAuth = value =>{
@@ -50,22 +69,40 @@ export const toggleLoader = bool=>{
         payload: bool
     }
 }
-// export const togglePageLoader = value=>{
-//     return{
-//         type: 'TOGGLE_PAGE_LOADER',
-//         payload: value
-//     }
-// }
 
-export const signIn = data =>{
+export const authRefresh = data=> {
+    return async dispatch => {
+        dispatch(toggleLoader(true))
+        await authRefreshReq(data).then(response => {
+            localStorage.setItem("accessToken", response.result.body.accessToken)
+            localStorage.setItem("tokenExpirationTime", response.result.body.tokenExpirationTime)
+            localStorage.setItem("refreshExpirationTime", response.result.body.refreshExpirationTime)
+            localStorage.setItem("id", response.result.body.id)
+            localStorage.setItem("refreshToken", response.result.body.refreshToken)
+            dispatch(toggleAuth(true))
+        }).catch(err => console.log(err))
+        dispatch(toggleLoader(false))
+    }
+}
+export const authSignIn = data =>{
     return async dispatch =>{
         dispatch(toggleLoader(true))
         await authReq(data).then(response=>{
-            localStorage.setItem("token",response.result.body.accessToken)
-            localStorage.setItem("token",response.result.body.tokenExpirationTime)
-            localStorage.setItem("token",response.result.body.refreshExpirationTime)
-            dispatch(toggleLoader(false))
-        }).catch(err=> dispatch(toggleLoader(false)))
+            console.log(response)
+            if(response.resultCode==='NOT_FOUND'){
+                dispatch(writeAuthMessage('Неверно введены данные.'))
+            }else {
+                dispatch(togglePageLoader(true))
+                localStorage.setItem("accessToken", response.result.body.accessToken)
+                localStorage.setItem("tokenExpirationTime", Date.parse(response.result.body.tokenExpirationTime))
+                localStorage.setItem("refreshExpirationTime", Date.parse(response.result.body.refreshExpirationTime))
+                localStorage.setItem("id", response.result.body.id)
+                localStorage.setItem("refreshToken", response.result.body.refreshToken)
+                setTimeout(()=>dispatch(togglePageLoader(false)),4000)
+            }
+            dispatch(toggleAuth(true))
+        })
+        dispatch(toggleLoader(false))
     }
 }
 

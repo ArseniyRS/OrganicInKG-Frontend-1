@@ -6,24 +6,32 @@ export const productInputConfig = [
     {
         label: "Категория товара",
         placeholder: "Выберите категорию товара",
-        type: 'selector'
+        type: 'selector',
+        selectorProperty: 'category',
+        dataType: 'number',
     },
     {
         label: "Поставщик товара",
         placeholder: "Выберите поставщика товара",
-        type: 'selector'
+        type: 'selector',
+        selectorProperty: 'provider',
+        dataType: 'number',
     },
+
+
     {
         label: "Описание товара",
-        placeholder: "Самый вкусгый картофель",
+        placeholder: "Самый вкусный картофель",
     },
     {
         label: "Цена товара",
         placeholder: "30 сом/кг",
+        dataType: 'number',
     },
     {
         label: "Количество товара",
         placeholder: "100500",
+        dataType: 'number',
     },
 
     ]

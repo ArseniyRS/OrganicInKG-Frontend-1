@@ -1,3 +1,5 @@
+import {addressData} from "../../components/Inputs/SelectorInput/data/addressData";
+
 export const providerInputConfig = [
     {
     label: "ФИО",
@@ -18,6 +20,7 @@ export const providerInputConfig = [
         label: "Адрес",
         placeholder: "Чуйская область Бишкек",
         type: 'selectInput',
+        selectInputData:addressData
       //  required: "Укажите адрес поставщика",
     },
     {

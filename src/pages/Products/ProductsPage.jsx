@@ -14,6 +14,8 @@ import {
     getProducts,
     updateProduct
 } from "../../redux/reducers/productReducer";
+import {getProviders} from "../../redux/reducers/providerReducer";
+import {getCategory} from "../../redux/reducers/categoryReducer";
 
 
 
@@ -27,7 +29,9 @@ const ProductsPage = ({   products,
                           deleteProduct,
                           clearProduct,
                           categories,
-                          providers
+                          providers,
+                          getCategory,
+                          getProviders
                       })=>{
     return(
         <PageRenderer
@@ -42,18 +46,27 @@ const ProductsPage = ({   products,
             creatorTitle={'Создание товара'}
             updaterTitle={'Редактирование товара'}
             formInputsConfig={productInputConfig}
-            optionsForSelectorData={[categories,providers]}
-            // loadSelectorData={}
+            optionsForSelectorData={{
+                category: categories ? [...categories] : [],
+                provider: providers ? [...providers] : []
+            }}
+            loadSelectorData={[getCategory,getProviders]}
             creatorInitialFormValues={{
                 name: '',
                 categoryId: null,
                 supplierId: null,
                 description: '',
                 price: 0,
-               measure: 0,
-
+                measure: 0,
             }}
-            updaterInitialFormValues={{}}
+            updaterInitialFormValues={{
+                name: productById?.name,
+                categoryId: productById?.category?.id,
+                supplierId: productById?.supplier?.id,
+                description: productById?.description,
+                price: productById?.price,
+                measure: productById?.measure,
+            }}
             getDataFunc={getProducts}
             valueById={productById}
             getByIdFunc={getProductById}
@@ -76,6 +89,8 @@ const mapStateToProps = state=>{
 
 export  default  connect(mapStateToProps,
     {
+        getCategory,
+        getProviders,
         getProducts,
         getProductById,
         createProduct,

@@ -13,9 +13,4 @@ export const ProductColumns  =[
         title: "Потсавщик",
         dataIndex: 'supplier',
     },
-    {
-        title: "Цена",
-        dataIndex: 'price',
-
-    },
 ]

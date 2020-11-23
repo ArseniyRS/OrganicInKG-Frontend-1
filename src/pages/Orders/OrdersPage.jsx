@@ -1,110 +1,67 @@
 import React, {useEffect} from 'react'
-import {Route, Switch, withRouter} from 'react-router-dom'
-import Sidebar from "../../components/Sidebar/Sidebar";
-import Header from "../../components/Header/Header";
-import SearchPanel from "../../components/Search-panel/SearchPanel";
-import AddBtn from "../../components/Btns/AddBtn";
-import DeleteBtn from "../../components/Btns/DeleteBtn";
-import Table from "../../components/Table/Table";
-import {OrdersColumns, ProductColumns, ProviderColumns, UsersColumns} from "../../components/Table/columns";
 import {connect} from "react-redux";
-import {writeRecordId} from "../../redux/reducers/tableReducer";
-import RecordViewer from "../../components/RecordViewer/RecordViewer";
-import Modal from "../../components/Modals/Modal";
-import FormContainer from "../../components/FormGenerator/FormContainer";
-import {orderInputConfig} from "../../components/Orders/inputConfig";
+import {
+    clearOrder,  getOrderById, createOrder,deleteOrder, getOrders, updateOrder
+} from "../../redux/reducers/orderReducer";
 
-const OrdersPage = ({history,recordViewId,writeRecordId})=>{
+import PageRenderer from "../../components/PageRenderer/PageRendererContainer";
+import {OrderColumns} from "../../configs/Orders/tableColumnsConfig";
+import {recordViewOrderConfig} from "../../configs/Orders/recordViewConfig";
+import {orderInputConfig} from "../../configs/Orders/inputFormConfig";
 
 
-    const data =[{
-        order_id: '1',
-        product: 'Таласский картофель',
-        amount: '40кг',
-        total: 1400,
-        delivery_address: '123321',
-    },
-        {
-            order_id: '2',
-            product: 'Таласский картофель',
-            amount: '20кг',
-            total:700,
-            delivery_address: '123321',
-        },
-        {
-            order_id: '3',
-            product: 'Таласский картофель',
-            amount: '100кг',
-            total: 3500,
-            delivery_address: '123321',
-        },]
-    const clickOnRecord=(id)=>{
-        writeRecordId(id)
-        history.push('/orders/view/'+id)
-    }
-    const recordViewValue =  data.find(item=>item.id===recordViewId);
+
+
+const OrdersPage = ({orders,orderById,clearOrder,  getOrderById, createOrder,deleteOrder, getOrders, updateOrder})=>{
     return(
-        <>
-            <Header />
-            <div className="container">
-                <Sidebar />
-                <div className="page-content">
-                    <Switch>
-                        <Route exact path={'/orders'}>
-                            <h2 className='page-content__title'>Заказы</h2>
-                            <div className='page-functional'><SearchPanel /><AddBtn urlToCreate={'/orders/create-order'}/><DeleteBtn/></div>
-                            <Table data={data} columns={OrdersColumns} handlerClick={clickOnRecord}/>
-                        </Route>
-                        <Route exact  path={'/orders/create-order'}>
-                            <FormContainer
-                                urlToTable={'/orders'}
-                                loadData={false}
-                                initialVals={{
-                                    product: '',
-                                    amount: '',
-                                    total: '',
-                                    delivery_address: ''
-                                }}
-                                formTitle = {"Создание заказа"}
-                                inputConfig ={orderInputConfig}
-                            />
-                        </Route>
+        <PageRenderer
+            pageUrl ={'orders'}
+            pageTitle ={'Заказы'}
 
-                        <Route exact path={'/orders/update-order/:id'}>
-                            <FormContainer
-                                urlToTable={'/orders'}
-                                loadData={true}
-                                initialVals={{
-                                    product: '',
-                                    amount: '',
-                                    total: '',
-                                    delivery_address: ''
-                                }}
-                                formTitle = {"Редактирование заказа"}
-                                inputConfig ={orderInputConfig}
-                            />
-                        </Route>
-                        <Route  path={'/orders/view/:id'}>
-                            <RecordViewer
-                                titles={['Товары',"Количество","Цена","Адрес"]}
-                                values={recordViewValue}
-                                urlToUpd={'/orders/update-order'}
-                                urlToTable={'/orders'}
-                            />
-                        </Route>
-                    </Switch>
-                </div>
-            </div>
+            tableData={orders}
+            tableColumnsConfig={OrderColumns}
 
+            recordViewTitlesConfig={recordViewOrderConfig}
 
+            formInputsConfig ={orderInputConfig}
+            creatorTitle={'Создание заказа'}
+            updaterTitle={'Редактирование заказа'}
+            creatorInitialFormValues={{
+                deliveryAddress: '',
+                deliveryType: '',
+                desiredDeliveryDate: '',
+                paymentType: '',
+                storageAddress: ''
+            }}
+            updaterInitialFormValues={{
 
-        </>
+            }}
+
+            getDataFunc={getOrders}
+            valueById={orderById}
+            getByIdFunc={getOrderById}
+            createFunc={createOrder}
+            updateFunc={updateOrder}
+            clearFunc={clearOrder}
+            deleteFunc={deleteOrder}
+
+        />
     )
 }
-
 const mapStateToProps = state=>{
     return{
-        recordViewId: state.table.recordViewId,
+        orders: state.order.orders,
+        orderById: state.order.orderById
     }
 }
-export  default  connect(mapStateToProps,{writeRecordId})(withRouter(OrdersPage))
+
+export  default  connect(mapStateToProps,
+    {
+        clearOrder,
+        getOrderById,
+        createOrder,
+        deleteOrder,
+        getOrders,
+        updateOrder
+    }
+)(OrdersPage)

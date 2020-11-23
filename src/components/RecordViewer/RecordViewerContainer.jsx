@@ -15,7 +15,8 @@ const RecordViewerContainer = (
         clearFunc,
         getByIdFunc,
 
-        isLoading
+        isLoading,
+        editing
     }
 )=>{
     useEffect(()=>{
@@ -29,6 +30,7 @@ const RecordViewerContainer = (
             values={valueById}
             urlToUpd={urlToUpd}
             urlToTable={urlToTable}
+            editing={editing}
         /> : <Preloader />
     )
 }

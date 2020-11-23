@@ -33,7 +33,7 @@
     font-size: 20px;
     line-height: 27px;
 
-    color: #8E8E8E;
+    color: #000000;
 }
 .auth__btn{
     background: #009B00;
@@ -48,7 +48,7 @@
     color: #F2F2F2;
 
     padding: 12px 25px;
-    margin-top: 40px;
+    margin: 40px 0;
 
     cursor: pointer;
 }

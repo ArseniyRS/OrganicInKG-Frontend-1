@@ -11,9 +11,10 @@ const FormInput = ({
                 label,
                 placeholder,
                 type='',
-                       options=[]
+               selectInputData=[],
+               selectorProperty,
+               options=[]
                    })=>{
-    console.log(options)
     return(
         <div className="createOrEditField">
             <label htmlFor={name}>{label}</label>
@@ -25,6 +26,7 @@ const FormInput = ({
                     setFieldValue={setFieldValue}
                     value={value}
                     name={name}
+                    data={selectInputData}
                     placeholder={placeholder}/>
                     )
                 }}
@@ -41,16 +43,19 @@ const FormInput = ({
                     </Field>
                         : type==='check' ?
                             <Field   name={name} >
-                                {({field:{name},form: { setFieldValue}})=><CheckInput setFieldValue={setFieldValue} name={name} />}
+                                {({field:{name,value},form: { setFieldValue}})=><CheckInput value={value} setFieldValue={setFieldValue} name={name} />}
                           </Field>
                 : type==='selector' ?
                             <Field name={name} as={'select'} placeholder={placeholder}>
-                                <option value={null} className="select__placeholder" hidden>
+                                <option value={''} className="select__placeholder" hidden>
                                     {placeholder}
                                 </option>
-                                {options.map(item=> {
+                                <option value={''} className="select__placeholder">
+                                    {'Без родителя'}
+                                </option>
+                                {options[selectorProperty].map(item=> {
                                     return (
-                                        <option key={item.id} value={item.id}>{item.name}</option>
+                                        <option key={item.id} value={item.id}>{item?.name ? item.name : item.fullName}</option>
                                     )})
                                 }
                             </Field>
