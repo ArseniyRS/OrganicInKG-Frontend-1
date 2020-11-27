@@ -1,22 +1,30 @@
-import React, {useState} from 'react'
-import {providerSVG} from "../../assets/icons";
-import {Link} from "react-router-dom";
+import React, {useEffect, useState} from 'react'
+import {Link, withRouter} from "react-router-dom";
 import classNames from 'classnames'
 
 
 const SidebarItem = ({to,name,svg,
                          activeSvg,
-                        handleClick,
                          id,
-                         isActive=false
+                         history,
+    ...props
 })=>{
+    const [clicked,setClick] = useState(false)
+    useEffect(()=>{
+        if(to===history.location.pathname){
+           return setClick(true)
+        }
+        return setClick(false)
+
+
+    },[history.location.pathname])
     const classes = classNames({
-        'sidebar__item' : !isActive,
-        'sidebar__item_active' : isActive
+        'sidebar__item' : !clicked,
+        'sidebar__item_active' : clicked
     })
     return(
-        <li className={classes} ><img src={isActive ? activeSvg : svg} alt=""/><Link onClick={()=>handleClick(id)} to={to} >{name}</Link></li>
+        <li className={classes} ><img src={clicked ? activeSvg : svg} alt=""/><Link onClick={()=>setClick(true)} to={to} >{name}</Link></li>
     )
 }
 
-export default SidebarItem
+export default withRouter(SidebarItem)

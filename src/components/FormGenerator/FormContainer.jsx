@@ -20,13 +20,12 @@ const FormContainer = ({
         }
     },[])
 
-    const handleSubmit =  async values=>{
+    const handleSubmit = async values=>{
 
         if(match.params?.id){
-            console.log(values)
-           await updReq(match.params.id,values)
+            await updReq(match.params.id,values)
         }else {
-            await createReq(values,fileUploadKeys)
+            await  createReq(values,fileUploadKeys)
         }
     }
 

@@ -13,6 +13,7 @@ import checkPasSVG from './checkPassword.svg'
 import plusSVG from './plus.svg'
 import openList from './openList.svg'
 import preloaderSVG from './Rolling-0.6s-197px.svg'
+import btnLoaderSVG from './Rolling-0.6s-197px2.svg'
 import categoryActiveSVG from '../active_icons/category_active.svg'
 import providerActiveSVG from '../active_icons/provider_active.svg'
 import productActiveSVG from '../active_icons/product_active.svg'
@@ -23,4 +24,4 @@ import orderActiveSVG from '../active_icons/order_active.svg'
 import logoSVG from '../img/logo.svg'
 import loaderLogoSVG from '../img/loader-logo.svg'
 import errorSVG from './error.svg'
-export {loaderLogoSVG,errorSVG,logoSVG,orderActiveSVG,categoryActiveSVG,providerActiveSVG,productActiveSVG,userActiveSVG,questionActiveSVG,aboutActiveSVG,preloaderSVG,openList,plusSVG,checkPasSVG,backSVG,categorySVG,userSVG,productSVG,orderSVG,providerSVG,questionSVG,searchSVG,badStatusSVG,goodStatusSVG,deleteSVG}
+export {btnLoaderSVG,loaderLogoSVG,errorSVG,logoSVG,orderActiveSVG,categoryActiveSVG,providerActiveSVG,productActiveSVG,userActiveSVG,questionActiveSVG,aboutActiveSVG,preloaderSVG,openList,plusSVG,checkPasSVG,backSVG,categorySVG,userSVG,productSVG,orderSVG,providerSVG,questionSVG,searchSVG,badStatusSVG,goodStatusSVG,deleteSVG}

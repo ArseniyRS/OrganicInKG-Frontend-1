@@ -7,27 +7,27 @@ import ProductsPage from './pages/Products/ProductsPage';
 import ProvidersPage from './pages/Providers/ProvidersPage';
 import AuthPage from "./pages/Auth/AuthPage";
 import CategoriesPage from "./pages/Categories/CategoriesPage";
-import MainPage from "./pages/Main/MainPage";
 import Modal from "./components/Modals/Modal";
 import {connect} from "react-redux";
 import ProfilePage from "./pages/Profile/ProfilePage";
-import withLogged from "./components/HOC/withLogged";
 import {authRefresh, toggleAuth} from "./redux/reducers/mainReducer";
 import {getUserById} from "./redux/reducers/userReducer";
 import {expChecker} from "./components/Auth/expChecker";
 import {tokensChecker} from "./components/Auth/tokensChecker";
 import {logout} from "./components/Auth/logout";
-import Preloader from "./components/Preloader/Preloader";
 import Header from "./components/Header/Header";
 import SidebarList from "./components/Sidebar/SidebarList";
 import PageLoader from "./components/pageLoader/pageLoader";
-import {TransitionGroup} from "react-transition-group";
 
 function App(props) {
+    const [timeRender,setTimeRender] = useState(false)
+    useEffect(()=>{
+        setTimeout(()=>setTimeRender(!timeRender),expChecker()) //запустит перерендер приложения когда кончится время токена
+    },[timeRender])
     useEffect( ()=>{
-        if (expChecker()) {
+        if (expChecker()) {                    //проверка на время токена
             props.toggleAuth(true)
-        } else if (tokensChecker()) {
+        } else if (tokensChecker()) {                            //отправка на новый токен
             const fetch = async () => {
                 await props.getUserById(JSON.parse(localStorage.getItem('id')))
                 await props.authRefresh({
@@ -37,27 +37,23 @@ function App(props) {
                 })
             }
             fetch()
-        } else {
+        } else {                                                            //выход из аккаунта
             props.toggleAuth(false)
             logout()
             props.history.push('/')
         }
-    },[props.isAuthorized])
+    },[timeRender,props.isAuthorized])
 const [renderCounter,setRenderCounter]= useState(0)
 useEffect(()=>{
-    console.log(renderCounter)
     let buff=renderCounter
     setRenderCounter(buff++)
 },[])
   return(
 
-
-
-
       (props.isPageLoader || props.isAuthorized===undefined ) ? <PageLoader/>:
             <>
+                {props.modal.isOpen && <Modal/>}
 
-                          <Modal/>
                   {props.isAuthorized ?
                       <>
                           <Header/>
@@ -65,7 +61,6 @@ useEffect(()=>{
                               <SidebarList/>
                               <div className="page-content">
                                   <Switch>
-                                      <Route path={'/'} exact component={MainPage}/>
                                       <Route path={'/orders'} component={OrdersPage}/>
                                       <Route path={'/users'} component={UsersPage}/>
                                       <Route path={'/products'} component={ProductsPage}/>
@@ -102,7 +97,8 @@ const mapStateToProps = state=>{
         users: state.user.users,
         products: state.product.products,
         providers: state.provider.providers,
-        isLoading : state.main.isFetchLoader
+        isLoading : state.main.isFetchLoader,
+        modal : state.modal.isOpenModal
     }
 }
 export default connect(mapStateToProps,{toggleAuth,getUserById,authRefresh})(withRouter(App));

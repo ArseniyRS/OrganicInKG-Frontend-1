@@ -1,9 +1,16 @@
-import {WRITE_CATEGORIES, WRITE_CATEGORY_BY_ID, WRITE_PROVIDER, WRITE_PROVIDER_BY_ID} from './types'
+import {WRITE_CATEGORIES, WRITE_CATEGORY_BY_ID, WRITE_PROVIDER, WRITE_PROVIDER_BY_ID,WRITE_ACTIVE_PROVIDERS} from './types'
 import {
-    providerDelReq, providerGetByIdReq,
+    providerDelReq,
+    providerGetByIdReq,
     providersGetReq,
     providerPostReq,
-    providerUpdReq, providerFilePostReq, categoryDelByIdReq, categoryGetReq, providerDelByIdReq, categoryPostReq
+    providerUpdReq,
+    providerFilePostReq,
+    categoryDelByIdReq,
+    categoryGetReq,
+    providerDelByIdReq,
+    categoryPostReq,
+    providerActiveGetReq
 } from "../../utils/api/Request";
 import {getTemplate} from "../../utils/templates/getTemplate";
 import {createOrChangeTemplate} from "../../utils/templates/createOrChangeTemplate";
@@ -12,7 +19,8 @@ import {toggleLoader} from "./mainReducer";
 
 const initialState={
     providers: undefined,
-    providerById: undefined
+    providerById: undefined,
+    activeProviders: undefined
 }
 
 
@@ -28,6 +36,11 @@ export const providerReducer = (state=initialState,action)=>{
                 ...state,
                 providerById: action.payload
             }
+        case WRITE_ACTIVE_PROVIDERS:
+            return{
+                ...state,
+                activeProviders: action.payload
+            }
         default:{
             return{
                 ...state
@@ -40,6 +53,9 @@ export const clearProvider = ()=>{
         type: WRITE_CATEGORY_BY_ID,
         action: undefined
     }
+}
+export const getActiveProviders = ()=>{
+    return async dispatch => getTemplate(dispatch,providerActiveGetReq,WRITE_ACTIVE_PROVIDERS,toggleLoader)
 }
 export const getProviders = ()=> {
     return async dispatch => getTemplate(dispatch, providersGetReq, WRITE_PROVIDER, toggleLoader)

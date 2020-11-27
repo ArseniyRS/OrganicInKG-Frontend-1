@@ -5,13 +5,14 @@ import {toggleModal} from "../../redux/reducers/modalReducer";
 
 
 
-const CancelBtn = ({toggleModal})=>{
+const CancelBtn = ({toggleModal,urlToTable})=>{
     return(
         <div className='createOrEditBtn-cancel'
                 onClick={()=>toggleModal({
                     isOpen:true,
                     title:'Вы действительно хотите\n' +
-                        'отменить изменения?'})}>
+                        'отменить изменения?',
+                    urlToTable: urlToTable})}>
         Отмена
         </div>
 

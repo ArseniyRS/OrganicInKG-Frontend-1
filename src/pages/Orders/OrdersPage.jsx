@@ -34,7 +34,11 @@ const OrdersPage = ({orders,orderById,clearOrder,  getOrderById, createOrder,del
                 storageAddress: ''
             }}
             updaterInitialFormValues={{
-
+                deliveryAddress: orderById?.deliveryAddress,
+                deliveryType: orderById?.deliveryType,
+                desiredDeliveryDate: orderById?.desiredDeliveryDate,
+                paymentType: orderById?.paymentType,
+                storageAddress: orderById?.storageAddress
             }}
 
             getDataFunc={getOrders}

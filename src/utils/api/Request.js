@@ -32,6 +32,7 @@ export const providerFilePostReq = (data)=>instance.post('supplierFile',data)
 export const providerDelReq = (id)=>instance.delete(`supplier`,id)
 export const providerDelByIdReq = (id)=>instance.delete(`supplier/${id}`)
 export const providerUpdReq = (data,id)=>instance.put(`supplier/${id}`,data)
+export const providerActiveGetReq = ()=>instance.get(`supplier/active`).then(response=>response.data)
 
 export const usersGetReq = ()=>instance.get('client/').then(response=>response.data)
 export const userGetByIdReq = (id)=>instance.get(`client/${id}`).then(response=>response.data)

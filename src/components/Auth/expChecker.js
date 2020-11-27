@@ -8,10 +8,11 @@ const getExpirationDate = (token,exp)=> {
 const isExpired = (exp) => {
     if (!exp) {
         return false;
-    }else if (Date.now() < exp){
-        return true
     }
-    return false
+    if (Date.now() < exp){
+        return exp - Date.now()
+    }
+
 
 };
 

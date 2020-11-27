@@ -17,7 +17,7 @@ const DeleteBtn = ({toggleModal,deleteFunc,elementsToDelete,writeTableMessage})=
             if(elementsToDelete.length===0){
              return writeTableMessage('Вы не выбрали ни одной записи!')
             }
-            return toggleModal({isOpen:true,title:'Вы действительно хотите удалить запись(и)?',confirmFunc: confirmHandler})
+            return toggleModal({isOpen:true,title:'Вы действительно хотите удалить запись(-и)?',confirmFunc: confirmHandler})
         }}/>
     )
 }

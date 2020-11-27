@@ -14,7 +14,7 @@ import {
     getProducts,
     updateProduct
 } from "../../redux/reducers/productReducer";
-import {getProviders} from "../../redux/reducers/providerReducer";
+import {getActiveProviders} from "../../redux/reducers/providerReducer";
 import {getCategory} from "../../redux/reducers/categoryReducer";
 
 
@@ -29,9 +29,9 @@ const ProductsPage = ({   products,
                           deleteProduct,
                           clearProduct,
                           categories,
-                          providers,
+                          activeProviders,
                           getCategory,
-                          getProviders
+                          getActiveProviders
                       })=>{
     return(
         <PageRenderer
@@ -48,9 +48,9 @@ const ProductsPage = ({   products,
             formInputsConfig={productInputConfig}
             optionsForSelectorData={{
                 category: categories ? [...categories] : [],
-                provider: providers ? [...providers] : []
+                provider: activeProviders ? [...activeProviders] : []
             }}
-            loadSelectorData={[getCategory,getProviders]}
+            loadSelectorData={[getCategory,getActiveProviders]}
             creatorInitialFormValues={{
                 name: '',
                 categoryId: null,
@@ -83,14 +83,14 @@ const mapStateToProps = state=>{
         products: state.product.products,
         productById: state.product.productById,
         categories: state.category.categories,
-        providers: state.provider.providers
+        activeProviders: state.provider.activeProviders
     }
 }
 
 export  default  connect(mapStateToProps,
     {
         getCategory,
-        getProviders,
+        getActiveProviders,
         getProducts,
         getProductById,
         createProduct,

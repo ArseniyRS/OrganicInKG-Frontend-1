@@ -4,4 +4,5 @@ export const getTemplate = async (dispatch,getFunc, actionType,toggleLoader,id=n
     console.log(response)
     dispatch({type:actionType,payload: response.result})
     dispatch(toggleLoader(false))
+
 }

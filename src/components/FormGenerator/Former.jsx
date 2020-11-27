@@ -37,9 +37,9 @@ const Former = (props)=>{
             <Formik
                 initialValues={props.initialVals}
                 validationSchema={Yup.object(schema)}
-                onSubmit={async (values,e)=>{
+                onSubmit={ async (values,e)=>{
                     console.log(values)
-                   await props.handleSubmit(values)
+                  await props.handleSubmit(values)
                 }}
             >
                 {({handleSubmit,errors,values}) =>{
@@ -47,7 +47,8 @@ const Former = (props)=>{
 
                     const submitFunc = async ()=> {
                        // if(!errors) {
-                           return  handleSubmit()
+                       // await submitForm();
+                         await handleSubmit()
                        // }
                     }
                     return (
@@ -58,7 +59,7 @@ const Former = (props)=>{
                             urlToTable={props.urlToTable}
                             confirmFunc = {submitFunc}
                         />
-                        <CancelBtn />
+                        <CancelBtn urlToTable={props.urlToTable}/>
                         </div>
                     </Form>
                 )}}
