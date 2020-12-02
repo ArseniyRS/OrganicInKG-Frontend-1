@@ -21,9 +21,13 @@ import PageLoader from "./components/pageLoader/pageLoader";
 
 function App(props) {
     const [timeRender,setTimeRender] = useState(false)
-    useEffect(()=>{
-        setTimeout(()=>setTimeRender(!timeRender),expChecker()) //запустит перерендер приложения когда кончится время токена
-    },[timeRender])
+    //console.log(timeRender)
+    // useEffect(()=>{
+    //    // if(expChecker()) {
+    //         setTimeout(() => setTimeRender(!timeRender), expChecker())
+    //     //}
+    //     //запустит перерендер приложения когда кончится время токена
+    // },[timeRender])
     useEffect( ()=>{
         if (expChecker()) {                    //проверка на время токена
             props.toggleAuth(true)

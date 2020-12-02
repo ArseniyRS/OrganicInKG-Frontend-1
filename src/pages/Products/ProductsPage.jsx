@@ -22,6 +22,7 @@ import {getCategory} from "../../redux/reducers/categoryReducer";
 
 const ProductsPage = ({   products,
                           productById,
+                          ratingById,
                           getProducts,
                           getProductById,
                           createProduct,
@@ -33,6 +34,11 @@ const ProductsPage = ({   products,
                           getCategory,
                           getActiveProviders
                       })=>{
+    // const productForView = productById
+    // if(productById) {
+    //     productForView['raiting'] = ratingById
+    // }
+    console.log(productById?.productImages.map(item=>item.imageUrl))
     return(
         <PageRenderer
             pageUrl ={'products'}
@@ -58,6 +64,7 @@ const ProductsPage = ({   products,
                 description: '',
                 price: 0,
                 measure: 0,
+                images: []
             }}
             updaterInitialFormValues={{
                 name: productById?.name,
@@ -66,6 +73,7 @@ const ProductsPage = ({   products,
                 description: productById?.description,
                 price: productById?.price,
                 measure: productById?.measure,
+                images: productById?.productImages.map(item=>item.imageUrl)
             }}
             getDataFunc={getProducts}
             valueById={productById}
@@ -82,6 +90,7 @@ const mapStateToProps = state=>{
     return{
         products: state.product.products,
         productById: state.product.productById,
+        ratingById: state.product.ratingById,
         categories: state.category.categories,
         activeProviders: state.provider.activeProviders
     }

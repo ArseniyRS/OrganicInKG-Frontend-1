@@ -10,5 +10,6 @@ export const recordViewCategoryConfig  =[
     {
         title: "Родительская категория",
         dataIndex: 'parentCategory',
+        object: 'name'
     },
 ]

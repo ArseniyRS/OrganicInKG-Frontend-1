@@ -24,4 +24,7 @@ import orderActiveSVG from '../active_icons/order_active.svg'
 import logoSVG from '../img/logo.svg'
 import loaderLogoSVG from '../img/loader-logo.svg'
 import errorSVG from './error.svg'
-export {btnLoaderSVG,loaderLogoSVG,errorSVG,logoSVG,orderActiveSVG,categoryActiveSVG,providerActiveSVG,productActiveSVG,userActiveSVG,questionActiveSVG,aboutActiveSVG,preloaderSVG,openList,plusSVG,checkPasSVG,backSVG,categorySVG,userSVG,productSVG,orderSVG,providerSVG,questionSVG,searchSVG,badStatusSVG,goodStatusSVG,deleteSVG}
+import uploadBtnSVG from './upload-button.svg'
+import editSVG from './edit.svg'
+import trashSVG from './trash.svg'
+export {trashSVG,editSVG,uploadBtnSVG,btnLoaderSVG,loaderLogoSVG,errorSVG,logoSVG,orderActiveSVG,categoryActiveSVG,providerActiveSVG,productActiveSVG,userActiveSVG,questionActiveSVG,aboutActiveSVG,preloaderSVG,openList,plusSVG,checkPasSVG,backSVG,categorySVG,userSVG,productSVG,orderSVG,providerSVG,questionSVG,searchSVG,badStatusSVG,goodStatusSVG,deleteSVG}

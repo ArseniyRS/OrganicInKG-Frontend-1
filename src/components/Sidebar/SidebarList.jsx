@@ -5,7 +5,6 @@ import {sideBarConfig} from "./sideBarConfig";
 import {withRouter} from "react-router-dom";
 
 const SidebarList  = (props)=>{
-
     const elements = sideBarConfig.map((item,index)=>{
         return(
             <SidebarItem

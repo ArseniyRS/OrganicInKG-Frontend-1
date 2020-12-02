@@ -1,8 +1,21 @@
 .table-container{
-
+    position: relative;
     display: flex;
     flex-direction: column;
     min-height: 400px;
+
+}
+.table-loading-wrapper{
+    position: absolute;
+    width: 110%;
+    height: 110%;
+    left: -20px;
+    z-index: 100;
+    box-sizing: border-box;
+    backdrop-filter: blur(6px);
+}
+.table-loading-wrapper div{
+    top: 35%;
 }
 .tableItem{
     border: 2px solid #DDDDDD;

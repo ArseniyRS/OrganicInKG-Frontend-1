@@ -8,8 +8,8 @@ import {writeTableMessage} from "../../redux/reducers/tableReducer";
 
 const DeleteBtn = ({toggleModal,deleteFunc,elementsToDelete,writeTableMessage})=>{
 
-    const confirmHandler = async ()=>{
-           await deleteFunc(elementsToDelete)
+    const confirmHandler = ()=>{
+          deleteFunc(elementsToDelete)
     }
 
     return(

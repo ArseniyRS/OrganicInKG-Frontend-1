@@ -6,22 +6,30 @@ import {backSVG} from "../../assets/icons";
 const RecordViewer=({titles,values={},urlToUpd,urlToTable,match,editing})=>{
     const valuesToArray = Object.values(values).slice(1,values.length)
     const valsKey = Object.keys(values).slice(1,values.length)
-
+    console.log(values)
     const elements = ()=>{
         let results=[];
         for(let i=0;i<titles.length;i++){
             for(let j=0;j<valsKey.length;j++){
                 if( valsKey[j]===titles[i].dataIndex){
                     const value = ()=> {
-                        if (valuesToArray[j] !== null && typeof valuesToArray[j] === 'object') {
-                            return valuesToArray[j]?.name ? valuesToArray[j].name :  valuesToArray[j].fullName
+                        if(titles[i]?.object){
+                            return valuesToArray[j]?.[`${titles[i].object}`]
                         }
                         return valuesToArray[j]
                     }
                     results.push((
                         <div key={j} className='recordView__item'>
                             <span className='recordView__item-title'>{titles[i].title}</span>
-                            <span className='recordView__item-value'>{value()}</span>
+                            {titles[i]?.type==='image' ?
+                                <div className={'recordView__item-imgWrapper'}>
+                                    {value().map(item=> {
+                                        return (
+                                           <div className={'recordView__item-imgContainer'}><img src={item.imageUrl} alt=""/></div>
+                                        )
+                                    })}
+                                    </div>
+                           : <span className='recordView__item-value'>{value()}</span>}
                         </div>
                     ))
                     break;

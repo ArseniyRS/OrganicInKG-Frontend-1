@@ -38,12 +38,12 @@ const ProvidersPage = ({providers,providerById,getProviders,getProviderById,crea
                 placeOfProduction: '',
                 produces: '',
                 walletNumber: '',
-               // file_passport: [],
-               // file_sertificate: [],
+                PASSPORT: [],
+                SERTIFICATE: [],
+                CONTRACT: [],
                 isActive: false
 
             }}
-           // fileUploadKeys = {['PASSPORT,SERTIFICATE']}
             updaterInitialFormValues={{
                 fullName: providerById?.fullName,
                 phone: providerById?.phone,
@@ -51,8 +51,9 @@ const ProvidersPage = ({providers,providerById,getProviders,getProviderById,crea
                 placeOfProduction:  providerById?.placeOfProduction,
                 produces:  providerById?.produces,
                 walletNumber:  providerById?.ewalletNumber,
-                // file_passport: [],
-                // file_sertificate: [],
+                PASSPORT: [],
+                SERTIFICATE: [],
+                CONTRACT: [],
                 isActive:  providerById?.isActive
             }}
             getDataFunc={getProviders}

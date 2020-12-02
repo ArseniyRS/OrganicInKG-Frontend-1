@@ -25,10 +25,36 @@ export const productDelReq = (id)=>instance.delete(`products`,id)
 export const productDelByIdReq = (id)=>instance.delete(`products/${id}`)
 export const productUpdReq = (data,id)=>instance.put(`products/${id}`,data)
 
+export const productImgPostReq = (data)=>{
+    for (let pair of data.entries()) {
+        console.log(pair[0]+ ', ' + pair[1]);
+    }
+   return instance.post(`productImages`,data, {headers: { 'content-type': 'multipart/form-data' }})
+}
+export const productImgUpdReq = (data,id)=>{
+    for (let pair of data.entries()) {
+        console.log(pair[0]+ ', ' + pair[1]);
+    }
+    return instance.put(`productImages/${id}`,data, {headers: { 'content-type': 'multipart/form-data' }})
+}
+
+
+export const raitingsGetReq = ()=>instance.get('raitings').then(response=>response.data)
+export const raitingGetByIdReq = (id)=>instance.get(`raitings/${id}`).then(response=>console.log(response.data))
+export const raitingPostReq = (data)=>instance.post('raitings',data)
+export const raitingDelReq = (id)=>instance.delete(`raitings`,id)
+export const raitingDelByIdReq = (id)=>instance.delete(`raitings/${id}`)
+export const raitingUpdReq = (data,id)=>instance.put(`raitings/${id}`,data)
+
 export const providersGetReq = ()=>instance.get('supplier').then(response=>response.data)
 export const providerGetByIdReq = (id)=>instance.get(`supplier/${id}`).then(response=>response.data)
 export const providerPostReq = (data)=>instance.post('supplier',data)
-export const providerFilePostReq = (data)=>instance.post('supplierFile',data)
+export const providerImgPostReq = (data)=>{
+    for (let pair of data.entries()) {
+        console.log(pair[0]+ ', ' + pair[1]);
+    }
+    return instance.post('supplierFile',data)
+}
 export const providerDelReq = (id)=>instance.delete(`supplier`,id)
 export const providerDelByIdReq = (id)=>instance.delete(`supplier/${id}`)
 export const providerUpdReq = (data,id)=>instance.put(`supplier/${id}`,data)

@@ -1,4 +1,6 @@
-import { WRITE_ORDERS,WRITE_ORDER_BY_ID} from './types'
+import {
+    WRITE_ORDERS,
+    WRITE_ORDER_BY_ID,ADDED_ORDER,DELETED_ORDER,UPDATED_ORDER} from './types'
 import {
      orderDelByIdReq, orderGetByIdReq, orderPostReq, ordersGetReq, orderUpdReq,
 } from "../../utils/api/Request";
@@ -6,6 +8,7 @@ import {getTemplate} from "../../utils/templates/getTemplate";
 import {createOrChangeTemplate} from "../../utils/templates/createOrChangeTemplate";
 import {deleteTemplate} from "../../utils/templates/deleteTemplate";
 import {toggleLoader} from "./mainReducer";
+import {updateItemInStore} from "../../utils/templates/updateItemInStore";
 
 const initialState={
     orders: undefined,
@@ -24,6 +27,23 @@ export const orderReducer = (state=initialState,action)=>{
             return{
                 ...state,
                 orderById: action.payload
+            }
+        case ADDED_ORDER:
+            return {
+                ...state,
+                orders: [
+                    ...state.orders,
+                    action.payload]
+            }
+        case DELETED_ORDER:
+            return{
+                ...state,
+                orders: updateItemInStore(state.orders,action.payload,'delete')
+            }
+        case UPDATED_ORDER:
+            return {
+                ...state,
+                orders: updateItemInStore(state.orders,action.payload,'update')
             }
         default:{
             return{
@@ -45,18 +65,16 @@ export const getOrderById = (id)=> {
     return async dispatch => getTemplate(dispatch, orderGetByIdReq, WRITE_ORDER_BY_ID, toggleLoader,id)
 }
 export const createOrder = data=>{
-    return async dispatch => createOrChangeTemplate(dispatch, orderPostReq, data, toggleLoader).then(()=>getTemplate(dispatch, ordersGetReq, WRITE_ORDERS, toggleLoader))
+    return async dispatch => createOrChangeTemplate(dispatch, orderPostReq, data,ADDED_ORDER, toggleLoader)
 }
 export const deleteOrder = id =>{
     return async dispatch => {
         for(let i=0;i<id.length;i++){
-            await deleteTemplate(dispatch,orderDelByIdReq,id[i],toggleLoader)
+            await deleteTemplate(dispatch,orderDelByIdReq,id[i],toggleLoader,DELETED_ORDER)
         }
-        await getTemplate(dispatch, ordersGetReq, WRITE_ORDERS, toggleLoader)
-        // deleteTemplate(dispatch,categoryDelReq,id,toggleLoader).then(()=>getTemplate(dispatch, categoryGetReq, WRITE_CATEGORIES, toggleLoader))
     }
 }
 export const updateOrder = (id,data) =>{
-    return async dispatch => createOrChangeTemplate(dispatch,orderUpdReq,data,toggleLoader,id).then(()=>getTemplate(dispatch, ordersGetReq, WRITE_ORDERS, toggleLoader))
+    return async dispatch => createOrChangeTemplate(dispatch,orderUpdReq,data,UPDATED_ORDER,toggleLoader,id)
 }
 

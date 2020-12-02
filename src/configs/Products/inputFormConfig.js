@@ -33,6 +33,12 @@ export const productInputConfig = [
         placeholder: "100500",
         dataType: 'number',
     },
+    {
+        label: "Фото товара",
+        placeholder: "100500",
+        type: 'image'
+
+    },
 
     ]
 

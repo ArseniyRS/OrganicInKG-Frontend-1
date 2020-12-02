@@ -1,8 +1,7 @@
-export const deleteTemplate = async (dispatch,deleteFunc,id,toggleLoader)=>{
+export const deleteTemplate = async (dispatch,deleteFunc,id,toggleLoader,actionType)=>{
     dispatch(toggleLoader(true))
-    await deleteFunc(id).then(response=>{
-        console.log(response)
-        dispatch(toggleLoader(false))
-    }).catch(resp=>console.log(resp))
-
+    dispatch({type:actionType,payload: id})
+    await deleteFunc(id).then((resp)=>console.log(resp))
+   .catch(resp=>console.log(resp))
+    dispatch(toggleLoader(false))
 }

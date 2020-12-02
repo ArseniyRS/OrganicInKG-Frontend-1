@@ -3,14 +3,12 @@ import './Modal.css'
 import {connect} from "react-redux";
 import {toggleModal} from "../../redux/reducers/modalReducer";
 import {Redirect, withRouter} from "react-router-dom";
-import Preloader from "../Preloader/Preloader";
-import {btnLoaderSVG} from "../../assets/icons";
 
 
 const Modal = ({modal,toggleModal,history,isLoading})=>{
-    const handleConfirm = async ()=>{
+    const handleConfirm = ()=>{
         if(modal.confirmFunc) {
-           await modal.confirmFunc()
+           modal.confirmFunc()
         }
         toggleModal({isOpen: false, title: ''})
         history.push(modal.urlToTable)
@@ -25,7 +23,7 @@ const Modal = ({modal,toggleModal,history,isLoading})=>{
             <h2>{modal.title}</h2>
 
                     <div className='modal__btns'>
-                        <div className='modal__btns-confirm' onClick={() => handleConfirm()}>Да {isLoading && <img src={btnLoaderSVG}/>}</div>
+                        <div className='modal__btns-confirm' onClick={() => handleConfirm()}>Да</div>
                         <div className='modal__btns-cancel' onClick={() => toggleModal({
                             isOpen: false,
                             title: ''

@@ -1,11 +1,12 @@
-import {WRITE_CATEGORIES, WRITE_USER_BY_ID, WRITE_USERS} from './types'
+import {DELETED_USER,WRITE_USER_BY_ID, WRITE_USERS} from './types'
 import {
-    categoryDelByIdReq, categoryGetReq, userDelByIdReq,
-    userDelReq, userGetByIdReq, usersGetReq,
+    userDelByIdReq,
+    userGetByIdReq, usersGetReq,
 } from "../../utils/api/Request";
 import {getTemplate} from "../../utils/templates/getTemplate";
 import {deleteTemplate} from "../../utils/templates/deleteTemplate";
 import {toggleLoader} from "./mainReducer";
+import {updateItemInStore} from "../../utils/templates/updateItemInStore";
 
 const initialState={
     users: undefined,
@@ -24,6 +25,11 @@ export const userReducer = (state=initialState,action)=>{
             return{
                 ...state,
                 userById: action.payload
+            }
+        case DELETED_USER:
+            return{
+                ...state,
+                users: updateItemInStore(state.users,action.payload,'delete')
             }
         default:{
             return{
@@ -47,10 +53,8 @@ export const getUserById = (id)=> {
 export const deleteUser = id =>{
     return async dispatch => {
         for(let i=0;i<id.length;i++){
-            await deleteTemplate(dispatch,userDelByIdReq,id[i],toggleLoader)
+            await deleteTemplate(dispatch,userDelByIdReq,id[i],toggleLoader,DELETED_USER)
         }
-        await getTemplate(dispatch, usersGetReq, WRITE_CATEGORIES, toggleLoader)
-        //deleteTemplate(dispatch,userDelReq,id,toggleLoader).then(()=>getTemplate(dispatch, usersGetReq, WRITE_USERS, toggleLoader))
     }
 }
 

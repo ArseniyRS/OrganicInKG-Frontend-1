@@ -38,7 +38,6 @@ const Former = (props)=>{
                 initialValues={props.initialVals}
                 validationSchema={Yup.object(schema)}
                 onSubmit={ async (values,e)=>{
-                    console.log(values)
                   await props.handleSubmit(values)
                 }}
             >

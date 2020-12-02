@@ -10,8 +10,10 @@ const SidebarItem = ({to,name,svg,
     ...props
 })=>{
     const [clicked,setClick] = useState(false)
+
+    const activeRoute =()=>history.location.pathname.indexOf(to) > -1
     useEffect(()=>{
-        if(to===history.location.pathname){
+        if(activeRoute()){
            return setClick(true)
         }
         return setClick(false)

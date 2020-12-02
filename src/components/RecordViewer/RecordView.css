@@ -35,7 +35,20 @@
     flex-direction: column;
     margin: 25px 0;
 }
-
+.recordView__item-imgWrapper{
+    display: flex;
+}
+.recordView__item-imgContainer{
+    height: 120px;
+    width: 120px;
+    margin-right: 15px;
+    overflow: hidden;
+    border-radius: 9px;
+}
+.recordView__item-imgContainer img{
+    width: 100%;
+    height: 100%;
+}
 .recordView__item-title{
     color: #8E8E8E;
     font-size: 18px;

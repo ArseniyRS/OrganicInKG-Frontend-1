@@ -10,7 +10,7 @@ export const ProductColumns  =[
         dataIndex: 'category',
     },
     {
-        title: "Потсавщик",
+        title: "Поставщик",
         dataIndex: 'supplier',
     },
 ]

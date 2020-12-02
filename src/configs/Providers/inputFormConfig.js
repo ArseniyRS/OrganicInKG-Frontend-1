@@ -32,14 +32,18 @@ export const providerInputConfig = [
         label: "Банковский счет",
         placeholder: "40702810500000000001",
     },
-    // {
-    //     label: "Фото пасспорта",
-    //     type: 'image'
-    // },
-    // {
-    //     label: "Фото сертификата",
-    //     type: 'image'
-    // },
+    {
+        label: "Фото пасспорта",
+        type: 'image'
+    },
+    {
+        label: "Фото сертификата",
+        type: 'image'
+    },
+    {
+        label: "Фото контракта",
+        type: 'image'
+    },
     {
         label: "Статус",
         type: 'check'

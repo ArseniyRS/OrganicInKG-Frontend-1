@@ -5,15 +5,14 @@ export const recordViewProductConfig  =[{
 {
     title: "Категория товара",
         dataIndex: 'category',
+    object: 'name'
 },
     {
-        title: "Поставщика товара",
+        title: "Поставщик товара",
         dataIndex: 'supplier',
+        object: 'fullName'
     },
-// {
-//     title: "Изображения товара",
-//         dataIndex: 'productImages',
-// },
+
 {
     title: "Описание",
         dataIndex: 'description',
@@ -26,4 +25,10 @@ export const recordViewProductConfig  =[{
     title: "Количество товара",
         dataIndex: 'measure',
 },
+    {
+        title: "Фото товара",
+        dataIndex: 'productImages',
+       // object: 'imageUrl',
+        type: 'image'
+    }
     ]
