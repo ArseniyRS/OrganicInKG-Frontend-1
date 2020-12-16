@@ -12,4 +12,10 @@ export const recordViewCategoryConfig  =[
         dataIndex: 'parentCategory',
         object: 'name'
     },
+    {
+        title: "Иконка категории",
+
+        dataIndex: 'imagePath',
+        type: 'image'
+    },
 ]

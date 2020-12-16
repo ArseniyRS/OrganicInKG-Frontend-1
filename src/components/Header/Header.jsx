@@ -7,14 +7,14 @@ import {connect} from "react-redux";
 import {logoSVG} from '../../assets/icons'
 
 const Header = (props)=>{
-
+console.log(props.username)
     return(
         <div className='header'>
         <div className='container'>
         <div className="header__container">
-            <Link to={"/"}><img src={logoSVG} alt=""/></Link>
+            <Link to={"/providers"}><img src={logoSVG} alt=""/></Link>
             <div className="header-profile">
-                <span className='header-profile__name'>Бермет</span>
+                <span className='header-profile__name'>{props.username}</span>
                 <Link to={"/profile"}><span className='header-profile__password'>Сменить пароль</span></Link>
                 <span>/</span>
                 <span className='header-profile__exit' onClick={()=> {
@@ -28,5 +28,9 @@ const Header = (props)=>{
 
     )
 }
-
-export default connect(null,{toggleAuth})(Header)
+const mapStateToProps = state=>{
+    return{
+        username:state.main.username
+    }
+}
+export default connect(mapStateToProps,{toggleAuth})(Header)

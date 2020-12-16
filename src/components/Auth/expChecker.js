@@ -1,6 +1,6 @@
 const getExpirationDate = (token,exp)=> {
     if (!token && !exp) {
-        return null;
+        return false;
     }
     return exp && exp * 1000
 };

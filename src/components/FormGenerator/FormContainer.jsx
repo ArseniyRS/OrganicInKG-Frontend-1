@@ -7,7 +7,6 @@ const FormContainer = ({
                            updReq,
                            match,
                            isLoading,
-                           fileUploadKeys,
                            ...props})=>{
     useEffect(()=>{
         if(props.loadSelectorData) {
@@ -25,7 +24,7 @@ const FormContainer = ({
         if(match.params?.id){
             await updReq(match.params.id,values)
         }else {
-            await  createReq(values,fileUploadKeys)
+            await  createReq(values)
         }
     }
 

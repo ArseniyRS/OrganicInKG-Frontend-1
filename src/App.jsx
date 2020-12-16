@@ -20,33 +20,28 @@ import SidebarList from "./components/Sidebar/SidebarList";
 import PageLoader from "./components/pageLoader/pageLoader";
 
 function App(props) {
-    const [timeRender,setTimeRender] = useState(false)
-    //console.log(timeRender)
-    // useEffect(()=>{
-    //    // if(expChecker()) {
-    //         setTimeout(() => setTimeRender(!timeRender), expChecker())
-    //     //}
-    //     //запустит перерендер приложения когда кончится время токена
-    // },[timeRender])
+
     useEffect( ()=>{
+        console.log('check')
         if (expChecker()) {                    //проверка на время токена
             props.toggleAuth(true)
+            //setTimeout(() =>props.toggleAuth(false),expChecker())
         } else if (tokensChecker()) {                            //отправка на новый токен
-            const fetch = async () => {
-                await props.getUserById(JSON.parse(localStorage.getItem('id')))
-                await props.authRefresh({
+            const fetch = () => {
+                props.authRefresh({
                     accessToken: localStorage.getItem('accessToken'),
                     refreshToken: localStorage.getItem('refreshToken'),
-                    username: props.userById.phoneNumber
+                    username: props.username
                 })
             }
-            fetch()
+           fetch()
+           // setTimeout(() =>props.toggleAuth(false),expChecker())
         } else {                                                            //выход из аккаунта
             props.toggleAuth(false)
             logout()
             props.history.push('/')
         }
-    },[timeRender,props.isAuthorized])
+    },[props.isAuthorized])
 const [renderCounter,setRenderCounter]= useState(0)
 useEffect(()=>{
     let buff=renderCounter
@@ -102,7 +97,8 @@ const mapStateToProps = state=>{
         products: state.product.products,
         providers: state.provider.providers,
         isLoading : state.main.isFetchLoader,
-        modal : state.modal.isOpenModal
+        modal : state.modal.isOpenModal,
+        username:state.main.username
     }
 }
 export default connect(mapStateToProps,{toggleAuth,getUserById,authRefresh})(withRouter(App));

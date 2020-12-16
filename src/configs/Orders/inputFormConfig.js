@@ -10,15 +10,8 @@ export const orderInputConfig = [
     {
         label: "Тип доставки",
         placeholder: "Самовывоз/Курьер",
-        type: 'selectInput',
-        selectInputData:[{
-            id: 1,
-            name: "Курьер"
-        },
-            {
-            id:2,
-            name: "Самовывоз"
-        }]
+        type: 'selector',
+        selectorProperty: 'deliveryType',
     },
     {
         label: "Дата заказа",
@@ -26,15 +19,8 @@ export const orderInputConfig = [
     {
         label: "Тип оплаты",
         placeholder: "Эльсом/Наличные",
-        type: 'selectInput',
-        selectInputData:[{
-            id: 1,
-            name: "Эльсом"
-        },
-            {
-                id:2,
-                name: "Наличные"
-            }]
+        type: 'selector',
+        selectorProperty: 'paymentType',
     },
     {
         label: "Адрес склада",
@@ -42,5 +28,11 @@ export const orderInputConfig = [
         type: 'selectInput',
         selectInputData:addressData
     },
+    {
+        label: "Статус заказа",
+        placeholder: "Выберите статус",
+        type: 'selector',
+        selectorProperty: 'status',
+    }
    ]
 

@@ -43,6 +43,8 @@ const PageRenderer = ({
     isLoading,
 
 
+                          recordViewValuesConfig,
+
     adding=true,
     editing=true,
     deleting=true,
@@ -111,6 +113,8 @@ const PageRenderer = ({
                                 urlToUpd={`/${pageUrl}/${pageUrl}-updater`}
                                 urlToTable={`/${pageUrl}`}
 
+
+                                recordViewValuesConfig={recordViewValuesConfig}
                                 valueById={valueById}
                                 getByIdFunc={getByIdFunc}
                                 clearFunc={clearFunc}

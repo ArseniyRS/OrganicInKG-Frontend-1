@@ -4,6 +4,8 @@ import SelectorInput from "../Inputs/SelectorInput/SelectorInput";
 import ImgUploader from "../ImgUploader/ImgUploader";
 import PhoneInput from "../Inputs/PhoneInput/PhoneInput";
 import CheckInput from "../Inputs/CheckInput/CheckInput";
+import SelectField from "../Inputs/Selector/SelectField";
+import MapBlock from "../Inputs/MapBlock/MapBlock";
 
 
 const FormInput = ({
@@ -13,8 +15,10 @@ const FormInput = ({
                 type='',
                selectInputData=[],
                selectorProperty,
-               options=[]
+               options=[],
+    ...props
                    })=>{
+    console.log(props)
     return(
         <div className="createOrEditField">
             <label htmlFor={name}>{label}</label>
@@ -31,40 +35,51 @@ const FormInput = ({
                     )
                 }}
                 </Field>
-                : type==='image' ?
-                    <Field name={name} >
-                    {({field:{name,value},form: { setFieldValue}}) =><ImgUploader setFieldValue={setFieldValue}
-                                                                                  value={value}
-                                                                                  name={name}/>}
-                </Field>
+
                 : type==='phone' ?
                     <Field name={name} >
-                     {({field:{name},form: { setFieldValue}})=>  <PhoneInput setFieldValue={setFieldValue} name={name} />}
+                     {({field:{name,value},form: { setFieldValue}})=>  <PhoneInput setFieldValue={setFieldValue} name={name} value={value}/>}
                     </Field>
                         : type==='check' ?
                             <Field   name={name} >
                                 {({field:{name,value},form: { setFieldValue}})=><CheckInput value={value} setFieldValue={setFieldValue} name={name} />}
                           </Field>
                 : type==='selector' ?
-                            <Field name={name} as={'select'} placeholder={placeholder}>
-                                <option value={''} className="select__placeholder" hidden>
-                                    {placeholder}
-                                </option>
-                                <option value={''} className="select__placeholder">
-                                    {'Без родителя'}
-                                </option>
-                                {options[selectorProperty].map(item=> {
-                                    return (
-                                        <option key={item.id} value={item.id}>{item?.name ? item.name : item.fullName}</option>
-                                    )})
-                                }
-                            </Field>
-                            :
-                <Field name={name} placeholder={placeholder}/>
+                            <Field name={name} placeholder={placeholder}>
+                                {({field: {name, value}, form: {setFieldValue}}) => {
+                                   return <SelectField
+                                       data={options[selectorProperty]}
+                                       setFieldValue={setFieldValue}
+                                       value={value}
+                                       name={name}
+                                       placeholder={placeholder}
+                                   />
+                                }}
+                                </Field>
+
+
+                : type==='textarea' ?
+                    <Field name={name} as={'textarea'} placeholder={placeholder} />
+
+                : type==='image' ?
+                <Field name={name} >
+                {({field:{name,value},form: { setFieldValue}}) =><ImgUploader setFieldValue={setFieldValue}
+                                                                              value={value}
+                                                                              name={name}/>}
+                </Field>
+                :type==='map'?
+                <Field name={name} >
+              {({field:{name,value},form: { setFieldValue}}) => <MapBlock
+                                                                setFieldValue={setFieldValue}
+                                                                value={value}
+                                                                name={name}/>}
+                </Field>
+                :
+                         <Field name={name} placeholder={placeholder}/>
 
             }
 
-            <span  className='authError'><ErrorMessage name={name}/></span>
+            <span  className='formErrorMessage'><ErrorMessage name={name}/></span>
         </div>
     )
 }

@@ -1,16 +1,24 @@
-import { WRITE_CATEGORIES,WRITE_CATEGORY_BY_ID,ADDED_CATEGORY,DELETED_CATEGORY,UPDATED_CATEGORY} from './types'
+import {
+    WRITE_CATEGORIES,
+    WRITE_CATEGORY_BY_ID,
+    ADDED_CATEGORY,
+    DELETED_CATEGORY,
+    UPDATED_CATEGORY,
+    ADDED_PRODUCT
+} from './types'
 import {
     categoryDelByIdReq,
     categoryDelReq, categoryGetByIdReq,
     categoryGetReq,
     categoryPostReq,
-    categoryUpdReq,
+    categoryUpdReq, productImgPostReq, productPostReq,
 } from "../../utils/api/Request";
 import {getTemplate} from "../../utils/templates/getTemplate";
 import {createOrChangeTemplate} from "../../utils/templates/createOrChangeTemplate";
 import {deleteTemplate} from "../../utils/templates/deleteTemplate";
 import {toggleLoader} from "./mainReducer";
 import {updateItemInStore} from "../../utils/templates/updateItemInStore";
+import {toClearImageArray} from "../../utils/templates/toClearImageArray";
 
 const initialState={
     categories: [],
@@ -69,7 +77,26 @@ export const getCategoryById = (id)=> {
     return async dispatch => getTemplate(dispatch, categoryGetByIdReq, WRITE_CATEGORY_BY_ID, toggleLoader,id)
 }
 export const createCategory = data=>{
-    return async dispatch => createOrChangeTemplate(dispatch, categoryPostReq, data, ADDED_CATEGORY,toggleLoader)
+
+        return async dispatch => {
+            dispatch(toggleLoader(true))
+            const formData = new FormData()
+            toClearImageArray(data.image).map(item=>formData.append('image', item))
+            // const newData = {
+            //     name: data.name,
+            //     description: data.description,
+            //     parentCategoryId: data.parentCategoryId,
+            //     formData
+            // }
+            formData.append('name',data.name)
+            formData.append('description',data.description? data.description : '')
+            formData.append('parentCategoryId',data.parentCategoryId)
+            await categoryPostReq(formData).then( async resp=>{
+                    dispatch({type: ADDED_CATEGORY,payload: resp.data.result})
+                console.log(resp)
+                }).catch(error=>console.log(error))
+            dispatch(toggleLoader(false))
+        }
 }
 export const deleteCategory = id =>{
     return async dispatch => {

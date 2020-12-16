@@ -4,12 +4,12 @@ export const providerInputConfig = [
     {
     label: "ФИО",
     placeholder: "Анисимова Виктория Викторовна",
-    //required: "Укажите имя поставщика",
+    required: "Укажите имя поставщика",
     },
     {
         label: "Телефон",
         placeholder: "+(999) 00-00-00",
-        //required: "Укажите телефон поставщика",
+        required: "Укажите телефон поставщика",
         type: 'phone'
     },
     {
@@ -19,14 +19,14 @@ export const providerInputConfig = [
     {
         label: "Адрес",
         placeholder: "Чуйская область Бишкек",
-        type: 'selectInput',
-        selectInputData:addressData
+        type: 'map',
+        //selectInputData:addressData
       //  required: "Укажите адрес поставщика",
     },
     {
         label: "Товары",
         placeholder: "Картошка,...",
-      //  required: "Укажите товары поставщика",
+        required: "Укажите товары поставщика",
     },
     {
         label: "Банковский счет",

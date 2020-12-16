@@ -2,6 +2,7 @@ import React, {useEffect, useRef, useState} from 'react'
 import TableItemColumn from "./TableItemColumn";
 import {connect} from "react-redux";
 import {writeElementsToDelete, writeTableMessage} from "../../redux/reducers/tableReducer";
+import {toBeautifyFieldsValue} from "../../utils/toBeatifyFiledsValue";
 
 
 
@@ -36,15 +37,15 @@ const TableItem= ({columns,data,handlerClick,elementsToDelete,writeElementsToDel
         for (let i = 0; i < columns.length; i++) {
             for (let j = 0; j < valsKey.length; j++) {
                 if (valsKey[j] === columns[i].dataIndex) {
-                    const value = () => {
-                        if (valuesToArray[j] !== null && typeof valuesToArray[j] === 'object') {
-                            return valuesToArray[j]?.name ? valuesToArray[j].name :  valuesToArray[j].fullName
+                    const value = ()=> {
+                        if(columns[i]?.object){
+                            return valuesToArray[j]?.[`${columns[i].object}`]
                         }
                         return valuesToArray[j]
                     }
                     result.push((
                         <div key={"table-item-" + data.id + "-" + i}>
-                            <TableItemColumn column={columns[i]} item={{title: columns[i].title, value: value()}}/>
+                            <TableItemColumn column={columns[i]} item={{title: columns[i].title, value: toBeautifyFieldsValue(value())}}/>
                         </div>
                     ))
                     break;

@@ -58,3 +58,19 @@
     font-weight: 600;
     font-size: 22px;
 }
+
+.recordView__item-value div{
+    display: flex;
+    justify-content: flex-start;
+}
+.recordView__item-value div span{
+    width: 200px;
+    border: 2px solid #DDDDDD;
+    padding: 5px;
+}
+.recordView__item-title, .recordView__item-value{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    width: 600px;
+}

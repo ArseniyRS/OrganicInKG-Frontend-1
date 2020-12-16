@@ -1,12 +1,13 @@
 import {DELETED_USER,WRITE_USER_BY_ID, WRITE_USERS} from './types'
 import {
     userDelByIdReq,
-    userGetByIdReq, usersGetReq,
+    userGetByIdReq, usersGetReq, userUpdReq,
 } from "../../utils/api/Request";
 import {getTemplate} from "../../utils/templates/getTemplate";
 import {deleteTemplate} from "../../utils/templates/deleteTemplate";
 import {toggleLoader} from "./mainReducer";
 import {updateItemInStore} from "../../utils/templates/updateItemInStore";
+import {createOrChangeTemplate} from "../../utils/templates/createOrChangeTemplate";
 
 const initialState={
     users: undefined,
@@ -56,6 +57,10 @@ export const deleteUser = id =>{
             await deleteTemplate(dispatch,userDelByIdReq,id[i],toggleLoader,DELETED_USER)
         }
     }
+}
+
+export const updateUser = (id,data)=>{
+    return async dispatch =>createOrChangeTemplate(dispatch,userUpdReq,data,'',toggleLoader,id)
 }
 
 

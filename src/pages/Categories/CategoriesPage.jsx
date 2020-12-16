@@ -16,6 +16,7 @@ import {categoryInputConfig} from "../../configs/Categories/inputFormConfig";
 
 
 const CategoriesPage = ({categories,categoryById,getCategory,getCategoryById,createCategory,updateCategory,deleteCategory,clearCategory})=>{
+    console.log(categories)
     return(
         <PageRenderer
             pageUrl ={'categories'}
@@ -35,11 +36,13 @@ const CategoriesPage = ({categories,categoryById,getCategory,getCategoryById,cre
             creatorInitialFormValues={{
                 name: '',
                 description: '',
-                parentCategoryId: null}}
+                parentCategoryId: null,
+                image: ''}}
             updaterInitialFormValues={{
                 name: categoryById?.name,
                 description: categoryById?.description,
                 parentCategoryId: categoryById?.parentCategory?.id ? categoryById.parentCategory.id :  null,
+                image:  categoryById?.imagePath
             }}
             getDataFunc={getCategory}
             valueById={categoryById}

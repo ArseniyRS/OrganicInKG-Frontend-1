@@ -5,16 +5,14 @@ import ImageUploading from 'react-images-uploading';
 import {uploadBtnSVG,editSVG,trashSVG} from '../../assets/icons'
 
 
-const ImgUploader = ({setFieldValue,name,value})=>{
-    const [files,setFile] = useState(value ? value : [])
+const ImgUploader = ({setFieldValue,name,value,imgCount=1})=>{
+    const [files,setFile] = useState(value ? Array.isArray(value) ? value : [value] : [])
 
     useEffect(()=>{
         setFieldValue(name,files)
     },[files])
 
     const onChange = (fileList) => setFile(fileList);
-
-    console.log(files)
     // function beforeUpload(file) {
     //     const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/png';
     //     if (!isJpgOrPng) {
@@ -31,7 +29,7 @@ const ImgUploader = ({setFieldValue,name,value})=>{
                 multiple
                 value={files}
                 onChange={onChange}
-                maxNumber={4}
+                maxNumber={imgCount}
                 dataURLKey="data_url"
             >
                 {({
@@ -53,7 +51,8 @@ const ImgUploader = ({setFieldValue,name,value})=>{
                            Нажмите или перетащите файл, чтобы загрузить
                         </div>
                         <div className={'upload__image-container'}>
-                        {files.map((image, index) => (
+                            {
+                        files.map((image, index) => (
                             <div key={index} className="upload__image-item">
                                 <img src={image['data_url'] ? image['data_url'] : image} alt=""  />
                                 <div className="image-item__btn-wrapper">
@@ -61,7 +60,8 @@ const ImgUploader = ({setFieldValue,name,value})=>{
                                     <span><img src={trashSVG} onClick={() => onImageRemove(index)}/></span>
                                 </div>
                             </div>
-                        ))}
+                        ))
+                            }
                         </div>
                         {files.length!==0 && <div className={'upload__image-remove-allBtn'} onClick={onImageRemoveAll}>Удалить все файлы</div> }
                     </div>

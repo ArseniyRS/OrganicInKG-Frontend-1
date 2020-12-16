@@ -8,9 +8,11 @@ export const ProductColumns  =[
     {
         title: "Категория",
         dataIndex: 'category',
+        object: 'name'
     },
     {
         title: "Поставщик",
         dataIndex: 'supplier',
+        object: 'fullName'
     },
 ]

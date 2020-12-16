@@ -1,7 +1,15 @@
 export const recordViewOrderConfig  =[
     {
+        title: "Номер заказа",
+        dataIndex: 'orderNumber'
+    },
+    {
         title: "Дата заказа",
         dataIndex: 'desiredDeliveryDate',
+    },
+    {
+        title: "Товары",
+        dataIndex: 'product',
     },
     {
         title: "Адрес доставки",
@@ -19,4 +27,13 @@ export const recordViewOrderConfig  =[
         title: "Адрес склада",
         dataIndex: 'storageAddress',
     },
+    {
+        title: "Статус заказа",
+        dataIndex: 'cashPaymentOrderStatus',
+    },
+    {
+        title: "Статус заказа",
+        dataIndex: 'cashPaymentOrderStatus',
+    },
+
 ]

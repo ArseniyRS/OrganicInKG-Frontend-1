@@ -12,7 +12,12 @@ export const authRefreshReq = (data)=>instance.post('refresh',data).then(respons
 
 export const categoryGetReq = ()=>instance.get('categories').then(response=>response.data)
 export const categoryGetByIdReq = (id)=>instance.get(`categories/${id}`).then(response=>response.data)
-export const categoryPostReq = (data)=>instance.post('categories',data)
+export const categoryPostReq = (data)=>{
+    for (let pair of data.entries()) {
+        console.log(pair[0]+ ', ' + pair[1]);
+    }
+    return instance.post('categories',data)
+}
 export const categoryDelReq = (id)=>instance.delete(`categories`,id)
 export const categoryDelByIdReq = (id)=>instance.delete(`categories/${id}`)
 export const categoryUpdReq = (data,id)=>instance.put(`categories/${id}`,data)
@@ -64,9 +69,15 @@ export const usersGetReq = ()=>instance.get('client/').then(response=>response.d
 export const userGetByIdReq = (id)=>instance.get(`client/${id}`).then(response=>response.data)
 export const userDelReq = (id)=>instance.delete(`client`,id)
 export const userDelByIdReq = (id)=>instance.delete(`client/${id}`)
+export const userUpdReq = (data,id)=>instance.put(`client/${id}`,data)
 
 
-export const ordersGetReq = ()=>instance.get('orders').then(response=>response.data)
+
+export const ordersGetReq = ()=>instance.get('orders').then(response=>{
+    console.log(response.data)
+    return response.data
+
+})
 export const orderGetByIdReq = (id)=>instance.get(`orders/${id}`).then(response=>response.data)
 export const orderPostReq = (data)=>instance.post('orders',data)
 export const orderDelReq = (id)=>instance.delete(`orders`,id)

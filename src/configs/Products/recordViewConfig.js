@@ -28,7 +28,12 @@ export const recordViewProductConfig  =[{
     {
         title: "Фото товара",
         dataIndex: 'productImages',
-       // object: 'imageUrl',
         type: 'image'
+    },
+    {
+        title: 'Рейтинг товара',
+        dataIndex: 'raiting',
+
     }
+
     ]

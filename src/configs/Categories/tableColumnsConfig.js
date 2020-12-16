@@ -6,6 +6,7 @@ export const CategoryColumns  =[
     {
         title: "Родительская категория",
         dataIndex: 'parentCategory',
+        object: 'name'
     },
     {
         title: "Описание",

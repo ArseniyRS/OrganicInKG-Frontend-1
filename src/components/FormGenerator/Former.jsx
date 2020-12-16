@@ -37,27 +37,23 @@ const Former = (props)=>{
             <Formik
                 initialValues={props.initialVals}
                 validationSchema={Yup.object(schema)}
-                onSubmit={ async (values,e)=>{
+                onSubmit={ async (values)=>{
                   await props.handleSubmit(values)
                 }}
             >
                 {({handleSubmit,errors,values}) =>{
-            //console.log(values)
 
-                    const submitFunc = async ()=> {
-                       // if(!errors) {
-                       // await submitForm();
-                         await handleSubmit()
-                       // }
-                    }
                     return (
                     <Form>
                         {inputs}
                         <div className={"createOrEditContainer__btns"}>
-                        <EditBtn
-                            urlToTable={props.urlToTable}
-                            confirmFunc = {submitFunc}
-                        />
+                            <EditBtn
+                                    values = {values}
+                                    urlToTable={props.urlToTable}
+                                    confirmFunc={handleSubmit}
+                                    disabled={Object.keys(errors).length !== 0 && true}
+                                />
+
                         <CancelBtn urlToTable={props.urlToTable}/>
                         </div>
                     </Form>

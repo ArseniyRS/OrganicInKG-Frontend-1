@@ -2,14 +2,15 @@ import React, {useEffect, useRef, useState} from 'react'
 import {Field, Form} from "formik";
 import {checkPasSVG, plusSVG} from "../../../assets/icons";
 import Selector from "./Selector";
+import {toUglyfyFieldsValue} from "../../../utils/toUglyfyFieldsValue";
 
 
 const SelectorInput = ({name,value,setFieldValue,placeholder,data})=>{
     const [visibleSelector, setVisibleSelector]  = useState(false);
     const [selected, setSelected] = useState('')
     const [inputText,setInputText] = useState(value);
-    console.log(value)
     const onChange = (value)=>{
+        console.log(value)
         setInputText(value)
     }
     useEffect(()=>{
@@ -18,9 +19,9 @@ const SelectorInput = ({name,value,setFieldValue,placeholder,data})=>{
 
 
     useEffect(()=>{
-        if(selected !== ''){
-            setInputText(inputText+` ${selected} `)
-        }
+  setInputText(inputText + ` ${toUglyfyFieldsValue(selected)} `)
+
+
     },[selected])
 
 
@@ -44,3 +45,5 @@ const SelectorInput = ({name,value,setFieldValue,placeholder,data})=>{
 }
 
 export default  SelectorInput
+
+

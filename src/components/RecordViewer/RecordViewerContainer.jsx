@@ -15,6 +15,8 @@ const RecordViewerContainer = (
         clearFunc,
         getByIdFunc,
 
+        recordViewValuesConfig,
+
         isLoading,
         editing
     }
@@ -31,6 +33,7 @@ const RecordViewerContainer = (
             urlToUpd={urlToUpd}
             urlToTable={urlToTable}
             editing={editing}
+            recordViewValuesConfig={recordViewValuesConfig}
         /> : <Preloader />
     )
 }
