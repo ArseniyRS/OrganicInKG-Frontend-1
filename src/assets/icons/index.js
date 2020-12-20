@@ -1,4 +1,5 @@
 import categorySVG from './category.svg'
+import aboutSVG from './about.svg'
 import userSVG from './user.svg'
 import providerSVG from './delivery.svg'
 import orderSVG from './package.svg'
@@ -27,4 +28,5 @@ import errorSVG from './error.svg'
 import uploadBtnSVG from './upload-button.svg'
 import editSVG from './edit.svg'
 import trashSVG from './trash.svg'
-export {trashSVG,editSVG,uploadBtnSVG,btnLoaderSVG,loaderLogoSVG,errorSVG,logoSVG,orderActiveSVG,categoryActiveSVG,providerActiveSVG,productActiveSVG,userActiveSVG,questionActiveSVG,aboutActiveSVG,preloaderSVG,openList,plusSVG,checkPasSVG,backSVG,categorySVG,userSVG,productSVG,orderSVG,providerSVG,questionSVG,searchSVG,badStatusSVG,goodStatusSVG,deleteSVG}
+import arrowLeft from './leftArrow.svg'
+export {arrowLeft,aboutSVG,trashSVG,editSVG,uploadBtnSVG,btnLoaderSVG,loaderLogoSVG,errorSVG,logoSVG,orderActiveSVG,categoryActiveSVG,providerActiveSVG,productActiveSVG,userActiveSVG,questionActiveSVG,aboutActiveSVG,preloaderSVG,openList,plusSVG,checkPasSVG,backSVG,categorySVG,userSVG,productSVG,orderSVG,providerSVG,questionSVG,searchSVG,badStatusSVG,goodStatusSVG,deleteSVG}

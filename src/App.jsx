@@ -18,6 +18,8 @@ import {logout} from "./components/Auth/logout";
 import Header from "./components/Header/Header";
 import SidebarList from "./components/Sidebar/SidebarList";
 import PageLoader from "./components/pageLoader/pageLoader";
+import FaqPage from "./pages/Faq/FaqPage";
+import AboutUsPage from "./pages/AboutUs/AboutUsPage";
 
 function App(props) {
 
@@ -66,6 +68,8 @@ useEffect(()=>{
                                       <Route path={'/categories'} component={CategoriesPage}/>
                                       <Route path={'/providers'} component={ProvidersPage}/>
                                       <Route path={'/profile'} exact component={ProfilePage}/>
+                                      <Route path={'/faq'}  component={FaqPage}/>
+                                      <Route path={'/aboutus'}  component={AboutUsPage}/>
                                   </Switch>
                               </div>
                           </div>

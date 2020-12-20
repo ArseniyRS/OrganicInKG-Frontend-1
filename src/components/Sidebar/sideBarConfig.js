@@ -5,7 +5,14 @@ import {
     providerSVG,
     questionSVG,
     userSVG,
-    orderActiveSVG,categoryActiveSVG,providerActiveSVG,productActiveSVG,userActiveSVG,questionActiveSVG,aboutActiveSVG
+    orderActiveSVG,
+    categoryActiveSVG,
+    providerActiveSVG,
+    productActiveSVG,
+    userActiveSVG,
+    questionActiveSVG,
+    aboutActiveSVG,
+    aboutSVG
 } from "../../assets/icons";
 
 export const sideBarConfig = [
@@ -39,10 +46,16 @@ export const sideBarConfig = [
         svg: categorySVG,
         activeSvg: categoryActiveSVG
     },
-    // {
-    //     to: '/questions',
-    //     name: 'Вопросы',
-    //     svg: questionSVG,
-    //     activeSvg: questionActiveSVG
-    // }
+    {
+        to: '/faq',
+        name: 'Вопросы',
+        svg: questionSVG,
+        activeSvg: questionActiveSVG
+    },
+    {
+        to: '/aboutus',
+        name: 'О нас',
+        svg: aboutSVG,
+        activeSvg: aboutActiveSVG
+    }
 ]

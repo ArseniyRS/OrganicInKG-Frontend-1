@@ -16,7 +16,6 @@ import {categoryInputConfig} from "../../configs/Categories/inputFormConfig";
 
 
 const CategoriesPage = ({categories,categoryById,getCategory,getCategoryById,createCategory,updateCategory,deleteCategory,clearCategory})=>{
-    console.log(categories)
     return(
         <PageRenderer
             pageUrl ={'categories'}

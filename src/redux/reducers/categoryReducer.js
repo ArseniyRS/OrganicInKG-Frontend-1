@@ -81,16 +81,13 @@ export const createCategory = data=>{
         return async dispatch => {
             dispatch(toggleLoader(true))
             const formData = new FormData()
-            toClearImageArray(data.image).map(item=>formData.append('image', item))
-            // const newData = {
-            //     name: data.name,
-            //     description: data.description,
-            //     parentCategoryId: data.parentCategoryId,
-            //     formData
-            // }
+
+
             formData.append('name',data.name)
-            formData.append('description',data.description? data.description : '')
-            formData.append('parentCategoryId',data.parentCategoryId)
+            formData.append('description',data.description)
+            toClearImageArray(data.image).map(item=>formData.append('image', item))
+           formData.append('parentCategoryId',data.parentCategoryId)
+
             await categoryPostReq(formData).then( async resp=>{
                     dispatch({type: ADDED_CATEGORY,payload: resp.data.result})
                 console.log(resp)

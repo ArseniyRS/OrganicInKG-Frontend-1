@@ -10,7 +10,7 @@ import {authRefreshReq, authReq, userGetByIdReq} from "../../utils/api/Request";
 
 const initialState={
     isFetchLoader: false,
-    isAuthorized: undefined,
+    isAuthorized: true,
     isPageLoader: false,
     authErrorMessage: undefined,
     username: undefined

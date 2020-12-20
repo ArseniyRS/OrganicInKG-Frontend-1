@@ -55,18 +55,7 @@ const PageRenderer = ({
                     <Switch>
                         <Route exact path={`/${pageUrl}`}>
                             <h2 className='page-content__title'>{pageTitle}</h2>
-                            <div className='page-functional'>
-                                <SearchPanel />
-                                {adding &&
-                                <AddBtn
-                                    urlToCreate={`/${pageUrl}/${pageUrl}-creator`}
-                                />
-                                }
-                                {deleting &&
-                                <DeleteBtn
-                                    deleteFunc = {deleteFunc}
-                                />}
-                            </div>
+
                             <Table
                                 isLoading={isLoading}
                                 getDataFunc={getDataFunc}
@@ -74,6 +63,10 @@ const PageRenderer = ({
                                 columns={tableColumnsConfig}
                                 handlerClick={clickOnRecord}
                                 deleting={deleting}
+                                adding={adding}
+                                urlToCreate = {`/${pageUrl}/${pageUrl}-creator`}
+                                deleteFunc = {deleteFunc}
+
                             />
                         </Route>
                         {adding &&

@@ -1,10 +1,8 @@
 
 import * as axios from 'axios'
 const tokenGetter = ()=>{ return { headers: {"Authorization" : `Bearer ${localStorage.getItem('accessToken')}`} }}
-console.log(tokenGetter())
 const instance = axios.create({
     baseURL: 'http://165.227.131.111:8080/api/v1/',
-    //headers: {"Authorization" : `Bearer ${localStorage.getItem('accessToken')}`}
 })
 export const authReq = (data)=>instance.post('auth',data).then(response=>response.data)
 export const authRefreshReq = (data)=>instance.post('refresh',data).then(response=>response.data)
@@ -16,7 +14,7 @@ export const categoryPostReq = (data)=>{
     for (let pair of data.entries()) {
         console.log(pair[0]+ ', ' + pair[1]);
     }
-    return instance.post('categories',data)
+    return instance.post('categories/',data,{headers: { 'Content-Type': 'multipart/form-data' ,"Authorization" : `Bearer ${localStorage.getItem('accessToken')}`},})
 }
 export const categoryDelReq = (id)=>instance.delete(`categories`,id)
 export const categoryDelByIdReq = (id)=>instance.delete(`categories/${id}`)
@@ -83,3 +81,18 @@ export const orderPostReq = (data)=>instance.post('orders',data)
 export const orderDelReq = (id)=>instance.delete(`orders`,id)
 export const orderDelByIdReq = (id)=>instance.delete(`orders/${id}`)
 export const orderUpdReq = (data,id)=>instance.put(`orders/${id}`,data)
+
+
+
+
+export const faqGetReq = ()=>instance.get('faq/',tokenGetter()).then(response=>response.data)
+export const faqGetByIdReq = (id)=>instance.get(`faq/${id}`,tokenGetter()).then(response=>response.data)
+export const faqPostReq = (data)=>instance.post('faq/',data,tokenGetter())
+export const faqDelByIdReq = (id)=>instance.delete(`faq/${id}`,tokenGetter())
+export const faqUpdReq = (data,id)=>instance.put(`faq/${id}`,data,tokenGetter())
+
+export const aboutUsGetReq = ()=>instance.get('about/',tokenGetter()).then(response=>response.data)
+export const aboutUsGetByIdReq = (id)=>instance.get(`about/${id}`,tokenGetter()).then(response=>response.data)
+export const aboutUsPostReq = (data)=>instance.post('about/',data,tokenGetter())
+export const aboutUsDelByIdReq = (id)=>instance.delete(`about/${id}`,tokenGetter())
+export const aboutUsUpdReq = (data,id)=>instance.put(`about/${id}`,data,tokenGetter())

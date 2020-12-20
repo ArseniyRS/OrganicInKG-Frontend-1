@@ -1,6 +1,8 @@
 *{
   margin: 0;
   padding: 0;
+  outline: none;
+
 }
 html{
   box-sizing: border-box;
@@ -14,6 +16,8 @@ body{
   font-family: 'Open Sans', sans-serif!important;
   font-size: 16px;
   box-sizing: border-box;
+
+
 }
 a{
   text-decoration: none;
@@ -56,6 +60,7 @@ input,button{
   display: flex;
   flex-direction: column;
   align-content: center;
+  align-items: center;
   width: 100%;
   margin-left: 260px;
   margin-top:100px;
@@ -75,7 +80,11 @@ input,button{
 .createOrEditContainer{
   display: flex;
  flex-direction: column;
-  max-width: 700px;
+  width: 100%;
+
+}
+.createOrEditContainer form{
+  width: 700px;
 }
 .createOrEditContainer__title{
   display: flex;

@@ -19,6 +19,9 @@ export const ADDED_CATEGORY = 'ADDED_CATEGORY'
 export const DELETED_CATEGORY = 'DELETED_CATEGORY'
 export const UPDATED_CATEGORY = 'UPDATED_CATEGORY'
 
+
+
+
 export const TOGGLE_AUTH ='TOGGLE_AUTH'
 
 
@@ -46,3 +49,17 @@ export const WRITE_ORDER_BY_ID = 'WRITE_ORDER_BY_ID'
 export const ADDED_ORDER = 'ADDED_ORDER'
 export const DELETED_ORDER = 'DELETED_ORDER'
 export const UPDATED_ORDER = 'UPDATED_ORDER'
+
+
+export const WRITE_FAQ = 'WRITE_FAQ'
+export const WRITE_FAQ_BY_ID = 'WRITE_FAQ_BY_ID'
+export const ADDED_FAQ = 'ADDED_FAQ'
+export const DELETED_FAQ = 'DELETED_FAQ'
+export const UPDATED_FAQ = 'UPDATED_FAQ'
+
+
+export const  WRITE_ABOUT_US = 'WRITE_ABOUT_US'
+export const  WRITE_ABOUT_US_BY_ID = 'WRITE_ABOUT_US_BY_ID'
+export const  ADDED_ABOUT_US = 'ADDED_ABOUT_US'
+export const  DELETED_ABOUT_US = 'DELETED_ABOUT_US'
+export const  UPDATED_ABOUT_US = 'UPDATED_ABOUT_US'

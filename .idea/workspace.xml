@@ -20,10 +20,39 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="869952c6-d07a-44c8-9dad-429924c3fe46" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/assets/icons/leftArrow.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Table/dataDivider.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Table/tableDataSorter.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/configs/AboutUs/inputFormConfig.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/configs/AboutUs/recordViewConfig.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/configs/AboutUs/tableColumnsConfig.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/configs/Faq/inputFormConfig.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/configs/Faq/recordViewConfig.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/configs/Faq/tableColumnsConfig.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/AboutUs/AboutUsPage.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/Faq/FaqPage.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/redux/reducers/aboutUsReducer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/redux/reducers/faqReducer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Procfile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/favicon.ico" beforeDir="false" afterPath="$PROJECT_DIR$/public/favicon.ico" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/icons/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/icons/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/PageRenderer/PageRendererContainer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/PageRenderer/PageRendererContainer.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Search-panel/SearchPanel.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Search-panel/SearchPanel.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Sidebar/sideBarConfig.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Sidebar/sideBarConfig.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Table/Table.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Table/Table.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Table/Table.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Table/Table.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Categories/CategoriesPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Categories/CategoriesPage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/reducers/categoryReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/categoryReducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/reducers/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/index.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/reducers/mainReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/mainReducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/reducers/types.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/types.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/api/Request.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/api/Request.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/templates/getTemplate.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/templates/getTemplate.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,7 +86,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/components/Inputs" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/configs/Faq" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -67,18 +96,18 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Admin\Desktop\OrganicInKG-Frontend-1\public" />
       <recent name="C:\Users\Admin\Desktop\organicinkg-frontend\src\configs\Providers" />
       <recent name="C:\Users\Admin\Desktop\organicinkg-frontend\src\configs\Categories" />
       <recent name="C:\Users\Admin\Desktop\organicinkg-frontend\src\components\RecordViewer" />
       <recent name="C:\Users\Admin\Desktop\organicinkg-frontend\src\containers\Categories" />
-      <recent name="C:\Users\Admin\Desktop\organicinkg-frontend\src\components\Inputs" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Admin\Desktop\OrganicInKG-Frontend-1\src\configs\Faq" />
+      <recent name="C:\Users\Admin\Desktop\OrganicInKG-Frontend-1\src\configs\AboutUs" />
+      <recent name="C:\Users\Admin\Desktop\OrganicInKG-Frontend-1\src\components\Table" />
       <recent name="C:\Users\Admin\Desktop\OrganicInKG-Frontend-1\src\components\Inputs" />
       <recent name="C:\Users\Admin\Desktop\OrganicInKG-Frontend-1\src\assets\icons" />
-      <recent name="C:\Users\Admin\Desktop\OrganicInKG-Frontend-1\src\configs\Orders" />
-      <recent name="C:\Users\Admin\Desktop\OrganicInKG-Frontend-1\src\configs\Users" />
-      <recent name="C:\Users\Admin\Desktop\organicinkg-frontend\src\configs\Products" />
     </key>
   </component>
   <component name="SvnConfiguration">
@@ -148,7 +177,11 @@
       <workItem from="1607767425697" duration="158000" />
       <workItem from="1607933649452" duration="10276000" />
       <workItem from="1608045383586" duration="303000" />
-      <workItem from="1608050424895" duration="6668000" />
+      <workItem from="1608050424895" duration="7941000" />
+      <workItem from="1608116045939" duration="29023000" />
+      <workItem from="1608323709202" duration="743000" />
+      <workItem from="1608389228682" duration="4495000" />
+      <workItem from="1608395732540" duration="3711000" />
     </task>
     <servers />
   </component>
