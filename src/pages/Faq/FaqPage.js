@@ -8,7 +8,6 @@ import {recordViewFaqConfig} from "../../configs/Faq/recordViewConfig";
 
 
 const FaqPage = props=>{
-    console.log(props.faq)
     return(
         <PageRenderer
             pageUrl ={'faq'}
@@ -24,12 +23,14 @@ const FaqPage = props=>{
             formInputsConfig={faqInputConfig}
             creatorInitialFormValues={{
                 question: "",
-                answer: ""
+                answer: "",
+                order: ""
 
             }}
             updaterInitialFormValues={{
                 question: props.faqById?.question,
-                answer: props.faqById?.answer
+                answer: props.faqById?.answer,
+                order: props.faqById?.order
 
             }}
             getDataFunc={props.getFaq}

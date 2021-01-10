@@ -12,7 +12,11 @@ export const createOrChangeTemplate = async (
     dispatch(toggleLoader);
     await func(data,id).then(resp=>{
         console.log(resp)
-        dispatch({type:actionType,payload: resp.data.result})
-    }).catch(err=>console.log(err.response))
+        if(resp.data?.result) {
+            return dispatch({type: actionType, payload: resp.data.result})
+        }
+        return dispatch({type: actionType, payload: resp.data})
+
+    })
     dispatch(toggleLoader)
 }

@@ -4,14 +4,14 @@ import {
     ADDED_CATEGORY,
     DELETED_CATEGORY,
     UPDATED_CATEGORY,
-    ADDED_PRODUCT
+
 } from './types'
 import {
     categoryDelByIdReq,
-    categoryDelReq, categoryGetByIdReq,
+     categoryGetByIdReq,
     categoryGetReq,
     categoryPostReq,
-    categoryUpdReq, productImgPostReq, productPostReq,
+    categoryUpdReq,
 } from "../../utils/api/Request";
 import {getTemplate} from "../../utils/templates/getTemplate";
 import {createOrChangeTemplate} from "../../utils/templates/createOrChangeTemplate";
@@ -77,21 +77,23 @@ export const getCategoryById = (id)=> {
     return async dispatch => getTemplate(dispatch, categoryGetByIdReq, WRITE_CATEGORY_BY_ID, toggleLoader,id)
 }
 export const createCategory = data=>{
-
+    console.log('created')
         return async dispatch => {
             dispatch(toggleLoader(true))
             const formData = new FormData()
-
-
-            formData.append('name',data.name)
-            formData.append('description',data.description)
-            toClearImageArray(data.image).map(item=>formData.append('image', item))
-           formData.append('parentCategoryId',data.parentCategoryId)
-
+            formData.append('categoryRequest', new Blob([JSON.stringify({
+                "name": data.name,
+                "description": data.description,
+                "parentCategoryId": data.parentCategoryId
+            })], {type: "application/json"}));
+            if(toClearImageArray(data.image)!==null){
+               toClearImageArray(data.image).map(item=>formData.append('image', item))
+            }else{
+                formData.append('image', null)
+            }
             await categoryPostReq(formData).then( async resp=>{
                     dispatch({type: ADDED_CATEGORY,payload: resp.data.result})
-                console.log(resp)
-                }).catch(error=>console.log(error))
+                }).catch(error=>console.log(error.response))
             dispatch(toggleLoader(false))
         }
 }

@@ -24,7 +24,7 @@ const RecordViewer=({titles,values={},urlToUpd,urlToTable,match,editing,recordVi
                                         Array.isArray(valueChooser(titles[i], valuesToArray[j])) ?      // проверка на массив картинок
                                         valueChooser(titles[i], valuesToArray[j]).map(item => {
                                             return (
-                                                <div className={'recordView__item-imgContainer'}><img
+                                                <div key={item.id} className={'recordView__item-imgContainer'}><img
                                                     src={item.imageUrl} alt=""/></div>
                                             )
                                         })                                                              // вывод только одной картинки

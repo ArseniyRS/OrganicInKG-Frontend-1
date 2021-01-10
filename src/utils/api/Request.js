@@ -10,12 +10,8 @@ export const authRefreshReq = (data)=>instance.post('refresh',data).then(respons
 
 export const categoryGetReq = ()=>instance.get('categories').then(response=>response.data)
 export const categoryGetByIdReq = (id)=>instance.get(`categories/${id}`).then(response=>response.data)
-export const categoryPostReq = (data)=>{
-    for (let pair of data.entries()) {
-        console.log(pair[0]+ ', ' + pair[1]);
-    }
-    return instance.post('categories/',data,{headers: { 'Content-Type': 'multipart/form-data' ,"Authorization" : `Bearer ${localStorage.getItem('accessToken')}`},})
-}
+export const categoryPostReq = (data)=>instance.post('categories',data)
+
 export const categoryDelReq = (id)=>instance.delete(`categories`,id)
 export const categoryDelByIdReq = (id)=>instance.delete(`categories/${id}`)
 export const categoryUpdReq = (data,id)=>instance.put(`categories/${id}`,data)
@@ -87,12 +83,12 @@ export const orderUpdReq = (data,id)=>instance.put(`orders/${id}`,data)
 
 export const faqGetReq = ()=>instance.get('faq/',tokenGetter()).then(response=>response.data)
 export const faqGetByIdReq = (id)=>instance.get(`faq/${id}`,tokenGetter()).then(response=>response.data)
-export const faqPostReq = (data)=>instance.post('faq/',data,tokenGetter())
+export const faqPostReq = (data)=>instance.post('faq',data,tokenGetter())
 export const faqDelByIdReq = (id)=>instance.delete(`faq/${id}`,tokenGetter())
 export const faqUpdReq = (data,id)=>instance.put(`faq/${id}`,data,tokenGetter())
 
 export const aboutUsGetReq = ()=>instance.get('about/',tokenGetter()).then(response=>response.data)
 export const aboutUsGetByIdReq = (id)=>instance.get(`about/${id}`,tokenGetter()).then(response=>response.data)
-export const aboutUsPostReq = (data)=>instance.post('about/',data,tokenGetter())
+export const aboutUsPostReq = (data)=>instance.post('about',data,tokenGetter())
 export const aboutUsDelByIdReq = (id)=>instance.delete(`about/${id}`,tokenGetter())
 export const aboutUsUpdReq = (data,id)=>instance.put(`about/${id}`,data,tokenGetter())

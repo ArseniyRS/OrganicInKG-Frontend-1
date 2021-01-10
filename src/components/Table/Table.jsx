@@ -13,7 +13,6 @@ import AddBtn from "../Btns/AddBtn";
 import DeleteBtn from "../Btns/DeleteBtn";
 import {tableDataSorter} from "./tableDataSorter";
 import {dataDivider, pageCounter} from "./dataDivider";
-import {arrowLeft, trashSVG} from "../../assets/icons";
 
 
 const Table = ({isLoading,

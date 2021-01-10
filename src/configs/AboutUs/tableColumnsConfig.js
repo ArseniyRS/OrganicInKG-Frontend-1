@@ -7,4 +7,8 @@ export const AboutUsColumns  =[
         title: "Параграф",
         dataIndex: 'paragraph',
     },
+    {
+        title: "Порядок",
+        dataIndex: 'order',
+    },
 ]

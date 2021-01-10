@@ -7,4 +7,8 @@ export const FaqColumns  =[
         title: "Ответ",
         dataIndex: 'answer',
     },
+    {
+        title: "Порядок",
+        dataIndex: 'order',
+    },
 ]

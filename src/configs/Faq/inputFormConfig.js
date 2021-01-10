@@ -11,6 +11,10 @@ export const faqInputConfig = [{
         required: "Введите ответ",
         type: 'textarea'
     },
+    {
+        label: "Порядок",
+        placeholder: "1",
+    },
 
 ]
 

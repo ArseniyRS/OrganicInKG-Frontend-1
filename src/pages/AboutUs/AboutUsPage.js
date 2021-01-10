@@ -30,12 +30,14 @@ const AboutUsPage = props=>{
             formInputsConfig={aboutUsInputConfig}
             creatorInitialFormValues={{
                 header: '',
-                paragraph: ''
+                paragraph: '',
+                order: ''
             }}
             updaterInitialFormValues={{
 
                 header: props.aboutUsById?.header,
-                paragraph: props.aboutUsById?.paragraph
+                paragraph: props.aboutUsById?.paragraph,
+                order: props.aboutUsById?.order
 
             }}
             getDataFunc={props.getAboutUs}

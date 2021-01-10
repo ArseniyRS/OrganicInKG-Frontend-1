@@ -7,4 +7,8 @@ export const recordViewFaqConfig  =[
         title: "Ответ",
         dataIndex: 'answer',
     },
+    {
+        title: "Порядок",
+        dataIndex: 'order',
+    },
 ]

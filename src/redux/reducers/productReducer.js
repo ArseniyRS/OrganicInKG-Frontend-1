@@ -81,15 +81,6 @@ export const getProducts = ()=> {
 }
 export const getProductById = (id)=> {
     return async dispatch => getTemplate(dispatch, productGetByIdReq, WRITE_PRODUCT_BY_ID, toggleLoader,id)
-    // {
-    //     dispatch(toggleLoader(true));
-    //     let response = await productGetByIdReq(id);
-    //     dispatch({type:WRITE_PRODUCTS,payload: response.result})
-    //    //  let raiting = await raitingGetByIdReq(id)
-    //    // // dispatch({type:WRITE_RAITING_BY_ID,payload: raiting.result})
-    //     dispatch(toggleLoader(false))
-    //
-    // }
 }
 export const createProduct = data=>{
     return async dispatch => {
@@ -97,14 +88,14 @@ export const createProduct = data=>{
         await productPostReq(data)
             .then( async resp=>{
                 dispatch({type:ADDED_PRODUCT,payload: resp.data.result})
-                const formData = new FormData()
-                toClearImageArray(data.images).map(item=>formData.append('images', item))
-                formData.append('productId', resp.data.result.id)
-                await productImgPostReq(formData)
+                if(data.images) {
+                    const formData = new FormData()
+                    toClearImageArray(data.images).map(item => formData.append('images', item))
+                    formData.append('productId', resp.data.result.id)
+                    await productImgPostReq(formData)
+                }
         })
-            // .then(async resp=>{
-            //    await raitingPostReq({"productId": resp.data.result.id})
-            // })
+
         dispatch(toggleLoader(false))
     }
 }
@@ -112,9 +103,7 @@ export const deleteProduct = id =>{
     return async dispatch => {
         for(let i=0;i<id.length;i++){
             await deleteTemplate(dispatch,productDelByIdReq,id[i],toggleLoader,DELETED_PRODUCT)
-                // .then(async ()=>{
-                //    await raitingDelByIdReq(id)
-                // })
+
         }
 
     }
@@ -125,15 +114,13 @@ export const updateProduct = (id,data) =>{
         await productUpdReq(data,id)
             .then( async resp=>{
                 dispatch({type:UPDATED_PRODUCT,payload: resp.data.result})
-                console.log(resp)
-                const formData = new FormData()
-                toClearImageArray(data.images).map(item=>formData.append('images', item))
-                formData.append('productId',id)
-                await productImgUpdReq(formData,id)
+                if(data.images) {
+                    const formData = new FormData()
+                    toClearImageArray(data.images).map(item => formData.append('images', item))
+                    formData.append('productId', id)
+                    await productImgUpdReq(formData, id)
+                }
             })
-            // .then(async resp=>{
-            //     await raitingPostReq({"productId": id})
-            // })
 
         dispatch(toggleLoader(false))
     }

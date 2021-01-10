@@ -9,6 +9,10 @@ export const aboutUsInputConfig = [{
         placeholder: "...",
         type: 'textarea'
     },
+    {
+        label: "Порядок",
+        placeholder: "1",
+    },
 
 ]
 

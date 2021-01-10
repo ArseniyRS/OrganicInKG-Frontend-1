@@ -7,5 +7,8 @@ export const recordViewAboutUsConfig  =[
         title: "Параграф",
         dataIndex: 'paragraph',
     },
-
+    {
+        title: "Порядок",
+        dataIndex: 'order',
+    },
 ]

@@ -51,9 +51,9 @@ const ProvidersPage = ({providers,providerById,getProviders,getProviderById,crea
                 placeOfProduction:  providerById?.placeOfProduction,
                 produces:  providerById?.produces,
                 walletNumber:  providerById?.ewalletNumber,
-                PASSPORT: [],
-                SERTIFICATE: [],
-                CONTRACT: [],
+                PASSPORT: providerById?.supplierFile.filter(item=>item.supplierFileType==='PASSPORT'),
+                SERTIFICATE: providerById?.supplierFile.filter(item=>item.supplierFileType==='SERTIFICATE'),
+                CONTRACT: providerById?.supplierFile.filter(item=>item.supplierFileType==='CONTRACT'),
                 isActive:  providerById?.isActive
             }}
             getDataFunc={getProviders}
