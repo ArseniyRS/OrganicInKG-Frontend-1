@@ -23,8 +23,8 @@ import {toClearImageArray} from "../../utils/templates/toClearImageArray";
 import {updateItemInStore} from "../../utils/templates/updateItemInStore";
 
 const initialState={
-    products: undefined,
-    productById: undefined,
+    products: [],
+    productById: {},
     ratingById: undefined
 }
 
@@ -34,7 +34,7 @@ export const productReducer = (state=initialState,action)=>{
         case WRITE_PRODUCTS:
             return{
                 ...state,
-                products: action.payload
+                products: [...state.products,...action.payload]
             }
         case WRITE_PRODUCT_BY_ID:
             return{
@@ -76,27 +76,28 @@ export const clearProduct = ()=>{
         action: undefined
     }
 }
-export const getProducts = ()=> {
-    return async dispatch => getTemplate(dispatch, productsGetReq, WRITE_PRODUCTS, toggleLoader)
+export const getProducts = (page)=> {
+    return async dispatch => getTemplate(dispatch, productsGetReq, WRITE_PRODUCTS, toggleLoader,page)
 }
 export const getProductById = (id)=> {
     return async dispatch => getTemplate(dispatch, productGetByIdReq, WRITE_PRODUCT_BY_ID, toggleLoader,id)
 }
 export const createProduct = data=>{
     return async dispatch => {
-        dispatch(toggleLoader(true))
-        await productPostReq(data)
-            .then( async resp=>{
-                dispatch({type:ADDED_PRODUCT,payload: resp.data.result})
-                if(data.images) {
-                    const formData = new FormData()
-                    toClearImageArray(data.images).map(item => formData.append('images', item))
-                    formData.append('productId', resp.data.result.id)
-                    await productImgPostReq(formData)
-                }
-        })
-
-        dispatch(toggleLoader(false))
+        //for(let i=0;i<50;i++) {
+            dispatch(toggleLoader(true))
+            await productPostReq(data)
+                .then(async resp => {
+                    dispatch({type: ADDED_PRODUCT, payload: resp.data.result})
+                    if (data.images) {
+                        const formData = new FormData()
+                        toClearImageArray(data.images).map(item => formData.append('images', item))
+                        formData.append('productId', resp.data.result.id)
+                        await productImgPostReq(formData)
+                    }
+                })
+            dispatch(toggleLoader(false))
+       // }
     }
 }
 export const deleteProduct = id =>{

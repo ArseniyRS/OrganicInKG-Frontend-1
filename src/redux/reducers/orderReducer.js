@@ -21,7 +21,7 @@ export const orderReducer = (state=initialState,action)=>{
         case WRITE_ORDERS:
             return{
                 ...state,
-                orders: action.payload
+                orders:  [...state.orders,...action.payload]
             }
         case WRITE_ORDER_BY_ID:
             return{
@@ -58,8 +58,8 @@ export const clearOrder = ()=>{
         action: undefined
     }
 }
-export const getOrders = ()=> {
-    return async dispatch => getTemplate(dispatch, ordersGetReq, WRITE_ORDERS, toggleLoader)
+export const getOrders = (page)=> {
+    return async dispatch => getTemplate(dispatch, ordersGetReq, WRITE_ORDERS, toggleLoader,page)
 }
 export const getOrderById = (id)=> {
     return async dispatch => getTemplate(dispatch, orderGetByIdReq, WRITE_ORDER_BY_ID, toggleLoader,id)

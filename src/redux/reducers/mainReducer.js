@@ -107,7 +107,7 @@ export const authSignIn = data =>{
         dispatch(toggleLoader(true))
         await authReq(data).then(async response=>{
             console.log(response)
-            if(response.resultCode==='NOT_FOUND'){
+            if(response.result.statusCodeValue===400){
                 dispatch(writeAuthMessage('Неверно введены данные.'))
             }else {
                 dispatch(togglePageLoader(true))

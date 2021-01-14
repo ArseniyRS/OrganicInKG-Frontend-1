@@ -21,9 +21,9 @@ import {formDataProviderTemplate} from "../../utils/templates/formDataTemplate";
 import {updateItemInStore} from "../../utils/templates/updateItemInStore";
 
 const initialState={
-    providers: undefined,
-    providerById: undefined,
-    activeProviders: undefined
+    providers: [],
+    providerById: {},
+    activeProviders: []
 }
 
 
@@ -32,7 +32,7 @@ export const providerReducer = (state=initialState,action)=>{
         case WRITE_PROVIDER:
             return{
                 ...state,
-                providers: action.payload
+                providers:  [...state.providers,...action.payload]
             }
         case WRITE_PROVIDER_BY_ID:
             return{
@@ -75,8 +75,8 @@ export const clearProvider = ()=>{
         action: undefined
     }
 }
-export const getActiveProviders = ()=>{
-    return async dispatch => getTemplate(dispatch,providerActiveGetReq,WRITE_ACTIVE_PROVIDERS,toggleLoader)
+export const getActiveProviders = (page)=>{
+    return async dispatch => getTemplate(dispatch,providerActiveGetReq,WRITE_ACTIVE_PROVIDERS,toggleLoader,page)
 }
 export const getProviders = ()=> {
     return async dispatch => getTemplate(dispatch, providersGetReq, WRITE_PROVIDER, toggleLoader)

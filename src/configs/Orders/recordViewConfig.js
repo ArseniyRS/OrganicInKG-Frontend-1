@@ -8,6 +8,18 @@ export const recordViewOrderConfig  =[
         dataIndex: 'desiredDeliveryDate',
     },
     {
+      title: 'Имя',
+      dataIndex: "firstName"
+    },
+    {
+        title: 'Фамилия',
+        dataIndex: "lastName"
+    },
+    {
+      title: 'Телефон',
+      dataIndex: "phoneNumber"
+    },
+    {
         title: "Товары",
         dataIndex: 'product',
     },

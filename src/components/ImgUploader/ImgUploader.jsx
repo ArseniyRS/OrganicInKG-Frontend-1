@@ -5,7 +5,7 @@ import ImageUploading from 'react-images-uploading';
 import {uploadBtnSVG,editSVG,trashSVG} from '../../assets/icons'
 
 
-const ImgUploader = ({setFieldValue,name,value,imgCount=1})=>{
+const ImgUploader = ({setFieldValue,name,value,imageCount=1,fileTypes=['jpg', 'gif', 'png','svg']})=>{
     const [files,setFile] = useState(value ? Array.isArray(value) ? value : [value] : [])
 
     useEffect(()=>{
@@ -13,24 +13,15 @@ const ImgUploader = ({setFieldValue,name,value,imgCount=1})=>{
     },[files])
 
     const onChange = (fileList) => setFile(fileList);
-    // function beforeUpload(file) {
-    //     const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/png';
-    //     if (!isJpgOrPng) {
-    //         message.error('You can only upload JPG/PNG file!');
-    //     }
-    //     const isLt2M = file.size / 1024 / 1024 < 2;
-    //     if (!isLt2M) {
-    //         message.error('Image must smaller than 2MB!');
-    //     }
-    //     return isJpgOrPng && isLt2M;
-    // }
+
         return (
             <ImageUploading
                 multiple
                 value={files}
                 onChange={onChange}
-                maxNumber={imgCount}
+                maxNumber={imageCount}
                 dataURLKey="data_url"
+                acceptType={fileTypes}
             >
                 {({
                       onImageUpload,
@@ -38,7 +29,7 @@ const ImgUploader = ({setFieldValue,name,value,imgCount=1})=>{
                       onImageUpdate,
                       onImageRemove,
                       isDragging,
-                      dragProps,
+                      dragProps,errors
                   }) => (
                     <div className="upload__image-wrapper">
                         <div
@@ -64,6 +55,15 @@ const ImgUploader = ({setFieldValue,name,value,imgCount=1})=>{
                             }
                         </div>
                         {files.length!==0 && <div className={'upload__image-remove-allBtn'} onClick={onImageRemoveAll}>Удалить все файлы</div> }
+
+                        {errors &&
+                        <>
+                            {errors.maxNumber &&
+                            <span className='formErrorMessage'>{`Максимальное количество фото - ${imageCount}`}</span>}
+                            {errors.acceptType && <span
+                                className='formErrorMessage'>{`Этот тип файла не поддерживается. Загрузить можно (${fileTypes})`}</span>}
+                        </>
+                        }
                     </div>
                 )}
             </ImageUploading>

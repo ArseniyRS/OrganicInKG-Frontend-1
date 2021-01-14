@@ -8,16 +8,15 @@ export const authReq = (data)=>instance.post('auth',data).then(response=>respons
 export const authRefreshReq = (data)=>instance.post('refresh',data).then(response=>response.data)
 
 
-export const categoryGetReq = ()=>instance.get('categories').then(response=>response.data)
+export const categoryGetReq = (page)=>instance.get(`categories?page=${page}&size=20`).then(response=>response.data)
 export const categoryGetByIdReq = (id)=>instance.get(`categories/${id}`).then(response=>response.data)
 export const categoryPostReq = (data)=>instance.post('categories',data)
-
 export const categoryDelReq = (id)=>instance.delete(`categories`,id)
 export const categoryDelByIdReq = (id)=>instance.delete(`categories/${id}`)
 export const categoryUpdReq = (data,id)=>instance.put(`categories/${id}`,data)
 
 
-export const productsGetReq = ()=>instance.get('products').then(response=>response.data)
+export const productsGetReq = (page)=>instance.get(`products?page=${page}&size=20`).then(response=>response.data)
 export const productGetByIdReq = (id)=>instance.get(`products/${id}`).then(response=>response.data)
 export const productPostReq = (data)=>instance.post('products',data)
 export const productDelReq = (id)=>instance.delete(`products`,id)
@@ -38,14 +37,8 @@ export const productImgUpdReq = (data,id)=>{
 }
 
 
-export const raitingsGetReq = ()=>instance.get('raitings').then(response=>response.data)
-export const raitingGetByIdReq = (id)=>instance.get(`raitings/${id}`).then(response=>console.log(response.data))
-export const raitingPostReq = (data)=>instance.post('raitings',data)
-export const raitingDelReq = (id)=>instance.delete(`raitings`,id)
-export const raitingDelByIdReq = (id)=>instance.delete(`raitings/${id}`)
-export const raitingUpdReq = (data,id)=>instance.put(`raitings/${id}`,data)
 
-export const providersGetReq = ()=>instance.get('supplier').then(response=>response.data)
+export const providersGetReq = (page)=>instance.get(`supplier?page=${page}&size=20`).then(response=>response.data)
 export const providerGetByIdReq = (id)=>instance.get(`supplier/${id}`).then(response=>response.data)
 export const providerPostReq = (data)=>instance.post('supplier',data)
 export const providerImgPostReq = (data)=>{
@@ -67,7 +60,7 @@ export const userUpdReq = (data,id)=>instance.put(`client/${id}`,data)
 
 
 
-export const ordersGetReq = ()=>instance.get('orders').then(response=>{
+export const ordersGetReq = (page)=>instance.get(`orders?page=${page}&size=20`).then(response=>{
     console.log(response.data)
     return response.data
 

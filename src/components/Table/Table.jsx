@@ -5,14 +5,13 @@ import Preloader from "../Preloader/Preloader";
 import {connect} from "react-redux";
 import {writeTableMessage} from "../../redux/reducers/tableReducer";
 import ErrorMsg from "../Modals/ErrorMessage";
-import { Pagination } from 'antd';
-import ReactPaginate from 'react-paginate';
 
 import SearchPanel from "../Search-panel/SearchPanel";
 import AddBtn from "../Btns/AddBtn";
 import DeleteBtn from "../Btns/DeleteBtn";
-import {tableDataSorter} from "./tableDataSorter";
-import {dataDivider, pageCounter} from "./dataDivider";
+import InfiniteLoader from 'react-infinite-loader'
+
+
 
 
 const Table = ({isLoading,
@@ -27,24 +26,27 @@ const Table = ({isLoading,
                    adding,
                    urlToCreate})=>{
     useEffect(()=>{
-        getDataFunc()
+        getDataFunc(1)
         return ()=>{
             writeTableMessage('')
         }
     },[])
     const [searchText,setSearchText] = useState('')
-   const [page,setPage] = useState(1)
 
 
-  const onChangePagination = (page)=>setPage(page.selected)
-
-    const elements = dataDivider(tableDataSorter(data,searchText),page,4).map(item=>{
+    const elements = data.map(item=>{
         return (
             <div key={item.id}>
             <TableItem columns={columns} data={item} handlerClick = {handlerClick} deleting={deleting}/>
             </div>
         )
     })
+    const [visitCounter,setVisitCounter] = useState(2)
+   const  handleVisit = () => {
+        console.log('visited')
+        getDataFunc(visitCounter)
+       setVisitCounter(visitCounter+1)
+    }
     return(
 
         <div className='table-container'>
@@ -62,30 +64,16 @@ const Table = ({isLoading,
             </div>
 
             <div className="tableItem-container__wrapper">
-                { isLoading && <div  className='table-loading-wrapper'><Preloader /></div> }
                 {(tableMessage && isLoading) && <ErrorMsg text={tableMessage}/>}
-                {elements}
+                    {elements}
+                 <InfiniteLoader
+                    loaderStyle={{borderColor: 'rgba(255, 255, 255, 0.2) rgba(255, 255, 255, 0.2) rgba(255, 255, 255, 0.2) rgb(0,155,0)'}}
+                    onVisited={() => handleVisit()}
+                    //containerElement={'tableItem-container__wrapper'}
+                />
+
             </div>
 
-            <ReactPaginate
-                initialPage={0}
-                previousLabel={'<'}
-                nextLabel={'>'}
-                breakLabel={'...'}
-                breakClassName={'break-me'}
-                pageCount={pageCounter(tableDataSorter(data,searchText).length,4)}
-                onPageChange={onChangePagination}
-                containerClassName={'ant-pagination'}
-                subContainerClassName={'ant-pagination-item'}
-                pageClassName={'ant-pagination-item'}
-                pageLinkClassName={'ant-pagination-item-link'}
-                previousClassName={'ant-pagination-prev'}
-                nextClassName={'ant-pagination-next'}
-                nextLinkClassName={'ant-pagination-item-link'}
-                previousLinkClassName={'ant-pagination-item-link'}
-                disabledClassName={'ant-pagination-disabled'}
-                activeClassName={'ant-pagination-item-active'}
-            />
         </div>
     )
 }

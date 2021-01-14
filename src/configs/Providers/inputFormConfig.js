@@ -1,4 +1,3 @@
-import {addressData} from "../../components/Inputs/SelectorInput/data/addressData";
 
 export const providerInputConfig = [
     {
@@ -20,8 +19,7 @@ export const providerInputConfig = [
         label: "Адрес",
         placeholder: "Чуйская область Бишкек",
         type: 'map',
-        //selectInputData:addressData
-      //  required: "Укажите адрес поставщика",
+        required: "Укажите адрес поставщика",
     },
     {
         label: "Товары",
@@ -34,15 +32,21 @@ export const providerInputConfig = [
     },
     {
         label: "Фото пасспорта",
-        type: 'image'
+        type: 'image',
+        fileTypes:['jpg','png'],
+        imageCount: 2
     },
     {
         label: "Фото сертификата",
-        type: 'image'
+        type: 'image',
+        fileTypes:['jpg','png'],
+        imageCount: 6
     },
     {
         label: "Фото контракта",
-        type: 'image'
+        type: 'image',
+        fileTypes:['jpg','png'],
+        imageCount: 6
     },
     {
         label: "Статус",

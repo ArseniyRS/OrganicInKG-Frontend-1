@@ -23,6 +23,8 @@ const Former = (props)=>{
                 selectInputData={props.inputConfig[index]?.selectInputData}
                 options={props.optionsForSelector}
                 selectorProperty={props.inputConfig[index]?.selectorProperty}
+                fileTypes={props.inputConfig[index]?.fileTypes}
+                imageCount={props.inputConfig[index]?.imageCount}
             />
         )
     })

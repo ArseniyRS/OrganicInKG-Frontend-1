@@ -31,7 +31,7 @@ export const categoryReducer = (state=initialState,action)=>{
         case WRITE_CATEGORIES:
             return{
                 ...state,
-                categories: action.payload
+                categories: [...state.categories,...action.payload]
             }
         case WRITE_CATEGORY_BY_ID:
             return{
@@ -70,31 +70,32 @@ export const clearCategory = ()=>{
         action: undefined
     }
 }
-export const getCategory = ()=> {
-    return async dispatch => getTemplate(dispatch, categoryGetReq, WRITE_CATEGORIES, toggleLoader)
+export const getCategory = (page)=> {
+    return async dispatch => getTemplate(dispatch, categoryGetReq, WRITE_CATEGORIES, toggleLoader,page)
 }
 export const getCategoryById = (id)=> {
     return async dispatch => getTemplate(dispatch, categoryGetByIdReq, WRITE_CATEGORY_BY_ID, toggleLoader,id)
 }
 export const createCategory = data=>{
-    console.log('created')
         return async dispatch => {
-            dispatch(toggleLoader(true))
-            const formData = new FormData()
-            formData.append('categoryRequest', new Blob([JSON.stringify({
-                "name": data.name,
-                "description": data.description,
-                "parentCategoryId": data.parentCategoryId
-            })], {type: "application/json"}));
-            if(toClearImageArray(data.image)!==null){
-               toClearImageArray(data.image).map(item=>formData.append('image', item))
-            }else{
-                formData.append('image', null)
+            for (let i=0;i<50;i++) {
+                dispatch(toggleLoader(true))
+                const formData = new FormData()
+                formData.append('categoryRequest', new Blob([JSON.stringify({
+                    "name": `${data.name}${i}`,
+                    "description": data.description,
+                    "parentCategoryId": data.parentCategoryId
+                })], {type: "application/json"}));
+                if (toClearImageArray(data.image) !== null) {
+                    toClearImageArray(data.image).map(item => formData.append('image', item))
+                } else {
+                    formData.append('image', null)
+                }
+                await categoryPostReq(formData).then(async resp => {
+                    dispatch({type: ADDED_CATEGORY, payload: resp.data.result})
+                }).catch(error => console.log(error.response))
+                dispatch(toggleLoader(false))
             }
-            await categoryPostReq(formData).then( async resp=>{
-                    dispatch({type: ADDED_CATEGORY,payload: resp.data.result})
-                }).catch(error=>console.log(error.response))
-            dispatch(toggleLoader(false))
         }
 }
 export const deleteCategory = id =>{

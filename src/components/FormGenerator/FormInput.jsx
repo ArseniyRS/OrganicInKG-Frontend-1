@@ -16,6 +16,8 @@ const FormInput = ({
                selectInputData=[],
                selectorProperty,
                options=[],
+                       fileTypes,
+                       imageCount,
     ...props
                    })=>{
     console.log(props)
@@ -64,6 +66,8 @@ const FormInput = ({
                 : type==='image' ?
                 <Field name={name} >
                 {({field:{name,value},form: { setFieldValue}}) =><ImgUploader setFieldValue={setFieldValue}
+                                                                              fileTypes={fileTypes}
+                                                                              imageCount={imageCount}
                                                                               value={value}
                                                                               name={name}/>}
                 </Field>
