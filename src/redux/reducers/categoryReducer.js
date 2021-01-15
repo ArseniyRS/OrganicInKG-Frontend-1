@@ -4,7 +4,7 @@ import {
     ADDED_CATEGORY,
     DELETED_CATEGORY,
     UPDATED_CATEGORY,
-
+    WRITE_SEARCHED_CATEGORIES
 } from './types'
 import {
     categoryDelByIdReq,
@@ -32,6 +32,11 @@ export const categoryReducer = (state=initialState,action)=>{
             return{
                 ...state,
                 categories: [...state.categories,...action.payload]
+            }
+        case WRITE_SEARCHED_CATEGORIES:
+            return{
+                ...state,
+                categories: action.payload
             }
         case WRITE_CATEGORY_BY_ID:
             return{
@@ -69,6 +74,11 @@ export const clearCategory = ()=>{
         type: WRITE_CATEGORY_BY_ID,
         action: undefined
     }
+}
+
+
+export const getSearchedCategory = page=>{
+    return async dispatch => getTemplate(dispatch,categoryGetReq,WRITE_SEARCHED_CATEGORIES, toggleLoader,page)
 }
 export const getCategory = (page)=> {
     return async dispatch => getTemplate(dispatch, categoryGetReq, WRITE_CATEGORIES, toggleLoader,page)
