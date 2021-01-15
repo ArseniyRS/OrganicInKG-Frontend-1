@@ -38,7 +38,6 @@ const ProductsPage = ({   products,
     // if(productById) {
     //     productForView['raiting'] = ratingById
     // }
-    console.log(productById?.productImages.map(item=>item.imageUrl))
     return(
         <PageRenderer
             pageUrl ={'products'}

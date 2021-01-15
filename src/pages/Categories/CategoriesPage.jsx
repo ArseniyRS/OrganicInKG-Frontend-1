@@ -15,7 +15,7 @@ import {categoryInputConfig} from "../../configs/Categories/inputFormConfig";
 
 
 
-const CategoriesPage = ({categories,categoryById,getSearchedCategory,getCategory,getCategoryById,createCategory,updateCategory,deleteCategory,clearCategory})=>{
+const CategoriesPage = ({categories,hasCategories,categoryById,getSearchedCategory,getCategory,getCategoryById,createCategory,updateCategory,deleteCategory,clearCategory})=>{
     return(
         <PageRenderer
             pageUrl ={'categories'}
@@ -50,7 +50,7 @@ const CategoriesPage = ({categories,categoryById,getSearchedCategory,getCategory
             updateFunc={updateCategory}
             clearFunc={clearCategory}
             deleteFunc={deleteCategory}
-            getDataFuncSearch={getSearchedCategory}
+            hasData={hasCategories}
 
         />
     )
@@ -58,7 +58,8 @@ const CategoriesPage = ({categories,categoryById,getSearchedCategory,getCategory
 const mapStateToProps = state=>{
     return{
         categories: state.category.categories,
-        categoryById: state.category.categoryById
+        categoryById: state.category.categoryById,
+        hasCategories: state.category.hasCategories
     }
 }
 
@@ -70,6 +71,5 @@ export  default  connect(mapStateToProps,
         updateCategory,
         deleteCategory,
         clearCategory,
-        getSearchedCategory
     }
     )(CategoriesPage)

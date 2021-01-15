@@ -4,12 +4,12 @@ import {
     ADDED_CATEGORY,
     DELETED_CATEGORY,
     UPDATED_CATEGORY,
-    WRITE_SEARCHED_CATEGORIES
+    SEARCHING
 } from './types'
 import {
     categoryDelByIdReq,
-     categoryGetByIdReq,
-    categoryGetReq,
+    categoryGetByIdReq,
+    categoryGetReq, categoryGetSearchReq,
     categoryPostReq,
     categoryUpdReq,
 } from "../../utils/api/Request";
@@ -19,10 +19,14 @@ import {deleteTemplate} from "../../utils/templates/deleteTemplate";
 import {toggleLoader} from "./mainReducer";
 import {updateItemInStore} from "../../utils/templates/updateItemInStore";
 import {toClearImageArray} from "../../utils/templates/toClearImageArray";
+import {getSearchedTemplate} from "../../utils/templates/getSearchedTemplate";
+import {checkHasData} from "../../utils/checkHasData";
 
 const initialState={
     categories: [],
-    categoryById: {}
+    categoryById: {},
+    searchedCategories: [],
+    hasCategories: true
 }
 
 
@@ -31,13 +35,22 @@ export const categoryReducer = (state=initialState,action)=>{
         case WRITE_CATEGORIES:
             return{
                 ...state,
-                categories: [...state.categories,...action.payload]
+                categories: [...state.categories,...action.payload],
+                hasCategories: checkHasData(action.payload)
             }
-        case WRITE_SEARCHED_CATEGORIES:
-            return{
+        case SEARCHING:
+            return {
                 ...state,
-                categories: action.payload
+                categories: [],
+                hasCategories: true
             }
+        // case WRITE_SEARCHED_CATEGORIES:
+        //
+        //     return{
+        //         ...state,
+        //         searchedCategories: action.payload,
+        //         hasCategories: checkHasData(action.payload)
+        //     }
         case WRITE_CATEGORY_BY_ID:
             return{
                 ...state,
@@ -77,11 +90,12 @@ export const clearCategory = ()=>{
 }
 
 
-export const getSearchedCategory = page=>{
-    return async dispatch => getTemplate(dispatch,categoryGetReq,WRITE_SEARCHED_CATEGORIES, toggleLoader,page)
-}
-export const getCategory = (page)=> {
-    return async dispatch => getTemplate(dispatch, categoryGetReq, WRITE_CATEGORIES, toggleLoader,page)
+// export const getSearchedCategory = (searchText,page)=>{
+//     return async dispatch => getSearchedTemplate(dispatch,categoryGetSearchReq,WRITE_SEARCHED_CATEGORIES, toggleLoader,page,searchText)
+// }
+export const getCategory = (page,searchText)=> {
+    console.log(page)
+    return async dispatch => getSearchedTemplate(dispatch, categoryGetSearchReq, WRITE_CATEGORIES, toggleLoader,page,searchText)
 }
 export const getCategoryById = (id)=> {
     return async dispatch => getTemplate(dispatch, categoryGetByIdReq, WRITE_CATEGORY_BY_ID, toggleLoader,id)

@@ -2,14 +2,14 @@ import React, {useEffect, useState} from 'react'
 import TableItem from "./Table-item";
 import './Table.css'
 import Preloader from "../Preloader/Preloader";
-import {connect} from "react-redux";
+import {connect, useDispatch} from "react-redux";
 import {writeTableMessage} from "../../redux/reducers/tableReducer";
 import ErrorMsg from "../Modals/ErrorMessage";
 
 import SearchPanel from "../Search-panel/SearchPanel";
 import AddBtn from "../Btns/AddBtn";
 import DeleteBtn from "../Btns/DeleteBtn";
-import InfiniteLoader from 'react-infinite-loader'
+import InfiniteScroll from 'react-infinite-scroll-component';
 
 
 
@@ -25,23 +25,24 @@ const Table = ({isLoading,
                    deleteFunc,
                    adding,
                    urlToCreate,
-                   getDataFuncSearch
+                   getDataFuncSearch,
+                   hasData
                })=>{
     const [searchText,setSearchText] = useState('')
-    const [visitCounter,setVisitCounter] = useState(2)
-
+    const [page,setPage] = useState(1)
+    console.log(window.scroll)
     useEffect(()=>{
-        if(!searchText) {
-            getDataFunc(1)
-        }
         return ()=>{
             writeTableMessage('')
         }
     },[])
-
+    const dispatch = useDispatch()
     useEffect(() => {
-        const timeoutId = setTimeout(() =>
-                getDataFuncSearch(visitCounter)
+        const timeoutId = setTimeout(() => {
+                    getDataFunc(1,searchText)
+                    setPage(2)
+                    dispatch({type: 'SEARCHING'})
+            }
             , 1000);
         return () => clearTimeout(timeoutId);
     }, [searchText]);
@@ -53,11 +54,6 @@ const Table = ({isLoading,
             </div>
         )
     })
-   const  handleVisit = () => {
-        console.log('visited')
-        getDataFunc(visitCounter)
-       setVisitCounter(visitCounter+1)
-    }
     return(
 
         <div className='table-container'>
@@ -76,12 +72,26 @@ const Table = ({isLoading,
 
             <div className="tableItem-container__wrapper">
                 {(tableMessage && isLoading) && <ErrorMsg text={tableMessage}/>}
+                <InfiniteScroll
+                    dataLength={data.length} //This is important field to render the next data
+                    next={()=>{
+
+                        getDataFunc(page,searchText)
+                        setPage(page+1)
+                    }}
+                    hasMore={hasData}
+                    loader={<Preloader/>}
+                    endMessage={
+                        <p style={{ textAlign: 'center' }}>
+                            <b>Больше записей нет.</b>
+                        </p>
+                    }
+                    initialScrollY={0}
+                >
+
                     {elements}
-                 <InfiniteLoader
-                    loaderStyle={{borderColor: 'rgba(255, 255, 255, 0.2) rgba(255, 255, 255, 0.2) rgba(255, 255, 255, 0.2) rgb(0,155,0)'}}
-                    onVisited={() => handleVisit()}
-                    //containerElement={'tableItem-container__wrapper'}
-                />
+                </InfiniteScroll>
+
 
             </div>
 

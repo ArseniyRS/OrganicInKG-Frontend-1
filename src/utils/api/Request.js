@@ -14,6 +14,10 @@ export const categoryPostReq = (data)=>instance.post('categories',data)
 export const categoryDelReq = (id)=>instance.delete(`categories`,id)
 export const categoryDelByIdReq = (id)=>instance.delete(`categories/${id}`)
 export const categoryUpdReq = (data,id)=>instance.put(`categories/${id}`,data)
+export const categoryGetSearchReq = (searchText,page)=>instance.get(`${searchText ? 
+    `categories/search?name=${searchText}&pageNumber=${page}&pageSize=20` 
+    : `categories?page=${page}&size=20`}`)
+    .then(response=>response.data)
 
 
 export const productsGetReq = (page)=>instance.get(`products?page=${page}&size=20`).then(response=>response.data)
