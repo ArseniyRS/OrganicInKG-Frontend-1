@@ -39,11 +39,11 @@ const PageRenderer = ({
     updateFunc,
     clearFunc,
     deleteFunc,
-
+    getDataFuncSearch,
     isLoading,
 
 
-                          recordViewValuesConfig,
+     recordViewValuesConfig,
 
     adding=true,
     editing=true,
@@ -66,7 +66,7 @@ const PageRenderer = ({
                                 adding={adding}
                                 urlToCreate = {`/${pageUrl}/${pageUrl}-creator`}
                                 deleteFunc = {deleteFunc}
-
+                                getDataFuncSearch={getDataFuncSearch}
                             />
                         </Route>
                         {adding &&

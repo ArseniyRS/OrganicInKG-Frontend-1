@@ -24,15 +24,27 @@ const Table = ({isLoading,
                    writeTableMessage,
                    deleteFunc,
                    adding,
-                   urlToCreate})=>{
+                   urlToCreate,
+                   getDataFuncSearch
+               })=>{
+    const [searchText,setSearchText] = useState('')
+    const [visitCounter,setVisitCounter] = useState(2)
+
     useEffect(()=>{
-        getDataFunc(1)
+        if(!searchText) {
+            getDataFunc(1)
+        }
         return ()=>{
             writeTableMessage('')
         }
     },[])
-    const [searchText,setSearchText] = useState('')
 
+    useEffect(() => {
+        const timeoutId = setTimeout(() =>
+                getDataFuncSearch(visitCounter)
+            , 1000);
+        return () => clearTimeout(timeoutId);
+    }, [searchText]);
 
     const elements = data.map(item=>{
         return (
@@ -41,7 +53,6 @@ const Table = ({isLoading,
             </div>
         )
     })
-    const [visitCounter,setVisitCounter] = useState(2)
    const  handleVisit = () => {
         console.log('visited')
         getDataFunc(visitCounter)

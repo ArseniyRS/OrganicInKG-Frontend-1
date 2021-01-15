@@ -5,7 +5,7 @@ import {
     createCategory,
     deleteCategory,
     getCategory,
-    getCategoryById, updateCategory
+    getCategoryById, getSearchedCategory, updateCategory
 } from "../../redux/reducers/categoryReducer";
 import {recordViewCategoryConfig} from "../../configs/Categories/recordViewConfig";
 import {CategoryColumns} from "../../configs/Categories/tableColumnsConfig";
@@ -15,7 +15,7 @@ import {categoryInputConfig} from "../../configs/Categories/inputFormConfig";
 
 
 
-const CategoriesPage = ({categories,categoryById,getCategory,getCategoryById,createCategory,updateCategory,deleteCategory,clearCategory})=>{
+const CategoriesPage = ({categories,categoryById,getSearchedCategory,getCategory,getCategoryById,createCategory,updateCategory,deleteCategory,clearCategory})=>{
     return(
         <PageRenderer
             pageUrl ={'categories'}
@@ -50,6 +50,7 @@ const CategoriesPage = ({categories,categoryById,getCategory,getCategoryById,cre
             updateFunc={updateCategory}
             clearFunc={clearCategory}
             deleteFunc={deleteCategory}
+            getDataFuncSearch={getSearchedCategory}
 
         />
     )
@@ -68,6 +69,7 @@ export  default  connect(mapStateToProps,
         createCategory,
         updateCategory,
         deleteCategory,
-        clearCategory
+        clearCategory,
+        getSearchedCategory
     }
     )(CategoriesPage)
