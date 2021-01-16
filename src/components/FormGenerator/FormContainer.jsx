@@ -24,6 +24,7 @@ const FormContainer = ({
         if(match.params?.id){
             await updReq(match.params.id,values)
         }else {
+            console.log(values)
             await  createReq(values)
         }
     }
@@ -31,7 +32,7 @@ const FormContainer = ({
 
 
     return(
-        (!isLoading && props.valueById ) || !match.params?.id
+        (!isLoading && props.valueById) || (!isLoading && !props.params?.id)
             ?
             <Former handleSubmit={handleSubmit}  {...props}/>
         : <Preloader />

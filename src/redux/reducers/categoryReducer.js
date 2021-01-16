@@ -4,19 +4,18 @@ import {
     ADDED_CATEGORY,
     DELETED_CATEGORY,
     UPDATED_CATEGORY,
-    SEARCHING
+    SEARCHING,CATEGORY_TOGGLE_FETCH_LOADER
 } from './types'
 import {
     categoryDelByIdReq,
     categoryGetByIdReq,
-    categoryGetReq, categoryGetSearchReq,
+     categoryGetSearchReq,
     categoryPostReq,
     categoryUpdReq,
 } from "../../utils/api/Request";
 import {getTemplate} from "../../utils/templates/getTemplate";
 import {createOrChangeTemplate} from "../../utils/templates/createOrChangeTemplate";
 import {deleteTemplate} from "../../utils/templates/deleteTemplate";
-import {toggleLoader} from "./mainReducer";
 import {updateItemInStore} from "../../utils/templates/updateItemInStore";
 import {toClearImageArray} from "../../utils/templates/toClearImageArray";
 import {getSearchedTemplate} from "../../utils/templates/getSearchedTemplate";
@@ -26,12 +25,18 @@ const initialState={
     categories: [],
     categoryById: {},
     searchedCategories: [],
-    hasCategories: true
+    hasCategories: true,
+    categoryFetchLoader: false
 }
 
 
 export const categoryReducer = (state=initialState,action)=>{
     switch (action.type) {
+        case CATEGORY_TOGGLE_FETCH_LOADER:
+            return{
+                ...state,
+                categoryFetchLoader: action.payload
+            }
         case WRITE_CATEGORIES:
             return{
                 ...state,
@@ -44,13 +49,6 @@ export const categoryReducer = (state=initialState,action)=>{
                 categories: [],
                 hasCategories: true
             }
-        // case WRITE_SEARCHED_CATEGORIES:
-        //
-        //     return{
-        //         ...state,
-        //         searchedCategories: action.payload,
-        //         hasCategories: checkHasData(action.payload)
-        //     }
         case WRITE_CATEGORY_BY_ID:
             return{
                 ...state,
@@ -88,22 +86,23 @@ export const clearCategory = ()=>{
         action: undefined
     }
 }
+export const categoryToggleLoader = bool=>{
+    return{
+        type: 'CATEGORY_TOGGLE_FETCH_LOADER',
+        payload: bool
+    }
+}
 
-
-// export const getSearchedCategory = (searchText,page)=>{
-//     return async dispatch => getSearchedTemplate(dispatch,categoryGetSearchReq,WRITE_SEARCHED_CATEGORIES, toggleLoader,page,searchText)
-// }
 export const getCategory = (page,searchText)=> {
-    console.log(page)
-    return async dispatch => getSearchedTemplate(dispatch, categoryGetSearchReq, WRITE_CATEGORIES, toggleLoader,page,searchText)
+    return async dispatch => getSearchedTemplate(dispatch, categoryGetSearchReq, WRITE_CATEGORIES, categoryToggleLoader,page,searchText)
 }
 export const getCategoryById = (id)=> {
-    return async dispatch => getTemplate(dispatch, categoryGetByIdReq, WRITE_CATEGORY_BY_ID, toggleLoader,id)
+    return async dispatch => getTemplate(dispatch, categoryGetByIdReq, WRITE_CATEGORY_BY_ID, categoryToggleLoader,id)
 }
 export const createCategory = data=>{
         return async dispatch => {
             for (let i=0;i<50;i++) {
-                dispatch(toggleLoader(true))
+                dispatch(categoryToggleLoader(true))
                 const formData = new FormData()
                 formData.append('categoryRequest', new Blob([JSON.stringify({
                     "name": `${data.name}${i}`,
@@ -118,18 +117,18 @@ export const createCategory = data=>{
                 await categoryPostReq(formData).then(async resp => {
                     dispatch({type: ADDED_CATEGORY, payload: resp.data.result})
                 }).catch(error => console.log(error.response))
-                dispatch(toggleLoader(false))
+                dispatch(categoryToggleLoader(false))
             }
         }
 }
 export const deleteCategory = id =>{
     return async dispatch => {
         for(let i=0;i<id.length;i++){
-          await deleteTemplate(dispatch,categoryDelByIdReq,id[i],toggleLoader,DELETED_CATEGORY)
+          await deleteTemplate(dispatch,categoryDelByIdReq,id[i],categoryToggleLoader,DELETED_CATEGORY)
         }
     }
 }
 export const updateCategory = (id,data) =>{
-    return async dispatch => createOrChangeTemplate(dispatch,categoryUpdReq,data,UPDATED_CATEGORY,toggleLoader,id)
+    return async dispatch => createOrChangeTemplate(dispatch,categoryUpdReq,data,UPDATED_CATEGORY,categoryToggleLoader,id)
 }
 

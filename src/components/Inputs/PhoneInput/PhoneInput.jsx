@@ -11,6 +11,7 @@ const PhoneInput = ({name,setFieldValue,placeholder,value})=>{
             placeholder={'+996 (___) __-__-__'}
             name={name}
             onChange={e=>onChange(e.target.value)}
+            value={value}
         />
     )
 }

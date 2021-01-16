@@ -34,10 +34,26 @@ export const productInputConfig = [
         required: 'Укажите цену товара',
     },
     {
+        label: "Валюта",
+        type: 'selector',
+        selectorProperty: 'currency',
+        nullable: true,
+        placeholder: "сом",
+        required: 'Укажите валюту',
+    },
+    {
         label: "Количество товара",
         placeholder: "100500",
         dataType: 'number',
         required: 'Укажите количество товара',
+    },
+    {
+        label: "Ед.измерения",
+        type: 'selector',
+        selectorProperty: 'units',
+        nullable: true,
+        placeholder: "кг",
+        required: 'Укажите ед.измерения',
     },
     {
         label: "Фото товара",

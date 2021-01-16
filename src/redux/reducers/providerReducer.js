@@ -3,7 +3,7 @@ import {
     WRITE_PROVIDER_BY_ID,
     WRITE_ACTIVE_PROVIDERS,
     ADDED_PROVIDER,
-    DELETED_PROVIDER, UPDATED_PROVIDER
+    DELETED_PROVIDER, UPDATED_PROVIDER, SEARCHING, PROVIDER_TOGGLE_FETCH_LOADER,
 } from './types'
 import {
     providerGetByIdReq,
@@ -11,28 +11,43 @@ import {
     providerPostReq,
     providerUpdReq,
     providerDelByIdReq,
-    providerActiveGetReq
+    providerActiveGetReq,
 } from "../../utils/api/Request";
 import {getTemplate} from "../../utils/templates/getTemplate";
 import {createOrChangeTemplate} from "../../utils/templates/createOrChangeTemplate";
 import {deleteTemplate} from "../../utils/templates/deleteTemplate";
-import {toggleLoader} from "./mainReducer";
 import {formDataProviderTemplate} from "../../utils/templates/formDataTemplate";
 import {updateItemInStore} from "../../utils/templates/updateItemInStore";
+import {checkHasData} from "../../utils/checkHasData";
+import {getSearchedTemplate} from "../../utils/templates/getSearchedTemplate";
 
 const initialState={
     providers: [],
     providerById: {},
-    activeProviders: []
+    activeProviders: [],
+    hasProvider: true,
+    providerFetchLoader: false
 }
 
 
 export const providerReducer = (state=initialState,action)=>{
     switch (action.type) {
+        case PROVIDER_TOGGLE_FETCH_LOADER:
+            return{
+                ...state,
+                providerFetchLoader: action.payload
+            }
         case WRITE_PROVIDER:
             return{
                 ...state,
-                providers:  [...state.providers,...action.payload]
+                providers: [...state.providers,...action.payload],
+                hasProvider: checkHasData(action.payload)
+            }
+        case SEARCHING:
+            return {
+                ...state,
+                providers: [],
+                hasProvider: true
             }
         case WRITE_PROVIDER_BY_ID:
             return{
@@ -75,18 +90,25 @@ export const clearProvider = ()=>{
         action: undefined
     }
 }
-export const getActiveProviders = (page)=>{
-    return async dispatch => getTemplate(dispatch,providerActiveGetReq,WRITE_ACTIVE_PROVIDERS,toggleLoader,page)
+export const providerToggleLoader = bool=>{
+    return{
+        type: PROVIDER_TOGGLE_FETCH_LOADER,
+        payload: bool
+    }
 }
-export const getProviders = ()=> {
-    return async dispatch => getTemplate(dispatch, providersGetReq, WRITE_PROVIDER, toggleLoader)
+
+export const getActiveProviders = (page)=>{
+    return async dispatch => getTemplate(dispatch,providerActiveGetReq,WRITE_ACTIVE_PROVIDERS,providerToggleLoader,page)
+}
+export const getProviders = (page,searchText)=> {
+    return async dispatch => getSearchedTemplate(dispatch, providersGetReq, WRITE_PROVIDER, providerToggleLoader,page,searchText)
 }
 export const getProviderById = (id)=> {
-    return async dispatch => getTemplate(dispatch, providerGetByIdReq, WRITE_PROVIDER_BY_ID, toggleLoader,id)
+    return async dispatch => getTemplate(dispatch, providerGetByIdReq, WRITE_PROVIDER_BY_ID, providerToggleLoader,id)
 }
 export const createProvider = (data)=>{
         return async dispatch => {
-            dispatch(toggleLoader(true))
+            dispatch(providerToggleLoader(true))
             await providerPostReq(data)
                 .then(resp => {
                     dispatch({type:ADDED_PROVIDER,payload: resp.data.result})
@@ -94,18 +116,18 @@ export const createProvider = (data)=>{
                     formDataProviderTemplate(resp.data.result.id,data,'SERTIFICATE')
                     formDataProviderTemplate(resp.data.result.id,data,'CONTRACT')
                 })
-
+            dispatch(providerToggleLoader(false))
         }
 }
 
 export const deleteProvider = id =>{
     return async dispatch => {
         for(let i=0;i<id.length;i++){
-            await deleteTemplate(dispatch,providerDelByIdReq,id[i],toggleLoader,DELETED_PROVIDER)
+            await deleteTemplate(dispatch,providerDelByIdReq,id[i],providerToggleLoader,DELETED_PROVIDER)
         }
     }
 }
 export const updateProvider = (id,data) =>{
-    return async dispatch => createOrChangeTemplate(dispatch,providerUpdReq,data,UPDATED_PROVIDER,toggleLoader,id)
+    return async dispatch => createOrChangeTemplate(dispatch,providerUpdReq,data,UPDATED_PROVIDER,providerToggleLoader,id)
 }
 

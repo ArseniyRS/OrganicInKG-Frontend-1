@@ -1,4 +1,4 @@
-import React, {InputHTMLAttributes, useEffect, useRef} from 'react'
+import React from 'react'
 import './AuthPage.css'
 import AuthContainer from "../../components/Auth/AuthContainer";
 const AuthPage = ()=>{

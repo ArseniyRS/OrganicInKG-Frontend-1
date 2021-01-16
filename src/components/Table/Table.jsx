@@ -30,7 +30,6 @@ const Table = ({isLoading,
                })=>{
     const [searchText,setSearchText] = useState('')
     const [page,setPage] = useState(1)
-    console.log(window.scroll)
     useEffect(()=>{
         return ()=>{
             writeTableMessage('')
@@ -83,7 +82,7 @@ const Table = ({isLoading,
                     loader={<Preloader/>}
                     endMessage={
                         <p style={{ textAlign: 'center' }}>
-                            <b>Больше записей нет.</b>
+                            <b>Загружены все записи.</b>
                         </p>
                     }
                     initialScrollY={0}
@@ -91,7 +90,6 @@ const Table = ({isLoading,
 
                     {elements}
                 </InfiniteScroll>
-
 
             </div>
 

@@ -20,21 +20,49 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="869952c6-d07a-44c8-9dad-429924c3fe46" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/utils/checkHasData.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/templates/getSearchedTemplate.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Preloader/Preloader.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Auth/AuthContainer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Auth/AuthContainer.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Auth/AuthForm.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Auth/AuthForm.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Auth/expChecker.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Auth/expChecker.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/FormGenerator/FormContainer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/FormGenerator/FormContainer.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/FormGenerator/Former.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/FormGenerator/Former.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Header/Header.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header/Header.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Header/Header.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header/Header.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Inputs/PhoneInput/PhoneInput.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Inputs/PhoneInput/PhoneInput.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Inputs/Selector/SelectBlock.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Inputs/Selector/SelectBlock.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Inputs/Selector/SelectField.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Inputs/Selector/SelectField.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Inputs/Selector/SelectItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Inputs/Selector/SelectItem.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/PageRenderer/PageRendererContainer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/PageRenderer/PageRendererContainer.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Preloader/Preloader.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Preloader/Preloader.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Table/Table.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Table/Table.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Profile/ProfileContainer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Profile/ProfileContainer.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Profile/ProfileForm.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Profile/ProfileForm.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Table/Table.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Table/Table.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/configs/Products/inputFormConfig.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/configs/Products/inputFormConfig.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/configs/Products/recordViewConfig.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/configs/Products/recordViewConfig.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/AboutUs/AboutUsPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/AboutUs/AboutUsPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Auth/AuthPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Auth/AuthPage.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/Categories/CategoriesPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Categories/CategoriesPage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Faq/FaqPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Faq/FaqPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Orders/OrdersPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Orders/OrdersPage.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/Products/ProductsPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Products/ProductsPage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Profile/ProfilePage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Profile/ProfilePage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Providers/ProvidersPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Providers/ProvidersPage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Users/UsersPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Users/UsersPage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/reducers/aboutUsReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/aboutUsReducer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/redux/reducers/categoryReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/categoryReducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/reducers/faqReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/faqReducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/reducers/mainReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/mainReducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/reducers/orderReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/orderReducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/reducers/productReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/productReducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/reducers/providerReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/providerReducer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/redux/reducers/types.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/types.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/reducers/userReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/userReducer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/utils/api/Request.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/api/Request.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/templates/getSearchedTemplate.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/templates/getSearchedTemplate.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/toBeatifyFiledsValue.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/toBeatifyFiledsValue.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,8 +72,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="CSS File" />
         <option value="JavaScript File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -74,6 +102,7 @@
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\WebStorm 2020.1\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
   </component>
   <component name="RecentsManager">
@@ -174,6 +203,7 @@
       <workItem from="1610637439074" duration="11550000" />
       <workItem from="1610728530603" duration="793000" />
       <workItem from="1610696719052" duration="3096000" />
+      <workItem from="1610783301984" duration="27892000" />
     </task>
     <servers />
   </component>
@@ -201,18 +231,26 @@
       <screen x="0" y="0" width="1920" height="1160" />
     </state>
     <state x="725" y="382" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1160@0.0.1920.1160" timestamp="1608106331233" />
+    <state x="707" y="435" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1610784477104">
+      <screen x="0" y="0" width="1920" height="1160" />
+    </state>
+    <state x="707" y="435" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1920.1160@0.0.1920.1160" timestamp="1610784477104" />
     <state x="740" y="321" key="FileChooserDialogImpl" timestamp="1604909651666">
       <screen x="0" y="0" width="1920" height="1160" />
     </state>
     <state x="740" y="321" key="FileChooserDialogImpl/0.0.1920.1160@0.0.1920.1160" timestamp="1604909651666" />
+    <state width="498" height="446" key="SwitcherDM" timestamp="1610799019053">
+      <screen x="0" y="0" width="1920" height="1160" />
+    </state>
+    <state width="498" height="446" key="SwitcherDM/0.0.1920.1160@0.0.1920.1160" timestamp="1610799019053" />
     <state x="667" y="315" width="585" height="530" key="find.popup" timestamp="1610748255634">
       <screen x="0" y="0" width="1920" height="1160" />
     </state>
     <state x="667" y="315" width="585" height="530" key="find.popup/0.0.1920.1160@0.0.1920.1160" timestamp="1610748255634" />
-    <state x="616" y="270" key="run.anything.popup" timestamp="1605466453469">
+    <state x="616" y="270" key="run.anything.popup" timestamp="1610820464413">
       <screen x="0" y="0" width="1920" height="1160" />
     </state>
-    <state x="616" y="270" key="run.anything.popup/0.0.1920.1160@0.0.1920.1160" timestamp="1605466453469" />
+    <state x="616" y="270" key="run.anything.popup/0.0.1920.1160@0.0.1920.1160" timestamp="1610820464413" />
     <state x="623" y="255" width="672" height="678" key="search.everywhere.popup" timestamp="1605977650278">
       <screen x="0" y="0" width="1920" height="1160" />
     </state>

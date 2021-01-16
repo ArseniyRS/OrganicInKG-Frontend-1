@@ -3,17 +3,20 @@ import {
     TOGGLE_FETCH_LOADER,
     TOGGLE_PAGE_LOADER,
     WRITE_AUTH_MESSAGE,
-    WRITE_USERNAME
+    WRITE_USERNAME,
+    WRITE_USER_ID
 } from './types'
 import {authRefreshReq, authReq, userGetByIdReq} from "../../utils/api/Request";
+import {logout} from "../../components/Auth/logout";
 
 
 const initialState={
-    isFetchLoader: false,
+    authFetchLoader: false,
     isAuthorized: true,
     isPageLoader: false,
-    authErrorMessage: undefined,
-    username: undefined
+    authErrorMessage: '',
+    username: '',
+    userId: undefined
 }
 
 
@@ -27,7 +30,7 @@ export const mainReducer = (state=initialState,action)=>{
         case TOGGLE_FETCH_LOADER:
             return{
                 ...state,
-                isFetchLoader: action.payload
+                authFetchLoader: action.payload
             }
         case TOGGLE_PAGE_LOADER:
             return{
@@ -43,13 +46,24 @@ export const mainReducer = (state=initialState,action)=>{
         case WRITE_USERNAME:
             return {
                 ...state,
-                username: action.payload
+                username: action.payload,
             }
+        case WRITE_USER_ID:
+        return {
+            ...state,
+            userId: action.payload
+        }
         default:{
             return{
                 ...state
             }
         }
+    }
+}
+export const writeUserId = value=>{
+    return{
+        type: 'WRITE_USER_ID',
+        payload: value
     }
 }
 const writeUsername = value=>{
@@ -87,18 +101,22 @@ export const authRefresh = data=> {
     return async dispatch => {
         dispatch(toggleLoader(true))
         await authRefreshReq(data).then(async response => {
-            localStorage.setItem("accessToken", response.result.body.accessToken)
-            localStorage.setItem("tokenExpirationTime", response.result.body.tokenExpirationTime)
-            localStorage.setItem("refreshExpirationTime", response.result.body.refreshExpirationTime)
-            localStorage.setItem("id", response.result.body.id)
-            localStorage.setItem("refreshToken", response.result.body.refreshToken)
-            await userGetByIdReq(response.result.body.id).then(response=>{
-                console.log(response)
-                dispatch(writeUsername(response.result.phoneNumber))
-            })
-            console.log(response)
-            dispatch(toggleAuth(true))
-        }).catch(err => console.log(err))
+            if(response.resultCode==='NOT_FOUND'){
+                logout()
+            }else {
+                dispatch(tokenToLocalStorage(response))
+                dispatch(getUserName())
+            }
+        })
+        dispatch(toggleLoader(false))
+    }
+}
+export const getUserName=()=>{
+    return async dispatch=>{
+        dispatch(toggleLoader(true))
+        await userGetByIdReq(localStorage.getItem('id')).then(response=>{
+            dispatch(writeUsername(response.result?.firstName ? response.result?.firstName : response.result?.phoneNumber))
+        })
         dispatch(toggleLoader(false))
     }
 }
@@ -111,22 +129,22 @@ export const authSignIn = data =>{
                 dispatch(writeAuthMessage('Неверно введены данные.'))
             }else {
                 dispatch(togglePageLoader(true))
-                localStorage.setItem("accessToken", response.result.body.accessToken)
-                localStorage.setItem("tokenExpirationTime", JSON.stringify(Date.parse(response.result.body.tokenExpirationTime)))
-                localStorage.setItem("refreshExpirationTime", JSON.stringify(Date.parse(response.result.body.refreshExpirationTime)))
-                localStorage.setItem("id", response.result.body.id)
-                localStorage.setItem("refreshToken", response.result.body.refreshToken)
-                await userGetByIdReq(response.result.body.id).then(response=>{
-                    console.log(response)
-                    dispatch(writeUsername(response.result.phoneNumber))
-                })
-
+                dispatch(toggleAuth(true))
+                dispatch(tokenToLocalStorage(response))
+                dispatch(getUserName())
                 setTimeout(()=>dispatch(togglePageLoader(false)),4000)
             }
-            dispatch(toggleAuth(true))
         })
         dispatch(toggleLoader(false))
     }
+}
+
+const tokenToLocalStorage = (response)=>{
+    localStorage.setItem("accessToken", response.result.body.accessToken)
+    localStorage.setItem("tokenExpirationTime", JSON.stringify(Date.parse(response.result.body.tokenExpirationTime)))
+    localStorage.setItem("refreshExpirationTime", JSON.stringify(Date.parse(response.result.body.refreshExpirationTime)))
+    localStorage.setItem("id", response.result.body.id)
+    localStorage.setItem("refreshToken", response.result.body.refreshToken)
 }
 
 

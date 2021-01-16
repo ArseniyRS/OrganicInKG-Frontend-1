@@ -1,21 +1,34 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import './Header.css'
-import {Link, Redirect, withRouter} from "react-router-dom";
+import {Link} from "react-router-dom";
 import {logout} from "../Auth/logout";
-import {toggleAuth} from "../../redux/reducers/mainReducer";
+import {getUserName, toggleAuth, writeUserId} from "../../redux/reducers/mainReducer";
 import {connect} from "react-redux";
 import {logoSVG} from '../../assets/icons'
+import {expChecker} from "../Auth/expChecker";
+import Preloader from "../Preloader/Preloader";
 
 const Header = (props)=>{
-console.log(props.username)
+
+useEffect(()=>{
+    if(expChecker()) {
+        props.getUserName()
+        props.writeUserId(parseInt(localStorage.getItem('id')))
+    }
+},[])
     return(
         <div className='header'>
         <div className='container'>
+
         <div className="header__container">
             <Link to={"/providers"}><img src={logoSVG} alt=""/></Link>
             <div className="header-profile">
+                {props.username ?
                 <span className='header-profile__name'>{props.username}</span>
-                <Link to={"/profile"}><span className='header-profile__password'>Сменить пароль</span></Link>
+                :
+                    <Preloader width={'6px'} height={'6px'}/>}
+
+                <Link to={"/profile"}><span className='header-profile__password'>Профиль</span></Link>
                 <span>/</span>
                 <span className='header-profile__exit' onClick={()=> {
                     logout()
@@ -33,4 +46,4 @@ const mapStateToProps = state=>{
         username:state.main.username
     }
 }
-export default connect(mapStateToProps,{toggleAuth})(Header)
+export default connect(mapStateToProps,{toggleAuth,getUserName,writeUserId})(Header)

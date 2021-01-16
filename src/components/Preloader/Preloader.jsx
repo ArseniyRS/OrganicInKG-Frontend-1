@@ -1,9 +1,12 @@
 import React from 'react'
-import {preloaderSVG} from '../../assets/icons'
-
-const Preloader = ()=>{
+import './Preloader.css'
+const Preloader = (props)=>{
     return(
-        <div className={'preloader__container'}><div className={'preloader'}><img src={preloaderSVG} alt=""/></div></div>
+       <div className={'preloader'}>
+                <span className="circle circle-1" style={{width: props.width,height: props.height}}></span>
+                <span className="circle circle-2" style={{width: props.width,height: props.height}}></span>
+                <span className="circle circle-3" style={{width: props.width,height: props.height}}></span>
+        </div>
     )
 }
 

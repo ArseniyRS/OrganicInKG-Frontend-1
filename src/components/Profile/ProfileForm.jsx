@@ -18,17 +18,16 @@ const ProfileForm = (props)=>{
                 initialValues={{
                     firstName: props.profile?.firstName,
                     lastName: props.profile?.lastName,
-                    middleName: props.profile?.middleName
+                    middleName: props.profile?.middleName,
+                    email: props.profile?.email
                 }}
                 validationSchema={Yup.object({
                     firstName: Yup.string(),
                     lastName: Yup.string(),
                     middleName: Yup.string(),
+                    email: Yup.string()
                 })}
-                onSubmit={async (values)=>{
-                    console.log(values)
-                   //await props.handleSubmit(values)
-                }}
+                onSubmit={async (values)=>await props.handleSubmit(values)}
             >
                 {({handleSubmit,errors,values}) => {
 
@@ -57,7 +56,8 @@ const ProfileForm = (props)=>{
                             <div className={"createOrEditContainer__btns"}>
                                 <EditBtn
                                     urlToTable={'providers'}
-                                    confirmFunc={props.handleSubmit}
+                                    confirmFunc={handleSubmit}
+                                    disabled={Object.keys(errors).length !== 0 && true}
                                 />
                                 <CancelBtn
                                     urlToTable={'providers'}

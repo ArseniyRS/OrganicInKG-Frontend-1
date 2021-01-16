@@ -1,17 +1,21 @@
-import {DELETED_USER,WRITE_USER_BY_ID, WRITE_USERS} from './types'
+import {DELETED_USER, SEARCHING, USER_TOGGLE_FETCH_LOADER, WRITE_USER_BY_ID, WRITE_USERS} from './types'
 import {
+
     userDelByIdReq,
     userGetByIdReq, usersGetReq, userUpdReq,
 } from "../../utils/api/Request";
 import {getTemplate} from "../../utils/templates/getTemplate";
 import {deleteTemplate} from "../../utils/templates/deleteTemplate";
-import {toggleLoader} from "./mainReducer";
 import {updateItemInStore} from "../../utils/templates/updateItemInStore";
 import {createOrChangeTemplate} from "../../utils/templates/createOrChangeTemplate";
+import {checkHasData} from "../../utils/checkHasData";
+import {getSearchedTemplate} from "../../utils/templates/getSearchedTemplate";
 
 const initialState={
-    users: undefined,
-    userById: undefined
+    users: [],
+    userById: {},
+    hasUsers: true,
+    userFetchLoader: false
 }
 
 
@@ -20,7 +24,19 @@ export const userReducer = (state=initialState,action)=>{
         case WRITE_USERS:
             return{
                 ...state,
-                users: action.payload
+                users: [...state.users,...action.payload],
+                hasUsers: checkHasData(action.payload)
+            }
+        case USER_TOGGLE_FETCH_LOADER:
+            return{
+                ...state,
+                userFetchLoader: action.payload
+            }
+        case SEARCHING:
+            return {
+                ...state,
+                users: [],
+                hasUsers: true
             }
         case WRITE_USER_BY_ID:
             return{
@@ -45,22 +61,28 @@ export const clearUser = ()=>{
         action: undefined
     }
 }
-export const getUsers = ()=> {
-    return async dispatch => getTemplate(dispatch, usersGetReq, WRITE_USERS, toggleLoader)
+export const userToggleLoader = bool=>{
+    return{
+        type: USER_TOGGLE_FETCH_LOADER,
+        payload: bool
+    }
+}
+export const getUsers = (page,searchText)=> {
+    return async dispatch => getSearchedTemplate(dispatch, usersGetReq, WRITE_USERS, userToggleLoader,page,searchText)
 }
 export const getUserById = (id)=> {
-    return async dispatch => getTemplate(dispatch, userGetByIdReq, WRITE_USER_BY_ID, toggleLoader,id)
+    return async dispatch => getTemplate(dispatch, userGetByIdReq, WRITE_USER_BY_ID, userToggleLoader,id)
 }
 export const deleteUser = id =>{
     return async dispatch => {
         for(let i=0;i<id.length;i++){
-            await deleteTemplate(dispatch,userDelByIdReq,id[i],toggleLoader,DELETED_USER)
+            await deleteTemplate(dispatch,userDelByIdReq,id[i],userToggleLoader,DELETED_USER)
         }
     }
 }
 
-export const updateUser = (id,data)=>{
-    return async dispatch =>createOrChangeTemplate(dispatch,userUpdReq,data,'',toggleLoader,id)
+export const updateUser = (data,id)=>{
+    return async dispatch =>createOrChangeTemplate(dispatch,userUpdReq,data,'',userToggleLoader,id)
 }
 
 

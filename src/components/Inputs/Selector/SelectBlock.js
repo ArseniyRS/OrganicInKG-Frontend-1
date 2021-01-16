@@ -16,7 +16,7 @@ const SelectBlock = ({handleClick, setVisibleSelector, data})=> {
         }
     }, [])
 
-    const elements = data.map((item,index) => <SelectItem key={index} data={item} handleClick={handleClick}/>)
+    const elements = data.map((item,index) => <SelectItem key={index} data={item} handleClick={handleClick} />)
     return (
 
         <div className={'selectorInput__selector'} ref={selectorRef}>

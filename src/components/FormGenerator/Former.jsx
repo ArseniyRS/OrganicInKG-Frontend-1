@@ -50,7 +50,7 @@ const Former = (props)=>{
                         {inputs}
                         <div className={"createOrEditContainer__btns"}>
                             <EditBtn
-                                    values = {values}
+
                                     urlToTable={props.urlToTable}
                                     confirmFunc={handleSubmit}
                                     disabled={Object.keys(errors).length !== 0 && true}

@@ -120,9 +120,4 @@ const PageRenderer = ({
     )
 }
 
-const mapStateToProps = state=>{
-    return{
-        isLoading : state.main.isFetchLoader
-    }
-}
-export default connect(mapStateToProps)(withRouter(PageRenderer))
+export default withRouter(PageRenderer)

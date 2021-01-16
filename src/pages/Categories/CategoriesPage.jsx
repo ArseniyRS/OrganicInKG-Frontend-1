@@ -15,7 +15,7 @@ import {categoryInputConfig} from "../../configs/Categories/inputFormConfig";
 
 
 
-const CategoriesPage = ({categories,hasCategories,categoryById,getSearchedCategory,getCategory,getCategoryById,createCategory,updateCategory,deleteCategory,clearCategory})=>{
+const CategoriesPage = ({categories,hasCategories,categoryById,getSearchedCategory,getCategory,getCategoryById,createCategory,updateCategory,deleteCategory,clearCategory,...props})=>{
     return(
         <PageRenderer
             pageUrl ={'categories'}
@@ -51,7 +51,7 @@ const CategoriesPage = ({categories,hasCategories,categoryById,getSearchedCatego
             clearFunc={clearCategory}
             deleteFunc={deleteCategory}
             hasData={hasCategories}
-
+            isLoading={props.categoryFetchLoader}
         />
     )
 }
@@ -59,7 +59,8 @@ const mapStateToProps = state=>{
     return{
         categories: state.category.categories,
         categoryById: state.category.categoryById,
-        hasCategories: state.category.hasCategories
+        hasCategories: state.category.hasCategories,
+        categoryFetchLoader: state.category.categoryFetchLoader
     }
 }
 

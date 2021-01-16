@@ -1,13 +1,11 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import {toBeautifyFieldsValue} from "../../../utils/toBeatifyFiledsValue";
 
 
 
 
 const SelectItem = props=>{
-    if( typeof props.data === 'object'){
-        console.log('obj')
-    }
+
     return (
         typeof props.data === 'object' ?
         <li  className={'selectorInput__item'}  onClick={()=> {

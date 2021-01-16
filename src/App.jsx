@@ -27,7 +27,7 @@ function App(props) {
         console.log('check')
         if (expChecker()) {                    //проверка на время токена
             props.toggleAuth(true)
-            //setTimeout(() =>props.toggleAuth(false),expChecker())
+            setTimeout(() =>props.toggleAuth(false),expChecker())
         } else if (tokensChecker()) {                            //отправка на новый токен
             const fetch = () => {
                 props.authRefresh({
@@ -37,18 +37,13 @@ function App(props) {
                 })
             }
            fetch()
-           // setTimeout(() =>props.toggleAuth(false),expChecker())
         } else {                                                            //выход из аккаунта
             props.toggleAuth(false)
             logout()
             props.history.push('/')
         }
     },[props.isAuthorized])
-const [renderCounter,setRenderCounter]= useState(0)
-useEffect(()=>{
-    let buff=renderCounter
-    setRenderCounter(buff++)
-},[])
+
   return(
 
       (props.isPageLoader || props.isAuthorized===undefined ) ? <PageLoader/>:

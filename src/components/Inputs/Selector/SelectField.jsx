@@ -4,26 +4,38 @@ import SelectBlock from "./SelectBlock";
 
 
 
-const SelectField = ({data,name,value,setFieldValue,placeholder,})=>{
+const SelectField = ({data=[],name,value,setFieldValue,placeholder,})=>{
     const [visibleSelector, setVisibleSelector]  = useState(false);
     const [selectedValue,setSelectedValue] = useState('')
     const selectedItem = (id,text)=>{
         setFieldValue(name,id)
         setSelectedValue(text)
     }
-    const onChange = (text)=>setFieldValue(text)
+    useEffect(()=>{
+        data.map(item=>{
+            if(typeof item==='object'){
+                if(item.id===value){
+                    setSelectedValue(item?.name ? item.name : item.fullName)
+                }
+            }else{
+                if(item===value){
+                    setSelectedValue(item)
+                }
+            }
+        })
+    },[data])
+    //const onChange = (text)=>setFieldValue(name,text)
     return(
         <div className={'selectorInput'}>
 
             <input type={'text'}
                    placeholder={placeholder}
                    name={name}
-                   onChange={e=>onChange(e.target.value)}
                    value={selectedValue}
             />
             <img className={'selectorInput__visible'} src={plusSVG} alt=""
                  onClick={(event)=>setVisibleSelector(!visibleSelector)}/>
-            {(visibleSelector && data.length!==0) && <SelectBlock data={data} setVisibleSelector={setVisibleSelector} handleClick = {selectedItem}/>}
+            {(visibleSelector && data.length!==0) && <SelectBlock data={data}  setVisibleSelector={setVisibleSelector} handleClick = {selectedItem}/>}
         </div>
     )
 }

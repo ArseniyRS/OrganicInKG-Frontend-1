@@ -1,16 +1,6 @@
 import React, {useEffect} from 'react'
 import {connect} from "react-redux";
-import {
-    clearCategory,
-    createCategory,
-    deleteCategory,
-    getCategory,
-    getCategoryById, updateCategory
-} from "../../redux/reducers/categoryReducer";
-import {recordViewCategoryConfig} from "../../configs/Categories/recordViewConfig";
-import {CategoryColumns} from "../../configs/Categories/tableColumnsConfig";
 import PageRenderer from "../../components/PageRenderer/PageRendererContainer";
-import {categoryInputConfig} from "../../configs/Categories/inputFormConfig";
 import {clearUser, deleteUser, getUserById, getUsers} from "../../redux/reducers/userReducer";
 import {UsersColumns} from "../../configs/Users/tableColumnsConfig";
 import {recordViewUserConfig} from "../../configs/Users/recordViewConfig";
@@ -23,7 +13,7 @@ const CategoriesPage = ({   users,
                             getUsers,
                             getUserById,
                             deleteUser,
-                            clearUser})=>{
+                            clearUser,...props})=>{
     return(
         <PageRenderer
             pageUrl ={'users'}
@@ -43,13 +33,16 @@ const CategoriesPage = ({   users,
             deleteFunc={deleteUser}
             adding={false}
             editing={false}
+            isLoading={props.userFetchLoader}
+            hasData={props.hasUsers}
         />
     )
 }
 const mapStateToProps = state=>{
     return{
         users: state.user.users,
-        userById: state.user.userById
+        userById: state.user.userById,
+        userFetchLoader: state.user.userFetchLoader
     }
 }
 

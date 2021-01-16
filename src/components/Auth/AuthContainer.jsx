@@ -5,11 +5,9 @@ import {authSignIn, togglePageLoader} from "../../redux/reducers/mainReducer";
 
 
 
-const AuthContainer = ({authSignIn,togglePageLoader})=>{
-    const submitHandler = (values)=>{
-        //togglePageLoader(true)
-        authSignIn(values)
-    }
+const AuthContainer = ({authSignIn})=>{
+
+    const submitHandler = (values)=>authSignIn(values)
     return(
         <AuthForm submitHandler={submitHandler}/>
     )

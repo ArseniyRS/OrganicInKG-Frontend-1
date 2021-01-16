@@ -40,13 +40,15 @@ const FaqPage = props=>{
             updateFunc={props.updateFaq}
             deleteFunc={props.deleteFaq}
             clearFunc={props.clearFaq}
+            isLoading={props.faqFetchLoader}
         />
     )
 }
 const mapStateToProps = state=>{
     return{
         faq: state.faq.faq,
-        faqById: state.faq.faqById
+        faqById: state.faq.faqById,
+        faqFetchLoader: state.faq.faqFetchLoader
     }
 }
 export  default  connect(mapStateToProps,

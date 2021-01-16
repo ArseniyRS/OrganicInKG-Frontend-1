@@ -12,7 +12,7 @@ import {orderInputConfig} from "../../configs/Orders/inputFormConfig";
 
 
 
-const OrdersPage = ({orders,orderById,clearOrder,  getOrderById, createOrder,deleteOrder, getOrders, updateOrder})=>{
+const OrdersPage = ({orders,orderById,clearOrder,  getOrderById, createOrder,deleteOrder, getOrders, updateOrder,...props})=>{
     return(
         <PageRenderer
             pageUrl ={'orders'}
@@ -31,7 +31,7 @@ const OrdersPage = ({orders,orderById,clearOrder,  getOrderById, createOrder,del
                 elsomPaymentOrderStatus: orderById?.elsomPaymentOrderStatus,
                 paymentType: orderById?.paymentType,
                 storageAddress: orderById?.storageAddress,
-                product:  orderById?.products.map(item=>{
+                product:  orderById?.products?.map(item=>{
                     return <div><span>{item.product.name}</span>  <span>{item.amount} кг/шт </span>  <span> {item.totalPrice} сом </span></div>
                 })
             }}
@@ -62,14 +62,17 @@ const OrdersPage = ({orders,orderById,clearOrder,  getOrderById, createOrder,del
             updateFunc={updateOrder}
             clearFunc={clearOrder}
             deleteFunc={deleteOrder}
-
+            isLoading={props.orderFetchLoader}
+            hasData={props.hasOrders}
         />
     )
 }
 const mapStateToProps = state=>{
     return{
         orders: state.order.orders,
-        orderById: state.order.orderById
+        orderById: state.order.orderById,
+        orderFetchLoader: state.order.orderFetchLoader,
+        hasOrders: state.order.hasOrders
     }
 }
 

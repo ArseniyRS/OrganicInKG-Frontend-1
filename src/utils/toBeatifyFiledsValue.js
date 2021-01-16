@@ -29,6 +29,10 @@ export const toBeautifyFieldsValue = (value)=>{
             return 'Не указано'
         case undefined:
             return 'Не указано'
+        case 'SOM':
+            return 'сом'
+        case 'USD':
+            return '$'
         default:
             return value
     }

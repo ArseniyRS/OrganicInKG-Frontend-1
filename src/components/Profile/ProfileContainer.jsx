@@ -8,15 +8,13 @@ import Preloader from "../Preloader/Preloader";
 
 const ProfileContainer = (props)=>{
     useEffect(()=>{
-        props.getUserById(localStorage.getItem('id'))
-    },[])
-   // console.log(props.profile)
-    const handleSubmit = values=>{
-       // console.log(values)
-        //props.updateUser(values,localStorage.getItem('id'))
-    }
+        if(props.userId) {
+            props.getUserById(props.userId)
+        }
+    },[props.userId])
+    const handleSubmit = values=>props.updateUser(values,localStorage.getItem('id'))
     return(
-        props.profile ?
+        !props.userFetchLoader && !props.authFetchLoader && props.profile   ?
         <ProfileForm {...props} handleSubmit={handleSubmit}/> :
             <Preloader />
     )
@@ -24,6 +22,9 @@ const ProfileContainer = (props)=>{
 
 const mapStateToProps = state=>{
     return{
+        authFetchLoader: state.main.authFetchLoader,
+        userFetchLoader: state.user.userFetchLoader,
+        userId: state.main.userId,
         profile: state.user.userById
     }
 }

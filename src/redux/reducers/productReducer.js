@@ -1,10 +1,13 @@
 import {
     WRITE_PRODUCTS,
     WRITE_PRODUCT_BY_ID,
-    WRITE_CATEGORIES,
     WRITE_RAITING_BY_ID,
     ADDED_PRODUCT,
-    DELETED_PRODUCT, UPDATED_PRODUCT
+    DELETED_PRODUCT,
+    UPDATED_PRODUCT,
+    SEARCHING,
+    WRITE_MEASURE_UNITS,
+    PRODUCT_TOGGLE_FETCH_LOADER,
 } from './types'
 import {
     productsGetReq,
@@ -12,29 +15,49 @@ import {
     productUpdReq,
     productDelByIdReq,
     productImgPostReq,
-    raitingPostReq,
-    raitingDelByIdReq, raitingGetByIdReq, productGetByIdReq, productImgUpdReq,
+    productGetByIdReq, productImgUpdReq,  measureUnitGetReq,
 } from "../../utils/api/Request";
 import {getTemplate} from "../../utils/templates/getTemplate";
-import {createOrChangeTemplate} from "../../utils/templates/createOrChangeTemplate";
 import {deleteTemplate} from "../../utils/templates/deleteTemplate";
-import {toggleLoader} from "./mainReducer";
 import {toClearImageArray} from "../../utils/templates/toClearImageArray";
 import {updateItemInStore} from "../../utils/templates/updateItemInStore";
+import {checkHasData} from "../../utils/checkHasData";
+import {getSearchedTemplate} from "../../utils/templates/getSearchedTemplate";
 
 const initialState={
     products: [],
     productById: {},
-    ratingById: undefined
+    ratingById: undefined,
+    hasProducts: true,
+    measureUnits: [],
+    productFetchLoader: false
+
 }
 
 
 export const productReducer = (state=initialState,action)=>{
     switch (action.type) {
+        case PRODUCT_TOGGLE_FETCH_LOADER:
+            return{
+                ...state,
+                productFetchLoader: action.payload
+            }
+        case WRITE_MEASURE_UNITS:
+            return{
+                ...state,
+                measureUnits: action.payload,
+            }
         case WRITE_PRODUCTS:
             return{
                 ...state,
-                products: [...state.products,...action.payload]
+                products: [...state.products,...action.payload],
+                hasProducts: checkHasData(action.payload)
+            }
+        case SEARCHING:
+            return {
+                ...state,
+                products: [],
+                hasProducts: true
             }
         case WRITE_PRODUCT_BY_ID:
             return{
@@ -70,22 +93,32 @@ export const productReducer = (state=initialState,action)=>{
         }
     }
 }
+export const productToggleLoader = bool=>{
+    return{
+        type: PRODUCT_TOGGLE_FETCH_LOADER,
+        payload: bool
+    }
+}
+
 export const clearProduct = ()=>{
     return{
         type: WRITE_PRODUCT_BY_ID,
         action: undefined
     }
 }
-export const getProducts = (page)=> {
-    return async dispatch => getTemplate(dispatch, productsGetReq, WRITE_PRODUCTS, toggleLoader,page)
+export const getMeasureUnits = ()=>{
+    return async dispatch =>getTemplate(dispatch,measureUnitGetReq,WRITE_MEASURE_UNITS,productToggleLoader)
+}
+export const getProducts = (page,searchText)=> {
+    return async dispatch => getSearchedTemplate(dispatch, productsGetReq, WRITE_PRODUCTS, productToggleLoader,page,searchText)
 }
 export const getProductById = (id)=> {
-    return async dispatch => getTemplate(dispatch, productGetByIdReq, WRITE_PRODUCT_BY_ID, toggleLoader,id)
+    return async dispatch => getTemplate(dispatch, productGetByIdReq, WRITE_PRODUCT_BY_ID, productToggleLoader,id)
 }
 export const createProduct = data=>{
     return async dispatch => {
         //for(let i=0;i<50;i++) {
-            dispatch(toggleLoader(true))
+            dispatch(productToggleLoader(true))
             await productPostReq(data)
                 .then(async resp => {
                     dispatch({type: ADDED_PRODUCT, payload: resp.data.result})
@@ -96,14 +129,14 @@ export const createProduct = data=>{
                         await productImgPostReq(formData)
                     }
                 })
-            dispatch(toggleLoader(false))
+            dispatch(productToggleLoader(false))
        // }
     }
 }
 export const deleteProduct = id =>{
     return async dispatch => {
         for(let i=0;i<id.length;i++){
-            await deleteTemplate(dispatch,productDelByIdReq,id[i],toggleLoader,DELETED_PRODUCT)
+            await deleteTemplate(dispatch,productDelByIdReq,id[i],productToggleLoader,DELETED_PRODUCT)
 
         }
 
@@ -111,7 +144,7 @@ export const deleteProduct = id =>{
 }
 export const updateProduct = (id,data) =>{
     return async dispatch => {
-        dispatch(toggleLoader(true))
+        dispatch(productToggleLoader(true))
         await productUpdReq(data,id)
             .then( async resp=>{
                 dispatch({type:UPDATED_PRODUCT,payload: resp.data.result})
@@ -123,7 +156,7 @@ export const updateProduct = (id,data) =>{
                 }
             })
 
-        dispatch(toggleLoader(false))
+        dispatch(productToggleLoader(false))
     }
 }
 

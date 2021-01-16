@@ -46,6 +46,7 @@ const AboutUsPage = props=>{
             createFunc={props.createAboutUs}
             updateFunc={props.updateAboutUs}
             deleteFunc={props.deleteAboutUs}
+            isLoading={props.aboutFetchLoader}
 
         />
     )
@@ -53,7 +54,8 @@ const AboutUsPage = props=>{
 const mapStateToProps = state=>{
     return{
         aboutUs: state.aboutUs.aboutUs,
-        aboutUsById: state.aboutUs.aboutUsById
+        aboutUsById: state.aboutUs.aboutUsById,
+        aboutFetchLoader: state.aboutUs.aboutFetchLoader
     }
 }
 export  default  connect(mapStateToProps,

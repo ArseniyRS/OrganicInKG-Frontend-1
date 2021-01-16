@@ -15,7 +15,7 @@ import {recordViewProviderConfig} from "../../configs/Providers/recordViewConfig
 
 
 
-const ProvidersPage = ({providers,providerById,getProviders,getProviderById,createProvider,updateProvider,deleteProvider,clearProvider})=>{
+const ProvidersPage = ({providers,providerById,getProviders,getProviderById,createProvider,updateProvider,deleteProvider,clearProvider,...props})=>{
     return(
         <PageRenderer
             pageUrl ={'providers'}
@@ -51,9 +51,9 @@ const ProvidersPage = ({providers,providerById,getProviders,getProviderById,crea
                 placeOfProduction:  providerById?.placeOfProduction,
                 produces:  providerById?.produces,
                 walletNumber:  providerById?.ewalletNumber,
-                PASSPORT: providerById?.supplierFile.filter(item=>item.supplierFileType==='PASSPORT'),
-                SERTIFICATE: providerById?.supplierFile.filter(item=>item.supplierFileType==='SERTIFICATE'),
-                CONTRACT: providerById?.supplierFile.filter(item=>item.supplierFileType==='CONTRACT'),
+                PASSPORT: providerById?.supplierFile?.filter(item=>item.supplierFileType==='PASSPORT'),
+                SERTIFICATE: providerById?.supplierFile?.filter(item=>item.supplierFileType==='SERTIFICATE'),
+                CONTRACT: providerById?.supplierFile?.filter(item=>item.supplierFileType==='CONTRACT'),
                 isActive:  providerById?.isActive
             }}
             getDataFunc={getProviders}
@@ -63,14 +63,18 @@ const ProvidersPage = ({providers,providerById,getProviders,getProviderById,crea
             updateFunc={updateProvider}
             clearFunc={clearProvider}
             deleteFunc={deleteProvider}
-
+            isLoading={props.providerFetchLoader}
+            hasData={props.hasProvider}
         />
     )
 }
 const mapStateToProps = state=>{
     return{
         providers: state.provider.providers,
-        providerById: state.provider.providerById
+        providerById: state.provider.providerById,
+        providerFetchLoader: state.provider.providerFetchLoader,
+        hasProvider: state.provider.hasProvider
+
     }
 }
 

@@ -1,0 +1,42 @@
+
+.preloader{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60px;
+    overflow: hidden;
+}
+.circle{
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    background-color: #FCFCFC;
+    border-radius: 50%;
+    animation: loading 1s cubic-bezier(.8, .5, .2, 1.4) infinite;
+    transform-origin: bottom center;
+    position: relative;
+}
+@keyframes loading{
+    0%{
+        transform: translateY(0px);
+        background-color: #FCFCFC;
+    }
+    50%{
+        transform: translateY(20px);
+        background-color: #009B00;
+    }
+    100%{
+        transform: translateY(0px);
+        background-color: #FCFCFC;
+    }
+}
+.circle-1{
+    animation-delay: 0.1s;
+}
+.circle-2{
+    animation-delay: 0.2s;
+}
+.circle-3{
+    animation-delay: 0.3s;
+}
+
