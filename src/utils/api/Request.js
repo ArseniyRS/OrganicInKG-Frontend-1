@@ -64,8 +64,8 @@ export const providerUpdReq = (data,id)=>instance.put(`supplier/${id}`,data)
 export const providerActiveGetReq = ()=>instance.get(`supplier/active`).then(response=>response.data)
 
 export const usersGetReq = (searchText,page)=>instance.get(`${searchText ?
-    `client/search?name=${searchText}&page=${page}&size=20`
-    : `client?page=${page}&size=20`}`)
+    `client/search?firstName=${searchText}&page=${page}&size=20`
+    : `client/?page=${page}&size=20`}`,tokenGetter())
     .then(response=>response.data)
 export const userGetByIdReq = (id)=>instance.get(`client/${id}`).then(response=>response.data)
 export const userDelReq = (id)=>instance.delete(`client`,id)

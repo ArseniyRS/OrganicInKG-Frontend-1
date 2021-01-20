@@ -21,10 +21,9 @@
     border: 2px solid #DDDDDD;
 
     border-radius: 9px;
-
     display: flex;
     margin: 15px 0;
-    padding: 7px 12px 7px 12px;
+    padding: 10px 12px;
     cursor: pointer;
     width: 100%;
     justify-content: space-around;
@@ -46,11 +45,13 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 60px;
+    align-items: center;
     margin:0 40px;
     font-size: 18px;
     width: 200px;
     overflow: hidden;
+    text-align: center;
+    height: 100%;
 }
 .tableItemColumn__title{
     font-size: 18px;

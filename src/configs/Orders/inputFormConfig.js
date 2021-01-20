@@ -2,9 +2,18 @@ import {addressData} from "../../components/Inputs/SelectorInput/data/addressDat
 
 export const orderInputConfig = [
     {
+        label: 'Имя'
+    },
+    {
+        label: 'Фамилия'
+    },
+    {
+        label: 'Номер телефона'
+    },
+    {
     label: "Адрес доставки",
    placeholder: "Бишкек Советская Боконбаева",
-        type: 'selectInput',
+        type: 'map',
         selectInputData:addressData
     },
     {
@@ -25,7 +34,7 @@ export const orderInputConfig = [
     {
         label: "Адрес склада",
         placeholder: "Бишкек Советская Боконбаева",
-        type: 'selectInput',
+        type: 'map',
         selectInputData:addressData
     },
     {

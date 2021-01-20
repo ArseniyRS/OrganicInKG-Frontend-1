@@ -8,20 +8,16 @@ export const recordViewOrderConfig  =[
         dataIndex: 'desiredDeliveryDate',
     },
     {
-      title: 'Имя',
-      dataIndex: "firstName"
-    },
-    {
-        title: 'Фамилия',
-        dataIndex: "lastName"
-    },
-    {
-      title: 'Телефон',
-      dataIndex: "phoneNumber"
+      title: "Заказчик",
+      dataIndex: 'client'
     },
     {
         title: "Товары",
         dataIndex: 'product',
+    },
+    {
+        title: "Сумма",
+      dataIndex: 'totalPrice'
     },
     {
         title: "Адрес доставки",
@@ -45,7 +41,7 @@ export const recordViewOrderConfig  =[
     },
     {
         title: "Статус заказа",
-        dataIndex: 'cashPaymentOrderStatus',
+        dataIndex: 'orderStatus',
     },
 
 ]
