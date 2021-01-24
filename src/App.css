@@ -8,6 +8,8 @@ html{
   box-sizing: border-box;
   min-height: 100%;
   min-width: 100%;
+  overflow-x: hidden;
+
 
 }
 ::-webkit-input-placeholder {color:#8E8E8E;}
@@ -22,6 +24,7 @@ body{
   overflow-y: scroll;
   min-height: 100%;
   min-width: 100%;
+  overflow-x: hidden;
 }
 a{
   text-decoration: none;
@@ -99,6 +102,10 @@ input,button{
   .searchPanel{
     margin: 10px 0 10px 0!important;
   }
+  .createOrEditContainer__btns div{
+  margin: 10px;
+
+}
 }
 .createOrEditContainer{
   display: flex;
@@ -164,6 +171,8 @@ input,button{
 .createOrEditContainer__btns{
   display: flex;
     justify-content: center;
+  flex-wrap: wrap;
+  margin: 25px 0;
 }
 .createOrEditBtn-submit,.createOrEditBtn-cancel{
   padding: 10px 0;
@@ -176,9 +185,9 @@ input,button{
 
   color: #F2F2F2;
 
-  margin: 25px 10px;
   width: 160px;
   cursor: pointer;
+  margin: 0 10px;
 }
 .createOrEditBtn-cancel{
   background: #FF0303;
@@ -231,9 +240,11 @@ input,button{
 .selectorInput__visible{
   position: absolute;
   cursor: pointer;
-  right: 20px;
+  right: 10px;
   top: 50%;
   transform: translateY(-50%);
+  background: #DDDDDD;
+  padding: 10px;
 }
 .passwordInput input, .selectorInput input{
 
@@ -241,11 +252,16 @@ input,button{
   width: 100%;
   border-radius: 9px;
 }
+
+.selectorInput input:focus{
+  color: transparent;
+  cursor: pointer;
+}
 .selectorInput__selector{
   position: absolute;
   right: -300px;
   top: 50%;
-
+  z-index: 100;
 }
 .selectorInput__selector-container{
   position: relative;
@@ -277,7 +293,12 @@ input,button{
 }
 
 
-
+@media only screen and (max-width:1140px) {
+    .selectorInput__selector{
+      left: 10px;
+      top: 30%;
+    }
+}
 
 .selectorInput__item ,
 .selectorInput__item-2,

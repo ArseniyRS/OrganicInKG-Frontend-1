@@ -72,5 +72,12 @@
     display: flex;
     justify-content: space-between;
     flex-direction: column;
-    width: 600px;
+    max-width: 600px;
+}
+
+@media only screen and (max-width: 784px) {
+    .recordView__btn{
+        margin-left: 0;
+        margin-bottom: 30px;
+    }
 }

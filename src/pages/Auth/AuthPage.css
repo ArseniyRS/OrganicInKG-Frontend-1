@@ -16,10 +16,13 @@
 .auth__block form{
     display: flex;
     flex-direction: column;
-
     width: 570px;
 }
-
+@media only screen and (max-width: 784px) {
+    .auth__block form{
+        width: 300px!important;
+    }
+}
 .auth__block form input{
     margin: 12px 0;
 

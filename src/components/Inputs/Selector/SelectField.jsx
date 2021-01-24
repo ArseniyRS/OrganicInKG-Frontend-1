@@ -26,15 +26,14 @@ const SelectField = ({data=[],name,value,setFieldValue,placeholder,})=>{
     },[data])
     //const onChange = (text)=>setFieldValue(name,text)
     return(
-        <div className={'selectorInput'}>
+        <div className={'selectorInput'} onClick={(event)=>setVisibleSelector(!visibleSelector)}>
 
             <input type={'text'}
                    placeholder={placeholder}
                    name={name}
                    value={selectedValue}
             />
-            <img className={'selectorInput__visible'} src={plusSVG} alt=""
-                 onClick={(event)=>setVisibleSelector(!visibleSelector)}/>
+            <img className={'selectorInput__visible'} src={plusSVG} alt=""/>
             {(visibleSelector && data.length!==0) && <SelectBlock data={data}  setVisibleSelector={setVisibleSelector} handleClick = {selectedItem}/>}
         </div>
     )
