@@ -54,23 +54,7 @@ export const categoryReducer = (state=initialState,action)=>{
                 ...state,
                 categoryById: action.payload
             }
-        case ADDED_CATEGORY:
-            return {
-                ...state,
-                categories: [
-                    ...state.categories,
-                    action.payload]
-            }
-        case DELETED_CATEGORY:
-            return{
-                ...state,
-                categories: updateItemInStore(state.categories,action.payload,'delete')
-            }
-        case UPDATED_CATEGORY:
-            return {
-                ...state,
-                categories: updateItemInStore(state.categories,action.payload,'update')
-            }
+
         default:{
             return{
                 ...state
@@ -114,9 +98,7 @@ export const createCategory = data=>{
                 } else {
                     formData.append('image', null)
                 }
-                await categoryPostReq(formData).then(async resp => {
-                    dispatch({type: ADDED_CATEGORY, payload: resp.data.result})
-                }).catch(error => console.log(error.response))
+                await categoryPostReq(formData).catch(error => console.log(error.response))
                 dispatch(categoryToggleLoader(false))
             }
         }
@@ -124,11 +106,11 @@ export const createCategory = data=>{
 export const deleteCategory = id =>{
     return async dispatch => {
         for(let i=0;i<id.length;i++){
-          await deleteTemplate(dispatch,categoryDelByIdReq,id[i],categoryToggleLoader,DELETED_CATEGORY)
+          await deleteTemplate(dispatch,categoryDelByIdReq,id[i],categoryToggleLoader)
         }
     }
 }
 export const updateCategory = (id,data) =>{
-    return async dispatch => createOrChangeTemplate(dispatch,categoryUpdReq,data,UPDATED_CATEGORY,categoryToggleLoader,id)
+    return async dispatch => createOrChangeTemplate(dispatch,categoryUpdReq,data,categoryToggleLoader,id)
 }
 

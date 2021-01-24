@@ -38,8 +38,7 @@ const ProductsPage = ({   products,
                           getMeasureUnits,
     ...props
                       })=>{
-    console.log(measureUnits)
-    console.log(categories)
+
     return(
         <PageRenderer
             pageUrl ={'products'}
@@ -55,9 +54,9 @@ const ProductsPage = ({   products,
             formInputsConfig={productInputConfig}
             optionsForSelectorData={{
                 category: categories ? [...categories] : [],
-                provider: activeProviders ? [...activeProviders] : [],
+                provider: activeProviders  ? [...activeProviders] : [],
                 currency: ['SOM','USD',],
-                units: measureUnits ? [...measureUnits] : []
+                units: measureUnits  ?  [...measureUnits] : []
             }}
             recordViewValuesConfig={{
                 name: productById?.name,

@@ -12,3 +12,9 @@
 .deleteBtn{
     cursor: pointer;
 }
+
+@media only screen and (max-width: 784px) {
+    .addBtn{
+        margin-left: 0;
+    }
+}

@@ -29,7 +29,7 @@ useEffect(()=>{
                     <Preloader width={'6px'} height={'6px'}/>}
 
                 <Link to={"/profile"}><span className='header-profile__password'>Профиль</span></Link>
-                <span>/</span>
+                <span className='header-profile__divider'>/</span>
                 <span className='header-profile__exit' onClick={()=> {
                     logout()
                     props.toggleAuth(false)

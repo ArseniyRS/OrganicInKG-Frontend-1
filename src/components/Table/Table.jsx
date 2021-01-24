@@ -58,6 +58,7 @@ const Table = ({isLoading,
         <div className='table-container'>
             <div className='page-functional'>
                 <SearchPanel handleSearchText={setSearchText} />
+                <div className={'page-functional__btns'}>
                 {adding &&
                 <AddBtn
                     urlToCreate={urlToCreate}
@@ -67,6 +68,7 @@ const Table = ({isLoading,
                 <DeleteBtn
                     deleteFunc = {deleteFunc}
                 />}
+                </div>
             </div>
 
             <div className="tableItem-container__wrapper">

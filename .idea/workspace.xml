@@ -21,13 +21,25 @@
   <component name="ChangeListManager">
     <list default="true" id="869952c6-d07a-44c8-9dad-429924c3fe46" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Inputs/MapBlock/MapBlock.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Inputs/MapBlock/MapBlock.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Btns/Btns.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Btns/Btns.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Header/Header.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header/Header.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Header/Header.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header/Header.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Sidebar/Sidebar.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Sidebar/Sidebar.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Sidebar/SidebarItem.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Sidebar/SidebarItem.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Table/Table.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Table/Table.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/configs/Orders/inputFormConfig.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/configs/Orders/inputFormConfig.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/configs/Orders/recordViewConfig.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/configs/Orders/recordViewConfig.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/configs/Orders/tableColumnsConfig.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/configs/Orders/tableColumnsConfig.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Orders/OrdersPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Orders/OrdersPage.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/api/Request.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/api/Request.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Table/Table.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Table/Table.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Products/ProductsPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Products/ProductsPage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/reducers/aboutUsReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/aboutUsReducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/reducers/categoryReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/categoryReducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/reducers/faqReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/faqReducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/reducers/orderReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/orderReducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/reducers/productReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/productReducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/reducers/providerReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/providerReducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/reducers/userReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/userReducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/templates/createOrChangeTemplate.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/templates/createOrChangeTemplate.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/templates/deleteTemplate.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/templates/deleteTemplate.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/templates/getTemplate.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/templates/getTemplate.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -169,7 +181,10 @@
       <workItem from="1610728530603" duration="793000" />
       <workItem from="1610696719052" duration="3096000" />
       <workItem from="1610783301984" duration="28070000" />
-      <workItem from="1611163581919" duration="5320000" />
+      <workItem from="1611163581919" duration="5884000" />
+      <workItem from="1611241904123" duration="681000" />
+      <workItem from="1611426247651" duration="594000" />
+      <workItem from="1611476869385" duration="6203000" />
     </task>
     <servers />
   </component>

@@ -50,23 +50,7 @@ export const orderReducer = (state=initialState,action)=>{
                 ...state,
                 orderById: action.payload
             }
-        case ADDED_ORDER:
-            return {
-                ...state,
-                orders: [
-                    ...state.orders,
-                    action.payload]
-            }
-        case DELETED_ORDER:
-            return{
-                ...state,
-                orders: updateItemInStore(state.orders,action.payload,'delete')
-            }
-        case UPDATED_ORDER:
-            return {
-                ...state,
-                orders: updateItemInStore(state.orders,action.payload,'update')
-            }
+
         default:{
             return{
                 ...state
@@ -94,16 +78,16 @@ export const getOrderById = (id)=> {
     return async dispatch => getTemplate(dispatch, orderGetByIdReq, WRITE_ORDER_BY_ID, orderToggleLoader,id)
 }
 export const createOrder = data=>{
-    return async dispatch => createOrChangeTemplate(dispatch, orderPostReq, data,ADDED_ORDER, orderToggleLoader)
+    return async dispatch => createOrChangeTemplate(dispatch, orderPostReq, data, orderToggleLoader)
 }
 export const deleteOrder = id =>{
     return async dispatch => {
         for(let i=0;i<id.length;i++){
-            await deleteTemplate(dispatch,orderDelByIdReq,id[i],orderToggleLoader,DELETED_ORDER)
+            await deleteTemplate(dispatch,orderDelByIdReq,id[i],orderToggleLoader)
         }
     }
 }
 export const updateOrder = (id,data) =>{
-    return async dispatch => createOrChangeTemplate(dispatch,orderUpdReq,data,UPDATED_ORDER,orderToggleLoader,id)
+    return async dispatch => createOrChangeTemplate(dispatch,orderUpdReq,data,orderToggleLoader,id)
 }
 

@@ -39,3 +39,15 @@
     cursor: pointer;
     margin-left: 5px;
 }
+
+@media only screen and (max-width: 784px) {
+    .header__container{
+        margin: 0 25px;
+    }
+    .header-profile{
+        flex-direction: column;
+    }
+    .header-profile__divider{
+        display: none;
+    }
+}

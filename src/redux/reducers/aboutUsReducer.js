@@ -52,23 +52,6 @@ export const aboutUsReducer = (state=initialState,action)=>{
                 ...state,
                 aboutUsById: action.payload
             }
-        case ADDED_ABOUT_US:
-            return {
-                ...state,
-                aboutUs: [
-                    ...state.aboutUs,
-                    action.payload]
-            }
-        case DELETED_ABOUT_US:
-            return{
-                ...state,
-                aboutUs: updateItemInStore(state.aboutUs,action.payload,'delete')
-            }
-        case UPDATED_ABOUT_US:
-            return {
-                ...state,
-                aboutUs: updateItemInStore(state.aboutUs,action.payload,'update')
-            }
         default:{
             return{
                 ...state
@@ -91,16 +74,16 @@ export const getAboutUsById = (id)=> {
 }
 export const createAboutUs = data=>{
 
-    return async dispatch => createOrChangeTemplate(dispatch,aboutUsPostReq,data,ADDED_ABOUT_US,aboutToggleLoader)
+    return async dispatch => createOrChangeTemplate(dispatch,aboutUsPostReq,data,aboutToggleLoader)
 }
 export const deleteAboutUs = id =>{
     return async dispatch => {
         for(let i=0;i<id.length;i++){
-            await deleteTemplate(dispatch,aboutUsDelByIdReq,id[i],aboutToggleLoader,DELETED_ABOUT_US)
+            await deleteTemplate(dispatch,aboutUsDelByIdReq,id[i],aboutToggleLoader)
         }
     }
 }
 export const updateAboutUs = (id,data) =>{
-    return async dispatch => createOrChangeTemplate(dispatch,aboutUsUpdReq,data,UPDATED_ABOUT_US,aboutToggleLoader,id)
+    return async dispatch => createOrChangeTemplate(dispatch,aboutUsUpdReq,data,aboutToggleLoader,id)
 }
 

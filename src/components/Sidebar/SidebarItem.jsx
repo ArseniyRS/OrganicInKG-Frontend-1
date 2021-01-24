@@ -25,7 +25,10 @@ const SidebarItem = ({to,name,svg,
         'sidebar__item_active' : clicked
     })
     return(
-        <li className={classes} ><img src={clicked ? activeSvg : svg} alt=""/><Link onClick={()=>setClick(true)} to={to} >{name}</Link></li>
+        <li className={classes} onClick={()=>{
+            setClick(true)
+            history.push(to)
+        }}><img src={clicked ? activeSvg : svg} alt=""/><span>{name}</span></li>
     )
 }
 

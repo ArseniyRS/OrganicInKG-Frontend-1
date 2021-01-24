@@ -43,11 +43,7 @@ export const userReducer = (state=initialState,action)=>{
                 ...state,
                 userById: action.payload
             }
-        case DELETED_USER:
-            return{
-                ...state,
-                users: updateItemInStore(state.users,action.payload,'delete')
-            }
+
         default:{
             return{
                 ...state
@@ -76,7 +72,7 @@ export const getUserById = (id)=> {
 export const deleteUser = id =>{
     return async dispatch => {
         for(let i=0;i<id.length;i++){
-            await deleteTemplate(dispatch,userDelByIdReq,id[i],userToggleLoader,DELETED_USER)
+            await deleteTemplate(dispatch,userDelByIdReq,id[i],userToggleLoader)
         }
     }
 }

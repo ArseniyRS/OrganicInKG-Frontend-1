@@ -60,23 +60,7 @@ export const providerReducer = (state=initialState,action)=>{
                 activeProviders: action.payload
             }
 
-        case ADDED_PROVIDER:
-            return {
-                ...state,
-                providers: [
-                    ...state.providers,
-                    action.payload]
-            }
-        case DELETED_PROVIDER:
-            return{
-                ...state,
-                providers: updateItemInStore(state.providers,action.payload,'delete')
-            }
-        case UPDATED_PROVIDER:
-            return {
-                ...state,
-                providers: updateItemInStore(state.providers,action.payload,'update')
-            }
+
         default:{
             return{
                 ...state
@@ -111,7 +95,7 @@ export const createProvider = (data)=>{
             dispatch(providerToggleLoader(true))
             await providerPostReq(data)
                 .then(resp => {
-                    dispatch({type:ADDED_PROVIDER,payload: resp.data.result})
+
                     formDataProviderTemplate(resp.data.result.id,data,'PASSPORT')
                     formDataProviderTemplate(resp.data.result.id,data,'SERTIFICATE')
                     formDataProviderTemplate(resp.data.result.id,data,'CONTRACT')
@@ -123,11 +107,11 @@ export const createProvider = (data)=>{
 export const deleteProvider = id =>{
     return async dispatch => {
         for(let i=0;i<id.length;i++){
-            await deleteTemplate(dispatch,providerDelByIdReq,id[i],providerToggleLoader,DELETED_PROVIDER)
+            await deleteTemplate(dispatch,providerDelByIdReq,id[i],providerToggleLoader)
         }
     }
 }
 export const updateProvider = (id,data) =>{
-    return async dispatch => createOrChangeTemplate(dispatch,providerUpdReq,data,UPDATED_PROVIDER,providerToggleLoader,id)
+    return async dispatch => createOrChangeTemplate(dispatch,providerUpdReq,data,providerToggleLoader,id)
 }
 

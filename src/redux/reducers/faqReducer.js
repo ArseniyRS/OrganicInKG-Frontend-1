@@ -53,23 +53,7 @@ export const faqReducer = (state=initialState,action)=>{
                 ...state,
                 faqById: action.payload
             }
-        case ADDED_FAQ:
-            return {
-                ...state,
-                faq: [
-                    ...state.faq,
-                    action.payload]
-            }
-        case DELETED_FAQ:
-            return{
-                ...state,
-                faq: updateItemInStore(state.faq,action.payload,'delete')
-            }
-        case UPDATED_FAQ:
-            return {
-                ...state,
-                faq: updateItemInStore(state.faq,action.payload,'update')
-            }
+
         default:{
             return{
                 ...state
@@ -92,17 +76,17 @@ export const getFaqById = (id)=> {
 }
 export const createFaq = data=>{
 
-    return async dispatch => createOrChangeTemplate(dispatch,faqPostReq,data,ADDED_FAQ,faqToggleLoader)
+    return async dispatch => createOrChangeTemplate(dispatch,faqPostReq,data,faqToggleLoader)
 }
 export const deleteFaq = id =>{
     return async dispatch => {
         for(let i=0;i<id.length;i++){
-            await deleteTemplate(dispatch,faqDelByIdReq,id[i],faqToggleLoader,DELETED_FAQ)
+            await deleteTemplate(dispatch,faqDelByIdReq,id[i],faqToggleLoader)
         }
     }
 }
 export const updateFaq = (id,data) =>{
-    return async dispatch => createOrChangeTemplate(dispatch,faqUpdReq,data,UPDATED_FAQ,faqToggleLoader,id)
+    return async dispatch => createOrChangeTemplate(dispatch,faqUpdReq,data,faqToggleLoader,id)
 }
 export const clearFaq = ()=>{
     return{

@@ -69,23 +69,7 @@ export const productReducer = (state=initialState,action)=>{
                 ...state,
                 ratingById: action.payload
             }
-        case ADDED_PRODUCT:
-            return {
-                ...state,
-                products: [
-                    ...state.products,
-                    action.payload]
-            }
-        case DELETED_PRODUCT:
-            return{
-                ...state,
-                products: updateItemInStore(state.products,action.payload,'delete')
-            }
-        case UPDATED_PRODUCT:
-            return {
-                ...state,
-                products: updateItemInStore(state.products,action.payload,'update')
-            }
+
         default:{
             return{
                 ...state
@@ -121,7 +105,6 @@ export const createProduct = data=>{
             dispatch(productToggleLoader(true))
             await productPostReq(data)
                 .then(async resp => {
-                    dispatch({type: ADDED_PRODUCT, payload: resp.data.result})
                     if (data.images) {
                         const formData = new FormData()
                         toClearImageArray(data.images).map(item => formData.append('images', item))
@@ -136,7 +119,7 @@ export const createProduct = data=>{
 export const deleteProduct = id =>{
     return async dispatch => {
         for(let i=0;i<id.length;i++){
-            await deleteTemplate(dispatch,productDelByIdReq,id[i],productToggleLoader,DELETED_PRODUCT)
+            await deleteTemplate(dispatch,productDelByIdReq,id[i],productToggleLoader)
 
         }
 
@@ -147,7 +130,6 @@ export const updateProduct = (id,data) =>{
         dispatch(productToggleLoader(true))
         await productUpdReq(data,id)
             .then( async resp=>{
-                dispatch({type:UPDATED_PRODUCT,payload: resp.data.result})
                 if(data.images) {
                     const formData = new FormData()
                     toClearImageArray(data.images).map(item => formData.append('images', item))
