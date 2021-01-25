@@ -17,6 +17,7 @@
     align-items: center;
     justify-content: flex-start;
     margin: 30px 0;
+    cursor: pointer;
 
 }
 .sidebar__item span:hover{

@@ -12,6 +12,7 @@
     "formik": "^2.2.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-dropzone": "^11.2.4",
     "react-images-uploading": "^3.1.2",
     "react-infinite-loader": "^1.0.4",
     "react-infinite-scroll-component": "^5.1.0",
