@@ -30,7 +30,6 @@ const PageRenderer = ({
     optionsForSelectorData,
     creatorInitialFormValues,
     updaterInitialFormValues,
-    fileUploadKeys,
 
     getDataFunc,
     valueById,
@@ -78,7 +77,6 @@ const PageRenderer = ({
                                 inputConfig={formInputsConfig}
                                 optionsForSelector={optionsForSelectorData}
                                 initialVals={creatorInitialFormValues}
-                                fileUploadKeys={fileUploadKeys}
                                 isLoading={isLoading}
                             />
                         </Route>

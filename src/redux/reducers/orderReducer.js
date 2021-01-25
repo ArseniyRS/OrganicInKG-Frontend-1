@@ -1,26 +1,25 @@
 import {
     WRITE_ORDERS,
     WRITE_ORDER_BY_ID,
-    ADDED_ORDER,
-    DELETED_ORDER,
-    UPDATED_ORDER,
     SEARCHING,
     ORDER_TOGGLE_FETCH_LOADER,
-    PRODUCT_TOGGLE_FETCH_LOADER
+    WRITE_DELIVERY_CASH
 } from './types'
 import {
+    deliveryCashGetReq,
+    deliveryCashUpdReq,
     orderDelByIdReq, orderGetByIdReq, orderPostReq, ordersGetReq, orderUpdReq,
 } from "../../utils/api/Request";
 import {getTemplate} from "../../utils/templates/getTemplate";
 import {createOrChangeTemplate} from "../../utils/templates/createOrChangeTemplate";
 import {deleteTemplate} from "../../utils/templates/deleteTemplate";
-import {updateItemInStore} from "../../utils/templates/updateItemInStore";
 import {checkHasData} from "../../utils/checkHasData";
 import {getSearchedTemplate} from "../../utils/templates/getSearchedTemplate";
 
 const initialState={
     orders: [],
     orderById: {},
+    deliveryCash : {},
     hasOrders: true,
     orderFetchLoader: false
 }
@@ -38,6 +37,11 @@ export const orderReducer = (state=initialState,action)=>{
                 ...state,
                 orders: [...state.orders,...action.payload],
                 hasOrders: checkHasData(action.payload)
+            }
+        case WRITE_DELIVERY_CASH:
+            return{
+                ...state,
+                deliveryCash: action.payload,
             }
         case SEARCHING:
             return {
@@ -77,6 +81,14 @@ export const getOrders = (page,searchText)=> {
 export const getOrderById = (id)=> {
     return async dispatch => getTemplate(dispatch, orderGetByIdReq, WRITE_ORDER_BY_ID, orderToggleLoader,id)
 }
+export const getDeliveryCash = ()=>{
+    return async dispatch =>getTemplate(dispatch,deliveryCashGetReq,WRITE_DELIVERY_CASH,orderToggleLoader)
+}
+
+export const updateDeliveryCash = data=>{
+    return async dispatch =>createOrChangeTemplate(dispatch,deliveryCashUpdReq,data,orderToggleLoader)
+}
+
 export const createOrder = data=>{
     return async dispatch => createOrChangeTemplate(dispatch, orderPostReq, data, orderToggleLoader)
 }

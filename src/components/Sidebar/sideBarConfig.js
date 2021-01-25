@@ -12,7 +12,7 @@ import {
     userActiveSVG,
     questionActiveSVG,
     aboutActiveSVG,
-    aboutSVG
+    aboutSVG, settingsSVG, settingsActiveSVG
 } from "../../assets/icons";
 
 export const sideBarConfig = [
@@ -57,5 +57,11 @@ export const sideBarConfig = [
         name: 'О нас',
         svg: aboutSVG,
         activeSvg: aboutActiveSVG
+    },
+    {
+        to: '/settings',
+        name: 'Настройки',
+        svg: settingsSVG,
+        activeSvg: settingsActiveSVG
     }
 ]

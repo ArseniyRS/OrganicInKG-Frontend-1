@@ -20,16 +20,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="869952c6-d07a-44c8-9dad-429924c3fe46" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/configs/Settings/inputFormConfig.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/Settings/SettingsPage.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ImgUploader/ImgUploader.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ImgUploader/ImgUploader.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ImgUploader/ImgUploader.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ImgUploader/ImgUploader.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Sidebar/Sidebar.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Sidebar/Sidebar.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/configs/Categories/inputFormConfig.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/configs/Categories/inputFormConfig.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/configs/Products/inputFormConfig.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/configs/Products/inputFormConfig.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/configs/Providers/inputFormConfig.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/configs/Providers/inputFormConfig.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/store.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/store.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/icons/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/icons/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/PageRenderer/PageRendererContainer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/PageRenderer/PageRendererContainer.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Sidebar/sideBarConfig.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Sidebar/sideBarConfig.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/reducers/orderReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/orderReducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/reducers/types.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/types.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/api/Request.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/api/Request.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,8 +40,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JavaScript File" />
         <option value="CSS File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -63,7 +64,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/configs/Faq" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/configs/Settings" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -73,19 +74,19 @@
     <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\WebStorm 2020.1\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Admin\Desktop\OrganicInKG-Frontend-1\src\configs\Settings" />
+      <recent name="C:\Users\Admin\Desktop\OrganicInKG-Frontend-1\src\configs\Faq" />
+      <recent name="C:\Users\Admin\Desktop\OrganicInKG-Frontend-1\src\configs\AboutUs" />
+      <recent name="C:\Users\Admin\Desktop\OrganicInKG-Frontend-1\src\components\Table" />
+      <recent name="C:\Users\Admin\Desktop\OrganicInKG-Frontend-1\src\components\Inputs" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Admin\Desktop\OrganicInKG-Frontend-1\public" />
       <recent name="C:\Users\Admin\Desktop\organicinkg-frontend\src\configs\Providers" />
       <recent name="C:\Users\Admin\Desktop\organicinkg-frontend\src\configs\Categories" />
       <recent name="C:\Users\Admin\Desktop\organicinkg-frontend\src\components\RecordViewer" />
       <recent name="C:\Users\Admin\Desktop\organicinkg-frontend\src\containers\Categories" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\Admin\Desktop\OrganicInKG-Frontend-1\src\configs\Faq" />
-      <recent name="C:\Users\Admin\Desktop\OrganicInKG-Frontend-1\src\configs\AboutUs" />
-      <recent name="C:\Users\Admin\Desktop\OrganicInKG-Frontend-1\src\components\Table" />
-      <recent name="C:\Users\Admin\Desktop\OrganicInKG-Frontend-1\src\components\Inputs" />
-      <recent name="C:\Users\Admin\Desktop\OrganicInKG-Frontend-1\src\assets\icons" />
     </key>
   </component>
   <component name="SvnConfiguration">
@@ -176,6 +177,7 @@
       <workItem from="1611426247651" duration="594000" />
       <workItem from="1611476869385" duration="6203000" />
       <workItem from="1611574395231" duration="602000" />
+      <workItem from="1611586860951" duration="4980000" />
     </task>
     <servers />
   </component>
