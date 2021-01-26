@@ -20,16 +20,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="869952c6-d07a-44c8-9dad-429924c3fe46" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/server.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ImgUploader/ImgUploader.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ImgUploader/ImgUploader.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ImgUploader/ImgUploader.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ImgUploader/ImgUploader.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Sidebar/Sidebar.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Sidebar/Sidebar.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/configs/Categories/inputFormConfig.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/configs/Categories/inputFormConfig.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/configs/Products/inputFormConfig.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/configs/Products/inputFormConfig.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/configs/Providers/inputFormConfig.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/configs/Providers/inputFormConfig.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/store.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/store.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,8 +31,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JavaScript File" />
         <option value="CSS File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -175,7 +167,8 @@
       <workItem from="1611241904123" duration="681000" />
       <workItem from="1611426247651" duration="594000" />
       <workItem from="1611476869385" duration="6203000" />
-      <workItem from="1611574395231" duration="602000" />
+      <workItem from="1611574395231" duration="845000" />
+      <workItem from="1611659585381" duration="311000" />
     </task>
     <servers />
   </component>
