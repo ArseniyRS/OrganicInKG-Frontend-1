@@ -20,9 +20,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="869952c6-d07a-44c8-9dad-429924c3fe46" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Procfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/debug.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/api/Request.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/api/Request.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -170,6 +168,7 @@
       <workItem from="1611476869385" duration="6203000" />
       <workItem from="1611574395231" duration="845000" />
       <workItem from="1611659585381" duration="311000" />
+      <workItem from="1611680799531" duration="25000" />
     </task>
     <servers />
   </component>

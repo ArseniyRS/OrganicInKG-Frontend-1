@@ -2,7 +2,7 @@
 import * as axios from 'axios'
 const tokenGetter = ()=>{ return { headers: {"Authorization" : `Bearer ${localStorage.getItem('accessToken')}`} }}
 const instance = axios.create({
-    baseURL: 'http://165.227.131.111:8080/api/v1/',
+    baseURL: 'https://165.227.131.111:8080/api/v1/',
 })
 export const authReq = (data)=>instance.post('auth',data).then(response=>response.data)
 export const authRefreshReq = (data)=>instance.post('refresh',data).then(response=>response.data)
