@@ -15,7 +15,6 @@ export const rootReducer = combineReducers({
     main: mainReducer,
     table: tableReducer,
     modal: modalReducer,
-
     category: categoryReducer,
     product: productReducer,
     provider: providerReducer,

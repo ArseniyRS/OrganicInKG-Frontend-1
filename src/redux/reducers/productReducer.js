@@ -2,9 +2,6 @@ import {
     WRITE_PRODUCTS,
     WRITE_PRODUCT_BY_ID,
     WRITE_RAITING_BY_ID,
-    ADDED_PRODUCT,
-    DELETED_PRODUCT,
-    UPDATED_PRODUCT,
     SEARCHING,
     WRITE_MEASURE_UNITS,
     PRODUCT_TOGGLE_FETCH_LOADER,
@@ -23,6 +20,7 @@ import {toClearImageArray} from "../../utils/templates/toClearImageArray";
 import {updateItemInStore} from "../../utils/templates/updateItemInStore";
 import {checkHasData} from "../../utils/checkHasData";
 import {getSearchedTemplate} from "../../utils/templates/getSearchedTemplate";
+import {toggleLoader} from "./mainReducer";
 
 const initialState={
     products: [],
@@ -91,7 +89,7 @@ export const clearProduct = ()=>{
     }
 }
 export const getMeasureUnits = ()=>{
-    return async dispatch =>getTemplate(dispatch,measureUnitGetReq,WRITE_MEASURE_UNITS,productToggleLoader)
+    return async dispatch =>getTemplate(dispatch,measureUnitGetReq,WRITE_MEASURE_UNITS,toggleLoader)
 }
 export const getProducts = (page,searchText)=> {
     return async dispatch => getSearchedTemplate(dispatch, productsGetReq, WRITE_PRODUCTS, productToggleLoader,page,searchText)
@@ -101,7 +99,6 @@ export const getProductById = (id)=> {
 }
 export const createProduct = data=>{
     return async dispatch => {
-        //for(let i=0;i<50;i++) {
             dispatch(productToggleLoader(true))
             await productPostReq(data)
                 .then(async resp => {
@@ -113,7 +110,6 @@ export const createProduct = data=>{
                     }
                 })
             dispatch(productToggleLoader(false))
-       // }
     }
 }
 export const deleteProduct = id =>{

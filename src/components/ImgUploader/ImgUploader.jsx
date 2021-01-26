@@ -48,11 +48,14 @@ const ImgUploader = ({setFieldValue,name,value,imageCount=1,fileTypes="image/jpe
         return (
         <div  key={index} className={'upload__image-container'}>
             <div className="upload__image-item">
-                {file.file.type.match('image') ?
-                    <img src={file?.data_url} alt=""/>
-                    :file.file.type.match('application/pdf')
-                    ? <span className={'upload__file-itemText'}>{file.file.type.toUpperCase().split('APPLICATION/')}</span>
-                    : <span></span>
+                {typeof file !== 'string' ?
+                    file?.file?.type.match('image') || file?.imgUrl ?
+                        <img src={file?.data_url ? file?.data_url : file?.imgUrl} alt=""/>
+                        : file.file.type.match('application/pdf')
+                        ? <span
+                            className={'upload__file-itemText'}>{file.file.type.toUpperCase().split('APPLICATION/')}</span>
+                        : <span></span>
+                    : <img src={file} alt=""/>
                 }
             </div>
         </div>
