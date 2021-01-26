@@ -85,6 +85,9 @@ export const orderDelReq = (id)=>instance.delete(`orders`,id)
 export const orderDelByIdReq = (id)=>instance.delete(`orders/${id}`)
 export const orderUpdReq = (data,id)=>instance.put(`orders/${id}`,data)
 
+export const deliveryCashGetReq = ()=>instance.get(`orderSetting/1`).then(response=>response.data)
+export const deliveryCashUpdReq = (data)=>instance.put(`orderSetting/2`,data)
+
 
 
 

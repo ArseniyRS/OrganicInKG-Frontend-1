@@ -20,6 +20,7 @@ import SidebarList from "./components/Sidebar/SidebarList";
 import PageLoader from "./components/pageLoader/pageLoader";
 import FaqPage from "./pages/Faq/FaqPage";
 import AboutUsPage from "./pages/AboutUs/AboutUsPage";
+import SettingsPage from "./pages/Settings/SettingsPage";
 
 function App(props) {
 
@@ -65,6 +66,7 @@ function App(props) {
                                       <Route path={'/profile'} exact component={ProfilePage}/>
                                       <Route path={'/faq'}  component={FaqPage}/>
                                       <Route path={'/aboutus'}  component={AboutUsPage}/>
+                                      <Route path={'/settings'}  component={SettingsPage}/>
                                   </Switch>
                               </div>
                           </div>
