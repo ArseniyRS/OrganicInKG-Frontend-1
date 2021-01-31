@@ -132,7 +132,6 @@ export const authSignIn = data =>{
                 dispatch(toggleAuth(true))
                 dispatch(tokenToLocalStorage(response))
                 dispatch(getUserName())
-                setTimeout(()=>dispatch(togglePageLoader(false)),4000)
             }
         })
         dispatch(toggleLoader(false))

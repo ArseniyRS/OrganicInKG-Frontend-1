@@ -46,8 +46,6 @@ function App(props) {
     },[props.isAuthorized])
 
   return(
-
-      (props.isPageLoader || props.isAuthorized===undefined ) ? <PageLoader/>:
             <>
                 {props.modal.isOpen && <Modal/>}
 
