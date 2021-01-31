@@ -12,7 +12,20 @@ const ImgUploader = ({setFieldValue,name,value,imageCount=1,fileTypes="image/jpe
     useEffect(()=>{
         setFieldValue(name,files)
     },[files])
-
+    async function createFile(url){
+        let response = await fetch(url);
+        let data = await response.blob();
+        let metadata = {
+            type: data.type
+        };
+        let file = new File([data], "test.jpg", metadata);
+        setFiles(file)
+    }
+    useEffect(()=>{
+        if(typeof value === 'string' || value[0].imgUrl){
+            createFile(value)
+        }
+    },[])
     function getBase64(file, callback) {
       const reader = new FileReader();
       reader.addEventListener('load', () => callback(reader.result));
@@ -30,13 +43,12 @@ const ImgUploader = ({setFieldValue,name,value,imageCount=1,fileTypes="image/jpe
                 }
             for(let type in fileTypes){
              if(type.split('application/') || type.split('image/')===acceptedFiles.type) {
-                 console.log(acceptedFiles)
                  acceptedFiles.map(file => {
                      getBase64(file,(string)=>{
                          setFiles([...files,{file: file, data_url : string}])
                      })
                  })
-             }
+                 }
                 else{
                     setError(`Загрузка файлов возможно только с типом: ${fileTypes}`)
                 }
@@ -49,7 +61,8 @@ const ImgUploader = ({setFieldValue,name,value,imageCount=1,fileTypes="image/jpe
         <div  key={index} className={'upload__image-container'}>
             <div className="upload__image-item">
                 {typeof file !== 'string' ?
-                    file?.file?.type.match('image') || file?.imgUrl ?
+                    file?.file?.type.match('image') || file?.
+                        Url ?
                         <img src={file?.data_url ? file?.data_url : file?.imgUrl} alt=""/>
                         : file.file.type.match('application/pdf')
                         ? <span
