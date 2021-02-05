@@ -5,25 +5,39 @@ import {useDropzone} from "react-dropzone";
 
 
 
-const ImgUploader = ({setFieldValue,name,value,imageCount=1,fileTypes="image/jpeg ,image/gif, image/png, image/svg+xml, application/pdf"})=>{
-    const [files,setFiles] = useState(value ? Array.isArray(value) ? value : [value] : [])
+const ImgUploader = ({setFieldValue,name,value=[],imageCount=1,fileTypes="image/jpeg ,image/gif, image/png, image/svg+xml, application/pdf"})=>{
+    const [files,setFiles] = useState(value)
     const [error,setError] = useState('')
-    console.log(files)
     useEffect(()=>{
         setFieldValue(name,files)
     },[files])
+    const randomNameGenerator = () => {
+        let res = '';
+        for(let i = 0; i < 20; i++){
+            const random = Math.floor(Math.random() * 27);
+            res += String.fromCharCode(97 + random);
+        };
+        return res;
+    };
     async function createFile(url){
         let response = await fetch(url);
         let data = await response.blob();
         let metadata = {
             type: data.type
         };
-        let file = new File([data], "test.jpg", metadata);
-        setFiles(file)
+        let file = new File([data], `${randomNameGenerator()}`, metadata);
+       getBase64(file,(string)=>{
+            setFiles([...files,{file: file, data_url : string}])
+        })
     }
     useEffect(()=>{
-        if(typeof value === 'string' || value[0].imgUrl){
+        if(typeof value === 'string'){
             createFile(value)
+        }
+        else if(typeof value[0] === 'string'){
+            value.map(item=>createFile(item))
+        }else{
+            setFiles(value)
         }
     },[])
     function getBase64(file, callback) {
@@ -45,10 +59,7 @@ const ImgUploader = ({setFieldValue,name,value,imageCount=1,fileTypes="image/jpe
              if(type.split('application/') || type.split('image/')===acceptedFiles.type) {
                  acceptedFiles.map(file => {
                      getBase64(file,(string)=>{
-                         setFiles([...files,{file: file, data_url : string}])
-                     })
-                 })
-                 }
+                         setFiles([...files,{file: file, data_url : string}])})})}
                 else{
                     setError(`Загрузка файлов возможно только с типом: ${fileTypes}`)
                 }

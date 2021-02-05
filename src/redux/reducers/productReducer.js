@@ -129,8 +129,8 @@ export const updateProduct = (id,data) =>{
                 if(data.images) {
                     const formData = new FormData()
                     toClearImageArray(data.images).map(item => formData.append('images', item))
-                    formData.append('productId', id)
-                    await productImgUpdReq(formData, id)
+                    formData.append('productId', resp.data.result.id)
+                    await productImgPostReq(formData)
                 }
             })
 
