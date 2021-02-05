@@ -18,9 +18,9 @@ const FormInput = ({
                options=[],
                        fileTypes,
                        imageCount,
+                       readOnly=false,
     ...props
                    })=>{
-    console.log(props)
     return(
         <div className="createOrEditField">
             <label htmlFor={name}>{label}</label>
@@ -79,7 +79,7 @@ const FormInput = ({
                                                                 name={name}/>}
                 </Field>
                 :
-                         <Field name={name} placeholder={placeholder}/>
+                         <Field name={name} placeholder={placeholder} readOnly={readOnly} />
 
             }
 

@@ -2,40 +2,48 @@ import {addressData} from "../../components/Inputs/SelectorInput/data/addressDat
 
 export const orderInputConfig = [
     {
-        label: 'Имя'
+        label: 'Имя',
+        readonly: true
     },
     {
-        label: 'Фамилия'
+        label: 'Фамилия',
+        readonly: true
     },
     {
-        label: 'Номер телефона'
+        label: 'Номер телефона',
+        readonly: true
     },
     {
     label: "Адрес доставки",
    placeholder: "Бишкек Советская Боконбаева",
-        type: 'map',
-        selectInputData:addressData
+    readonly: true
+        // type: 'map',
+        // selectInputData:addressData
     },
     {
         label: "Тип доставки",
         placeholder: "Самовывоз/Курьер",
-        type: 'selector',
-        selectorProperty: 'deliveryType',
+        readonly: true
+        // type: 'selector',
+        // selectorProperty: 'deliveryType',
     },
     {
         label: "Дата заказа",
+        readonly: true
     },
     {
         label: "Тип оплаты",
         placeholder: "Эльсом/Наличные",
-        type: 'selector',
-        selectorProperty: 'paymentType',
+        readonly: true
+        // type: 'selector',
+        // selectorProperty: 'paymentType',
     },
     {
         label: "Адрес склада",
         placeholder: "Бишкек Советская Боконбаева",
-        type: 'map',
-        selectInputData:addressData
+        readonly: true
+        // type: 'map',
+        // selectInputData:addressData
     },
     {
         label: "Статус заказа",

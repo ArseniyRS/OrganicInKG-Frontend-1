@@ -24,7 +24,6 @@ const FormContainer = ({
         if(match.params?.id){
             await updReq(match.params.id,values)
         }else {
-            console.log(values)
             await  createReq(values)
         }
     }

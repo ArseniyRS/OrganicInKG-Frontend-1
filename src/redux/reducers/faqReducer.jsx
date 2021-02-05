@@ -1,9 +1,7 @@
 import {
     WRITE_FAQ,
     WRITE_FAQ_BY_ID,
-    ADDED_FAQ,
-    DELETED_FAQ,
-    UPDATED_FAQ, SEARCHING,FAQ_TOGGLE_FETCH_LOADER
+    SEARCHING,FAQ_TOGGLE_FETCH_LOADER
 } from './types'
 import {
     faqDelByIdReq,
@@ -15,9 +13,7 @@ import {
 import {getTemplate} from "../../utils/templates/getTemplate";
 import {createOrChangeTemplate} from "../../utils/templates/createOrChangeTemplate";
 import {deleteTemplate} from "../../utils/templates/deleteTemplate";
-import {toggleLoader} from "./mainReducer";
-import {updateItemInStore} from "../../utils/templates/updateItemInStore";
-import {toClearImageArray} from "../../utils/templates/toClearImageArray";
+
 import {checkHasData} from "../../utils/checkHasData";
 import {getSearchedTemplate} from "../../utils/templates/getSearchedTemplate";
 
@@ -31,18 +27,18 @@ const initialState={
 
 export const faqReducer = (state=initialState,action)=>{
     switch (action.type) {
-     case FAQ_TOGGLE_FETCH_LOADER:
-                return{
-                    ...state,
-                    faqFetchLoader: action.payload
-                }
+        case FAQ_TOGGLE_FETCH_LOADER:
+            return{
+                ...state,
+                faqFetchLoader: action.payload
+            }
         case WRITE_FAQ:
             return{
                 ...state,
-               faq: [...state.faq,...action.payload],
-               hasFaq: checkHasData(action.payload)
+                faq: [...state.faq,...action.payload],
+                hasFaq: checkHasData(action.payload)
             }
-             case SEARCHING:
+        case SEARCHING:
             return {
                 ...state,
                 faq: [],

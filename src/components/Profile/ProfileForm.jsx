@@ -27,7 +27,7 @@ const ProfileForm = (props)=>{
                     middleName: Yup.string(),
                     email: Yup.string()
                 })}
-                onSubmit={async (values)=>await props.handleSubmit(values)}
+                onSubmit={(values)=>props.handleSubmit(values)}
             >
                 {({handleSubmit,errors,values}) => {
 
@@ -51,7 +51,12 @@ const ProfileForm = (props)=>{
                                 <span className='authError'><ErrorMessage name="middleName"/></span>
                                 </label>
                             </div>
-
+                            <div className="createOrEditField">
+                                <label htmlFor={'email'}>E-mail
+                                    <Field name="email" placeholder="example.com"/>
+                                    <span className='authError'><ErrorMessage name="email"/></span>
+                                </label>
+                            </div>
 
                             <div className={"createOrEditContainer__btns"}>
                                 <EditBtn

@@ -13,6 +13,7 @@ const ProfileContainer = (props)=>{
         }
     },[props.userId])
     const handleSubmit = values=>props.updateUser(values,localStorage.getItem('id'))
+
     return(
         !props.userFetchLoader && !props.authFetchLoader && props.profile   ?
         <ProfileForm {...props} handleSubmit={handleSubmit}/> :

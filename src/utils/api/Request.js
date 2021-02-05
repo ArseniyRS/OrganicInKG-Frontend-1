@@ -84,17 +84,16 @@ export const orderPostReq = (data)=>instance.post('orders',data)
 export const orderDelReq = (id)=>instance.delete(`orders`,id)
 export const orderDelByIdReq = (id)=>instance.delete(`orders/${id}`)
 export const orderUpdReq = (data,id)=>instance.put(`orders/${id}`,data,tokenGetter())
-export const orderUpdStatusReq = (data,id)=>instance.put(`orders/status/${id}`,data,tokenGetter())
+export const orderUpdStatusReq = (data,id)=>instance.put(`orders/status/${id}?orderStatus=${data}`,data)
 
 export const deliveryCashGetReq = ()=>instance.get(`orderSetting/1`).then(response=>response.data)
-export const deliveryCashUpdReq = (data)=>instance.put(`orderSetting/2`,data)
+export const deliveryCashUpdReq = (data)=>instance.put(`orderSetting/1`,data)
 
 
 
 
-export const faqGetReq = ()=>(searchText,page)=>instance.get(`${searchText ?
-    `faq/search?name=${searchText}&page=${page}&size=20`
-    : `faq?page=${page}&size=20`}`,tokenGetter())
+export const faqGetReq = (searchText,page)=>instance.get(`${searchText ? `faq/search?question=${searchText}&page=${page}&size=20`
+    : `faq/?page=${page}&size=20`}`,tokenGetter())
     .then(response=>response.data)
 export const faqGetByIdReq = (id)=>instance.get(`faq/${id}`,tokenGetter()).then(response=>response.data)
 export const faqPostReq = (data)=>instance.post('faq',data,tokenGetter())
@@ -102,8 +101,8 @@ export const faqDelByIdReq = (id)=>instance.delete(`faq/${id}`,tokenGetter())
 export const faqUpdReq = (data,id)=>instance.put(`faq/${id}`,data,tokenGetter())
 
 export const aboutUsGetReq = (searchText,page)=>instance.get(`${searchText ?
-    `about/search?name=${searchText}&page=${page}&size=20`
-    : `about?page=${page}&size=20`}`,tokenGetter())
+    `about/search?header=${searchText}&page=${page}&size=20`
+    : `about/?page=${page}&size=20`}`,tokenGetter())
     .then(response=>response.data)
 export const aboutUsGetByIdReq = (id)=>instance.get(`about/${id}`,tokenGetter()).then(response=>response.data)
 export const aboutUsPostReq = (data)=>instance.post('about',data,tokenGetter())

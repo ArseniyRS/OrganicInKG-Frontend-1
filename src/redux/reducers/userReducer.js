@@ -78,7 +78,7 @@ export const deleteUser = id =>{
 }
 
 export const updateUser = (data,id)=>{
-    return async dispatch =>createOrChangeTemplate(dispatch,userUpdReq,data,'',userToggleLoader,id)
+    return async dispatch =>createOrChangeTemplate(dispatch,userUpdReq,data,userToggleLoader,id)
 }
 
 

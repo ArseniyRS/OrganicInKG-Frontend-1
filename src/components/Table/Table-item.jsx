@@ -44,9 +44,7 @@ const TableItem= ({columns,data,handlerClick,elementsToDelete,writeElementsToDel
                         return valuesToArray[j]
                     }
                     result.push((
-                        <div key={"table-item-" + data.id + "-" + i}>
-                            <TableItemColumn column={columns[i]} item={{title: columns[i].title, value: toBeautifyFieldsValue(value())}}/>
-                        </div>
+                            <TableItemColumn key={`${j}-${data.id}`} column={columns[i]} item={{title: columns[i].title, value: toBeautifyFieldsValue(value())}}/>
                     ))
                     break;
                 }

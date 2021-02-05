@@ -7,8 +7,8 @@ import {productReducer} from "./productReducer";
 import {providerReducer} from "./providerReducer";
 import {userReducer} from "./userReducer";
 import {orderReducer} from "./orderReducer";
-import {faqReducer} from "./faqReducer";
 import {aboutUsReducer} from "./aboutUsReducer";
+import {faqReducer} from "./faqReducer";
 
 
 export const rootReducer = combineReducers({

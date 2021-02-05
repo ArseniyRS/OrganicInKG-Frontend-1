@@ -86,7 +86,7 @@ export const getDeliveryCash = ()=>{
 }
 
 export const updateDeliveryCash = data=>{
-    return async dispatch =>createOrChangeTemplate(dispatch,deliveryCashUpdReq,data,orderToggleLoader)
+    return async dispatch =>createOrChangeTemplate(dispatch,deliveryCashUpdReq,{deliveryPrice: parseInt(data.deliveryPrice), deliveryType: "COURIER"},orderToggleLoader,1)
 }
 
 export const createOrder = data=>{
@@ -100,25 +100,9 @@ export const deleteOrder = id =>{
     }
 }
 export const updateOrder = (id,data) =>{
-    const newData = {
-        deliveryAddress: data.deliveryAddress,
-        deliveryType: data.deliveryType,
-        desiredDeliveryDate: data.desiredDeliveryDate,
-        firstName: data.firstName,
-        lastName: data.lastName,
-        paymentType: data.paymentType,
-        phoneNumber: data.phoneNumber,
-        storageAddress: data.storageAddress
-    }
-    const statusData = {
-        id: parseInt(id),
-        orderStatus : data.orderStatus
-    }
-    console.log(data)
-    console.log(statusData)
     return async dispatch =>{
         dispatch(orderToggleLoader(true))
-        await orderUpdStatusReq(statusData,id).then(resp=>console.log(resp))
+        await orderUpdStatusReq( data.orderStatus,id)
         dispatch(orderToggleLoader(false))
     }
 }

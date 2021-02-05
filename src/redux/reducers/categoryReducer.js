@@ -16,7 +16,6 @@ import {
 import {getTemplate} from "../../utils/templates/getTemplate";
 import {createOrChangeTemplate} from "../../utils/templates/createOrChangeTemplate";
 import {deleteTemplate} from "../../utils/templates/deleteTemplate";
-import {updateItemInStore} from "../../utils/templates/updateItemInStore";
 import {toClearImageArray} from "../../utils/templates/toClearImageArray";
 import {getSearchedTemplate} from "../../utils/templates/getSearchedTemplate";
 import {checkHasData} from "../../utils/checkHasData";

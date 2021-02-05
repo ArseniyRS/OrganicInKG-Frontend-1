@@ -46,13 +46,8 @@ const Table = ({isLoading,
         return () => clearTimeout(timeoutId);
     }, [searchText]);
 
-    const elements = data.map(item=>{
-        return (
-            <div key={item.id}>
-            <TableItem columns={columns} data={item} handlerClick = {handlerClick} deleting={deleting}/>
-            </div>
-        )
-    })
+    const elements = data.map(item=> <TableItem key={`tableItem-${item.id}`} columns={columns} data={item} handlerClick = {handlerClick} deleting={deleting}/>)
+
     return(
 
         <div className='table-container'>

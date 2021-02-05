@@ -25,6 +25,7 @@ const Former = (props)=>{
                 selectorProperty={props.inputConfig[index]?.selectorProperty}
                 fileTypes={props.inputConfig[index]?.fileTypes}
                 imageCount={props.inputConfig[index]?.imageCount}
+                readOnly={props.inputConfig[index]?.readonly}
             />
         )
     })
@@ -32,10 +33,12 @@ const Former = (props)=>{
     const schema = validationGenerator(array,props.inputConfig)
     return(
         <div className='createOrEditContainer'>
+            {props.formTitle &&
             <div className={'createOrEditContainer__title'}>
                 <Link to={props.urlToTable}><img src={backSVG} alt=""/></Link>
                 <h2>{props.formTitle}</h2>
             </div>
+            }
             <Formik
                 initialValues={props.initialVals}
                 validationSchema={Yup.object(schema)}
