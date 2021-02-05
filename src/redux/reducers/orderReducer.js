@@ -8,7 +8,7 @@ import {
 import {
     deliveryCashGetReq,
     deliveryCashUpdReq,
-    orderDelByIdReq, orderGetByIdReq, orderPostReq, ordersGetReq, orderUpdReq,
+    orderDelByIdReq, orderGetByIdReq, orderPostReq, ordersGetReq, orderUpdReq, orderUpdStatusReq,
 } from "../../utils/api/Request";
 import {getTemplate} from "../../utils/templates/getTemplate";
 import {createOrChangeTemplate} from "../../utils/templates/createOrChangeTemplate";
@@ -100,6 +100,26 @@ export const deleteOrder = id =>{
     }
 }
 export const updateOrder = (id,data) =>{
-    return async dispatch => createOrChangeTemplate(dispatch,orderUpdReq,data,orderToggleLoader,id)
+    const newData = {
+        deliveryAddress: data.deliveryAddress,
+        deliveryType: data.deliveryType,
+        desiredDeliveryDate: data.desiredDeliveryDate,
+        firstName: data.firstName,
+        lastName: data.lastName,
+        paymentType: data.paymentType,
+        phoneNumber: data.phoneNumber,
+        storageAddress: data.storageAddress
+    }
+    const statusData = {
+        id: parseInt(id),
+        orderStatus : data.orderStatus
+    }
+    console.log(data)
+    console.log(statusData)
+    return async dispatch =>{
+        dispatch(orderToggleLoader(true))
+        await orderUpdStatusReq(statusData,id).then(resp=>console.log(resp))
+        dispatch(orderToggleLoader(false))
+    }
 }
 

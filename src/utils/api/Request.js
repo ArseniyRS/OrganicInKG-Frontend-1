@@ -2,7 +2,7 @@
 import * as axios from 'axios'
 const tokenGetter = ()=>{ return { headers: {"Authorization" : `Bearer ${localStorage.getItem('accessToken')}`} }}
 const instance = axios.create({
-    baseURL: 'http://165.227.131.111:8080/api/v1/',
+    baseURL: 'https://organicinkg.net:8443/api/v1/',
 })
 export const authReq = (data)=>instance.post('auth',data).then(response=>response.data)
 export const authRefreshReq = (data)=>instance.post('refresh',data).then(response=>response.data)
@@ -83,7 +83,8 @@ export const orderGetByIdReq = (id)=>instance.get(`orders/${id}`).then(response=
 export const orderPostReq = (data)=>instance.post('orders',data)
 export const orderDelReq = (id)=>instance.delete(`orders`,id)
 export const orderDelByIdReq = (id)=>instance.delete(`orders/${id}`)
-export const orderUpdReq = (data,id)=>instance.put(`orders/${id}`,data)
+export const orderUpdReq = (data,id)=>instance.put(`orders/${id}`,data,tokenGetter())
+export const orderUpdStatusReq = (data,id)=>instance.put(`orders/status/${id}`,data,tokenGetter())
 
 export const deliveryCashGetReq = ()=>instance.get(`orderSetting/1`).then(response=>response.data)
 export const deliveryCashUpdReq = (data)=>instance.put(`orderSetting/2`,data)
