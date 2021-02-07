@@ -11,7 +11,7 @@ import {
     providerPostReq,
     providerUpdReq,
     providerDelByIdReq,
-    providerActiveGetReq,
+    providerActiveGetReq, providerPlaceOfProductionPostReq,
 } from "../../utils/api/Request";
 import {getTemplate} from "../../utils/templates/getTemplate";
 import {createOrChangeTemplate} from "../../utils/templates/createOrChangeTemplate";
@@ -91,16 +91,21 @@ export const getProviderById = (id)=> {
     return async dispatch => getTemplate(dispatch, providerGetByIdReq, WRITE_PROVIDER_BY_ID, providerToggleLoader,id)
 }
 export const createProvider = (data)=>{
+    console.log(data.placeOfProduction)
         return async dispatch => {
             dispatch(providerToggleLoader(true))
-            await providerPostReq(data)
-                .then(resp => {
-
-                    formDataProviderTemplate(resp.data.result.id,data,'PASSPORT')
-                    formDataProviderTemplate(resp.data.result.id,data,'SERTIFICATE')
-                    formDataProviderTemplate(resp.data.result.id,data,'CONTRACT')
-                })
-            dispatch(providerToggleLoader(false))
+            await providerPlaceOfProductionPostReq(data.placeOfProduction).then(async res=> {
+                console.log(res)
+                const newData = data
+                newData['placeOfProductionId'] = res.data.result.id
+                await providerPostReq(newData)
+                    .then(resp => {
+                        formDataProviderTemplate(resp.data.result.id, data, 'PASSPORT')
+                        formDataProviderTemplate(resp.data.result.id, data, 'SERTIFICATE')
+                        formDataProviderTemplate(resp.data.result.id, data, 'CONTRACT')
+                    })
+                dispatch(providerToggleLoader(false))
+            })
         }
 }
 

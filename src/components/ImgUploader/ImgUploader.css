@@ -44,6 +44,33 @@
     overflow: hidden;
     margin: 15px 15px 15px 0;
     border: 2px solid #DDDDDD;
+    cursor: pointer;
+}
+.upload__image-delete{
+    position: relative;
+    display: none;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,.6);
+    z-index: 100;
+}
+.upload__image-item:hover .upload__image-delete{
+    display: block;
+
+}
+.upload__image-delete img{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    transition: .3s ease;
+    width: 25px!important;
+    height: 25px!important;
+}
+.upload__image-delete img:hover{
+    width: 30px!important;
+    height: 30px!important;
+    transition: .2s ease;
 }
 .upload__file-itemText{
     position: absolute;

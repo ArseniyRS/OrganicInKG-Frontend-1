@@ -38,6 +38,7 @@ const ProductsPage = ({   products,
                           getMeasureUnits,
     ...props
                       })=>{
+    console.log(measureUnits)
 
     return(
         <PageRenderer
@@ -55,7 +56,7 @@ const ProductsPage = ({   products,
             optionsForSelectorData={{
                 category: categories ? [...categories] : [],
                 provider: activeProviders  ? [...activeProviders] : [],
-                currency: ['SOM','USD',],
+                currency: ['SOM','USD'],
                 units: measureUnits  ?  [...measureUnits] : []
             }}
             recordViewValuesConfig={{
@@ -94,7 +95,7 @@ const ProductsPage = ({   products,
                 price: productById?.price,
                 currency: productById?.currency,
                 measure: productById?.measure,
-                measureUnitId: productById?.measureUnitId,
+                measureUnitId: productById?.measureUnitResponse?.id,
                 images: productById?.productImages?.map(item=>item.imageUrl)
             }}
             getDataFunc={getProducts}

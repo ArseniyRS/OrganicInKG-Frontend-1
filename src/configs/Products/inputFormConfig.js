@@ -58,7 +58,7 @@ export const productInputConfig = [
     {
         label: "Фото товара",
         type: 'image',
-        fileTypes:'image/jpg,image/png',
+        fileTypes:'image/jpeg,image/png',
         imageCount: 6
     },
 

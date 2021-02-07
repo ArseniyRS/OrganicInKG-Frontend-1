@@ -1,13 +1,15 @@
 import React, {useEffect, useState} from "react";
 import './ImgUploader.css';
-import {uploadBtnSVG} from '../../assets/icons'
+import {trashSVG, uploadBtnSVG} from '../../assets/icons'
 import {useDropzone} from "react-dropzone";
 
 
 
 const ImgUploader = ({setFieldValue,name,value=[],imageCount=1,fileTypes="image/jpeg ,image/gif, image/png, image/svg+xml, application/pdf"})=>{
-    const [files,setFiles] = useState(value)
+    const [files,setFiles] = useState([])
     const [error,setError] = useState('')
+    console.log(value.length)
+
     useEffect(()=>{
         setFieldValue(name,files)
     },[files])
@@ -19,26 +21,25 @@ const ImgUploader = ({setFieldValue,name,value=[],imageCount=1,fileTypes="image/
         };
         return res;
     };
-    async function createFile(url){
-        let response = await fetch(url);
-        let data = await response.blob();
-        let metadata = {
-            type: data.type
-        };
-        let file = new File([data], `${randomNameGenerator()}`, metadata);
-       getBase64(file,(string)=>{
-            setFiles([...files,{file: file, data_url : string}])
+    const createFile= async (urls)=>{
+        let result =[]
+       urls.map( async url => {
+            let response = await fetch(url);
+            let data = await response.blob();
+            let metadata = {type: data.type};
+            let file = new File([data], randomNameGenerator(),metadata);
+            await getBase64(file,(string)=>  result.push({file: file, data_url: string}))
         })
+        return setFiles(result)
+    }
+
+    const loadFiles = async ()=>{
+        if((typeof value === 'string' && value!=='') || Array.isArray(value)){
+            await createFile(value)
+        }
     }
     useEffect(()=>{
-        if(typeof value === 'string'){
-            createFile(value)
-        }
-        else if(typeof value[0] === 'string'){
-            value.map(item=>createFile(item))
-        }else{
-            setFiles(value)
-        }
+        loadFiles()
     },[])
     function getBase64(file, callback) {
       const reader = new FileReader();
@@ -66,14 +67,14 @@ const ImgUploader = ({setFieldValue,name,value=[],imageCount=1,fileTypes="image/
             }
         }
     });
-
+    const deleteItem = index =>setFiles([...files.slice(0, index), ...files.slice(index + 1)])
     const thumbs = files.map((file,index) =>{
         return (
         <div  key={index} className={'upload__image-container'}>
             <div className="upload__image-item">
+                <div className='upload__image-delete'><img src={trashSVG} onClick={()=>deleteItem(index)} alt=""/></div>
                 {typeof file !== 'string' ?
-                    file?.file?.type.match('image') || file?.
-                        Url ?
+                    file?.file?.type.match('image') || file?.Url ?
                         <img src={file?.data_url ? file?.data_url : file?.imgUrl} alt=""/>
                         : file.file.type.match('application/pdf')
                         ? <span

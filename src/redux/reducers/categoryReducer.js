@@ -84,11 +84,10 @@ export const getCategoryById = (id)=> {
 }
 export const createCategory = data=>{
         return async dispatch => {
-            for (let i=0;i<50;i++) {
                 dispatch(categoryToggleLoader(true))
                 const formData = new FormData()
                 formData.append('categoryRequest', new Blob([JSON.stringify({
-                    "name": `${data.name}${i}`,
+                    "name": `${data.name}`,
                     "description": data.description,
                     "parentCategoryId": data.parentCategoryId
                 })], {type: "application/json"}));
@@ -99,7 +98,6 @@ export const createCategory = data=>{
                 }
                 await categoryPostReq(formData).catch(error => console.log(error.response))
                 dispatch(categoryToggleLoader(false))
-            }
         }
 }
 export const deleteCategory = id =>{

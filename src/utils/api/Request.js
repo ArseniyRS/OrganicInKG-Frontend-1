@@ -62,6 +62,7 @@ export const providerDelReq = (id)=>instance.delete(`supplier`,id)
 export const providerDelByIdReq = (id)=>instance.delete(`supplier/${id}`)
 export const providerUpdReq = (data,id)=>instance.put(`supplier/${id}`,data)
 export const providerActiveGetReq = ()=>instance.get(`supplier/active`).then(response=>response.data)
+export const providerPlaceOfProductionPostReq = (data)=>instance.post(`placeOfProduction`,data)
 
 export const usersGetReq = (searchText,page)=>instance.get(`${searchText ?
     `client/search?firstName=${searchText}&page=${page}&size=20`

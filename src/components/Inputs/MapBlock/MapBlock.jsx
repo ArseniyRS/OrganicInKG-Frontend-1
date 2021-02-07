@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react'
-import {GeolocationControl, Map, Placemark, SearchControl, YMaps} from "react-yandex-maps";
+import { Map, YMaps} from "react-yandex-maps";
 import './MapBlock.css'
 
 
@@ -10,10 +10,16 @@ const MapBlock = props=> {
     const placemarkRef = React.useRef(null);
     const mapRef = React.useRef(null);
     const [address, setAddress] = React.useState(props.value);
+    const [place, setPlace] = React.useState({
+        city: "",
+        country: "",
+        region: "",
+        street: ""
+    });
 
     useEffect(()=>{
-        props.setFieldValue(props.name,address)
-    },[address])
+        props.setFieldValue(props.name,place)
+    },[place])
     const createPlacemark = (coords) => {
 
         return new ymaps.current.Placemark(
@@ -33,6 +39,12 @@ const MapBlock = props=> {
         ymaps.current.geocode(coords).then((res) => {
             const firstGeoObject = res.geoObjects.get(0);
             setAddress(firstGeoObject.getAddressLine());
+            setPlace({
+                city: firstGeoObject.getLocalities()[0] || '',
+                country:firstGeoObject.getCountry() || '',
+                region: firstGeoObject.getAdministrativeAreas()[0] || '',
+                street: firstGeoObject.getThoroughfare() || ''
+            })
             placemarkRef.current.properties.set({
                 iconCaption: firstGeoObject.getAddressLine(),
                 balloonContent: firstGeoObject.getAddressLine()
