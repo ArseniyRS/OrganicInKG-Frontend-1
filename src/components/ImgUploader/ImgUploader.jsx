@@ -8,7 +8,6 @@ import {useDropzone} from "react-dropzone";
 const ImgUploader = ({setFieldValue,name,value=[],imageCount=1,fileTypes="image/jpeg ,image/gif, image/png, image/svg+xml, application/pdf"})=>{
     const [files,setFiles] = useState([])
     const [error,setError] = useState('')
-    console.log(value.length)
 
     useEffect(()=>{
         setFieldValue(name,files)
@@ -34,8 +33,10 @@ const ImgUploader = ({setFieldValue,name,value=[],imageCount=1,fileTypes="image/
     }
 
     const loadFiles = async ()=>{
-        if((typeof value === 'string' && value!=='') || Array.isArray(value)){
-            await createFile(value)
+        if(typeof value === 'string' && value!==''){
+            await createFile([value])
+        }else if(Array.isArray(value)){
+            await createFile([value])
         }
     }
     useEffect(()=>{

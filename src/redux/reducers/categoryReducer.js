@@ -111,6 +111,22 @@ export const deleteCategory = id =>{
     }
 }
 export const updateCategory = (id,data) =>{
-    return async dispatch => createOrChangeTemplate(dispatch,categoryUpdReq,data,categoryToggleLoader,id)
+    return async dispatch => {
+        dispatch(categoryToggleLoader(true))
+        const formData = new FormData()
+        formData.append('categoryRequest', new Blob([JSON.stringify({
+            "id": data.id,
+            "name": `${data.name}`,
+            "description": data.description,
+            "parentCategoryId": data.parentCategoryId
+        })], {type: "application/json"}));
+        if (toClearImageArray(data.image) !== null) {
+            toClearImageArray(data.image).map(item => formData.append('image', item))
+        } else {
+            formData.append('image', null)
+        }
+        await categoryUpdReq(formData,id).catch(error => console.log(error.response))
+        dispatch(categoryToggleLoader(false))
+    }
 }
 
