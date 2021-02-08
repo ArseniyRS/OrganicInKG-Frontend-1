@@ -1,4 +1,4 @@
-import {DELETED_USER, SEARCHING, USER_TOGGLE_FETCH_LOADER, WRITE_USER_BY_ID, WRITE_USERS} from './types'
+import { DELETED_USER, SEARCHING, USER_TOGGLE_FETCH_LOADER, WRITE_USER_BY_ID, WRITE_USERS} from './types'
 import {
 
     userDelByIdReq,
@@ -43,7 +43,11 @@ export const userReducer = (state=initialState,action)=>{
                 ...state,
                 userById: action.payload
             }
-
+        case DELETED_USER:
+            return{
+                ...state,
+                users: updateItemInStore(state.users,action.payload,'delete')
+            }
         default:{
             return{
                 ...state
@@ -72,7 +76,7 @@ export const getUserById = (id)=> {
 export const deleteUser = id =>{
     return async dispatch => {
         for(let i=0;i<id.length;i++){
-            await deleteTemplate(dispatch,userDelByIdReq,id[i],userToggleLoader)
+            await deleteTemplate(dispatch,userDelByIdReq,id[i],userToggleLoader,DELETED_USER)
         }
     }
 }

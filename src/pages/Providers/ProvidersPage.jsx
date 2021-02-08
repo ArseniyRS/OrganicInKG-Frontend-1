@@ -16,6 +16,7 @@ import {recordViewProviderConfig} from "../../configs/Providers/recordViewConfig
 
 
 const ProvidersPage = ({providers,providerById,getProviders,getProviderById,createProvider,updateProvider,deleteProvider,clearProvider,...props})=>{
+
     return(
         <PageRenderer
             pageUrl ={'providers'}
@@ -25,17 +26,26 @@ const ProvidersPage = ({providers,providerById,getProviders,getProviderById,crea
             tableColumnsConfig={ProviderColumns}
 
             recordViewTitlesConfig={recordViewProviderConfig}
-
+            recordViewValuesConfig={{
+                fullName: providerById?.fullName,
+                phone: providerById?.phone,
+                email:  providerById?.email,
+                placeOfProduction:  <span></span>,
+                produces:  providerById?.produces,
+                walletNumber:  providerById?.ewalletNumber,
+                PASSPORT: providerById?.supplierFile?.filter(item=>item.supplierFileType==='PASSPORT'),
+                SERTIFICATE: providerById?.supplierFile?.filter(item=>item.supplierFileType==='SERTIFICATE'),
+                CONTRACT: providerById?.supplierFile?.filter(item=>item.supplierFileType==='CONTRACT'),
+                isActive:  providerById?.isActive
+            }}
             creatorTitle={'Создание поставщика'}
             updaterTitle={'Редактирование поставщика'}
             formInputsConfig={providerInputConfig}
-            //optionsForSelectorData={providers}
-           // loadSelectorData={}
             creatorInitialFormValues={{
                 fullName: '',
                 phone: '',
                 email: '',
-                placeOfProduction: '',
+                placeOfProduction: {},
                 produces: '',
                 walletNumber: '',
                 PASSPORT: [],
@@ -48,7 +58,12 @@ const ProvidersPage = ({providers,providerById,getProviders,getProviderById,crea
                 fullName: providerById?.fullName,
                 phone: providerById?.phone,
                 email:  providerById?.email,
-                placeOfProduction:  providerById?.placeOfProduction,
+                placeOfProduction: {
+                    country: providerById?.placeOfProduction?.country,
+                    city: providerById?.placeOfProduction?.city,
+                    region: providerById?.placeOfProduction?.region,
+                    street: providerById?.placeOfProduction?.street
+                },
                 produces:  providerById?.produces,
                 walletNumber:  providerById?.ewalletNumber,
                 PASSPORT: providerById?.supplierFile?.filter(item=>item.supplierFileType==='PASSPORT'),

@@ -4,7 +4,7 @@ import {
     WRITE_RAITING_BY_ID,
     SEARCHING,
     WRITE_MEASURE_UNITS,
-    PRODUCT_TOGGLE_FETCH_LOADER,
+    PRODUCT_TOGGLE_FETCH_LOADER, DELETED_CATEGORY, DELETED_PRODUCT,
 } from './types'
 import {
     productsGetReq,
@@ -67,7 +67,11 @@ export const productReducer = (state=initialState,action)=>{
                 ...state,
                 ratingById: action.payload
             }
-
+        case DELETED_PRODUCT:
+            return{
+                ...state,
+                products: updateItemInStore(state.products,action.payload,'delete')
+            }
         default:{
             return{
                 ...state
@@ -115,7 +119,7 @@ export const createProduct = data=>{
 export const deleteProduct = id =>{
     return async dispatch => {
         for(let i=0;i<id.length;i++){
-            await deleteTemplate(dispatch,productDelByIdReq,id[i],productToggleLoader)
+            await deleteTemplate(dispatch,productDelByIdReq,id[i],productToggleLoader,DELETED_PRODUCT)
 
         }
 

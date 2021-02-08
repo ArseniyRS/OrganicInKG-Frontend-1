@@ -10,7 +10,7 @@ import {
     aboutUsGetByIdReq,
     aboutUsGetReq,
     aboutUsPostReq,
-    aboutUsUpdReq, categoryGetSearchReq
+    aboutUsUpdReq,
 } from "../../utils/api/Request";
 import {getTemplate} from "../../utils/templates/getTemplate";
 import {createOrChangeTemplate} from "../../utils/templates/createOrChangeTemplate";
@@ -18,7 +18,6 @@ import {deleteTemplate} from "../../utils/templates/deleteTemplate";
 import {updateItemInStore} from "../../utils/templates/updateItemInStore";
 import {checkHasData} from "../../utils/checkHasData";
 import {getSearchedTemplate} from "../../utils/templates/getSearchedTemplate";
-import {categoryToggleLoader} from "./categoryReducer";
 
 const initialState={
     aboutUs: [],
@@ -52,6 +51,11 @@ export const aboutUsReducer = (state=initialState,action)=>{
                 ...state,
                 aboutUsById: action.payload
             }
+        case DELETED_ABOUT_US:
+            return{
+                ...state,
+                aboutUs: updateItemInStore(state.aboutUs,action.payload,'delete')
+            }
         default:{
             return{
                 ...state
@@ -79,7 +83,7 @@ export const createAboutUs = data=>{
 export const deleteAboutUs = id =>{
     return async dispatch => {
         for(let i=0;i<id.length;i++){
-            await deleteTemplate(dispatch,aboutUsDelByIdReq,id[i],aboutToggleLoader)
+            await deleteTemplate(dispatch,aboutUsDelByIdReq,id[i],aboutToggleLoader,DELETED_ABOUT_US)
         }
     }
 }

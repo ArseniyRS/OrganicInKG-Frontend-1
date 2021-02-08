@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import { Map, YMaps} from "react-yandex-maps";
 import './MapBlock.css'
+import {providerPlaceOfProductionGetByIdReq} from "../../../utils/api/Request";
 
 
 
@@ -9,12 +10,13 @@ const MapBlock = props=> {
     const ymaps = React.useRef(null);
     const placemarkRef = React.useRef(null);
     const mapRef = React.useRef(null);
-    const [address, setAddress] = React.useState(props.value);
+    const [address, setAddress] = React.useState(`${props.value.city},
+    ${props.value.country},${props.value.region},${props.value.street}`);
     const [place, setPlace] = React.useState({
-        city: "",
-        country: "",
-        region: "",
-        street: ""
+        city: props.value.city || "",
+        country: props.value.country || "",
+        region: props.value.region || "",
+        street: props.value.street || "",
     });
 
     useEffect(()=>{

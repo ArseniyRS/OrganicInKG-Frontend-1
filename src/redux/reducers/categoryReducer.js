@@ -1,10 +1,8 @@
 import {
     WRITE_CATEGORIES,
     WRITE_CATEGORY_BY_ID,
-    ADDED_CATEGORY,
     DELETED_CATEGORY,
-    UPDATED_CATEGORY,
-    SEARCHING,CATEGORY_TOGGLE_FETCH_LOADER
+    SEARCHING, CATEGORY_TOGGLE_FETCH_LOADER
 } from './types'
 import {
     categoryDelByIdReq,
@@ -19,6 +17,7 @@ import {deleteTemplate} from "../../utils/templates/deleteTemplate";
 import {toClearImageArray} from "../../utils/templates/toClearImageArray";
 import {getSearchedTemplate} from "../../utils/templates/getSearchedTemplate";
 import {checkHasData} from "../../utils/checkHasData";
+import {updateItemInStore} from "../../utils/templates/updateItemInStore";
 
 const initialState={
     categories: [],
@@ -53,7 +52,11 @@ export const categoryReducer = (state=initialState,action)=>{
                 ...state,
                 categoryById: action.payload
             }
-
+        case DELETED_CATEGORY:
+            return{
+                ...state,
+                categories: updateItemInStore(state.categories,action.payload,'delete')
+            }
         default:{
             return{
                 ...state
@@ -103,7 +106,7 @@ export const createCategory = data=>{
 export const deleteCategory = id =>{
     return async dispatch => {
         for(let i=0;i<id.length;i++){
-          await deleteTemplate(dispatch,categoryDelByIdReq,id[i],categoryToggleLoader)
+          await deleteTemplate(dispatch,categoryDelByIdReq,id[i],categoryToggleLoader,DELETED_CATEGORY)
         }
     }
 }

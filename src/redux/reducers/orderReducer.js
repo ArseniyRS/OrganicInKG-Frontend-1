@@ -3,18 +3,19 @@ import {
     WRITE_ORDER_BY_ID,
     SEARCHING,
     ORDER_TOGGLE_FETCH_LOADER,
-    WRITE_DELIVERY_CASH
+    WRITE_DELIVERY_CASH, DELETED_ORDER
 } from './types'
 import {
     deliveryCashGetReq,
     deliveryCashUpdReq,
-    orderDelByIdReq, orderGetByIdReq, orderPostReq, ordersGetReq, orderUpdReq, orderUpdStatusReq,
+    orderDelByIdReq, orderGetByIdReq, orderPostReq, ordersGetReq,  orderUpdStatusReq,
 } from "../../utils/api/Request";
 import {getTemplate} from "../../utils/templates/getTemplate";
 import {createOrChangeTemplate} from "../../utils/templates/createOrChangeTemplate";
 import {deleteTemplate} from "../../utils/templates/deleteTemplate";
 import {checkHasData} from "../../utils/checkHasData";
 import {getSearchedTemplate} from "../../utils/templates/getSearchedTemplate";
+import {updateItemInStore} from "../../utils/templates/updateItemInStore";
 
 const initialState={
     orders: [],
@@ -54,7 +55,11 @@ export const orderReducer = (state=initialState,action)=>{
                 ...state,
                 orderById: action.payload
             }
-
+        case DELETED_ORDER:
+            return{
+                ...state,
+                orders: updateItemInStore(state.orders,action.payload,'delete')
+            }
         default:{
             return{
                 ...state
@@ -95,7 +100,7 @@ export const createOrder = data=>{
 export const deleteOrder = id =>{
     return async dispatch => {
         for(let i=0;i<id.length;i++){
-            await deleteTemplate(dispatch,orderDelByIdReq,id[i],orderToggleLoader)
+            await deleteTemplate(dispatch,orderDelByIdReq,id[i],orderToggleLoader,DELETED_ORDER)
         }
     }
 }

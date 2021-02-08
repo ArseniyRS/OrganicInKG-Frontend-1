@@ -1,7 +1,7 @@
 import {
     WRITE_FAQ,
     WRITE_FAQ_BY_ID,
-    SEARCHING,FAQ_TOGGLE_FETCH_LOADER
+    SEARCHING, FAQ_TOGGLE_FETCH_LOADER,  DELETED_FAQ
 } from './types'
 import {
     faqDelByIdReq,
@@ -16,6 +16,7 @@ import {deleteTemplate} from "../../utils/templates/deleteTemplate";
 
 import {checkHasData} from "../../utils/checkHasData";
 import {getSearchedTemplate} from "../../utils/templates/getSearchedTemplate";
+import {updateItemInStore} from "../../utils/templates/updateItemInStore";
 
 const initialState={
     faq: [],
@@ -49,7 +50,11 @@ export const faqReducer = (state=initialState,action)=>{
                 ...state,
                 faqById: action.payload
             }
-
+        case DELETED_FAQ:
+            return{
+                ...state,
+                faq: updateItemInStore(state.faq,action.payload,'delete')
+            }
         default:{
             return{
                 ...state
@@ -77,7 +82,7 @@ export const createFaq = data=>{
 export const deleteFaq = id =>{
     return async dispatch => {
         for(let i=0;i<id.length;i++){
-            await deleteTemplate(dispatch,faqDelByIdReq,id[i],faqToggleLoader)
+            await deleteTemplate(dispatch,faqDelByIdReq,id[i],faqToggleLoader,DELETED_FAQ)
         }
     }
 }

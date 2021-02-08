@@ -3,7 +3,7 @@ import {
     WRITE_PROVIDER_BY_ID,
     WRITE_ACTIVE_PROVIDERS,
     ADDED_PROVIDER,
-    DELETED_PROVIDER, UPDATED_PROVIDER, SEARCHING, PROVIDER_TOGGLE_FETCH_LOADER,
+    DELETED_PROVIDER, UPDATED_PROVIDER, SEARCHING, PROVIDER_TOGGLE_FETCH_LOADER, DELETED_PRODUCT,
 } from './types'
 import {
     providerGetByIdReq,
@@ -60,7 +60,11 @@ export const providerReducer = (state=initialState,action)=>{
                 activeProviders: action.payload
             }
 
-
+        case DELETED_PROVIDER:
+            return{
+                ...state,
+                providers: updateItemInStore(state.providers,action.payload,'delete')
+            }
         default:{
             return{
                 ...state
@@ -91,11 +95,9 @@ export const getProviderById = (id)=> {
     return async dispatch => getTemplate(dispatch, providerGetByIdReq, WRITE_PROVIDER_BY_ID, providerToggleLoader,id)
 }
 export const createProvider = (data)=>{
-    console.log(data.placeOfProduction)
         return async dispatch => {
             dispatch(providerToggleLoader(true))
             await providerPlaceOfProductionPostReq(data.placeOfProduction).then(async res=> {
-                console.log(res)
                 const newData = data
                 newData['placeOfProductionId'] = res.data.result.id
                 await providerPostReq(newData)
@@ -108,11 +110,10 @@ export const createProvider = (data)=>{
             })
         }
 }
-
 export const deleteProvider = id =>{
     return async dispatch => {
         for(let i=0;i<id.length;i++){
-            await deleteTemplate(dispatch,providerDelByIdReq,id[i],providerToggleLoader)
+            await deleteTemplate(dispatch,providerDelByIdReq,id[i],providerToggleLoader,DELETED_PROVIDER)
         }
     }
 }
