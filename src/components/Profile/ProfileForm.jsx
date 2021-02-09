@@ -22,10 +22,10 @@ const ProfileForm = (props)=>{
                     email: props.profile?.email
                 }}
                 validationSchema={Yup.object({
-                    firstName: Yup.string(),
-                    lastName: Yup.string(),
-                    middleName: Yup.string(),
-                    email: Yup.string()
+                    firstName: Yup.string().nullable(),
+                    lastName: Yup.string().nullable(),
+                    middleName: Yup.string().nullable(),
+                    email: Yup.string().nullable()
                 })}
                 onSubmit={(values)=>props.handleSubmit(values)}
             >

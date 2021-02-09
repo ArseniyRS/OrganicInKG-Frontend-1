@@ -2,7 +2,7 @@ import React from 'react'
 import PageRenderer from "../../components/PageRenderer/PageRendererContainer";
 import {connect} from "react-redux";
 import {
-    clearAboutUs,
+    clearAboutUs, clearAboutUses,
     createAboutUs,
     deleteAboutUs,
     getAboutUs,
@@ -50,6 +50,8 @@ const AboutUsPage = props=>{
             clearFunc={props.clearAboutUs}
             hasData={props.hasAbout}
             isLoading={props.aboutFetchLoader}
+            clearTable = {props.clearAboutUses}
+
         />
     )
 }
@@ -68,6 +70,6 @@ export  default  connect(mapStateToProps,
         createAboutUs,
         updateAboutUs,
         deleteAboutUs,
-        clearAboutUs
+        clearAboutUs,clearAboutUses
     }
 )(AboutUsPage)

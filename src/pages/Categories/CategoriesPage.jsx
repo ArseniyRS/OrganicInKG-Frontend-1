@@ -1,6 +1,7 @@
 import React, {useEffect} from 'react'
 import {connect} from "react-redux";
 import {
+    clearCategories,
     clearCategory,
     createCategory,
     deleteCategory,
@@ -29,6 +30,7 @@ const CategoriesPage = ({categories,hasCategories,categoryById,getSearchedCatego
             creatorTitle={'Создание категории'}
             updaterTitle={'Редактирование категории'}
             formInputsConfig={categoryInputConfig}
+            loadSelectorData={[getCategory]}
             optionsForSelectorData={{
                 category: categories ? [...categories] : []
             }}
@@ -52,6 +54,7 @@ const CategoriesPage = ({categories,hasCategories,categoryById,getSearchedCatego
             deleteFunc={deleteCategory}
             hasData={hasCategories}
             isLoading={props.categoryFetchLoader}
+            clearTable = {props.clearCategories}
         />
     )
 }
@@ -72,5 +75,6 @@ export  default  connect(mapStateToProps,
         updateCategory,
         deleteCategory,
         clearCategory,
+        clearCategories
     }
     )(CategoriesPage)

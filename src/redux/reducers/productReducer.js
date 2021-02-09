@@ -4,7 +4,7 @@ import {
     WRITE_RAITING_BY_ID,
     SEARCHING,
     WRITE_MEASURE_UNITS,
-    PRODUCT_TOGGLE_FETCH_LOADER, DELETED_CATEGORY, DELETED_PRODUCT,
+    PRODUCT_TOGGLE_FETCH_LOADER, DELETED_CATEGORY, DELETED_PRODUCT, CLEAR_PRODUCTS,
 } from './types'
 import {
     productsGetReq,
@@ -51,6 +51,11 @@ export const productReducer = (state=initialState,action)=>{
                 products: [...state.products,...action.payload],
                 hasProducts: checkHasData(action.payload)
             }
+        case CLEAR_PRODUCTS:
+            return {
+                ...state,
+                products: []
+            }
         case SEARCHING:
             return {
                 ...state,
@@ -85,11 +90,15 @@ export const productToggleLoader = bool=>{
         payload: bool
     }
 }
-
+export const clearProducts = ()=>{
+    return{
+        type: CLEAR_PRODUCTS
+    }
+}
 export const clearProduct = ()=>{
     return{
         type: WRITE_PRODUCT_BY_ID,
-        action: undefined
+        payload: {}
     }
 }
 export const getMeasureUnits = ()=>{

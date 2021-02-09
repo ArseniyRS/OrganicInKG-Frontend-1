@@ -21,13 +21,15 @@ const Table = ({isLoading,
                    deleteFunc,
                    adding,
                    urlToCreate,
-                   hasData
+                   hasData,
+                   clearTable
                })=>{
     const [searchText,setSearchText] = useState('')
     const [page,setPage] = useState(1)
     useEffect(()=>{
         return ()=>{
             writeTableMessage('')
+            clearTable()
         }
     },[])
     const dispatch = useDispatch()

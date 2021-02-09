@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react'
 import {connect} from "react-redux";
 import {
-    clearOrder,  getOrderById, createOrder,deleteOrder, getOrders, updateOrder
+    clearOrder, getOrderById, createOrder, deleteOrder, getOrders, updateOrder, clearOrders
 } from "../../redux/reducers/orderReducer";
 
 import PageRenderer from "../../components/PageRenderer/PageRendererContainer";
@@ -72,6 +72,8 @@ const OrdersPage = ({orders,orderById,clearOrder,  getOrderById, createOrder,del
             deleteFunc={deleteOrder}
             isLoading={props.orderFetchLoader}
             hasData={props.hasOrders}
+            clearTable = {props.clearOrders}
+
         />
     )
 }
@@ -91,6 +93,6 @@ export  default  connect(mapStateToProps,
         createOrder,
         deleteOrder,
         getOrders,
-        updateOrder
+        updateOrder,clearOrders
     }
 )(OrdersPage)

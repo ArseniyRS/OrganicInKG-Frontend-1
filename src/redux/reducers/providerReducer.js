@@ -2,8 +2,7 @@ import {
     WRITE_PROVIDER,
     WRITE_PROVIDER_BY_ID,
     WRITE_ACTIVE_PROVIDERS,
-    ADDED_PROVIDER,
-    DELETED_PROVIDER, UPDATED_PROVIDER, SEARCHING, PROVIDER_TOGGLE_FETCH_LOADER, DELETED_PRODUCT,
+    DELETED_PROVIDER, SEARCHING, PROVIDER_TOGGLE_FETCH_LOADER, CLEAR_PROVIDERS,
 } from './types'
 import {
     providerGetByIdReq,
@@ -14,7 +13,6 @@ import {
     providerActiveGetReq, providerPlaceOfProductionPostReq, providerPlaceOfProductionUpdReq,
 } from "../../utils/api/Request";
 import {getTemplate} from "../../utils/templates/getTemplate";
-import {createOrChangeTemplate} from "../../utils/templates/createOrChangeTemplate";
 import {deleteTemplate} from "../../utils/templates/deleteTemplate";
 import {formDataProviderTemplate} from "../../utils/templates/formDataTemplate";
 import {updateItemInStore} from "../../utils/templates/updateItemInStore";
@@ -43,6 +41,11 @@ export const providerReducer = (state=initialState,action)=>{
                 ...state,
                 providers: [...state.providers,...action.payload],
                 hasProvider: checkHasData(action.payload)
+            }
+        case CLEAR_PROVIDERS:
+            return {
+                ...state,
+                providers: []
             }
         case SEARCHING:
             return {
@@ -77,6 +80,11 @@ export const clearProvider = ()=>{
     return{
         type: WRITE_PROVIDER_BY_ID,
         action: undefined
+    }
+}
+export const clearProviders = ()=>{
+    return{
+        type: CLEAR_PROVIDERS
     }
 }
 export const providerToggleLoader = bool=>{

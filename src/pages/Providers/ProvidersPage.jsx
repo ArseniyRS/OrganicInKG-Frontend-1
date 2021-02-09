@@ -2,7 +2,7 @@ import React, {useEffect} from 'react'
 import {connect} from "react-redux";
 import PageRenderer from "../../components/PageRenderer/PageRendererContainer";
 import {
-    clearProvider,
+    clearProvider, clearProviders,
     createProvider,
     deleteProvider, getProviderById,
     getProviders,
@@ -87,6 +87,8 @@ const ProvidersPage = ({providers,providerById,getProviders,getProviderById,crea
             deleteFunc={deleteProvider}
             isLoading={props.providerFetchLoader}
             hasData={props.hasProvider}
+            clearTable = {props.clearProviders}
+
         />
     )
 }
@@ -107,6 +109,6 @@ export  default  connect(mapStateToProps,
         createProvider,
         updateProvider,
         deleteProvider,
-        clearProvider
+        clearProvider,clearProviders
     }
 )(ProvidersPage)

@@ -1,6 +1,14 @@
 import React from 'react'
 import PageRenderer from "../../components/PageRenderer/PageRendererContainer";
-import {clearFaq, createFaq, deleteFaq, getFaq, getFaqById, updateFaq} from "../../redux/reducers/faqReducer";
+import {
+    clearFaq,
+    clearFaqs,
+    createFaq,
+    deleteFaq,
+    getFaq,
+    getFaqById,
+    updateFaq
+} from "../../redux/reducers/faqReducer";
 import {connect} from "react-redux";
 import {faqInputConfig} from "../../configs/Faq/inputFormConfig";
 import {FaqColumns} from "../../configs/Faq/tableColumnsConfig";
@@ -42,6 +50,7 @@ const FaqPage = props=>{
             clearFunc={props.clearFaq}
             isLoading={props.faqFetchLoader}
             hasData={props.hasFaq}
+            clearTable = {props.clearFaqs}
         />
     )
 }
@@ -60,6 +69,6 @@ export  default  connect(mapStateToProps,
         createFaq,
         updateFaq,
         deleteFaq,
-        clearFaq
+        clearFaq,clearFaqs
     }
 )(FaqPage)

@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react'
 import {connect} from "react-redux";
 import PageRenderer from "../../components/PageRenderer/PageRendererContainer";
-import {clearUser, deleteUser, getUserById, getUsers} from "../../redux/reducers/userReducer";
+import {clearUser, clearUsers, deleteUser, getUserById, getUsers} from "../../redux/reducers/userReducer";
 import {UsersColumns} from "../../configs/Users/tableColumnsConfig";
 import {recordViewUserConfig} from "../../configs/Users/recordViewConfig";
 
@@ -35,6 +35,8 @@ const CategoriesPage = ({   users,
             editing={false}
             isLoading={props.userFetchLoader}
             hasData={props.hasUsers}
+            clearTable = {props.clearUsers}
+
         />
     )
 }
@@ -52,6 +54,6 @@ export  default  connect(mapStateToProps,
         getUsers,
         getUserById,
         deleteUser,
-        clearUser
+        clearUser,clearUsers
     }
 )(CategoriesPage)

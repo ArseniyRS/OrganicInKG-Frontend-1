@@ -1,9 +1,8 @@
 import {
     WRITE_ABOUT_US,
     WRITE_ABOUT_US_BY_ID,
-    ADDED_ABOUT_US,
     DELETED_ABOUT_US,
-    UPDATED_ABOUT_US, SEARCHING, ABOUT_TOGGLE_FETCH_LOADER, WRITE_CATEGORIES, WRITE_PRODUCT_BY_ID
+    SEARCHING, ABOUT_TOGGLE_FETCH_LOADER, WRITE_PRODUCT_BY_ID, CLEAR_CATEGORIES, CLEAR_ABOUT_US
 } from './types'
 import {
     aboutUsDelByIdReq,
@@ -41,6 +40,11 @@ export const aboutUsReducer = (state=initialState,action)=>{
                 aboutUs: [...state.aboutUs,...action.payload],
                 hasAbout: checkHasData(action.payload)
             }
+        case CLEAR_ABOUT_US:
+            return {
+                ...state,
+                aboutUs: []
+            }
         case SEARCHING:
             return {
                 ...state,
@@ -64,7 +68,11 @@ export const aboutUsReducer = (state=initialState,action)=>{
         }
     }
 }
-
+export const clearAboutUses = ()=>{
+    return{
+        type: CLEAR_ABOUT_US
+    }
+}
 export const aboutToggleLoader = bool=>{
     return{
         type: 'ABOUT_TOGGLE_FETCH_LOADER',

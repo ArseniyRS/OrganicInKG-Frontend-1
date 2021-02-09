@@ -1,7 +1,7 @@
 import {
     WRITE_FAQ,
     WRITE_FAQ_BY_ID,
-    SEARCHING, FAQ_TOGGLE_FETCH_LOADER,  DELETED_FAQ
+    SEARCHING, FAQ_TOGGLE_FETCH_LOADER, DELETED_FAQ, CLEAR_FAQ
 } from './types'
 import {
     faqDelByIdReq,
@@ -40,6 +40,11 @@ export const faqReducer = (state=initialState,action)=>{
                 faq: [...state.faq,...action.payload],
                 hasFaq: checkHasData(action.payload)
             }
+        case CLEAR_FAQ:
+            return {
+                ...state,
+                faq: []
+            }
         case SEARCHING:
             return {
                 ...state,
@@ -61,6 +66,11 @@ export const faqReducer = (state=initialState,action)=>{
                 ...state
             }
         }
+    }
+}
+export const clearFaqs = ()=>{
+    return{
+        type: CLEAR_FAQ
     }
 }
 export const faqToggleLoader = bool=>{

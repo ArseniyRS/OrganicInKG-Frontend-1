@@ -7,7 +7,7 @@ import {ProductColumns} from "../../configs/Products/tableColumnsConfig";
 import {recordViewProductConfig} from "../../configs/Products/recordViewConfig";
 import {productInputConfig} from "../../configs/Products/inputFormConfig";
 import {
-    clearProduct,
+    clearProduct, clearProducts,
     createProduct,
     deleteProduct, getMeasureUnits,
     getProductById,
@@ -105,6 +105,8 @@ const ProductsPage = ({   products,
             deleteFunc={deleteProduct}
             hasData={hasProducts}
             isLoading={props.productFetchLoader}
+            clearTable = {props.clearProducts}
+
         />
     )
 }
@@ -132,6 +134,6 @@ export  default  connect(mapStateToProps,
         updateProduct,
         deleteProduct,
         clearProduct,
-        getMeasureUnits
+        getMeasureUnits,clearProducts
     }
 )(ProductsPage)

@@ -2,7 +2,7 @@ import {
     WRITE_CATEGORIES,
     WRITE_CATEGORY_BY_ID,
     DELETED_CATEGORY,
-    SEARCHING, CATEGORY_TOGGLE_FETCH_LOADER
+    SEARCHING, CATEGORY_TOGGLE_FETCH_LOADER, CLEAR_CATEGORIES
 } from './types'
 import {
     categoryDelByIdReq,
@@ -12,7 +12,6 @@ import {
     categoryUpdReq,
 } from "../../utils/api/Request";
 import {getTemplate} from "../../utils/templates/getTemplate";
-import {createOrChangeTemplate} from "../../utils/templates/createOrChangeTemplate";
 import {deleteTemplate} from "../../utils/templates/deleteTemplate";
 import {toClearImageArray} from "../../utils/templates/toClearImageArray";
 import {getSearchedTemplate} from "../../utils/templates/getSearchedTemplate";
@@ -42,6 +41,11 @@ export const categoryReducer = (state=initialState,action)=>{
                 categories: [...state.categories,...action.payload],
                 hasCategories: checkHasData(action.payload)
             }
+        case CLEAR_CATEGORIES:
+            return {
+                ...state,
+                categories: []
+            }
         case SEARCHING:
             return {
                 ...state,
@@ -65,12 +69,15 @@ export const categoryReducer = (state=initialState,action)=>{
         }
     }
 }
-
+export const clearCategories = ()=>{
+    return{
+        type: CLEAR_CATEGORIES
+    }
+}
 
 export const clearCategory = ()=>{
     return{
         type: WRITE_CATEGORY_BY_ID,
-        payload: {}
     }
 }
 export const categoryToggleLoader = bool=>{
@@ -123,7 +130,6 @@ export const deleteCategory = id =>{
 
 
 export const updateCategory = (id,data) =>{
-    console.log(data)
     return async dispatch => {
         dispatch(categoryToggleLoader(true))
         const formData = new FormData()

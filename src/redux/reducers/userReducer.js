@@ -1,4 +1,4 @@
-import { DELETED_USER, SEARCHING, USER_TOGGLE_FETCH_LOADER, WRITE_USER_BY_ID, WRITE_USERS} from './types'
+import {CLEAR_USERS, DELETED_USER, SEARCHING, USER_TOGGLE_FETCH_LOADER, WRITE_USER_BY_ID, WRITE_USERS} from './types'
 import {
 
     userDelByIdReq,
@@ -39,6 +39,11 @@ export const userReducer = (state=initialState,action)=>{
                 users: [],
                 hasUsers: true
             }
+        case CLEAR_USERS:
+            return {
+                ...state,
+                users: []
+            }
         case WRITE_USER_BY_ID:
             return{
                 ...state,
@@ -66,6 +71,12 @@ export const userToggleLoader = bool=>{
     return{
         type: USER_TOGGLE_FETCH_LOADER,
         payload: bool
+    }
+}
+
+export const clearUsers = ()=>{
+    return{
+        type: CLEAR_USERS
     }
 }
 export const getUsers = (page,searchText)=> {

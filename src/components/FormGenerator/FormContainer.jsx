@@ -29,9 +29,8 @@ const FormContainer = ({
     }
 
 
-
     return(
-        (!isLoading && props.valueById) || (!isLoading && !props.params?.id)
+        (!isLoading && props.valueById && match.params.id) || (!isLoading && !props.valueById && !match.params.id)
             ?
             <Former handleSubmit={handleSubmit}  {...props}/>
         : <Preloader />

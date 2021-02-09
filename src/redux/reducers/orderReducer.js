@@ -3,7 +3,7 @@ import {
     WRITE_ORDER_BY_ID,
     SEARCHING,
     ORDER_TOGGLE_FETCH_LOADER,
-    WRITE_DELIVERY_CASH, DELETED_ORDER
+    WRITE_DELIVERY_CASH, DELETED_ORDER, CLEAR_ORDERS
 } from './types'
 import {
     deliveryCashGetReq,
@@ -39,6 +39,11 @@ export const orderReducer = (state=initialState,action)=>{
                 ...state,
                 orders: [...state.orders,...action.payload],
                 hasOrders: checkHasData(action.payload)
+            }
+        case CLEAR_ORDERS:
+            return {
+                ...state,
+                orders: []
             }
         case WRITE_DELIVERY_CASH:
             return{
@@ -80,7 +85,11 @@ export const orderToggleLoader = bool=>{
         payload: bool
     }
 }
-
+export const clearOrders = ()=>{
+    return{
+        type: CLEAR_ORDERS
+    }
+}
 export const getOrders = (page,searchText)=> {
     return async dispatch => getSearchedTemplate(dispatch, ordersGetReq, WRITE_ORDERS, orderToggleLoader,page,searchText,toggleNotification)
 }
