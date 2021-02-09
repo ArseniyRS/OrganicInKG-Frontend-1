@@ -5,15 +5,10 @@ import Preloader from "../Preloader/Preloader";
 import {connect, useDispatch} from "react-redux";
 import {writeTableMessage} from "../../redux/reducers/tableReducer";
 import ErrorMsg from "../Modals/ErrorMessage";
-
 import SearchPanel from "../Search-panel/SearchPanel";
 import AddBtn from "../Btns/AddBtn";
 import DeleteBtn from "../Btns/DeleteBtn";
 import InfiniteScroll from 'react-infinite-scroll-component';
-import {clearCategories} from "../../redux/reducers/categoryReducer";
-
-
-
 
 const Table = ({isLoading,
                    getDataFunc,
@@ -41,15 +36,11 @@ const Table = ({isLoading,
                     getDataFunc(1,searchText)
                     setPage(2)
                     dispatch({type: 'SEARCHING'})
-            }
-            , 1000);
+            }, 1000);
         return () => clearTimeout(timeoutId);
     }, [searchText]);
-
     const elements = data.map(item=> <TableItem key={item.id} columns={columns} data={item} handlerClick = {handlerClick} deleting={deleting}/>)
-
     return(
-
         <div className='table-container'>
             <div className='page-functional'>
                 <SearchPanel handleSearchText={setSearchText} />
@@ -65,7 +56,6 @@ const Table = ({isLoading,
                 />}
                 </div>
             </div>
-
             <div className="tableItem-container__wrapper">
                 {(tableMessage && isLoading) && <ErrorMsg text={tableMessage}/>}
                 <InfiniteScroll
@@ -85,9 +75,7 @@ const Table = ({isLoading,
                 >
                     {elements}
                 </InfiniteScroll>
-
             </div>
-
         </div>
     )
 }
