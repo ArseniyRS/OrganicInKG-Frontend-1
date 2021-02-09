@@ -38,8 +38,6 @@ const ProductsPage = ({   products,
                           getMeasureUnits,
     ...props
                       })=>{
-    console.log(measureUnits)
-
     return(
         <PageRenderer
             pageUrl ={'products'}

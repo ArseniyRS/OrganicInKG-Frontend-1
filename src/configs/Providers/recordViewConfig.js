@@ -20,13 +20,18 @@ export const recordViewProviderConfig  =[
         dataIndex: 'placeOfProduction',
     },
     {
-        title: "Фото пасспорта",
-        dataIndex: 'supplierFile',
+        title: "Фото паспорта",
+        dataIndex: 'PASSPORT',
         object: 'supplierFileType'
     },
     {
         title: "Фото сертификата",
-        dataIndex: 'supplierFile',
+        dataIndex: 'SERTIFICATE',
+        object: 'supplierFileType'
+    },
+    {
+        title: "Фото контракта",
+        dataIndex: 'CONTRACT',
         object: 'supplierFileType'
     },
     {
@@ -35,6 +40,6 @@ export const recordViewProviderConfig  =[
     },
     {
         title: "Статус",
-        dataIndex: 'status',
+        dataIndex: 'isActive',
     },
 ]

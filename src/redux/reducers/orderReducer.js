@@ -85,10 +85,10 @@ export const getOrders = (page,searchText)=> {
     return async dispatch => getSearchedTemplate(dispatch, ordersGetReq, WRITE_ORDERS, orderToggleLoader,page,searchText,toggleNotification)
 }
 export const getOrderById = (id)=> {
-    return async dispatch => getTemplate(dispatch, orderGetByIdReq, WRITE_ORDER_BY_ID, orderToggleLoader,id)
+    return async dispatch => getTemplate(dispatch, orderGetByIdReq, WRITE_ORDER_BY_ID, orderToggleLoader,id,toggleNotification)
 }
 export const getDeliveryCash = ()=>{
-    return async dispatch =>getTemplate(dispatch,deliveryCashGetReq,WRITE_DELIVERY_CASH,orderToggleLoader)
+    return async dispatch =>getTemplate(dispatch,deliveryCashGetReq,WRITE_DELIVERY_CASH,orderToggleLoader,'',toggleNotification)
 }
 
 export const updateDeliveryCash = data=>{

@@ -2,6 +2,7 @@ import React from 'react'
 import PageRenderer from "../../components/PageRenderer/PageRendererContainer";
 import {connect} from "react-redux";
 import {
+    clearAboutUs,
     createAboutUs,
     deleteAboutUs,
     getAboutUs,
@@ -46,8 +47,9 @@ const AboutUsPage = props=>{
             createFunc={props.createAboutUs}
             updateFunc={props.updateAboutUs}
             deleteFunc={props.deleteAboutUs}
+            clearFunc={props.clearAboutUs}
+            hasData={props.hasAbout}
             isLoading={props.aboutFetchLoader}
-
         />
     )
 }
@@ -55,7 +57,8 @@ const mapStateToProps = state=>{
     return{
         aboutUs: state.aboutUs.aboutUs,
         aboutUsById: state.aboutUs.aboutUsById,
-        aboutFetchLoader: state.aboutUs.aboutFetchLoader
+        aboutFetchLoader: state.aboutUs.aboutFetchLoader,
+        hasAbout: state.aboutUs.hasAbout
     }
 }
 export  default  connect(mapStateToProps,
@@ -65,5 +68,6 @@ export  default  connect(mapStateToProps,
         createAboutUs,
         updateAboutUs,
         deleteAboutUs,
+        clearAboutUs
     }
 )(AboutUsPage)

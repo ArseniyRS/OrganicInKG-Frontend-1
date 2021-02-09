@@ -41,6 +41,7 @@ const FaqPage = props=>{
             deleteFunc={props.deleteFaq}
             clearFunc={props.clearFaq}
             isLoading={props.faqFetchLoader}
+            hasData={props.hasFaq}
         />
     )
 }
@@ -48,7 +49,8 @@ const mapStateToProps = state=>{
     return{
         faq: state.faq.faq,
         faqById: state.faq.faqById,
-        faqFetchLoader: state.faq.faqFetchLoader
+        faqFetchLoader: state.faq.faqFetchLoader,
+        hasFaq: state.faq.hasFaq
     }
 }
 export  default  connect(mapStateToProps,

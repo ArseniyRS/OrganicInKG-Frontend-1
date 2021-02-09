@@ -11,7 +11,7 @@ import {
     providerPostReq,
     providerUpdReq,
     providerDelByIdReq,
-    providerActiveGetReq, providerPlaceOfProductionPostReq,
+    providerActiveGetReq, providerPlaceOfProductionPostReq, providerPlaceOfProductionUpdReq,
 } from "../../utils/api/Request";
 import {getTemplate} from "../../utils/templates/getTemplate";
 import {createOrChangeTemplate} from "../../utils/templates/createOrChangeTemplate";
@@ -87,15 +87,16 @@ export const providerToggleLoader = bool=>{
 }
 
 export const getActiveProviders = (page)=>{
-    return async dispatch => getTemplate(dispatch,providerActiveGetReq,WRITE_ACTIVE_PROVIDERS,providerToggleLoader,page)
+    return async dispatch => getTemplate(dispatch,providerActiveGetReq,WRITE_ACTIVE_PROVIDERS,providerToggleLoader,page,toggleNotification)
 }
 export const getProviders = (page,searchText)=> {
     return async dispatch => getSearchedTemplate(dispatch, providersGetReq, WRITE_PROVIDER, providerToggleLoader,page,searchText,toggleNotification)
 }
 export const getProviderById = (id)=> {
-    return async dispatch => getTemplate(dispatch, providerGetByIdReq, WRITE_PROVIDER_BY_ID, providerToggleLoader,id)
+    return async dispatch => getTemplate(dispatch, providerGetByIdReq, WRITE_PROVIDER_BY_ID, providerToggleLoader,id,toggleNotification)
 }
 export const createProvider = (data)=>{
+    console.log(data)
         return async dispatch => {
             dispatch(providerToggleLoader(true))
             await providerPlaceOfProductionPostReq(data.placeOfProduction).then(async res=> {
@@ -103,9 +104,15 @@ export const createProvider = (data)=>{
                 newData['placeOfProductionId'] = res.data.result.id
                 await providerPostReq(newData)
                     .then(resp => {
-                        formDataProviderTemplate(resp.data.result.id, data, 'PASSPORT')
-                        formDataProviderTemplate(resp.data.result.id, data, 'SERTIFICATE')
-                        formDataProviderTemplate(resp.data.result.id, data, 'CONTRACT')
+                        if(data.PASSPORT.length) {
+                            formDataProviderTemplate(resp.data.result.id, data, 'PASSPORT')
+                        }
+                        if(data.SERTIFICATE.length) {
+                            formDataProviderTemplate(resp.data.result.id, data, 'SERTIFICATE')
+                        }
+                        if(data.CONTRACT.length) {
+                            formDataProviderTemplate(resp.data.result.id, data, 'CONTRACT')
+                        }
                     }).then(response=>dispatch(toggleNotification({
                         isOpen: true,
                         title: response.data?.resultCode === 'DUPLICATE' ? 'Ошибка!' : 'Успех!',
@@ -128,21 +135,34 @@ export const deleteProvider = id =>{
     }
 }
 export const updateProvider = (id,data) =>{
-
-    // return async dispatch => {
-    //     dispatch(providerToggleLoader(true))
-    //     await providerPlaceOfProductionPostReq(data.placeOfProduction).then(async res=> {
-    //         const newData = data
-    //         newData['placeOfProductionId'] = res.data.result.id
-    //         await providerPostReq(newData)
-    //             .then(resp => {
-    //                 formDataProviderTemplate(resp.data.result.id, data, 'PASSPORT')
-    //                 formDataProviderTemplate(resp.data.result.id, data, 'SERTIFICATE')
-    //                 formDataProviderTemplate(resp.data.result.id, data, 'CONTRACT')
-    //             })
-    //         dispatch(providerToggleLoader(false))
-    //     })
-    // }
-    return async dispatch => createOrChangeTemplate(dispatch,providerUpdReq,data,providerToggleLoader,id)
+    return async dispatch => {
+        dispatch(providerToggleLoader(true))
+        await providerPlaceOfProductionUpdReq(data.placeOfProduction,data.placeOfProduction.id).then(async res=> {
+            const newData = data
+            newData['placeOfProductionId'] = res.data.result.id
+            await providerUpdReq(newData,id)
+                .then(resp => {
+                    if(data.PASSPORT.length) {
+                        formDataProviderTemplate(resp.data.result.id, data, 'PASSPORT')
+                    }
+                    if(data.SERTIFICATE.length) {
+                        formDataProviderTemplate(resp.data.result.id, data, 'SERTIFICATE')
+                    }
+                    if(data.CONTRACT.length) {
+                        formDataProviderTemplate(resp.data.result.id, data, 'CONTRACT')
+                    }
+                }).then(response=>dispatch(toggleNotification({
+                    isOpen: true,
+                    title: response.data?.resultCode === 'DUPLICATE' ? 'Ошибка!' : 'Успех!',
+                    body: response.data?.resultCode === 'DUPLICATE' ? 'Такая запись уже есть в списке!' :'Запись изменена!'
+                })))
+                .catch(() => dispatch(toggleNotification({
+                    isOpen: true,
+                    title: 'Ошибка!',
+                    body:  'Запись не изменена!'
+                })))
+            dispatch(providerToggleLoader(false))
+        })
+    }
 }
 

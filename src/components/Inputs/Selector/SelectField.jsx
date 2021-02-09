@@ -29,6 +29,7 @@ const SelectField = ({data=[],name,value,setFieldValue,placeholder,})=>{
         <div className={'selectorInput'} onClick={(event)=>setVisibleSelector(!visibleSelector)}>
 
             <input type={'text'}
+                   readOnly
                    placeholder={placeholder}
                    name={name}
                    value={selectedValue}

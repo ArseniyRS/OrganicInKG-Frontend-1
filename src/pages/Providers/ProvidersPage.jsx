@@ -16,7 +16,7 @@ import {recordViewProviderConfig} from "../../configs/Providers/recordViewConfig
 
 
 const ProvidersPage = ({providers,providerById,getProviders,getProviderById,createProvider,updateProvider,deleteProvider,clearProvider,...props})=>{
-
+    console.log(providerById)
     return(
         <PageRenderer
             pageUrl ={'providers'}
@@ -30,7 +30,13 @@ const ProvidersPage = ({providers,providerById,getProviders,getProviderById,crea
                 fullName: providerById?.fullName,
                 phone: providerById?.phone,
                 email:  providerById?.email,
-                placeOfProduction:  <span></span>,
+                placeOfProduction:  <span>
+                    {providerById?.placeOfProduction?.country}
+                    <br/>
+                        {providerById?.placeOfProduction?.region}
+                        <br/>{providerById?.placeOfProduction?.city}<br/>
+                            {providerById?.placeOfProduction?.street}
+                        </span>,
                 produces:  providerById?.produces,
                 walletNumber:  providerById?.ewalletNumber,
                 PASSPORT: providerById?.supplierFile?.filter(item=>item.supplierFileType==='PASSPORT'),
@@ -59,6 +65,7 @@ const ProvidersPage = ({providers,providerById,getProviders,getProviderById,crea
                 phone: providerById?.phone,
                 email:  providerById?.email,
                 placeOfProduction: {
+                    id: providerById?.placeOfProduction?.id,
                     country: providerById?.placeOfProduction?.country,
                     city: providerById?.placeOfProduction?.city,
                     region: providerById?.placeOfProduction?.region,

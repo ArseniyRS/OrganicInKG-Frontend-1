@@ -1,8 +1,6 @@
 export const aboutUsInputConfig = [{
-    label: "Загловок",
+    label: "Заголовок",
     placeholder: "Заголовок...",
-
-
 },
     {
         label: "Параграф",

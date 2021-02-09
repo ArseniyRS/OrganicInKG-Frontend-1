@@ -10,6 +10,7 @@ import SearchPanel from "../Search-panel/SearchPanel";
 import AddBtn from "../Btns/AddBtn";
 import DeleteBtn from "../Btns/DeleteBtn";
 import InfiniteScroll from 'react-infinite-scroll-component';
+import {clearCategories} from "../../redux/reducers/categoryReducer";
 
 
 
@@ -25,7 +26,6 @@ const Table = ({isLoading,
                    deleteFunc,
                    adding,
                    urlToCreate,
-                   getDataFuncSearch,
                    hasData
                })=>{
     const [searchText,setSearchText] = useState('')
@@ -46,7 +46,7 @@ const Table = ({isLoading,
         return () => clearTimeout(timeoutId);
     }, [searchText]);
 
-    const elements = data.map(item=> <TableItem key={`tableItem-${item.id}`} columns={columns} data={item} handlerClick = {handlerClick} deleting={deleting}/>)
+    const elements = data.map(item=> <TableItem key={item.id} columns={columns} data={item} handlerClick = {handlerClick} deleting={deleting}/>)
 
     return(
 
@@ -71,7 +71,6 @@ const Table = ({isLoading,
                 <InfiniteScroll
                     dataLength={data.length} //This is important field to render the next data
                     next={()=>{
-
                         getDataFunc(page,searchText)
                         setPage(page+1)
                     }}
@@ -84,7 +83,6 @@ const Table = ({isLoading,
                     }
                     initialScrollY={0}
                 >
-
                     {elements}
                 </InfiniteScroll>
 

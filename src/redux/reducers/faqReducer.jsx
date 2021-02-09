@@ -74,7 +74,7 @@ export const getFaq = (page,searchText)=> {
     return async dispatch => getSearchedTemplate(dispatch, faqGetReq, WRITE_FAQ, faqToggleLoader,page,searchText,toggleNotification)
 }
 export const getFaqById = (id)=> {
-    return async dispatch => getTemplate(dispatch, faqGetByIdReq, WRITE_FAQ_BY_ID, faqToggleLoader,id)
+    return async dispatch => getTemplate(dispatch, faqGetByIdReq, WRITE_FAQ_BY_ID, faqToggleLoader,id,toggleNotification)
 }
 export const createFaq = data=>{
 

@@ -72,7 +72,7 @@ export const getUsers = (page,searchText)=> {
     return async dispatch => getSearchedTemplate(dispatch, usersGetReq, WRITE_USERS, userToggleLoader,page,searchText,toggleNotification)
 }
 export const getUserById = (id)=> {
-    return async dispatch => getTemplate(dispatch, userGetByIdReq, WRITE_USER_BY_ID, userToggleLoader,id)
+    return async dispatch => getTemplate(dispatch, userGetByIdReq, WRITE_USER_BY_ID, userToggleLoader,id,toggleNotification)
 }
 export const deleteUser = id =>{
     return async dispatch => {

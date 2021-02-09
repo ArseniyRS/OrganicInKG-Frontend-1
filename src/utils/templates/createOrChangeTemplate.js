@@ -14,13 +14,13 @@ export const createOrChangeTemplate = async (
         const notifObj = {
             isOpen: true,
             title: response.data?.resultCode === 'DUPLICATE' ? 'Ошибка!' : 'Успех!',
-            body: response.data?.resultCode === 'DUPLICATE' ? 'Такая запись уже есть в списке!' :'Запись добавлена!'
+            body: response.data?.resultCode === 'DUPLICATE' ? 'Такая запись уже есть в списке!' : id ? 'Запись изменена!':'Запись добавлена!'
         }
         dispatch(showNotification(notifObj))
     }).catch(()=>dispatch(showNotification({
         isOpen: true,
         title: 'Ошибка!',
-        body:  'Запись не добавлена!'
+        body:  id ? 'Запись не изменена!' :'Запись не добавлена!'
     })))
     dispatch(toggleLoader)
 }

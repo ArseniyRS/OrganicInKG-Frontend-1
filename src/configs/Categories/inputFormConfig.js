@@ -20,7 +20,6 @@ export const categoryInputConfig = [{
         dataIndex: 'image',
         type: 'image',
         fileTypes:'image/svg+xml',
-        required: 'Добавьте иконку'
     },
 ]
 

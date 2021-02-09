@@ -42,7 +42,8 @@ const mapStateToProps = state=>{
     return{
         users: state.user.users,
         userById: state.user.userById,
-        userFetchLoader: state.user.userFetchLoader
+        userFetchLoader: state.user.userFetchLoader,
+        hasUsers: state.user.hasUsers
     }
 }
 

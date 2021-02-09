@@ -8,35 +8,31 @@ import {useDropzone} from "react-dropzone";
 const ImgUploader = ({setFieldValue,name,value=[],imageCount=1,fileTypes="image/jpeg ,image/gif, image/png, image/svg+xml, application/pdf"})=>{
     const [files,setFiles] = useState([])
     const [error,setError] = useState('')
-
+    console.log(value)
     useEffect(()=>{
         setFieldValue(name,files)
     },[files])
     const randomNameGenerator = () => {
         let res = '';
-        for(let i = 0; i < 20; i++){
+        for(let i = 0; i < 10; i++){
             const random = Math.floor(Math.random() * 27);
             res += String.fromCharCode(97 + random);
         };
         return res;
     };
-    const createFile= async (urls)=>{
-        let result =[]
-       urls.map( async url => {
-            let response = await fetch(url);
+    const createFile= async (url)=>{
+            let response = await fetch(typeof url === 'object' ? url.imgUrl : url);
             let data = await response.blob();
             let metadata = {type: data.type};
             let file = new File([data], randomNameGenerator(),metadata);
-            await getBase64(file,(string)=>  result.push({file: file, data_url: string}))
-        })
-        return setFiles(result)
+            await getBase64(file,(string)=> setFiles([...files,{file: file, data_url: string}]))
     }
 
     const loadFiles = async ()=>{
         if(typeof value === 'string' && value!==''){
-            await createFile([value])
-        }else if(Array.isArray(value)){
-            await createFile([value])
+            await createFile(value)
+        }else if(Array.isArray(value) && value.length){
+            value.map(async url=> await createFile(url))
         }
     }
     useEffect(()=>{

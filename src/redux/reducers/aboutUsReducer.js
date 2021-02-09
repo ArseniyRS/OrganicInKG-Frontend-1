@@ -3,7 +3,7 @@ import {
     WRITE_ABOUT_US_BY_ID,
     ADDED_ABOUT_US,
     DELETED_ABOUT_US,
-    UPDATED_ABOUT_US, SEARCHING, ABOUT_TOGGLE_FETCH_LOADER, WRITE_CATEGORIES
+    UPDATED_ABOUT_US, SEARCHING, ABOUT_TOGGLE_FETCH_LOADER, WRITE_CATEGORIES, WRITE_PRODUCT_BY_ID
 } from './types'
 import {
     aboutUsDelByIdReq,
@@ -71,11 +71,18 @@ export const aboutToggleLoader = bool=>{
         payload: bool
     }
 }
+
+export const clearAboutUs = ()=>{
+    return{
+        type: WRITE_PRODUCT_BY_ID,
+        action: undefined
+    }
+}
 export const getAboutUs = (page,searchText)=> {
     return async dispatch => getSearchedTemplate(dispatch, aboutUsGetReq, WRITE_ABOUT_US, aboutToggleLoader,page,searchText,toggleNotification)
 }
 export const getAboutUsById = (id)=> {
-    return async dispatch => getTemplate(dispatch, aboutUsGetByIdReq, WRITE_ABOUT_US_BY_ID, aboutToggleLoader,id)
+    return async dispatch => getTemplate(dispatch, aboutUsGetByIdReq, WRITE_ABOUT_US_BY_ID, aboutToggleLoader,id,toggleNotification)
 }
 export const createAboutUs = data=>{
     return async dispatch => createOrChangeTemplate(dispatch,aboutUsPostReq,data,aboutToggleLoader,'',toggleNotification)

@@ -1,20 +1,22 @@
 import React, {useEffect, useState} from 'react'
-import { Map, YMaps} from "react-yandex-maps";
+import {Map, SearchControl, YMaps} from "react-yandex-maps";
 import './MapBlock.css'
 
 
 
 
 const MapBlock = props=> {
+    console.log()
     const ymaps = React.useRef(null);
     const placemarkRef = React.useRef(null);
     const mapRef = React.useRef(null);
-
+    console.log(props.value)
     const [place, setPlace] = React.useState({
-        city: props.value.city || "",
-        country: props.value.country || "",
-        region: props.value.region || "",
-        street: props.value.street || "",
+        id: props.value?.id || "",
+        city: props.value?.city || "",
+        country: props.value?.country || "",
+        region: props.value?.region || "",
+        street: props.value?.street || "",
     });
     const [address, setAddress] = React.useState(`${place.country} ${place.city} ${place.region} ${place.street}`);
     useEffect(()=>{
@@ -30,7 +32,7 @@ const MapBlock = props=> {
             {
                 preset: "islands#violetDotIconWithCaption",
                 draggable: false
-            }
+            },
         );
     };
 
@@ -40,6 +42,7 @@ const MapBlock = props=> {
             const firstGeoObject = res.geoObjects.get(0);
             setAddress(firstGeoObject.getAddressLine());
             setPlace({
+                id: props.value?.id,
                 city: firstGeoObject.getLocalities()[0] || '',
                 country:firstGeoObject.getCountry() || '',
                 region: firstGeoObject.getAdministrativeAreas()[0] || '',
@@ -66,7 +69,7 @@ const MapBlock = props=> {
 
     return (
         <div className={'mapField'}>
-            <input type="text" name={props.name} value={address}/>
+            <input type="text" readOnly name={props.name} value={address}/>
             <YMaps enterprise query={{apikey: "1a9e7380-7d7d-47a9-bdb3-eb90e115a1a3"}}>
                 <div className={'map-container'}>
                 <Map
@@ -79,7 +82,12 @@ const MapBlock = props=> {
                         zoom: 16
                     }}
                     style={{width:'100%',height:'100%',position:'absolute'}}
-                />
+
+
+                >
+                    <SearchControl options={{ float: 'right' }} />
+                </Map>
+
                 </div>
             </YMaps>
         </div>

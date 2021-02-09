@@ -70,7 +70,7 @@ export const categoryReducer = (state=initialState,action)=>{
 export const clearCategory = ()=>{
     return{
         type: WRITE_CATEGORY_BY_ID,
-        action: undefined
+        payload: {}
     }
 }
 export const categoryToggleLoader = bool=>{
@@ -84,7 +84,7 @@ export const getCategory = (page,searchText)=> {
     return async dispatch => getSearchedTemplate(dispatch, categoryGetSearchReq, WRITE_CATEGORIES, categoryToggleLoader,page,searchText,toggleNotification)
 }
 export const getCategoryById = (id)=> {
-    return async dispatch => getTemplate(dispatch, categoryGetByIdReq, WRITE_CATEGORY_BY_ID, categoryToggleLoader,id)
+    return async dispatch => getTemplate(dispatch, categoryGetByIdReq, WRITE_CATEGORY_BY_ID, categoryToggleLoader,id,toggleNotification)
 }
 export const createCategory = data=>{
         return async dispatch => {
@@ -95,7 +95,7 @@ export const createCategory = data=>{
                     "description": data.description,
                     "parentCategoryId": data.parentCategoryId
                 })], {type: "application/json"}));
-                if (toClearImageArray(data.image) !== null) {
+                if (toClearImageArray(data.image) !== null && data.parentCategoryId===null) {
                     toClearImageArray(data.image).map(item => formData.append('image', item))
                 } else {
                     formData.append('image', null)
@@ -123,6 +123,7 @@ export const deleteCategory = id =>{
 
 
 export const updateCategory = (id,data) =>{
+    console.log(data)
     return async dispatch => {
         dispatch(categoryToggleLoader(true))
         const formData = new FormData()
@@ -132,7 +133,8 @@ export const updateCategory = (id,data) =>{
             "description": data.description,
             "parentCategoryId": data.parentCategoryId
         })], {type: "application/json"}));
-        if (toClearImageArray(data.image) !== null) {
+
+        if (toClearImageArray(data.image) !== null && data.parentCategoryId===null) {
             toClearImageArray(data.image).map(item => formData.append('image', item))
         } else {
             formData.append('image', null)
@@ -141,12 +143,12 @@ export const updateCategory = (id,data) =>{
             .then(response=>dispatch(toggleNotification({
                 isOpen: true,
                 title: response.data?.resultCode === 'DUPLICATE' ? 'Ошибка!' : 'Успех!',
-                body: response.data?.resultCode === 'DUPLICATE' ? 'Такая запись уже есть в списке!' :'Запись добавлена!'
+                body: response.data?.resultCode === 'DUPLICATE' ? 'Такая запись уже есть в списке!' :'Запись изменена!'
             })))
             .catch(() => dispatch(toggleNotification({
                 isOpen: true,
                 title: 'Ошибка!',
-                body:  'Запись не добавлена!'
+                body:  'Запись не изменена!'
             })))
         dispatch(categoryToggleLoader(false))
     }

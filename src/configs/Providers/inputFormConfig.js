@@ -31,21 +31,21 @@ export const providerInputConfig = [
         placeholder: "40702810500000000001",
     },
     {
-        label: "Фото пасспорта",
+        label: "Фото паспорта",
         type: 'image',
-        fileTypes:'image/png,image/jpg,application/pdf',
+        fileTypes:'image/png,image/jpeg,application/pdf',
         imageCount: 2
     },
     {
         label: "Фото сертификата",
         type: 'image',
-        fileTypes:'image/png,image/jpg,application/pdf',
+        fileTypes:'image/png,image/jpeg,application/pdf',
         imageCount: 6
     },
     {
         label: "Фото контракта",
         type: 'image',
-        fileTypes:'image/png,image/jpg,image/jpeg,application/pdf',
+        fileTypes:'image/png,image/jpeg,application/pdf',
         imageCount: 6
     },
     {

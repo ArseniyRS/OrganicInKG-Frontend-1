@@ -93,13 +93,13 @@ export const clearProduct = ()=>{
     }
 }
 export const getMeasureUnits = ()=>{
-    return async dispatch =>getTemplate(dispatch,measureUnitGetReq,WRITE_MEASURE_UNITS,toggleLoader)
+    return async dispatch =>getTemplate(dispatch,measureUnitGetReq,WRITE_MEASURE_UNITS,toggleLoader,toggleNotification)
 }
 export const getProducts = (page,searchText)=> {
     return async dispatch => getSearchedTemplate(dispatch, productsGetReq, WRITE_PRODUCTS, productToggleLoader,page,searchText,toggleNotification)
 }
 export const getProductById = (id)=> {
-    return async dispatch => getTemplate(dispatch, productGetByIdReq, WRITE_PRODUCT_BY_ID, productToggleLoader,id)
+    return async dispatch => getTemplate(dispatch, productGetByIdReq, WRITE_PRODUCT_BY_ID, productToggleLoader,id,toggleNotification)
 }
 export const createProduct = data=>{
     return async dispatch => {
@@ -146,12 +146,12 @@ export const updateProduct = (id,data) =>{
                     await productImgPostReq(formData).then(response=>dispatch(toggleNotification({
                         isOpen: true,
                         title: response.data?.resultCode === 'DUPLICATE' ? 'Ошибка!' : 'Успех!',
-                        body: response.data?.resultCode === 'DUPLICATE' ? 'Такая запись уже есть в списке!' :'Запись добавлена!'
+                        body: response.data?.resultCode === 'DUPLICATE' ? 'Такая запись уже есть в списке!' :'Запись изменена!'
                     })))
                         .catch(() => dispatch(toggleNotification({
                             isOpen: true,
                             title: 'Ошибка!',
-                            body:  'Запись не добавлена!'
+                            body:  'Запись не изменена!'
                         })))
                 }
             })
