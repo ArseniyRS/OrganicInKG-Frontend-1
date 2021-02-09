@@ -21,11 +21,11 @@ import PageLoader from "./components/pageLoader/pageLoader";
 import FaqPage from "./pages/Faq/FaqPage";
 import AboutUsPage from "./pages/AboutUs/AboutUsPage";
 import SettingsPage from "./pages/Settings/SettingsPage";
+import Notification from "./components/Notification/Notification";
 
 function App(props) {
 
     useEffect( ()=>{
-        console.log('check')
         if (expChecker()) {                    //проверка на время токена
             props.toggleAuth(true)
             setTimeout(() =>props.toggleAuth(false),expChecker())
@@ -51,6 +51,7 @@ function App(props) {
 
                   {props.isAuthorized ?
                       <>
+                          <Notification />
                           <Header/>
                           <div className="container">
                               <SidebarList/>

@@ -18,6 +18,7 @@ import {toClearImageArray} from "../../utils/templates/toClearImageArray";
 import {getSearchedTemplate} from "../../utils/templates/getSearchedTemplate";
 import {checkHasData} from "../../utils/checkHasData";
 import {updateItemInStore} from "../../utils/templates/updateItemInStore";
+import {toggleNotification} from "./mainReducer";
 
 const initialState={
     categories: [],
@@ -80,7 +81,7 @@ export const categoryToggleLoader = bool=>{
 }
 
 export const getCategory = (page,searchText)=> {
-    return async dispatch => getSearchedTemplate(dispatch, categoryGetSearchReq, WRITE_CATEGORIES, categoryToggleLoader,page,searchText)
+    return async dispatch => getSearchedTemplate(dispatch, categoryGetSearchReq, WRITE_CATEGORIES, categoryToggleLoader,page,searchText,toggleNotification)
 }
 export const getCategoryById = (id)=> {
     return async dispatch => getTemplate(dispatch, categoryGetByIdReq, WRITE_CATEGORY_BY_ID, categoryToggleLoader,id)
@@ -99,17 +100,28 @@ export const createCategory = data=>{
                 } else {
                     formData.append('image', null)
                 }
-                await categoryPostReq(formData).catch(error => console.log(error.response))
+                await categoryPostReq(formData).then(response=>dispatch(toggleNotification({
+                    isOpen: true,
+                    title: response.data?.resultCode === 'DUPLICATE' ? 'Ошибка!' : 'Успех!',
+                    body: response.data?.resultCode === 'DUPLICATE' ? 'Такая запись уже есть в списке!' :'Запись добавлена!'
+                })))
+                    .catch(() => dispatch(toggleNotification({
+                        isOpen: true,
+                        title: 'Ошибка!',
+                        body:  'Запись не добавлена!'
+                    })))
                 dispatch(categoryToggleLoader(false))
         }
 }
 export const deleteCategory = id =>{
     return async dispatch => {
         for(let i=0;i<id.length;i++){
-          await deleteTemplate(dispatch,categoryDelByIdReq,id[i],categoryToggleLoader,DELETED_CATEGORY)
+          await deleteTemplate(dispatch,categoryDelByIdReq,id[i],categoryToggleLoader,DELETED_CATEGORY,toggleNotification)
         }
     }
 }
+
+
 export const updateCategory = (id,data) =>{
     return async dispatch => {
         dispatch(categoryToggleLoader(true))
@@ -125,7 +137,17 @@ export const updateCategory = (id,data) =>{
         } else {
             formData.append('image', null)
         }
-        await categoryUpdReq(formData,id).catch(error => console.log(error.response))
+        await categoryUpdReq(formData,id)
+            .then(response=>dispatch(toggleNotification({
+                isOpen: true,
+                title: response.data?.resultCode === 'DUPLICATE' ? 'Ошибка!' : 'Успех!',
+                body: response.data?.resultCode === 'DUPLICATE' ? 'Такая запись уже есть в списке!' :'Запись добавлена!'
+            })))
+            .catch(() => dispatch(toggleNotification({
+                isOpen: true,
+                title: 'Ошибка!',
+                body:  'Запись не добавлена!'
+            })))
         dispatch(categoryToggleLoader(false))
     }
 }

@@ -4,7 +4,8 @@ import {
     TOGGLE_PAGE_LOADER,
     WRITE_AUTH_MESSAGE,
     WRITE_USERNAME,
-    WRITE_USER_ID
+    WRITE_USER_ID,
+    TOGGLE_NOTIFICATION
 } from './types'
 import {authRefreshReq, authReq, userGetByIdReq} from "../../utils/api/Request";
 import {logout} from "../../components/Auth/logout";
@@ -16,12 +17,24 @@ const initialState={
     isPageLoader: false,
     authErrorMessage: '',
     username: '',
-    userId: undefined
+    userId: undefined,
+    notification: {
+        isOpen: false,
+        title: '',
+        body: ''
+    }
 }
 
 
 export const mainReducer = (state=initialState,action)=>{
     switch (action.type) {
+        case TOGGLE_NOTIFICATION:
+            console.log('called')
+            return {
+                ...state,
+                notification: action.payload
+            }
+
         case TOGGLE_AUTH:
             return {
                 ...state,
@@ -53,11 +66,19 @@ export const mainReducer = (state=initialState,action)=>{
             ...state,
             userId: action.payload
         }
+
         default:{
             return{
                 ...state
             }
         }
+    }
+}
+
+export const toggleNotification = notif=>{
+    return{
+        type: TOGGLE_NOTIFICATION,
+        payload: notif
     }
 }
 export const writeUserId = value=>{

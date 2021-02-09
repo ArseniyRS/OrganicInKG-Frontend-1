@@ -20,7 +20,7 @@ import {toClearImageArray} from "../../utils/templates/toClearImageArray";
 import {updateItemInStore} from "../../utils/templates/updateItemInStore";
 import {checkHasData} from "../../utils/checkHasData";
 import {getSearchedTemplate} from "../../utils/templates/getSearchedTemplate";
-import {toggleLoader} from "./mainReducer";
+import {toggleLoader, toggleNotification} from "./mainReducer";
 
 const initialState={
     products: [],
@@ -96,7 +96,7 @@ export const getMeasureUnits = ()=>{
     return async dispatch =>getTemplate(dispatch,measureUnitGetReq,WRITE_MEASURE_UNITS,toggleLoader)
 }
 export const getProducts = (page,searchText)=> {
-    return async dispatch => getSearchedTemplate(dispatch, productsGetReq, WRITE_PRODUCTS, productToggleLoader,page,searchText)
+    return async dispatch => getSearchedTemplate(dispatch, productsGetReq, WRITE_PRODUCTS, productToggleLoader,page,searchText,toggleNotification)
 }
 export const getProductById = (id)=> {
     return async dispatch => getTemplate(dispatch, productGetByIdReq, WRITE_PRODUCT_BY_ID, productToggleLoader,id)
@@ -110,7 +110,16 @@ export const createProduct = data=>{
                         const formData = new FormData()
                         toClearImageArray(data.images).map(item => formData.append('images', item))
                         formData.append('productId', resp.data.result.id)
-                        await productImgPostReq(formData)
+                        await productImgPostReq(formData).then(response=>dispatch(toggleNotification({
+                            isOpen: true,
+                            title: response.data?.resultCode === 'DUPLICATE' ? 'Ошибка!' : 'Успех!',
+                            body: response.data?.resultCode === 'DUPLICATE' ? 'Такая запись уже есть в списке!' :'Запись добавлена!'
+                        })))
+                            .catch(() => dispatch(toggleNotification({
+                                isOpen: true,
+                                title: 'Ошибка!',
+                                body:  'Запись не добавлена!'
+                            })))
                     }
                 })
             dispatch(productToggleLoader(false))
@@ -119,7 +128,7 @@ export const createProduct = data=>{
 export const deleteProduct = id =>{
     return async dispatch => {
         for(let i=0;i<id.length;i++){
-            await deleteTemplate(dispatch,productDelByIdReq,id[i],productToggleLoader,DELETED_PRODUCT)
+            await deleteTemplate(dispatch,productDelByIdReq,id[i],productToggleLoader,DELETED_PRODUCT,toggleNotification)
 
         }
 
@@ -134,7 +143,16 @@ export const updateProduct = (id,data) =>{
                     const formData = new FormData()
                     toClearImageArray(data.images).map(item => formData.append('images', item))
                     formData.append('productId', resp.data.result.id)
-                    await productImgPostReq(formData)
+                    await productImgPostReq(formData).then(response=>dispatch(toggleNotification({
+                        isOpen: true,
+                        title: response.data?.resultCode === 'DUPLICATE' ? 'Ошибка!' : 'Успех!',
+                        body: response.data?.resultCode === 'DUPLICATE' ? 'Такая запись уже есть в списке!' :'Запись добавлена!'
+                    })))
+                        .catch(() => dispatch(toggleNotification({
+                            isOpen: true,
+                            title: 'Ошибка!',
+                            body:  'Запись не добавлена!'
+                        })))
                 }
             })
 

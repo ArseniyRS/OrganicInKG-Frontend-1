@@ -20,6 +20,7 @@ import {formDataProviderTemplate} from "../../utils/templates/formDataTemplate";
 import {updateItemInStore} from "../../utils/templates/updateItemInStore";
 import {checkHasData} from "../../utils/checkHasData";
 import {getSearchedTemplate} from "../../utils/templates/getSearchedTemplate";
+import {toggleNotification} from "./mainReducer";
 
 const initialState={
     providers: [],
@@ -89,7 +90,7 @@ export const getActiveProviders = (page)=>{
     return async dispatch => getTemplate(dispatch,providerActiveGetReq,WRITE_ACTIVE_PROVIDERS,providerToggleLoader,page)
 }
 export const getProviders = (page,searchText)=> {
-    return async dispatch => getSearchedTemplate(dispatch, providersGetReq, WRITE_PROVIDER, providerToggleLoader,page,searchText)
+    return async dispatch => getSearchedTemplate(dispatch, providersGetReq, WRITE_PROVIDER, providerToggleLoader,page,searchText,toggleNotification)
 }
 export const getProviderById = (id)=> {
     return async dispatch => getTemplate(dispatch, providerGetByIdReq, WRITE_PROVIDER_BY_ID, providerToggleLoader,id)
@@ -105,7 +106,16 @@ export const createProvider = (data)=>{
                         formDataProviderTemplate(resp.data.result.id, data, 'PASSPORT')
                         formDataProviderTemplate(resp.data.result.id, data, 'SERTIFICATE')
                         formDataProviderTemplate(resp.data.result.id, data, 'CONTRACT')
-                    })
+                    }).then(response=>dispatch(toggleNotification({
+                        isOpen: true,
+                        title: response.data?.resultCode === 'DUPLICATE' ? 'Ошибка!' : 'Успех!',
+                        body: response.data?.resultCode === 'DUPLICATE' ? 'Такая запись уже есть в списке!' :'Запись добавлена!'
+                    })))
+                    .catch(() => dispatch(toggleNotification({
+                        isOpen: true,
+                        title: 'Ошибка!',
+                        body:  'Запись не добавлена!'
+                    })))
                 dispatch(providerToggleLoader(false))
             })
         }
@@ -113,11 +123,26 @@ export const createProvider = (data)=>{
 export const deleteProvider = id =>{
     return async dispatch => {
         for(let i=0;i<id.length;i++){
-            await deleteTemplate(dispatch,providerDelByIdReq,id[i],providerToggleLoader,DELETED_PROVIDER)
+            await deleteTemplate(dispatch,providerDelByIdReq,id[i],providerToggleLoader,DELETED_PROVIDER,toggleNotification)
         }
     }
 }
 export const updateProvider = (id,data) =>{
+
+    // return async dispatch => {
+    //     dispatch(providerToggleLoader(true))
+    //     await providerPlaceOfProductionPostReq(data.placeOfProduction).then(async res=> {
+    //         const newData = data
+    //         newData['placeOfProductionId'] = res.data.result.id
+    //         await providerPostReq(newData)
+    //             .then(resp => {
+    //                 formDataProviderTemplate(resp.data.result.id, data, 'PASSPORT')
+    //                 formDataProviderTemplate(resp.data.result.id, data, 'SERTIFICATE')
+    //                 formDataProviderTemplate(resp.data.result.id, data, 'CONTRACT')
+    //             })
+    //         dispatch(providerToggleLoader(false))
+    //     })
+    // }
     return async dispatch => createOrChangeTemplate(dispatch,providerUpdReq,data,providerToggleLoader,id)
 }
 

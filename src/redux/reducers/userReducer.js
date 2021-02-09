@@ -10,6 +10,7 @@ import {updateItemInStore} from "../../utils/templates/updateItemInStore";
 import {createOrChangeTemplate} from "../../utils/templates/createOrChangeTemplate";
 import {checkHasData} from "../../utils/checkHasData";
 import {getSearchedTemplate} from "../../utils/templates/getSearchedTemplate";
+import {toggleNotification} from "./mainReducer";
 
 const initialState={
     users: [],
@@ -68,7 +69,7 @@ export const userToggleLoader = bool=>{
     }
 }
 export const getUsers = (page,searchText)=> {
-    return async dispatch => getSearchedTemplate(dispatch, usersGetReq, WRITE_USERS, userToggleLoader,page,searchText)
+    return async dispatch => getSearchedTemplate(dispatch, usersGetReq, WRITE_USERS, userToggleLoader,page,searchText,toggleNotification)
 }
 export const getUserById = (id)=> {
     return async dispatch => getTemplate(dispatch, userGetByIdReq, WRITE_USER_BY_ID, userToggleLoader,id)
@@ -76,7 +77,7 @@ export const getUserById = (id)=> {
 export const deleteUser = id =>{
     return async dispatch => {
         for(let i=0;i<id.length;i++){
-            await deleteTemplate(dispatch,userDelByIdReq,id[i],userToggleLoader,DELETED_USER)
+            await deleteTemplate(dispatch,userDelByIdReq,id[i],userToggleLoader,DELETED_USER,toggleNotification)
         }
     }
 }

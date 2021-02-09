@@ -17,6 +17,7 @@ import {deleteTemplate} from "../../utils/templates/deleteTemplate";
 import {checkHasData} from "../../utils/checkHasData";
 import {getSearchedTemplate} from "../../utils/templates/getSearchedTemplate";
 import {updateItemInStore} from "../../utils/templates/updateItemInStore";
+import {toggleNotification} from "./mainReducer";
 
 const initialState={
     faq: [],
@@ -70,24 +71,24 @@ export const faqToggleLoader = bool=>{
 }
 
 export const getFaq = (page,searchText)=> {
-    return async dispatch => getSearchedTemplate(dispatch, faqGetReq, WRITE_FAQ, faqToggleLoader,page,searchText)
+    return async dispatch => getSearchedTemplate(dispatch, faqGetReq, WRITE_FAQ, faqToggleLoader,page,searchText,toggleNotification)
 }
 export const getFaqById = (id)=> {
     return async dispatch => getTemplate(dispatch, faqGetByIdReq, WRITE_FAQ_BY_ID, faqToggleLoader,id)
 }
 export const createFaq = data=>{
 
-    return async dispatch => createOrChangeTemplate(dispatch,faqPostReq,data,faqToggleLoader)
+    return async dispatch => createOrChangeTemplate(dispatch,faqPostReq,data,faqToggleLoader,'',toggleNotification)
 }
 export const deleteFaq = id =>{
     return async dispatch => {
         for(let i=0;i<id.length;i++){
-            await deleteTemplate(dispatch,faqDelByIdReq,id[i],faqToggleLoader,DELETED_FAQ)
+            await deleteTemplate(dispatch,faqDelByIdReq,id[i],faqToggleLoader,DELETED_FAQ,toggleNotification)
         }
     }
 }
 export const updateFaq = (id,data) =>{
-    return async dispatch => createOrChangeTemplate(dispatch,faqUpdReq,data,faqToggleLoader,id)
+    return async dispatch => createOrChangeTemplate(dispatch,faqUpdReq,data,faqToggleLoader,id,toggleNotification)
 }
 export const clearFaq = ()=>{
     return{

@@ -1,7 +1,10 @@
-export const getSearchedTemplate = async (dispatch,getFunc, actionType,toggleLoader,page,searchText)=>{
+export const getSearchedTemplate = async (dispatch,getFunc, actionType,toggleLoader,page,searchText,showNotification)=>{
     dispatch(toggleLoader(true));
-    let response = await getFunc(searchText,page);
-    console.log(response)
+    let response = await getFunc(searchText,page).catch(()=>dispatch(showNotification({
+        isOpen: true,
+        title: 'Ошибка!',
+        body:  'Не загружаются записи...'
+    })))
     if(response?.result) {
         dispatch({type: actionType, payload: response.result})
     }else{

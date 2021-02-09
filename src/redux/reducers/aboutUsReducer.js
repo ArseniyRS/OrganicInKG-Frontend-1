@@ -18,6 +18,7 @@ import {deleteTemplate} from "../../utils/templates/deleteTemplate";
 import {updateItemInStore} from "../../utils/templates/updateItemInStore";
 import {checkHasData} from "../../utils/checkHasData";
 import {getSearchedTemplate} from "../../utils/templates/getSearchedTemplate";
+import {toggleNotification} from "./mainReducer";
 
 const initialState={
     aboutUs: [],
@@ -71,23 +72,22 @@ export const aboutToggleLoader = bool=>{
     }
 }
 export const getAboutUs = (page,searchText)=> {
-    return async dispatch => getSearchedTemplate(dispatch, aboutUsGetReq, WRITE_ABOUT_US, aboutToggleLoader,page,searchText)
+    return async dispatch => getSearchedTemplate(dispatch, aboutUsGetReq, WRITE_ABOUT_US, aboutToggleLoader,page,searchText,toggleNotification)
 }
 export const getAboutUsById = (id)=> {
     return async dispatch => getTemplate(dispatch, aboutUsGetByIdReq, WRITE_ABOUT_US_BY_ID, aboutToggleLoader,id)
 }
 export const createAboutUs = data=>{
-
-    return async dispatch => createOrChangeTemplate(dispatch,aboutUsPostReq,data,aboutToggleLoader)
+    return async dispatch => createOrChangeTemplate(dispatch,aboutUsPostReq,data,aboutToggleLoader,'',toggleNotification)
 }
 export const deleteAboutUs = id =>{
     return async dispatch => {
         for(let i=0;i<id.length;i++){
-            await deleteTemplate(dispatch,aboutUsDelByIdReq,id[i],aboutToggleLoader,DELETED_ABOUT_US)
+            await deleteTemplate(dispatch,aboutUsDelByIdReq,id[i],aboutToggleLoader,DELETED_ABOUT_US,toggleNotification)
         }
     }
 }
 export const updateAboutUs = (id,data) =>{
-    return async dispatch => createOrChangeTemplate(dispatch,aboutUsUpdReq,data,aboutToggleLoader,id)
+    return async dispatch => createOrChangeTemplate(dispatch,aboutUsUpdReq,data,aboutToggleLoader,id,toggleNotification)
 }
 

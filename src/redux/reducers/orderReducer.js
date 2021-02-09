@@ -16,6 +16,7 @@ import {deleteTemplate} from "../../utils/templates/deleteTemplate";
 import {checkHasData} from "../../utils/checkHasData";
 import {getSearchedTemplate} from "../../utils/templates/getSearchedTemplate";
 import {updateItemInStore} from "../../utils/templates/updateItemInStore";
+import {toggleNotification} from "./mainReducer";
 
 const initialState={
     orders: [],
@@ -81,7 +82,7 @@ export const orderToggleLoader = bool=>{
 }
 
 export const getOrders = (page,searchText)=> {
-    return async dispatch => getSearchedTemplate(dispatch, ordersGetReq, WRITE_ORDERS, orderToggleLoader,page,searchText)
+    return async dispatch => getSearchedTemplate(dispatch, ordersGetReq, WRITE_ORDERS, orderToggleLoader,page,searchText,toggleNotification)
 }
 export const getOrderById = (id)=> {
     return async dispatch => getTemplate(dispatch, orderGetByIdReq, WRITE_ORDER_BY_ID, orderToggleLoader,id)
@@ -91,7 +92,7 @@ export const getDeliveryCash = ()=>{
 }
 
 export const updateDeliveryCash = data=>{
-    return async dispatch =>createOrChangeTemplate(dispatch,deliveryCashUpdReq,{deliveryPrice: parseInt(data.deliveryPrice), deliveryType: "COURIER"},orderToggleLoader,1)
+    return async dispatch =>createOrChangeTemplate(dispatch,deliveryCashUpdReq,{deliveryPrice: parseInt(data.deliveryPrice), deliveryType: "COURIER"},orderToggleLoader,1,toggleNotification)
 }
 
 export const createOrder = data=>{
@@ -100,7 +101,7 @@ export const createOrder = data=>{
 export const deleteOrder = id =>{
     return async dispatch => {
         for(let i=0;i<id.length;i++){
-            await deleteTemplate(dispatch,orderDelByIdReq,id[i],orderToggleLoader,DELETED_ORDER)
+            await deleteTemplate(dispatch,orderDelByIdReq,id[i],orderToggleLoader,DELETED_ORDER,toggleNotification)
         }
     }
 }
