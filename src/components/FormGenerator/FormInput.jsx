@@ -16,6 +16,7 @@ const FormInput = ({
                selectInputData=[],
                selectorProperty,
                options=[],
+                       clearSelectorData,
                        fileTypes,
                        imageCount,
                        readOnly=false,
@@ -33,7 +34,8 @@ const FormInput = ({
                     value={value}
                     name={name}
                     data={selectInputData}
-                    placeholder={placeholder}/>
+                    placeholder={placeholder}
+                    />
                     )
                 }}
                 </Field>

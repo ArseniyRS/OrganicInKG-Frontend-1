@@ -14,8 +14,8 @@ import {
     getProducts,
     updateProduct
 } from "../../redux/reducers/productReducer";
-import {getActiveProviders} from "../../redux/reducers/providerReducer";
-import {getCategory} from "../../redux/reducers/categoryReducer";
+import {clearActiveProviders, getActiveProviders} from "../../redux/reducers/providerReducer";
+import {clearCategories, getCategory} from "../../redux/reducers/categoryReducer";
 
 
 
@@ -74,6 +74,7 @@ const ProductsPage = ({   products,
 
             }}
             loadSelectorData={[getCategory,getActiveProviders,getMeasureUnits]}
+            clearSelectorData = {[props.clearCategories,props.clearActiveProviders]}
             creatorInitialFormValues={{
                 name: '',
                 categoryId: null,
@@ -134,6 +135,9 @@ export  default  connect(mapStateToProps,
         updateProduct,
         deleteProduct,
         clearProduct,
-        getMeasureUnits,clearProducts
+        getMeasureUnits,
+        clearProducts,
+        clearCategories,
+        clearActiveProviders
     }
 )(ProductsPage)

@@ -4,7 +4,7 @@ import SelectBlock from "./SelectBlock";
 
 
 
-const SelectField = ({data=[],name,value,setFieldValue,placeholder,})=>{
+const SelectField = ({data=[],name,value,setFieldValue,placeholder})=>{
     const [visibleSelector, setVisibleSelector]  = useState(false);
     const [selectedValue,setSelectedValue] = useState('')
     const selectedItem = (id,text)=>{
@@ -24,7 +24,6 @@ const SelectField = ({data=[],name,value,setFieldValue,placeholder,})=>{
             }
         })
     },[data])
-    //const onChange = (text)=>setFieldValue(name,text)
     return(
         <div className={'selectorInput'} onClick={(event)=>setVisibleSelector(!visibleSelector)}>
 

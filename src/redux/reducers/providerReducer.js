@@ -87,6 +87,12 @@ export const clearProviders = ()=>{
         type: CLEAR_PROVIDERS
     }
 }
+export const clearActiveProviders = ()=>{
+    return{
+        type: WRITE_ACTIVE_PROVIDERS,
+        payload: []
+    }
+}
 export const providerToggleLoader = bool=>{
     return{
         type: PROVIDER_TOGGLE_FETCH_LOADER,

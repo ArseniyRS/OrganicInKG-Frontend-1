@@ -6,7 +6,7 @@ import {
     createCategory,
     deleteCategory,
     getCategory,
-    getCategoryById, getSearchedCategory, updateCategory
+    getCategoryById, updateCategory
 } from "../../redux/reducers/categoryReducer";
 import {recordViewCategoryConfig} from "../../configs/Categories/recordViewConfig";
 import {CategoryColumns} from "../../configs/Categories/tableColumnsConfig";
@@ -31,6 +31,7 @@ const CategoriesPage = ({categories,hasCategories,categoryById,getSearchedCatego
             updaterTitle={'Редактирование категории'}
             formInputsConfig={categoryInputConfig}
             loadSelectorData={[getCategory]}
+            clearSelectorData = {[props.clearCategories]}
             optionsForSelectorData={{
                 category: categories ? [...categories] : []
             }}

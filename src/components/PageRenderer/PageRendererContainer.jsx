@@ -42,7 +42,7 @@ const PageRenderer = ({
     hasData,
     clearTable,
     recordViewValuesConfig,
-
+    clearSelectorData,
     adding=true,
     editing=true,
     deleting=true,
@@ -72,6 +72,7 @@ const PageRenderer = ({
                         <Route exact path={`/${pageUrl}/${pageUrl}-creator`}>
                             <FormContainer
                                 loadSelectorData={loadSelectorData}
+                                clearSelectorData={clearSelectorData}
                                 urlToTable={`/${pageUrl}`}
                                 createReq={createFunc}
                                 formTitle={creatorTitle}
@@ -79,6 +80,7 @@ const PageRenderer = ({
                                 optionsForSelector={optionsForSelectorData}
                                 initialVals={creatorInitialFormValues}
                                 isLoading={isLoading}
+
                             />
                         </Route>
                         }
@@ -86,6 +88,7 @@ const PageRenderer = ({
                         <Route exact path={`/${pageUrl}/${pageUrl}-updater/:id`}>
                             <FormContainer
                                 loadSelectorData={loadSelectorData}
+                                clearSelectorData={clearSelectorData}
                                 getByIdFunc={getByIdFunc}
                                 valueById={valueById}
                                 urlToTable={`/${pageUrl}`}

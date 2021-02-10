@@ -17,6 +17,13 @@ const FormContainer = ({
         if(match.params?.id) {
             props.getByIdFunc(match.params.id)
         }
+        return ()=>{
+            if(props.clearSelectorData) {
+                for(let i=0;i<props.clearSelectorData.length;i++){
+                    props.clearSelectorData[i]()
+                }
+            }
+        }
     },[])
 
     const handleSubmit = async values=>{
