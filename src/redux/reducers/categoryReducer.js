@@ -44,7 +44,8 @@ export const categoryReducer = (state=initialState,action)=>{
         case CLEAR_CATEGORIES:
             return {
                 ...state,
-                categories: []
+                categories: [],
+                hasCategories: true,
             }
         case SEARCHING:
             return {

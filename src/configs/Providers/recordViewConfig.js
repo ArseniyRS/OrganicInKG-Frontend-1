@@ -22,24 +22,20 @@ export const recordViewProviderConfig  =[
     {
         title: "Фото паспорта",
         dataIndex: 'PASSPORT',
-        object: 'supplierFileType'
+        type: 'image'
     },
     {
         title: "Фото сертификата",
         dataIndex: 'SERTIFICATE',
-        object: 'supplierFileType'
+        type: 'image'
     },
     {
         title: "Фото контракта",
         dataIndex: 'CONTRACT',
-        object: 'supplierFileType'
+        type: 'image'
     },
     {
         title: "Банковский счет",
         dataIndex: 'ewalletNumber',
-    },
-    {
-        title: "Статус",
-        dataIndex: 'isActive',
     },
 ]

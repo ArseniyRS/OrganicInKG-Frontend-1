@@ -8,16 +8,18 @@ import {useDropzone} from "react-dropzone";
 const ImgUploader = ({setFieldValue,name,value=[],imageCount=1,fileTypes="image/jpeg ,image/gif, image/png, image/svg+xml, application/pdf"})=>{
     const [files,setFiles] = useState([])
     const [error,setError] = useState('')
-    console.log(files)
     useEffect(()=>{
         setFieldValue(name,files)
     },[files])
     const createFile= async (url)=>{
-            let response = await fetch(typeof url === 'object' ? url.imgUrl : url);
-            let data = await response.blob();
-            let metadata = {type: data.type};
-            let file = new File([data],'file',metadata);
-            await getBase64(file,(string)=> {setFiles(files=>[...files,{file: file, data_url : string}])})
+            await fetch(typeof url === 'object' ? url.imageUrl || url.imgUrl : url).then(async response=>{
+                console.log(response)
+                let data = await response.blob();
+                let metadata = {type: data.type};
+                let file = new File([data],'file',metadata);
+                getBase64(file,(string)=> {setFiles(files=>[...files,{file: file, data_url : string}])})
+            });
+
     }
 
     const loadFiles = async ()=>{

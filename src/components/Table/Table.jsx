@@ -59,24 +59,24 @@ const Table = ({isLoading,
                 </div>
             </div>
             <div className="tableItem-container__wrapper">
-                {(tableMessage && isLoading) && <ErrorMsg text={tableMessage}/>}
-                <InfiniteScroll
-                    dataLength={data.length} //This is important field to render the next data
-                    next={()=>{
-                        getDataFunc(page,searchText)
-                        setPage(page+1)
-                    }}
-                    hasMore={hasData}
-                    loader={<Preloader/>}
-                    endMessage={
-                        <p style={{ textAlign: 'center' }}>
-                            <b>Загружены все записи.</b>
-                        </p>
-                    }
-                    initialScrollY={0}
-                >
-                    {elements}
-                </InfiniteScroll>
+                {tableMessage && <ErrorMsg text={tableMessage}/>}
+                    <InfiniteScroll
+                        dataLength={data.length} //This is important field to render the next data
+                        next={() => {
+                            getDataFunc(page, searchText)
+                            setPage(page + 1)
+                        }}
+                        hasMore={hasData}
+                        loader={<Preloader/>}
+                        endMessage={
+                            <p style={{textAlign: 'center'}}>
+                                <b>Загружены все записи.</b>
+                            </p>
+                        }
+                        initialScrollY={0}
+                    >
+                        {elements}
+                    </InfiniteScroll>
             </div>
         </div>
     )

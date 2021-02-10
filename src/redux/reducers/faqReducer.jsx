@@ -43,7 +43,8 @@ export const faqReducer = (state=initialState,action)=>{
         case CLEAR_FAQ:
             return {
                 ...state,
-                faq: []
+                faq: [],
+                hasFaq: true,
             }
         case SEARCHING:
             return {

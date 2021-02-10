@@ -43,7 +43,9 @@ export const orderReducer = (state=initialState,action)=>{
         case CLEAR_ORDERS:
             return {
                 ...state,
-                orders: []
+                orders: [],
+                hasOrders: true,
+
             }
         case WRITE_DELIVERY_CASH:
             return{

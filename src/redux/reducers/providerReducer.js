@@ -45,7 +45,9 @@ export const providerReducer = (state=initialState,action)=>{
         case CLEAR_PROVIDERS:
             return {
                 ...state,
-                providers: []
+                providers: [],
+                hasProvider: true,
+
             }
         case SEARCHING:
             return {

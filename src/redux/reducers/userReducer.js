@@ -42,7 +42,9 @@ export const userReducer = (state=initialState,action)=>{
         case CLEAR_USERS:
             return {
                 ...state,
-                users: []
+                users: [],
+                hasUsers: true,
+
             }
         case WRITE_USER_BY_ID:
             return{

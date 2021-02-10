@@ -39,9 +39,9 @@ const ProvidersPage = ({providers,providerById,getProviders,getProviderById,crea
                         </span>,
                 produces:  providerById?.produces,
                 walletNumber:  providerById?.ewalletNumber,
-                PASSPORT: providerById?.supplierFile?.filter(item=>item.supplierFileType==='PASSPORT'),
-                SERTIFICATE: providerById?.supplierFile?.filter(item=>item.supplierFileType==='SERTIFICATE'),
-                CONTRACT: providerById?.supplierFile?.filter(item=>item.supplierFileType==='CONTRACT'),
+                PASSPORT: providerById?.supplierFile?.filter(item=>item.supplierFileType==='PASSPORT' ? item.imgUrl : 'Нет фото/документа'),
+                SERTIFICATE: providerById?.supplierFile?.filter(item=>item.supplierFileType==='SERTIFICATE' ? item.imgUrl : 'Нет фото/документа'),
+                CONTRACT: providerById?.supplierFile?.filter(item=>item.supplierFileType==='CONTRACT' ? item.imgUrl : 'Нет фото/документа'),
                 isActive:  providerById?.isActive
             }}
             creatorTitle={'Создание поставщика'}

@@ -43,7 +43,8 @@ export const aboutUsReducer = (state=initialState,action)=>{
         case CLEAR_ABOUT_US:
             return {
                 ...state,
-                aboutUs: []
+                aboutUs: [],
+                hasAbout: true,
             }
         case SEARCHING:
             return {
