@@ -6,11 +6,9 @@ import './MapBlock.css'
 
 
 const MapBlock = props=> {
-    console.log()
     const ymaps = React.useRef(null);
     const placemarkRef = React.useRef(null);
     const mapRef = React.useRef(null);
-    console.log(props.value)
     const [place, setPlace] = React.useState({
         id: props.value?.id || "",
         city: props.value?.city || "",

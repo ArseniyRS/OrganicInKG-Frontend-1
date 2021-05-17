@@ -14,7 +14,7 @@ import {toBeautifyFieldsValue} from "../../utils/toBeatifyFiledsValue";
 
 
 const OrdersPage = ({orders,orderById,clearOrder,  getOrderById, createOrder,deleteOrder, getOrders, updateOrder,...props})=>{
-    console.log(orderById)
+
     return(
         <PageRenderer
             pageUrl ={'orders'}

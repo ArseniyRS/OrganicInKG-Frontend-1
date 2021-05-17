@@ -29,7 +29,6 @@ const initialState={
 export const mainReducer = (state=initialState,action)=>{
     switch (action.type) {
         case TOGGLE_NOTIFICATION:
-            console.log('called')
             return {
                 ...state,
                 notification: action.payload
@@ -145,7 +144,6 @@ export const authSignIn = data =>{
     return async dispatch =>{
         dispatch(toggleLoader(true))
         await authReq(data).then(async response=>{
-            console.log(response)
             if(response.result.statusCodeValue===400){
                 dispatch(writeAuthMessage('Неверно введены данные.'))
             }else {

@@ -1,35 +1,46 @@
 import * as Yup from "yup";
 
+
 export const validationGenerator = (key, config)=>{
+    console.log(key)
     let schema = {}
-    key.map((item,index)=> {
-        if(config[index]?.dataType) {
-            switch (config[index].dataType) {
-                case 'number':
-                    schema[item] = Yup.number();
-                    break;
-                default:
-                    schema[item] = Yup.string()
+    for (let i=0;i<key.length;i++){
+        for (let j=0;j<config.length;j++){
+            if(key[i]===config[j]?.key){
+                schema[key[i]]  =chooseSchema(config[j])
             }
         }
-            else{
-                schema[item] = Yup.string()
-            }
-
-
-
-        if(config[index]?.required){
-            schema[item] =  schema[item].required(config[index].required)
-        }
-        if(config[index]?.min){
-            schema[item] =  schema[item].min(config[index].min)
-        }
-        if(config[index]?.max){
-            schema[item] =  schema[item].min(config[index].max)
-        }
-        if(config[index]?.nullable){
-            schema[item] =  schema[item].nullable(config[index].nullable)
-        }
-    })
+    }
+    console.log(schema)
     return schema
+}
+
+const chooseSchema = (config)=>{
+    let pattern
+    if(config?.dataType) {
+        switch (config.dataType) {
+            case 'number': pattern = Yup.number();
+                break;
+            case 'array': pattern = Yup.array();
+                break;
+            case 'obj': pattern = Yup.object();
+                break;
+            default: pattern = Yup.string()
+        }
+    }
+    else{ pattern = Yup.string()
+    }
+    if(config?.email){pattern = pattern.email(config.email)}
+    if(config?.min){ pattern =   pattern.min(config.min.number,config.min.text + config.min.number)
+    }
+    if(config?.positive){ pattern =   pattern.positive(config.positive)
+    }
+    if(config?.required){ pattern =  pattern.required(config.required)
+    }
+
+    if(config?.max){ pattern =  pattern.max(config.max.number,config.max.text + config.max.number)
+    }
+    if(config?.nullable){ pattern =  pattern.nullable(config.nullable)
+    }
+    return pattern
 }

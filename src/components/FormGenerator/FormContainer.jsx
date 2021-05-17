@@ -35,9 +35,10 @@ const FormContainer = ({
         }
     }
 
-
+    console.log(match)
     return(
         (!isLoading && props.valueById && match.params.id) || (!isLoading && !props.valueById && !match.params.id)
+        || match.path === "/settings"
             ?
             <Former handleSubmit={handleSubmit}  {...props}/>
         : <Preloader />

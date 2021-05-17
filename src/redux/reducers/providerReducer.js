@@ -112,7 +112,6 @@ export const getProviderById = (id)=> {
     return async dispatch => getTemplate(dispatch, providerGetByIdReq, WRITE_PROVIDER_BY_ID, providerToggleLoader,id,toggleNotification)
 }
 export const createProvider = (data)=>{
-    console.log(data)
         return async dispatch => {
             dispatch(providerToggleLoader(true))
             await providerPlaceOfProductionPostReq(data.placeOfProduction).then(async res=> {

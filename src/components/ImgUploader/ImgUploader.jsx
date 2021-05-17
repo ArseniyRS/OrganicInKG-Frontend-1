@@ -13,7 +13,6 @@ const ImgUploader = ({setFieldValue,name,value=[],imageCount=1,fileTypes="image/
     },[files])
     const createFile= async (url)=>{
             await fetch(typeof url === 'object' ? url.imageUrl || url.imgUrl : url).then(async response=>{
-                console.log(response)
                 let data = await response.blob();
                 let metadata = {type: data.type};
                 let file = new File([data],'file',metadata);

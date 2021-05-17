@@ -5,7 +5,6 @@ export const getSearchedTemplate = async (dispatch,getFunc, actionType,toggleLoa
         title: 'Ошибка!',
         body:  'Не загружаются записи...'
     })))
-    console.log(response)
     if(response?.result) {
         dispatch({type: actionType, payload: response.result})
     }else{

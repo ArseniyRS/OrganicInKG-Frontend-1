@@ -11,7 +11,6 @@ export const initialValuesGetter = (obj,loadData)=>{
                 }
                 newObj[`${item}`] = oldObj[index]
             })
-            console.log(newObj)
             return newObj
         }else {
             objectKeys.map(item => {

@@ -16,7 +16,6 @@ import {recordViewProviderConfig} from "../../configs/Providers/recordViewConfig
 
 
 const ProvidersPage = ({providers,providerById,getProviders,getProviderById,createProvider,updateProvider,deleteProvider,clearProvider,...props})=>{
-    console.log(providerById)
     return(
         <PageRenderer
             pageUrl ={'providers'}

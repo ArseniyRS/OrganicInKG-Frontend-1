@@ -52,7 +52,6 @@ export const productReducer = (state=initialState,action)=>{
                 hasProducts: checkHasData(action.payload)
             }
         case CLEAR_PRODUCTS:
-            console.log('clear called')
             return {
                 ...state,
                 products: [],

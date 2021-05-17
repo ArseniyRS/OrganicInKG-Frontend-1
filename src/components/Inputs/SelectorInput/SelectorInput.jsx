@@ -10,7 +10,6 @@ const SelectorInput = ({name,value,setFieldValue,placeholder,data})=>{
     const [selected, setSelected] = useState('')
     const [inputText,setInputText] = useState(value);
     const onChange = (value)=>{
-        console.log(value)
         setInputText(value)
     }
     useEffect(()=>{
